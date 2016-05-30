@@ -1,0 +1,14 @@
+{
+  "files": {
+    "loopback#static": {
+      "params": "$!../client/dist/"
+    }
+  },
+  "final:after": {
+    "loopback#errorHandler": {
+      "params": {
+        "includeStack": false
+      }
+    }
+  }
+}
