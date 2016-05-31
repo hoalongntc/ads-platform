@@ -1,9 +1,9 @@
 // GLOBAL IMPORT
 // JS
-import '../assets/scripts/vendor.js'
+import '../assets/scripts/assets.js'
 
 // STYLES
-import '../assets/styles/vendor.less'
+import '../assets/styles/assets.less'
 
 // TEMPLATE
 //@require "./components/**/*.html"

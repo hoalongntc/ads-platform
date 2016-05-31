@@ -1,7 +1,6 @@
 routes.$inject = ['$stateProvider', '$urlRouterProvider'];
 
 export default function routes($stateProvider, $urlRouterProvider) {
-  //
   // For any unmatched url, redirect to /
   $urlRouterProvider.otherwise("/");
   

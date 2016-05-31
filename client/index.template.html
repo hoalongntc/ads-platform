@@ -10,9 +10,14 @@
   <!--[if lt IE 8]>
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
+
+  <!-- Nav bar -->
+  <ng-include src="'nav/nav.jade'" ></ng-include>
+
+  <!-- Main view -->
+  <ui-view></ui-view>
   
-  <div class="container">
-    <ui-view></ui-view>
-  </div>
+  <!-- Footer -->
+  <ng-include src="'nav/footer.jade'" ></ng-include>
 </body>
 </html>

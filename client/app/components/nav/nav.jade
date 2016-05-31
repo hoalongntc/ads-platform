@@ -1,311 +1,57 @@
-nav.site-navbar.navbar.navbar-default.navbar-fixed-top.navbar-mega(role='navigation')
-  .navbar-header
-    button.navbar-toggle.hamburger.hamburger-close.navbar-toggle-left.hided(type='button', data-toggle='menubar')
-      span.sr-only Toggle navigation
-      span.hamburger-bar
-    button.navbar-toggle.collapsed(type='button', data-target='#site-navbar-collapse', data-toggle='collapse')
-      i.icon.wb-more-horizontal(aria-hidden='true')
-    .navbar-brand.navbar-brand-center.site-gridmenu-toggle(data-toggle='gridmenu')
-      img.navbar-brand-logo(src='../../../assets/images/logo.png', title='Remark')
-      span.navbar-brand-text  Remark
-    button.navbar-toggle.collapsed(type='button', data-target='#site-navbar-search', data-toggle='collapse')
-      span.sr-only Toggle Search
-      i.icon.wb-search(aria-hidden='true')
-  .navbar-container.container-fluid
-    // Navbar Collapse
-    #site-navbar-collapse.collapse.navbar-collapse.navbar-collapse-toolbar
-      // Navbar Toolbar
-      ul.nav.navbar-toolbar
-        li#toggleMenubar.hidden-float
-          a(data-toggle='menubar', href='#', role='button')
-            i.icon.hamburger.hamburger-arrow-left
-              span.sr-only Toggle menubar
-              span.hamburger-bar
-        li#toggleFullscreen.hidden-xs
-          a.icon.icon-fullscreen(data-toggle='fullscreen', href='#', role='button')
-            span.sr-only Toggle fullscreen
-        li.hidden-float
-          a.icon.wb-search(data-toggle='collapse', href='#', data-target='#site-navbar-search', role='button')
-            span.sr-only Toggle Search
-        li.dropdown.dropdown-fw.dropdown-mega
-          a.dropdown-toggle(data-toggle='dropdown', href='#', aria-expanded='false', data-animation='fade', role='button')
-            | Mega 
-            i.icon.wb-chevron-down-mini(aria-hidden='true')
-          ul.dropdown-menu(role='menu')
-            li(role='presentation')
-              .mega-content
-                .row
-                  .col-sm-4
-                    h5 UI Kit
-                    ul.blocks-2
-                      li.mega-menu.margin-0
-                        ul.list-icons
-                          li
-                            i.wb-chevron-right-mini(aria-hidden='true')
-                            a(href='../advanced/animation.html') Animation
-                          li
-                            i.wb-chevron-right-mini(aria-hidden='true')
-                            a(href='../uikit/buttons.html') Buttons
-                          li
-                            i.wb-chevron-right-mini(aria-hidden='true')
-                            a(href='../uikit/colors.html') Colors
-                          li
-                            i.wb-chevron-right-mini(aria-hidden='true')
-                            a(href='../uikit/dropdowns.html') Dropdowns
-                          li
-                            i.wb-chevron-right-mini(aria-hidden='true')
-                            a(href='../uikit/icons.html') Icons
-                          li
-                            i.wb-chevron-right-mini(aria-hidden='true')
-                            a(href='../advanced/lightbox.html') Lightbox
-                      li.mega-menu.margin-0
-                        ul.list-icons
-                          li
-                            i.wb-chevron-right-mini(aria-hidden='true')
-                            a(href='../uikit/modals.html') Modals
-                          li
-                            i.wb-chevron-right-mini(aria-hidden='true')
-                            a(href='../uikit/panel-structure.html') Panels
-                          li
-                            i.wb-chevron-right-mini(aria-hidden='true')
-                            a(href='../structure/overlay.html') Overlay
-                          li
-                            i.wb-chevron-right-mini(aria-hidden='true')
-                            a(href='../uikit/tooltip-popover.html ') Tooltips
-                          li
-                            i.wb-chevron-right-mini(aria-hidden='true')
-                            a(href='../advanced/scrollable.html') Scrollable
-                          li
-                            i.wb-chevron-right-mini(aria-hidden='true')
-                            a(href='../uikit/typography.html') Typography
-                  .col-sm-4
-                    h5
-                      | Media
-                      span.badge.badge-success 4
-                    ul.blocks-3
-                      li
-                        a.thumbnail.margin-0(href='javascript:void(0)')
-                          img.width-full(src='../../../assets/images/photos/placeholder.png', alt='...')
-                      li
-                        a.thumbnail.margin-0(href='javascript:void(0)')
-                          img.width-full(src='../../../assets/images/photos/placeholder.png', alt='...')
-                      li
-                        a.thumbnail.margin-0(href='javascript:void(0)')
-                          img.width-full(src='../../../assets/images/photos/placeholder.png', alt='...')
-                      li
-                        a.thumbnail.margin-0(href='javascript:void(0)')
-                          img.width-full(src='../../../assets/images/photos/placeholder.png', alt='...')
-                      li
-                        a.thumbnail.margin-0(href='javascript:void(0)')
-                          img.width-full(src='../../../assets/images/photos/placeholder.png', alt='...')
-                      li
-                        a.thumbnail.margin-0(href='javascript:void(0)')
-                          img.width-full(src='../../../assets/images/photos/placeholder.png', alt='...')
-                  .col-sm-4
-                    h5.margin-bottom-0 Accordion
-                    // Accordion
-                    #siteMegaAccordion.panel-group.panel-group-simple(aria-multiselectable='true', role='tablist')
-                      .panel
-                        #siteMegaAccordionHeadingOne.panel-heading(role='tab')
-                          a.panel-title(data-toggle='collapse', href='#siteMegaCollapseOne', data-parent='#siteMegaAccordion', aria-expanded='false', aria-controls='siteMegaCollapseOne')
-                            | Collapsible Group Item #1
-                        #siteMegaCollapseOne.panel-collapse.collapse(aria-labelledby='siteMegaAccordionHeadingOne', role='tabpanel')
-                          .panel-body
-                            | De moveat laudatur vestra parum doloribus labitur sentire partes, eripuit praesenti
-                            | congressus ostendit alienae, voluptati ornateque
-                            | accusamus clamat reperietur convicia albucius.
-                      .panel
-                        #siteMegaAccordionHeadingTwo.panel-heading(role='tab')
-                          a.panel-title.collapsed(data-toggle='collapse', href='#siteMegaCollapseTwo', data-parent='#siteMegaAccordion', aria-expanded='false', aria-controls='siteMegaCollapseTwo')
-                            | Collapsible Group Item #2
-                        #siteMegaCollapseTwo.panel-collapse.collapse(aria-labelledby='siteMegaAccordionHeadingTwo', role='tabpanel')
-                          .panel-body
-                            | Praestabiliorem. Pellat excruciant legantur ullum leniter vacare foris voluptate
-                            | loco ignavi, credo videretur multoque choro fatemur
-                            | mortis animus adoptionem, bello statuat expediunt
-                            | naturales.
-                      .panel
-                        #siteMegaAccordionHeadingThree.panel-heading(role='tab')
-                          a.panel-title.collapsed(data-toggle='collapse', href='#siteMegaCollapseThree', data-parent='#siteMegaAccordion', aria-expanded='false', aria-controls='siteMegaCollapseThree')
-                            | Collapsible Group Item #3
-                        #siteMegaCollapseThree.panel-collapse.collapse(aria-labelledby='siteMegaAccordionHeadingThree', role='tabpanel')
-                          .panel-body
-                            | Horum, antiquitate perciperet d conspectum locus obruamus animumque perspici probabis
-                            | suscipere. Desiderat magnum, contenta poena desiderant
-                            | concederetur menandri damna disputandum corporum.
-                    // End Accordion
-      // End Navbar Toolbar
-      // Navbar Toolbar Right
-      ul.nav.navbar-toolbar.navbar-right.navbar-toolbar-right
-        li.dropdown
-          a.dropdown-toggle(data-toggle='dropdown', href='javascript:void(0)', data-animation='scale-up', aria-expanded='false', role='button')
-            span.flag-icon.flag-icon-us
-          ul.dropdown-menu(role='menu')
-            li(role='presentation')
-              a(href='javascript:void(0)', role='menuitem')
-                span.flag-icon.flag-icon-gb
-                |  English
-            li(role='presentation')
-              a(href='javascript:void(0)', role='menuitem')
-                span.flag-icon.flag-icon-fr
-                |  French
-            li(role='presentation')
-              a(href='javascript:void(0)', role='menuitem')
-                span.flag-icon.flag-icon-cn
-                |  Chinese
-            li(role='presentation')
-              a(href='javascript:void(0)', role='menuitem')
-                span.flag-icon.flag-icon-de
-                |  German
-            li(role='presentation')
-              a(href='javascript:void(0)', role='menuitem')
-                span.flag-icon.flag-icon-nl
-                |  Dutch
-        li.dropdown
-          a.navbar-avatar.dropdown-toggle(data-toggle='dropdown', href='#', aria-expanded='false', data-animation='scale-up', role='button')
-            span.avatar.avatar-online
-              img(src='../../../assets/images/portraits/5.jpg', alt='...')
-              i
-          ul.dropdown-menu(role='menu')
-            li(role='presentation')
-              a(href='javascript:void(0)', role='menuitem')
-                i.icon.wb-user(aria-hidden='true')
-                |  Profile
-            li(role='presentation')
-              a(href='javascript:void(0)', role='menuitem')
-                i.icon.wb-payment(aria-hidden='true')
-                |  Billing
-            li(role='presentation')
-              a(href='javascript:void(0)', role='menuitem')
-                i.icon.wb-settings(aria-hidden='true')
-                |  Settings
-            li.divider(role='presentation')
-            li(role='presentation')
-              a(href='javascript:void(0)', role='menuitem')
-                i.icon.wb-power(aria-hidden='true')
-                |  Logout
-        li.dropdown
-          a(data-toggle='dropdown', href='javascript:void(0)', title='Notifications', aria-expanded='false', data-animation='scale-up', role='button')
-            i.icon.wb-bell(aria-hidden='true')
-            span.badge.badge-danger.up 5
-          ul.dropdown-menu.dropdown-menu-right.dropdown-menu-media(role='menu')
-            li.dropdown-menu-header(role='presentation')
-              h5 NOTIFICATIONS
-              span.label.label-round.label-danger New 5
-            li.list-group(role='presentation')
-              div(data-role='container')
-                div(data-role='content')
-                  a.list-group-item(href='javascript:void(0)', role='menuitem')
-                    .media
-                      .media-left.padding-right-10
-                        i.icon.wb-order.bg-red-600.white.icon-circle(aria-hidden='true')
-                      .media-body
-                        h6.media-heading A new order has been placed
-                        time.media-meta(datetime='2015-06-12T20:50:48+08:00') 5 hours ago
-                  a.list-group-item(href='javascript:void(0)', role='menuitem')
-                    .media
-                      .media-left.padding-right-10
-                        i.icon.wb-user.bg-green-600.white.icon-circle(aria-hidden='true')
-                      .media-body
-                        h6.media-heading Completed the task
-                        time.media-meta(datetime='2015-06-11T18:29:20+08:00') 2 days ago
-                  a.list-group-item(href='javascript:void(0)', role='menuitem')
-                    .media
-                      .media-left.padding-right-10
-                        i.icon.wb-settings.bg-red-600.white.icon-circle(aria-hidden='true')
-                      .media-body
-                        h6.media-heading Settings updated
-                        time.media-meta(datetime='2015-06-11T14:05:00+08:00') 2 days ago
-                  a.list-group-item(href='javascript:void(0)', role='menuitem')
-                    .media
-                      .media-left.padding-right-10
-                        i.icon.wb-calendar.bg-blue-600.white.icon-circle(aria-hidden='true')
-                      .media-body
-                        h6.media-heading Event started
-                        time.media-meta(datetime='2015-06-10T13:50:18+08:00') 3 days ago
-                  a.list-group-item(href='javascript:void(0)', role='menuitem')
-                    .media
-                      .media-left.padding-right-10
-                        i.icon.wb-chat.bg-orange-600.white.icon-circle(aria-hidden='true')
-                      .media-body
-                        h6.media-heading Message received
-                        time.media-meta(datetime='2015-06-10T12:34:48+08:00') 3 days ago
-            li.dropdown-menu-footer(role='presentation')
-              a.dropdown-menu-footer-btn(href='javascript:void(0)', role='button')
-                i.icon.wb-settings(aria-hidden='true')
-              a(href='javascript:void(0)', role='menuitem')
-                | All notifications
-        li.dropdown
-          a(data-toggle='dropdown', href='javascript:void(0)', title='Messages', aria-expanded='false', data-animation='scale-up', role='button')
-            i.icon.wb-envelope(aria-hidden='true')
-            span.badge.badge-info.up 3
-          ul.dropdown-menu.dropdown-menu-right.dropdown-menu-media(role='menu')
-            li.dropdown-menu-header(role='presentation')
-              h5 MESSAGES
-              span.label.label-round.label-info New 3
-            li.list-group(role='presentation')
-              div(data-role='container')
-                div(data-role='content')
-                  a.list-group-item(href='javascript:void(0)', role='menuitem')
-                    .media
-                      .media-left.padding-right-10
-                        span.avatar.avatar-sm.avatar-online
-                          img(src='../../../assets/images/portraits/2.jpg', alt='...')
-                          i
-                      .media-body
-                        h6.media-heading Mary Adams
-                        .media-meta
-                          time(datetime='2015-06-17T20:22:05+08:00') 30 minutes ago
-                        .media-detail Anyways, i would like just do it
-                  a.list-group-item(href='javascript:void(0)', role='menuitem')
-                    .media
-                      .media-left.padding-right-10
-                        span.avatar.avatar-sm.avatar-off
-                          img(src='../../../assets/images/portraits/3.jpg', alt='...')
-                          i
-                      .media-body
-                        h6.media-heading Caleb Richards
-                        .media-meta
-                          time(datetime='2015-06-17T12:30:30+08:00') 12 hours ago
-                        .media-detail I checheck the document. But there seems
-                  a.list-group-item(href='javascript:void(0)', role='menuitem')
-                    .media
-                      .media-left.padding-right-10
-                        span.avatar.avatar-sm.avatar-busy
-                          img(src='../../../assets/images/portraits/4.jpg', alt='...')
-                          i
-                      .media-body
-                        h6.media-heading June Lane
-                        .media-meta
-                          time(datetime='2015-06-16T18:38:40+08:00') 2 days ago
-                        .media-detail Lorem ipsum Id consectetur et minim
-                  a.list-group-item(href='javascript:void(0)', role='menuitem')
-                    .media
-                      .media-left.padding-right-10
-                        span.avatar.avatar-sm.avatar-away
-                          img(src='../../../assets/images/portraits/5.jpg', alt='...')
-                          i
-                      .media-body
-                        h6.media-heading Edward Fletcher
-                        .media-meta
-                          time(datetime='2015-06-15T20:34:48+08:00') 3 days ago
-                        .media-detail Dolor et irure cupidatat commodo nostrud nostrud.
-            li.dropdown-menu-footer(role='presentation')
-              a.dropdown-menu-footer-btn(href='javascript:void(0)', role='button')
-                i.icon.wb-settings(aria-hidden='true')
-              a(href='javascript:void(0)', role='menuitem')
-                | See all messages
-        li#toggleChat
-          a(data-toggle='site-sidebar', href='javascript:void(0)', title='Chat', data-url='../site-sidebar.tpl')
-            i.icon.wb-chat(aria-hidden='true')
-      // End Navbar Toolbar Right
-    // End Navbar Collapse
-    // Site Navbar Seach
-    #site-navbar-search.collapse.navbar-search-overlap
-      form(role='search')
-        .form-group
-          .input-search
-            i.input-search-icon.wb-search(aria-hidden='true')
-            input.form-control(type='text', name='site-search', placeholder='Search...')
-            button.input-search-close.icon.wb-close(type='button', data-target='#site-navbar-search', data-toggle='collapse', aria-label='Close')
-    // End Site Navbar Seach
+.page-wrapper
+  .header-container
+    header.header.fixed.full-width.clearfix
+      .header-right.clearfix
+        .main-navigation.animated.with-dropdown-buttons
+          nav.navbar.navbar-default(role='navigation')
+            .container-fluid
+              .navbar-header
+                button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar-collapse-1')
+                  span.sr-only Toggle navigation
+                  span.icon-bar
+                  span.icon-bar
+                  span.icon-bar
+                .header-left.clearfix
+                  #logo.logo
+                    img#logo_img(src='../../../assets/images/logo.png', alt='The Ads-Platform')
+              #navbar-collapse-1.collapse.navbar-collapse
+                ul.nav.navbar-nav.navbar-right
+                  li
+                    a(ui-sref='location', ui-sref-active='', href='#')
+                      i.fa.fa-location-arrow.fa-1x
+                        span.location.none  Location
+                  li
+                    a(ui-sref='users', ui-sref-active='', href='#')
+                      i.fa.fa-users.fa-1x
+                        span.users.none  Users
+                  li
+                    a(ui-sref='news', ui-sref-active='', href='#')
+                      i.fa.fa-newspaper-o.fa-1x
+                        span.news.none  News
+                  li
+                    a(ui-sref='calendar', ui-sref-active='', href='#')
+                      i.fa.fa-calendar.fa-1x
+                        span.calendar.none  Calendar
+                  li
+                    a(ui-sref='campaign', ui-sref-active='', href='#')
+                      i.fa.fa-bell.fa-1x
+                        span.campaign.none  Campaign
+                  li
+                    a(ui-sref='report', ui-sref-active='', href='#')
+                      i.fa.fa-area-chart.fa-1x
+                        span.report.none  Report
+                  li
+                    a(ui-sref='hotspots', ui-sref-active='', href='#')
+                      i.fa.fa-wifi.fa-1x
+                        span.hotspots.none  Hotspots
+                  li
+                    a
+                      i.hidden-xs.fa-1x |
+                  li
+                    a(href='')
+                      i.fa.fa-user.fa-1x
+                        span  hoc.nguyen
+                  li
+                    a(href='')
+                      i.fa.fa-sign-out.fa-1x
+                        span  Log out
