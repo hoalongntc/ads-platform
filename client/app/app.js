@@ -10,6 +10,7 @@ import '../assets/styles/assets.less'
 //@require "./components/**/*.jade"
 
 import angular from 'angular';
+import ngResource from 'angular-resource'
 import uirouter from 'angular-ui-router';
 import lbServices from '../lib/lb-services';
 import routes from './routes';

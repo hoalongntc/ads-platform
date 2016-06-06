@@ -46,18 +46,11 @@ gulp.task('loopback:after', () => {
   process.env.ENV = global.originalEnv
 })
 
-const prependlbService = [
-  "import angular from 'angular'",
-  "import ngResource from 'angular-resource'",
-  ""
-]
-
 // The actual generation of the LoopBack Angular SDK
 gulp.task('loopback:codegen', () => gulp
   .src('./server/server.js')
   .pipe(loopbackAngular({ apiUrl }))
   .pipe(rename('lb-services.js'))
-  .pipe(insert.prepend(prependlbService.join('\n')))
   .pipe(gulp.dest('./client/lib'))
 )
 
