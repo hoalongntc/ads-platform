@@ -1,18 +1,19 @@
-export default class ngNiceScroll {
+export default class NiceScroll {
   constructor($parse) {
     this.$parse = $parse;
+    this.scope = {};
   }
-  
+
   // Directive compile function
-  compile() {  
+  compile() {
   }
-    
+
   // Directive link function
-  link(scope, element, attrs, controller) {
+  link(scope, element, attrs) {
     const niceOption = scope.$eval(attrs.niceOption);
     const niceScroll = $(element).niceScroll(niceOption);
     const nice = $(element).getNiceScroll();
-    
+
     if (attrs.niceScrollObject) {
       this.$parse(attrs.niceScrollObject).assign(scope, nice);
     }
@@ -32,6 +33,11 @@ export default class ngNiceScroll {
       }
     })
   }
+
+  static factory($parse) {
+    NiceScroll.instance = new NiceScroll($parse);
+    return NiceScroll.instance;
+  }
 }
 
-ngNiceScroll.$inject = ['$parse'];
+NiceScroll.factory.$inject = ['$parse'];

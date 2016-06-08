@@ -479,6 +479,117 @@ module.factory(
           url: urlBase + "/SelectOptions/change-stream",
           method: "POST"
         },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.SelectOption#cities
+         * @methodOf lbServices.SelectOption
+         *
+         * @description
+         *
+         * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {function(Array.<Object>,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Array.<Object>} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `SelectOption` object.)
+         * </em>
+         */
+        "cities": {
+          isArray: true,
+          url: urlBase + "/SelectOptions/cities",
+          method: "GET"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.SelectOption#campaignCategories
+         * @methodOf lbServices.SelectOption
+         *
+         * @description
+         *
+         * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {function(Array.<Object>,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Array.<Object>} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `SelectOption` object.)
+         * </em>
+         */
+        "campaignCategories": {
+          isArray: true,
+          url: urlBase + "/SelectOptions/campaignCategories",
+          method: "GET"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.SelectOption#hotspotCategories
+         * @methodOf lbServices.SelectOption
+         *
+         * @description
+         *
+         * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {function(Array.<Object>,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Array.<Object>} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `SelectOption` object.)
+         * </em>
+         */
+        "hotspotCategories": {
+          isArray: true,
+          url: urlBase + "/SelectOptions/hotspotCategories",
+          method: "GET"
+        },
       }
     );
 

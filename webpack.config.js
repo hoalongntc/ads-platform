@@ -20,7 +20,7 @@ const isProd = ENV === 'build' || process.env.NODE_ENV == 'production'
  * @type {string}
  */
 const clientApp = `${__dirname}/client`
-const clientAppPort = 9000
+const clientAppPort = 9000 || process.env.PORT
 
 module.exports = function makeWebpackConfig () {
   /**
@@ -29,6 +29,10 @@ module.exports = function makeWebpackConfig () {
    * This is the object where all configuration gets set
    */
   const config = {}
+
+  /**
+   * Set client port */
+  config.port = clientAppPort;
 
   /**
    * Entry
@@ -48,7 +52,7 @@ module.exports = function makeWebpackConfig () {
    */
   config.output = isTest ? {} : {
     // Absolute output directory
-    path: isProd ? `${clientApp}/dist` : `${clientApp}/build`,
+    path: `${clientApp}/dist`,
 
     // Output path from the view of the page
     // Uses webpack-dev-server in development
@@ -223,7 +227,7 @@ module.exports = function makeWebpackConfig () {
 
       // Reference: http://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin
       // Minify all javascript, switch loaders to minimizing mode
-      new webpack.optimize.UglifyJsPlugin(),
+      new webpack.optimize.UglifyJsPlugin()
     )
   }
 

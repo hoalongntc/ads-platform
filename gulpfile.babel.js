@@ -6,10 +6,12 @@ import clean from 'gulp-clean'
 import loopbackAngular from 'gulp-loopback-sdk-angular'
 import runSequence from 'run-sequence'
 import webpack from 'webpack'
-import webpackConfig from './webpack.config.js';
+import webpackConfig from './webpack.config.js'
+import WebpackDevServer from 'webpack-dev-server'
 
+const serverConfig = require('./server/config.json');
 const debugEnabled = process.env.DEBUG_API
-const apiUrl = process.env.API_URL || 'http://0.0.0.0:3000/api'
+const apiUrl = process.env.API_URL || `http://${serverConfig.host || '0.0.0.0'}:${serverConfig.port || '3000'}${serverConfig.restApiRoot || '/api'}`
 const babelNode = './node_modules/.bin/babel-node'
 const exec = debugEnabled ? `${babelNode} --debug` : `${babelNode}`
 
@@ -74,6 +76,23 @@ gulp.task('webpack:build', ['webpack:clean'], (callback) => webpack(
     callback()
   })
 )
+
+gulp.task("webpack:dev-server", function(callback) {
+  // modify some webpack config options
+  var myConfig = Object.create(webpackConfig);
+  myConfig.devtool = "eval";
+  myConfig.debug = true;
+
+  // Start a webpack-dev-server
+  new WebpackDevServer(webpack(myConfig), {
+    publicPath: '/',
+    stats: {
+      colors: true
+    }
+  }).listen(myConfig.port, "localhost", function(err) {
+    if (err) throw err;
+  });
+});
 
 // The default tasks
 gulp.task('default', [

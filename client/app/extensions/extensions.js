@@ -1,7 +1,11 @@
+const moduleName = 'extensions';
+
 import angular from 'angular'
-import ngNiceScroll from './nice-scroll'
+import NiceScroll from './nice-scroll'
+import CommonData from './common-data'
 
-export default 'extensions'
+angular.module(moduleName, [])
+  .factory('CommonData', CommonData.factory)
+  .directive('niceScroll', NiceScroll.factory);
 
-angular.module('extensions', [])
-  .directive('ngNiceScroll', () => new ngNicescroll);
+export default moduleName;
