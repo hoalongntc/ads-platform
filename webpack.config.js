@@ -127,7 +127,7 @@ module.exports = function makeWebpackConfig () {
     }, {
       // LESS LOADER
       test: /\.less$/,
-      loader: isTest ? 'null' : ExtractTextPlugin.extract('style', 'css?sourceMap!less?sourceMap!postcss'),
+      loader: isTest ? 'null' : ExtractTextPlugin.extract('style', 'css?sourceMap!postcss!less?sourceMap'),
     }, {
       // ASSET LOADER
       // Reference: https://github.com/webpack/file-loader
@@ -180,7 +180,7 @@ module.exports = function makeWebpackConfig () {
       browsers: ['last 2 version'],
     }),
   ]
-  
+
   /**
    * Plugins
    * Reference: http://webpack.github.io/docs/configuration.html#plugins

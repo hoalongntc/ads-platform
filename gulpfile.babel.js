@@ -3,11 +3,9 @@ import nodemon from 'gulp-nodemon'
 import eslint from 'gulp-eslint'
 import rename from 'gulp-rename'
 import clean from 'gulp-clean'
-import insert from 'gulp-insert'
 import loopbackAngular from 'gulp-loopback-sdk-angular'
 import runSequence from 'run-sequence'
 import webpack from 'webpack'
-import WebpackDevServer from 'webpack-dev-server';
 import webpackConfig from './webpack.config.js';
 
 const debugEnabled = process.env.DEBUG_API

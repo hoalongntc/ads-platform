@@ -13,6 +13,9 @@
         "allowNamedFunctions": true
       }
     ],
-    "prefer-template": 1
+    "prefer-template": 1,
+    "space-before-function-paren": 0,
+    "semi": ["error", "always"],
+    "eqeqeq": 0
   }
 }

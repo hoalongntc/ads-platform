@@ -4,9 +4,7 @@
   "base": "User",
   "properties": {},
   "validations": [],
-  "relations": {
-  },
-  "acls": [
-  ],
+  "relations": {},
+  "acls": [],
   "methods": {}
 }

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Angular App</title>
-  <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic'>
+  <!--<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic'>-->
   <base href="/">
 </head>
 <body class="site-menubar-unfold">
@@ -15,8 +15,8 @@
   <ng-include src="'nav/nav.jade'" ></ng-include>
 
   <!-- Main view -->
-  <ui-view></ui-view>
-  
+  <main ui-view nice-scroll></main>
+
   <!-- Footer -->
   <ng-include src="'nav/footer.jade'" ></ng-include>
 </body>

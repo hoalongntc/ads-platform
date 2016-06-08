@@ -16,8 +16,8 @@
                     img#logo_img(src='../../../assets/images/logo.png', alt='The Ads-Platform')
               #navbar-collapse-1.collapse.navbar-collapse
                 ul.nav.navbar-nav.navbar-right
-                  li
-                    a(ui-sref='location', ui-sref-active='', href='#')
+                  li(ui-sref-active='active')
+                    a(ui-sref='locations', href='#')
                       i.fa.fa-location-arrow.fa-1x
                       span.location.none  Location
                   li
@@ -33,7 +33,7 @@
                       i.fa.fa-calendar.fa-1x
                       span.calendar.none  Calendar
                   li
-                    a(ui-sref='campaign', ui-sref-active='', href='#')
+                    a(ui-sref='campaigns', ui-sref-active='', href='#')
                       i.fa.fa-bell.fa-1x
                       span.campaign.none  Campaign
                   li
@@ -46,7 +46,7 @@
                       span.hotspots.none  Hotspots
                   li
                     a
-                      i.hidden-xs.fa-1x 
+                      i.hidden-xs.fa-1x
                       span |
                   li
                     a(href='')

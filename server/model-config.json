@@ -13,10 +13,6 @@
       "./mixins"
     ]
   },
-  "User": {
-    "dataSource": "db",
-    "public": false
-  },
   "AccessToken": {
     "dataSource": "db",
     "public": false
@@ -33,9 +29,12 @@
     "dataSource": "db",
     "public": false
   },
-  
   "user": {
-    "dataSource": "db",
+    "dataSource": "mongo",
+    "public": true
+  },
+  "SelectOption": {
+    "dataSource": "mongo",
     "public": true
   }
 }
