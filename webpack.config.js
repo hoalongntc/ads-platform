@@ -5,7 +5,6 @@ const webpack = require('webpack')
 const autoprefixer = require('autoprefixer')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
 const ProvidePlugin = require('webpack/lib/ProvidePlugin')
 
 /**
@@ -225,12 +224,6 @@ module.exports = function makeWebpackConfig () {
       // Reference: http://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin
       // Minify all javascript, switch loaders to minimizing mode
       new webpack.optimize.UglifyJsPlugin(),
-
-      // Copy assets from the public folder
-      // Reference: https://github.com/kevlened/copy-webpack-plugin
-      new CopyWebpackPlugin([{
-        from: `${clientApp}/assets`,
-      }])
     )
   }
 

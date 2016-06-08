@@ -16,6 +16,7 @@
     "prefer-template": 1,
     "space-before-function-paren": 0,
     "semi": ["error", "always"],
-    "eqeqeq": 0
+    "eqeqeq": 0,
+    "no-extend-native": 0
   }
 }

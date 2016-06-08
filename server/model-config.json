@@ -13,20 +13,20 @@
       "./mixins"
     ]
   },
-  "AccessToken": {
-    "dataSource": "db",
+  "accessToken": {
+    "dataSource": "mongo",
     "public": false
   },
-  "ACL": {
-    "dataSource": "db",
+  "acl": {
+    "dataSource": "mongo",
     "public": false
   },
-  "RoleMapping": {
-    "dataSource": "db",
+  "roleMapping": {
+    "dataSource": "mongo",
     "public": false
   },
-  "Role": {
-    "dataSource": "db",
+  "role": {
+    "dataSource": "mongo",
     "public": false
   },
   "user": {
@@ -34,6 +34,14 @@
     "public": true
   },
   "SelectOption": {
+    "dataSource": "mongo",
+    "public": true
+  },
+  "Brand": {
+    "dataSource": "mongo",
+    "public": true
+  },
+  "Hotspot": {
     "dataSource": "mongo",
     "public": true
   }

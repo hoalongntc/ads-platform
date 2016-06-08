@@ -63,7 +63,7 @@ gulp.task('serve', () => nodemon({
 
 // Clean webpack
 gulp.task('webpack:clean', () => gulp
-  .src('client/(dist|build)', {read: false})
+  .src('client/dist', {read: false})
   .pipe(clean())
 )
 

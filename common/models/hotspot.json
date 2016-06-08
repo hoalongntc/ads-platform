@@ -1,0 +1,60 @@
+{
+  "name": "Hotspot",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "categoryId": {
+      "type": "string"
+    },
+    "categoryName": {
+      "type": "string"
+    },
+    "cityId": {
+      "type": "string"
+    },
+    "cityName": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "location": {
+      "type": "geopoint"
+    },
+    "noOfAccessPoint": {
+      "type": "number",
+      "default": "0"
+    },
+    "clickPerMonth": {
+      "type": "number",
+      "default": "0"
+    },
+    "reachPerMonth": {
+      "type": "number",
+      "default": "0"
+    },
+    "clickPerDay": {
+      "type": "number",
+      "default": "0"
+    },
+    "reachPerDay": {
+      "type": "number",
+      "default": "0"
+    },
+    "activeCampaigns": {
+      "type": "object",
+      "default": "{}"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
