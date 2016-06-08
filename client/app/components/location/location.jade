@@ -1,0 +1,100 @@
+.container-fluid
+  .row
+    .col-md-4.col-sm-12.hidden-xs
+      #map_view.row
+        div(style='margin-right: 10px; margin-top: 10px; border-radius: 3px; box-shadow: 4px 4px 5px gray; z-index: 9999; position: absolute; width: 180px; height: 30px; background-color: white; text-align:center;right: 0px;border: 1px solid #c0c0c0;')
+          button(ng-click='showMapAll()', style='color: #0072c6; width: 90px; height: 30px; background-color: transparent; border: 0px;outline: none') Overview
+        #map(style='width:100%;height:100%')
+    .col-md-8.col-sm-12
+      .bg-white-trans
+        .panel.bg-trans
+          .panel-header.panel-header-rounded
+            .panel-title.pull-right Location
+          .panel-body.location-category
+            p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto aspernatur aut eaque fugiat id iure, mollitia, nobis qui quos repellat, repudiandae sapiente unde voluptatum? Culpa, temporibus, tenetur! Eos, illo, tempore.
+            hr.bd-blue-grey-400
+            .col-sm-4.location-category-item
+              .item-wrapper
+                .item-content.category-public
+                  .item-icon
+                  span.item-text Public Areas
+                  lable.item-count 56
+            .col-sm-4.location-category-item
+              .item-wrapper
+                .item-content.category-coffee
+                  .item-icon
+                  span.item-text Coffee Shops
+                  lable.item-count 115
+            .col-sm-4.location-category-item
+              .item-wrapper
+                .item-content.category-mall
+                  .item-icon
+                  span.item-text Malls
+                  lable.item-count 23
+            .col-sm-4.location-category-item
+              .item-wrapper
+                .item-content.category-university
+                  .item-icon
+                  span.item-text Universities
+                  lable.item-count 33
+            .col-sm-4.location-category-item
+              .item-wrapper
+                .item-content.category-airport
+                  .item-icon
+                  span.item-text Airports
+                  lable.item-count 7
+            .col-sm-4.location-category-item
+              .item-wrapper
+                .item-content.category-bus
+                  .item-icon
+                  span.item-text Train & Bus Stations
+                  lable.item-count 73
+            .col-sm-4.location-category-item
+              .item-wrapper
+                .item-content.category-hospital
+                  .item-icon
+                  span.item-text Hospitals
+                  lable.item-count 20
+            .col-sm-4.location-category-item
+              .item-wrapper
+                .item-content.category-upcoming
+                  .item-icon
+                  span.item-text Upcoming
+                  lable.item-count 20
+      .col-md-6.padding-left-0
+        .panel.panel-rounded
+          .panel-header
+            .panel-title.bg-yellow-800 Weather Forecast
+          .panel-body.weather-forecast
+            .date
+              .col-xs-9.col-xs-offset-3.padding-0
+                .fore-cast
+                  .fore-cast-content 08 Jun
+                .fore-cast
+                  .fore-cast-content 09 Jun
+                .fore-cast
+                  .fore-cast-content 10 Jun
+                .fore-cast
+                  .fore-cast-content 11 Jun
+                .fore-cast
+                  .fore-cast-content 12 Jun
+            .city
+              .col-xs-3.padding-left-0
+                | Ho Chi Minh
+              .col-xs-9.padding-0
+                .fore-cast
+                  .fore-cast-content Sunny
+                .fore-cast
+                  .fore-cast-content Cloudy
+                .fore-cast
+                  .fore-cast-content Rainy
+                .fore-cast
+                  .fore-cast-content Windy
+                .fore-cast
+                  .fore-cast-content Snowing
+      .col-md-6.padding-right-0
+        .panel.panel-rounded
+          .panel-header
+            .panel-title.bg-green-700 Upcoming Events
+          .panel-body
+            | Events
