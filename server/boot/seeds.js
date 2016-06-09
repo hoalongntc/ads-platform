@@ -7,21 +7,19 @@ module.exports = (app) => {
 
   const modelDir = path.join(__dirname, '../../', 'common/models');
   const seedDataDir = path.join(__dirname, '../', 'seed_data');
-  const files = fs.readdirSync(modelDir);
   const autoupdate = Promise.promisify(app.dataSources.mongo.autoupdate, {context: app.dataSources.mongo});
-  const updates = [];
+  const files = fs.readdirSync(modelDir);
+  const models = [];
 
   files.forEach((file) => {
     if (file.slice(-5) == '.json') {
       const model = require(path.join(modelDir, file));
-      updates.push(autoupdate(model.name));
+      models.push(model.name);
     }
   });
 
-  Promise.all(updates)
+  autoupdate(models)
     .then(() => {
-      console.log('Insert seed data');
-
       // SelectOption
       const findOrCreate = Promise.promisify(app.models.SelectOption.findOrCreate, {context: app.models.SelectOption});
       const selectOptions = require(path.join(seedDataDir, 'select_options.json'));
@@ -30,9 +28,7 @@ module.exports = (app) => {
       });
 
       return Promise.all(selectOptions)
-        .then((data) => {
-          console.log(data);
-        });
+        .then((data) => {});
     })
     .catch((err) => {
       throw err;
