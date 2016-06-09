@@ -1,0 +1,25 @@
+{
+  "name": "Tracking2",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "mac": {
+      "type": "string",
+      "required": true
+    },
+    "advertiserId": {
+      "type": "string",
+      "required": true
+    },
+    "advertiserName": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

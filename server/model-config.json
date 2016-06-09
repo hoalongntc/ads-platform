@@ -44,5 +44,37 @@
   "Hotspot": {
     "dataSource": "mongo",
     "public": true
+  },
+  "Tracking1": {
+    "dataSource": "mongo",
+    "public": true
+  },
+  "Tracking2": {
+    "dataSource": "mongo",
+    "public": true
+  },
+  "Tracking3": {
+    "dataSource": "mongo",
+    "public": true
+  },
+  "Tracking4": {
+    "dataSource": "mongo",
+    "public": true
+  },
+  "Tracking5": {
+    "dataSource": "mongo",
+    "public": true
+  },
+  "Tracking6": {
+    "dataSource": "mongo",
+    "public": true
+  },
+  "TrackingClick": {
+    "dataSource": "mongo",
+    "public": true
+  },
+  "TrackingImpression": {
+    "dataSource": "mongo",
+    "public": true
   }
 }

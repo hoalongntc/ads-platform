@@ -1,0 +1,41 @@
+{
+  "name": "TrackingClick",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "mac": {
+      "type": "string"
+    },
+    "advertiserId": {
+      "type": "string"
+    },
+    "advertiserName": {
+      "type": "string"
+    },
+    "campaignId": {
+      "type": "string"
+    },
+    "campaignName": {
+      "type": "string"
+    },
+    "bannerId": {
+      "type": "string"
+    },
+    "bannerName": {
+      "type": "string"
+    },
+    "hotspotId": {
+      "type": "string"
+    },
+    "hotspotName": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

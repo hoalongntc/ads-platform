@@ -1,0 +1,32 @@
+{
+  "name": "Tracking3",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "mac": {
+      "type": "string",
+      "required": true
+    },
+    "advertiserId": {
+      "type": "string",
+      "required": true
+    },
+    "advertiserName": {
+      "type": "string"
+    },
+    "campaignId": {
+      "type": "string",
+      "required": true
+    },
+    "campaignName": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
