@@ -1,18 +1,35 @@
 nav.navbar {
-  height: 70px;
-  padding-top: 10px;
-  margin-bottom: 0;
+  button.navbar-toggle {
+    border: none;
+  }
 
-  ul.navbar-nav li {
+  ul.nav li {
     i { font-size: 20px; }
-    span {
+    span.none {
       display: none;
       text-transform: capitalize;
     }
+
+    a.navbar-avatar {
+      margin-left: 20px;
+
+      ul.dropdown-menu {
+        overflow: hidden;
+      }
+
+      img {
+        width: 30px;
+        height: 30px;
+      }
+
+      .username {
+        margin-right: 10px;
+      }
+    }
   }
 
-  ul.navbar-nav li.active {
-    span {
+  ul.nav li.active {
+    span.none {
       display: initial;
       font-size: 16px;
       margin-left: 5px;
@@ -21,5 +38,9 @@ nav.navbar {
       background: transparent;
       color: @color-blue-800
     }
+  }
+
+  ul.nav li.navbar-user {
+    float: right;
   }
 }

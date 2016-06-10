@@ -2,6 +2,7 @@
   "name": "Tracking2",
   "base": "PersistedModel",
   "idInjection": true,
+  "strict": true,
   "options": {
     "validateUpsert": true
   },
@@ -16,6 +17,17 @@
     },
     "advertiserName": {
       "type": "string"
+    }
+  },
+  "indexes": {
+    "key_index": {
+      "keys": {
+        "mac": 1,
+        "advertiserId": 1
+      },
+      "options": {
+        "unique": true
+      }
     }
   },
   "validations": [],

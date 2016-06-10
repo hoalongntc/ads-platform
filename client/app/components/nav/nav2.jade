@@ -1,0 +1,61 @@
+nav.site-navbar.navbar.navbar-default.navbar-fixed-top.navbar-mega(role='navigation')
+  .navbar-header
+    button.navbar-toggle.collapsed(type='button', data-target='#site-navbar-collapse', data-toggle='collapse')
+      i.fa.fa-navicon
+    .navbar-brand.navbar-brand-center.site-gridmenu-toggle(data-toggle='gridmenu')
+      img.navbar-brand-logo(src='../../../assets/images/logo.png', title='Remark')
+  .navbar-container.container-fluid
+    // Navbar Collapse
+    #site-navbar-collapse.collapse.navbar-collapse.navbar-collapse-toolbar
+      // Navbar Toolbar Right
+      ul.nav.navbar-toolbar.navbar-right.navbar-toolbar-right
+        li(ui-sref-active='active')
+          a(ui-sref='locations')
+            i.fa.fa-location-arrow.fa-1x
+            span.location.none.hidden-xs Location
+        li(ui-sref-active='active')
+          a(ui-sref='users')
+            i.fa.fa-users.fa-1x
+            span.users.none.hidden-xs Users
+        li(ui-sref-active='active')
+          a(ui-sref='news')
+            i.fa.fa-newspaper-o.fa-1x
+            span.news.none.hidden-xs News
+        li(ui-sref-active='active')
+          a(ui-sref='calendar')
+            i.fa.fa-calendar.fa-1x
+            span.calendar.none.hidden-xs Calendar
+        li(ui-sref-active='active')
+          a(ui-sref='campaigns')
+            i.fa.fa-bell.fa-1x
+            span.campaign.none.hidden-xs Campaign
+        li(ui-sref-active='active')
+          a(ui-sref='report')
+            i.fa.fa-area-chart.fa-1x
+            span.report.none.hidden-xs Report
+        li(ui-sref-active='active')
+          a(ui-sref='hotspots')
+            i.fa.fa-wifi.fa-1x
+            span.hotspots.none.hidden-xs Hotspots
+        li.dropdown.navbar-user
+          a.navbar-avatar.dropdown-toggle(data-toggle='dropdown', aria-expanded='false', data-animation='scale-up', role='button')
+            span.username.hidden-xs Nguyen Huu Tung
+            span.avatar.avatar-online
+              img(src='../../../assets/images/default_avatar.png', alt='...')
+              i
+          ul.dropdown-menu(role='menu')
+            li(role='presentation')
+              a(href='javascript:void(0)', role='menuitem')
+                i.fa.fa-user(aria-hidden='true')
+                |  Profile
+            li(role='presentation')
+              a(href='javascript:void(0)', role='menuitem')
+                i.fa.fa-gears(aria-hidden='true')
+                |  Settings
+            li.divider(role='presentation')
+            li(role='presentation')
+              a(href='javascript:void(0)', role='menuitem')
+                i.fa.fa-sign-out(aria-hidden='true')
+                |  Logout
+      // End Navbar Toolbar Right
+    // End Navbar Collapse

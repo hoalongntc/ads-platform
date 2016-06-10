@@ -47,27 +47,27 @@
   },
   "Tracking1": {
     "dataSource": "mongo",
-    "public": true
+    "public": false
   },
   "Tracking2": {
     "dataSource": "mongo",
-    "public": true
+    "public": false
   },
   "Tracking3": {
     "dataSource": "mongo",
-    "public": true
+    "public": false
   },
   "Tracking4": {
     "dataSource": "mongo",
-    "public": true
+    "public": false
   },
   "Tracking5": {
     "dataSource": "mongo",
-    "public": true
+    "public": false
   },
   "Tracking6": {
     "dataSource": "mongo",
-    "public": true
+    "public": false
   },
   "TrackingClick": {
     "dataSource": "mongo",

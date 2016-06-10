@@ -2,6 +2,7 @@
   "name": "Tracking4",
   "base": "PersistedModel",
   "idInjection": true,
+  "strict": true,
   "options": {
     "validateUpsert": true
   },
@@ -30,6 +31,19 @@
     },
     "bannerName": {
       "type": "string"
+    }
+  },
+  "indexes": {
+    "key_index": {
+      "keys": {
+        "mac": 1,
+        "advertiserId": 1,
+        "campaignId": 1,
+        "bannerId": 1
+      },
+      "options": {
+        "unique": true
+      }
     }
   },
   "validations": [],

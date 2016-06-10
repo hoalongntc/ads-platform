@@ -2,6 +2,7 @@
   "name": "Tracking6",
   "base": "PersistedModel",
   "idInjection": true,
+  "strict": true,
   "options": {
     "validateUpsert": true
   },
@@ -37,6 +38,20 @@
     },
     "hotspotName": {
       "type": "string"
+    }
+  },
+  "indexes": {
+    "key_index": {
+      "keys": {
+        "mac": 1,
+        "advertiserId": 1,
+        "campaignId": 1,
+        "bannerId": 1,
+        "hotspotId": 1
+      },
+      "options": {
+        "unique": true
+      }
     }
   },
   "validations": [],

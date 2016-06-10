@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = (app) => {
+module.exports = (app, cb) => {
   const fs = require('fs');
   const path = require('path');
   const Promise = require('bluebird');
@@ -27,8 +27,69 @@ module.exports = (app) => {
         return findOrCreate({where: { type: item.type, value: item.value }}, item);
       });
 
-      return Promise.all(selectOptions)
-        .then((data) => {});
+      return Promise.all(selectOptions);
+    })
+    .then(() => {
+      const findOrCreate = Promise.promisify(app.models.TrackingClick.findOrCreate, {context: app.models.TrackingClick});
+      return findOrCreate({
+        mac: 'AC:AC:AC:AC:AC:AC',
+        advertiserId: 1, advertiserName: 'defaultAdvertiser',
+        campaignId: 1, campaignName: 'defaultCampaign',
+        bannerId: 1, bannerName: 'defaultBanner',
+        hotspotId: 1, hotspotName: 'defaultHotspot'
+      });
+    })
+    .then(() => {
+      const findOrCreate = Promise.promisify(app.models.Tracking1.findOrCreate, {context: app.models.Tracking1});
+      return findOrCreate({
+        mac: 'AC:AC:AC:AC:AC:AC'
+      });
+    })
+    .then(() => {
+      const findOrCreate = Promise.promisify(app.models.Tracking2.findOrCreate, {context: app.models.Tracking2});
+      return findOrCreate({
+        mac: 'AC:AC:AC:AC:AC:AC',
+        advertiserId: 1, advertiserName: 'defaultAdvertiser'
+      });
+    })
+    .then(() => {
+      const findOrCreate = Promise.promisify(app.models.Tracking3.findOrCreate, {context: app.models.Tracking3});
+      return findOrCreate({
+        mac: 'AC:AC:AC:AC:AC:AC',
+        advertiserId: 1, advertiserName: 'defaultAdvertiser',
+        campaignId: 1, campaignName: 'defaultCampaign'
+      });
+    })
+    .then(() => {
+      const findOrCreate = Promise.promisify(app.models.Tracking4.findOrCreate, {context: app.models.Tracking4});
+      return findOrCreate({
+        mac: 'AC:AC:AC:AC:AC:AC',
+        advertiserId: 1, advertiserName: 'defaultAdvertiser',
+        campaignId: 1, campaignName: 'defaultCampaign',
+        bannerId: 1, bannerName: 'defaultBanner'
+      });
+    })
+    .then(() => {
+      const findOrCreate = Promise.promisify(app.models.Tracking5.findOrCreate, {context: app.models.Tracking5});
+      return findOrCreate({
+        mac: 'AC:AC:AC:AC:AC:AC',
+        advertiserId: 1, advertiserName: 'defaultAdvertiser',
+        campaignId: 1, campaignName: 'defaultCampaign',
+        hotspotId: 1, hotspotName: 'defaultHotspot'
+      });
+    })
+    .then(() => {
+      const findOrCreate = Promise.promisify(app.models.Tracking6.findOrCreate, {context: app.models.Tracking6});
+      return findOrCreate({
+        mac: 'AC:AC:AC:AC:AC:AC',
+        advertiserId: 1, advertiserName: 'defaultAdvertiser',
+        campaignId: 1, campaignName: 'defaultCampaign',
+        bannerId: 1, bannerName: 'defaultBanner',
+        hotspotId: 1, hotspotName: 'defaultHotspot'
+      });
+    })
+    .then(() => {
+      cb();
     })
     .catch((err) => {
       throw err;
