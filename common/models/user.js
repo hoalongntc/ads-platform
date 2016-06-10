@@ -1,7 +1,7 @@
-module.exports = function (user) {
+module.exports = function (User) {
 
   // Set the username to the users email address by default.
-  user.observe('before save', function setDefaultUsername (ctx, next) {
+  User.observe('before save', function setDefaultUsername (ctx, next) {
     if (ctx.instance) {
       if (ctx.isNewInstance) {
         ctx.instance.username = ctx.instance.email;

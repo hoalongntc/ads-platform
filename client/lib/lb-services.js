@@ -54,836 +54,9 @@ module.factory(
   "SelectOption",
   ['LoopBackResource', 'LoopBackAuth', '$injector', function(Resource, LoopBackAuth, $injector) {
     var R = Resource(
-      urlBase + "/SelectOptions/:id",
+      urlBase + "/common/:id",
       { 'id': '@id' },
       {
-
-        /**
-         * @ngdoc method
-         * @name lbServices.SelectOption#__get__cities
-         * @methodOf lbServices.SelectOption
-         *
-         * @description
-         *
-         * Queries cities of SelectOption.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `filter` – `{object=}` - 
-         *
-         * @param {function(Array.<Object>,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Array.<Object>} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `SelectOption` object.)
-         * </em>
-         */
-        "__get__cities": {
-          isArray: true,
-          url: urlBase + "/SelectOptions/cities",
-          method: "GET"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.SelectOption#__create__cities
-         * @methodOf lbServices.SelectOption
-         *
-         * @description
-         *
-         * Creates a new instance in cities of this model.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *   This method does not accept any parameters.
-         *   Supply an empty object or omit this argument altogether.
-         *
-         * @param {Object} postData Request data.
-         *
-         * This method expects a subset of model properties as request parameters.
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `SelectOption` object.)
-         * </em>
-         */
-        "__create__cities": {
-          url: urlBase + "/SelectOptions/cities",
-          method: "POST"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.SelectOption#__delete__cities
-         * @methodOf lbServices.SelectOption
-         *
-         * @description
-         *
-         * Deletes all cities of this model.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *   This method does not accept any parameters.
-         *   Supply an empty object or omit this argument altogether.
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * This method returns no data.
-         */
-        "__delete__cities": {
-          url: urlBase + "/SelectOptions/cities",
-          method: "DELETE"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.SelectOption#__count__cities
-         * @methodOf lbServices.SelectOption
-         *
-         * @description
-         *
-         * Counts cities of SelectOption.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `where` – `{object=}` - Criteria to match model instances
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * Data properties:
-         *
-         *  - `count` – `{number=}` - 
-         */
-        "__count__cities": {
-          url: urlBase + "/SelectOptions/cities/count",
-          method: "GET"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.SelectOption#__get__campaignCategories
-         * @methodOf lbServices.SelectOption
-         *
-         * @description
-         *
-         * Queries campaignCategories of SelectOption.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `filter` – `{object=}` - 
-         *
-         * @param {function(Array.<Object>,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Array.<Object>} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `SelectOption` object.)
-         * </em>
-         */
-        "__get__campaignCategories": {
-          isArray: true,
-          url: urlBase + "/SelectOptions/campaignCategories",
-          method: "GET"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.SelectOption#__create__campaignCategories
-         * @methodOf lbServices.SelectOption
-         *
-         * @description
-         *
-         * Creates a new instance in campaignCategories of this model.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *   This method does not accept any parameters.
-         *   Supply an empty object or omit this argument altogether.
-         *
-         * @param {Object} postData Request data.
-         *
-         * This method expects a subset of model properties as request parameters.
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `SelectOption` object.)
-         * </em>
-         */
-        "__create__campaignCategories": {
-          url: urlBase + "/SelectOptions/campaignCategories",
-          method: "POST"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.SelectOption#__delete__campaignCategories
-         * @methodOf lbServices.SelectOption
-         *
-         * @description
-         *
-         * Deletes all campaignCategories of this model.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *   This method does not accept any parameters.
-         *   Supply an empty object or omit this argument altogether.
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * This method returns no data.
-         */
-        "__delete__campaignCategories": {
-          url: urlBase + "/SelectOptions/campaignCategories",
-          method: "DELETE"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.SelectOption#__count__campaignCategories
-         * @methodOf lbServices.SelectOption
-         *
-         * @description
-         *
-         * Counts campaignCategories of SelectOption.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `where` – `{object=}` - Criteria to match model instances
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * Data properties:
-         *
-         *  - `count` – `{number=}` - 
-         */
-        "__count__campaignCategories": {
-          url: urlBase + "/SelectOptions/campaignCategories/count",
-          method: "GET"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.SelectOption#__get__hotspotCategories
-         * @methodOf lbServices.SelectOption
-         *
-         * @description
-         *
-         * Queries hotspotCategories of SelectOption.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `filter` – `{object=}` - 
-         *
-         * @param {function(Array.<Object>,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Array.<Object>} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `SelectOption` object.)
-         * </em>
-         */
-        "__get__hotspotCategories": {
-          isArray: true,
-          url: urlBase + "/SelectOptions/hotspotCategories",
-          method: "GET"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.SelectOption#__create__hotspotCategories
-         * @methodOf lbServices.SelectOption
-         *
-         * @description
-         *
-         * Creates a new instance in hotspotCategories of this model.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *   This method does not accept any parameters.
-         *   Supply an empty object or omit this argument altogether.
-         *
-         * @param {Object} postData Request data.
-         *
-         * This method expects a subset of model properties as request parameters.
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `SelectOption` object.)
-         * </em>
-         */
-        "__create__hotspotCategories": {
-          url: urlBase + "/SelectOptions/hotspotCategories",
-          method: "POST"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.SelectOption#__delete__hotspotCategories
-         * @methodOf lbServices.SelectOption
-         *
-         * @description
-         *
-         * Deletes all hotspotCategories of this model.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *   This method does not accept any parameters.
-         *   Supply an empty object or omit this argument altogether.
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * This method returns no data.
-         */
-        "__delete__hotspotCategories": {
-          url: urlBase + "/SelectOptions/hotspotCategories",
-          method: "DELETE"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.SelectOption#__count__hotspotCategories
-         * @methodOf lbServices.SelectOption
-         *
-         * @description
-         *
-         * Counts hotspotCategories of SelectOption.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `where` – `{object=}` - Criteria to match model instances
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * Data properties:
-         *
-         *  - `count` – `{number=}` - 
-         */
-        "__count__hotspotCategories": {
-          url: urlBase + "/SelectOptions/hotspotCategories/count",
-          method: "GET"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.SelectOption#create
-         * @methodOf lbServices.SelectOption
-         *
-         * @description
-         *
-         * Create a new instance of the model and persist it into the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *   This method does not accept any parameters.
-         *   Supply an empty object or omit this argument altogether.
-         *
-         * @param {Object} postData Request data.
-         *
-         * This method expects a subset of model properties as request parameters.
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `SelectOption` object.)
-         * </em>
-         */
-        "create": {
-          url: urlBase + "/SelectOptions",
-          method: "POST"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.SelectOption#createMany
-         * @methodOf lbServices.SelectOption
-         *
-         * @description
-         *
-         * Create a new instance of the model and persist it into the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *   This method does not accept any parameters.
-         *   Supply an empty object or omit this argument altogether.
-         *
-         * @param {Object} postData Request data.
-         *
-         * This method expects a subset of model properties as request parameters.
-         *
-         * @param {function(Array.<Object>,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Array.<Object>} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `SelectOption` object.)
-         * </em>
-         */
-        "createMany": {
-          isArray: true,
-          url: urlBase + "/SelectOptions",
-          method: "POST"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.SelectOption#upsert
-         * @methodOf lbServices.SelectOption
-         *
-         * @description
-         *
-         * Update an existing model instance or insert a new one into the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *   This method does not accept any parameters.
-         *   Supply an empty object or omit this argument altogether.
-         *
-         * @param {Object} postData Request data.
-         *
-         * This method expects a subset of model properties as request parameters.
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `SelectOption` object.)
-         * </em>
-         */
-        "upsert": {
-          url: urlBase + "/SelectOptions",
-          method: "PUT"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.SelectOption#exists
-         * @methodOf lbServices.SelectOption
-         *
-         * @description
-         *
-         * Check whether a model instance exists in the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - Model id
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * Data properties:
-         *
-         *  - `exists` – `{boolean=}` - 
-         */
-        "exists": {
-          url: urlBase + "/SelectOptions/:id/exists",
-          method: "GET"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.SelectOption#findById
-         * @methodOf lbServices.SelectOption
-         *
-         * @description
-         *
-         * Find a model instance by id from the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - Model id
-         *
-         *  - `filter` – `{object=}` - Filter defining fields and include
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `SelectOption` object.)
-         * </em>
-         */
-        "findById": {
-          url: urlBase + "/SelectOptions/:id",
-          method: "GET"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.SelectOption#find
-         * @methodOf lbServices.SelectOption
-         *
-         * @description
-         *
-         * Find all instances of the model matched by filter from the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
-         *
-         * @param {function(Array.<Object>,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Array.<Object>} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `SelectOption` object.)
-         * </em>
-         */
-        "find": {
-          isArray: true,
-          url: urlBase + "/SelectOptions",
-          method: "GET"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.SelectOption#findOne
-         * @methodOf lbServices.SelectOption
-         *
-         * @description
-         *
-         * Find first instance of the model matched by filter from the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `SelectOption` object.)
-         * </em>
-         */
-        "findOne": {
-          url: urlBase + "/SelectOptions/findOne",
-          method: "GET"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.SelectOption#updateAll
-         * @methodOf lbServices.SelectOption
-         *
-         * @description
-         *
-         * Update instances of the model matched by where from the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `where` – `{object=}` - Criteria to match model instances
-         *
-         * @param {Object} postData Request data.
-         *
-         * This method expects a subset of model properties as request parameters.
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * The number of instances updated
-         */
-        "updateAll": {
-          url: urlBase + "/SelectOptions/update",
-          method: "POST"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.SelectOption#deleteById
-         * @methodOf lbServices.SelectOption
-         *
-         * @description
-         *
-         * Delete a model instance by id from the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - Model id
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `SelectOption` object.)
-         * </em>
-         */
-        "deleteById": {
-          url: urlBase + "/SelectOptions/:id",
-          method: "DELETE"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.SelectOption#count
-         * @methodOf lbServices.SelectOption
-         *
-         * @description
-         *
-         * Count instances of the model matched by where from the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `where` – `{object=}` - Criteria to match model instances
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * Data properties:
-         *
-         *  - `count` – `{number=}` - 
-         */
-        "count": {
-          url: urlBase + "/SelectOptions/count",
-          method: "GET"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.SelectOption#prototype$updateAttributes
-         * @methodOf lbServices.SelectOption
-         *
-         * @description
-         *
-         * Update attributes for a model instance and persist it into the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - PersistedModel id
-         *
-         * @param {Object} postData Request data.
-         *
-         * This method expects a subset of model properties as request parameters.
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `SelectOption` object.)
-         * </em>
-         */
-        "prototype$updateAttributes": {
-          url: urlBase + "/SelectOptions/:id",
-          method: "PUT"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.SelectOption#createChangeStream
-         * @methodOf lbServices.SelectOption
-         *
-         * @description
-         *
-         * Create a change stream.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *   This method does not accept any parameters.
-         *   Supply an empty object or omit this argument altogether.
-         *
-         * @param {Object} postData Request data.
-         *
-         *  - `options` – `{object=}` - 
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * Data properties:
-         *
-         *  - `changes` – `{ReadableStream=}` - 
-         */
-        "createChangeStream": {
-          url: urlBase + "/SelectOptions/change-stream",
-          method: "POST"
-        },
 
         /**
          * @ngdoc method
@@ -918,7 +91,7 @@ module.factory(
          */
         "cities": {
           isArray: true,
-          url: urlBase + "/SelectOptions/cities",
+          url: urlBase + "/common/cities",
           method: "GET"
         },
 
@@ -955,7 +128,7 @@ module.factory(
          */
         "campaignCategories": {
           isArray: true,
-          url: urlBase + "/SelectOptions/campaignCategories",
+          url: urlBase + "/common/campaigns/categories",
           method: "GET"
         },
 
@@ -992,139 +165,13 @@ module.factory(
          */
         "hotspotCategories": {
           isArray: true,
-          url: urlBase + "/SelectOptions/hotspotCategories",
+          url: urlBase + "/common/hotspots/categories",
           method: "GET"
         },
       }
     );
 
 
-
-        /**
-         * @ngdoc method
-         * @name lbServices.SelectOption#updateOrCreate
-         * @methodOf lbServices.SelectOption
-         *
-         * @description
-         *
-         * Update an existing model instance or insert a new one into the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *   This method does not accept any parameters.
-         *   Supply an empty object or omit this argument altogether.
-         *
-         * @param {Object} postData Request data.
-         *
-         * This method expects a subset of model properties as request parameters.
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `SelectOption` object.)
-         * </em>
-         */
-        R["updateOrCreate"] = R["upsert"];
-
-        /**
-         * @ngdoc method
-         * @name lbServices.SelectOption#update
-         * @methodOf lbServices.SelectOption
-         *
-         * @description
-         *
-         * Update instances of the model matched by where from the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `where` – `{object=}` - Criteria to match model instances
-         *
-         * @param {Object} postData Request data.
-         *
-         * This method expects a subset of model properties as request parameters.
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * The number of instances updated
-         */
-        R["update"] = R["updateAll"];
-
-        /**
-         * @ngdoc method
-         * @name lbServices.SelectOption#destroyById
-         * @methodOf lbServices.SelectOption
-         *
-         * @description
-         *
-         * Delete a model instance by id from the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - Model id
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `SelectOption` object.)
-         * </em>
-         */
-        R["destroyById"] = R["deleteById"];
-
-        /**
-         * @ngdoc method
-         * @name lbServices.SelectOption#removeById
-         * @methodOf lbServices.SelectOption
-         *
-         * @description
-         *
-         * Delete a model instance by id from the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - Model id
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `SelectOption` object.)
-         * </em>
-         */
-        R["removeById"] = R["deleteById"];
 
 
     /**
@@ -2346,137 +1393,70 @@ module.factory(
   "TrackingClick",
   ['LoopBackResource', 'LoopBackAuth', '$injector', function(Resource, LoopBackAuth, $injector) {
     var R = Resource(
-      urlBase + "/TrackingClicks/:id",
+      urlBase + "/tracking/:id",
       { 'id': '@id' },
       {
 
         /**
          * @ngdoc method
-         * @name lbServices.TrackingClick#create
+         * @name lbServices.TrackingClick#click
          * @methodOf lbServices.TrackingClick
          *
          * @description
          *
-         * Create a new instance of the model and persist it into the data source.
+         * Tracking a click from user
          *
          * @param {Object=} parameters Request parameters.
          *
-         *   This method does not accept any parameters.
-         *   Supply an empty object or omit this argument altogether.
+         *  - `mac` – `{string=}` - Device MAC address (required)
          *
-         * @param {Object} postData Request data.
+         *  - `advertiserId` – `{string=}` - Advertiser ID (required)
          *
-         * This method expects a subset of model properties as request parameters.
+         *  - `advertiserName` – `{string=}` - Advertiser Name
          *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *  - `campaignId` – `{string=}` - Campaign ID (required)
          *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
+         *  - `campaignName` – `{string=}` - Campaign Name
          *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
+         *  - `bannerId` – `{string=}` - Banner ID (required)
          *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `TrackingClick` object.)
-         * </em>
-         */
-        "create": {
-          url: urlBase + "/TrackingClicks",
-          method: "POST"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.TrackingClick#createMany
-         * @methodOf lbServices.TrackingClick
+         *  - `bannerName` – `{string=}` - Banner Name
          *
-         * @description
+         *  - `hotspotId` – `{string=}` - Hotspot ID (required)
          *
-         * Create a new instance of the model and persist it into the data source.
+         *  - `hotspotName` – `{string=}` - Hotspot Name
          *
-         * @param {Object=} parameters Request parameters.
+         *  - `os` – `{string=}` - User device`s OS
          *
-         *   This method does not accept any parameters.
-         *   Supply an empty object or omit this argument altogether.
+         *  - `device` – `{string=}` - User`s device type (mobile, tablet, laptop)
          *
-         * @param {Object} postData Request data.
+         *  - `device_model` – `{string=}` - User`s device model (Galaxy S7, HTC One 10,...)
          *
-         * This method expects a subset of model properties as request parameters.
+         *  - `name` – `{string=}` - User`s full name
          *
-         * @param {function(Array.<Object>,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *  - `email` – `{string=}` - User`s email
          *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
+         *  - `gender` – `{string=}` - User`s gender (male|female)
          *
-         * @returns {Array.<Object>} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
+         *  - `age` – `{string=}` - User`s age
          *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `TrackingClick` object.)
-         * </em>
-         */
-        "createMany": {
-          isArray: true,
-          url: urlBase + "/TrackingClicks",
-          method: "POST"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.TrackingClick#upsert
-         * @methodOf lbServices.TrackingClick
+         *  - `income` – `{string=}` - User`s income
          *
-         * @description
+         *  - `country` – `{string=}` - User`s nationality
          *
-         * Update an existing model instance or insert a new one into the data source.
+         *  - `phone` – `{string=}` - User`s phone number
          *
-         * @param {Object=} parameters Request parameters.
+         *  - `favorite` – `{string=}` - User`s hobbies
          *
-         *   This method does not accept any parameters.
-         *   Supply an empty object or omit this argument altogether.
+         *  - `userType` – `{string=}` - User type (form|facebook|google)
          *
-         * @param {Object} postData Request data.
+         *  - `startTime` – `{date=}` - Time when user started using internet
          *
-         * This method expects a subset of model properties as request parameters.
+         *  - `stopTime` – `{date=}` - Time when user stopped using internet
          *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *  - `sessionTime` – `{number=}` - Session duration in second
          *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `TrackingClick` object.)
-         * </em>
-         */
-        "upsert": {
-          url: urlBase + "/TrackingClicks",
-          method: "PUT"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.TrackingClick#exists
-         * @methodOf lbServices.TrackingClick
-         *
-         * @description
-         *
-         * Check whether a model instance exists in the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - Model id
+         *  - `dataUsage` – `{number=}` - Total data uploaded and downloaded in KB
          *
          * @param {function(Object,Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -2490,259 +1470,21 @@ module.factory(
          *
          * Data properties:
          *
-         *  - `exists` – `{boolean=}` - 
+         *  - `clickId` – `{string=}` - 
          */
-        "exists": {
-          url: urlBase + "/TrackingClicks/:id/exists",
+        "click": {
+          url: urlBase + "/tracking/click",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.TrackingClick#findById
+         * @name lbServices.TrackingClick#click
          * @methodOf lbServices.TrackingClick
          *
          * @description
          *
-         * Find a model instance by id from the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - Model id
-         *
-         *  - `filter` – `{object=}` - Filter defining fields and include
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `TrackingClick` object.)
-         * </em>
-         */
-        "findById": {
-          url: urlBase + "/TrackingClicks/:id",
-          method: "GET"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.TrackingClick#find
-         * @methodOf lbServices.TrackingClick
-         *
-         * @description
-         *
-         * Find all instances of the model matched by filter from the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
-         *
-         * @param {function(Array.<Object>,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Array.<Object>} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `TrackingClick` object.)
-         * </em>
-         */
-        "find": {
-          isArray: true,
-          url: urlBase + "/TrackingClicks",
-          method: "GET"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.TrackingClick#findOne
-         * @methodOf lbServices.TrackingClick
-         *
-         * @description
-         *
-         * Find first instance of the model matched by filter from the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `TrackingClick` object.)
-         * </em>
-         */
-        "findOne": {
-          url: urlBase + "/TrackingClicks/findOne",
-          method: "GET"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.TrackingClick#updateAll
-         * @methodOf lbServices.TrackingClick
-         *
-         * @description
-         *
-         * Update instances of the model matched by where from the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `where` – `{object=}` - Criteria to match model instances
-         *
-         * @param {Object} postData Request data.
-         *
-         * This method expects a subset of model properties as request parameters.
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * The number of instances updated
-         */
-        "updateAll": {
-          url: urlBase + "/TrackingClicks/update",
-          method: "POST"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.TrackingClick#deleteById
-         * @methodOf lbServices.TrackingClick
-         *
-         * @description
-         *
-         * Delete a model instance by id from the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - Model id
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `TrackingClick` object.)
-         * </em>
-         */
-        "deleteById": {
-          url: urlBase + "/TrackingClicks/:id",
-          method: "DELETE"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.TrackingClick#count
-         * @methodOf lbServices.TrackingClick
-         *
-         * @description
-         *
-         * Count instances of the model matched by where from the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `where` – `{object=}` - Criteria to match model instances
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * Data properties:
-         *
-         *  - `count` – `{number=}` - 
-         */
-        "count": {
-          url: urlBase + "/TrackingClicks/count",
-          method: "GET"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.TrackingClick#prototype$updateAttributes
-         * @methodOf lbServices.TrackingClick
-         *
-         * @description
-         *
-         * Update attributes for a model instance and persist it into the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - PersistedModel id
-         *
-         * @param {Object} postData Request data.
-         *
-         * This method expects a subset of model properties as request parameters.
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `TrackingClick` object.)
-         * </em>
-         */
-        "prototype$updateAttributes": {
-          url: urlBase + "/TrackingClicks/:id",
-          method: "PUT"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.TrackingClick#createChangeStream
-         * @methodOf lbServices.TrackingClick
-         *
-         * @description
-         *
-         * Create a change stream.
+         * Tracking a click from user
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -2751,7 +1493,55 @@ module.factory(
          *
          * @param {Object} postData Request data.
          *
-         *  - `options` – `{object=}` - 
+         *  - `mac` – `{string=}` - Device MAC address (required)
+         *
+         *  - `advertiserId` – `{string=}` - Advertiser ID (required)
+         *
+         *  - `advertiserName` – `{string=}` - Advertiser Name
+         *
+         *  - `campaignId` – `{string=}` - Campaign ID (required)
+         *
+         *  - `campaignName` – `{string=}` - Campaign Name
+         *
+         *  - `bannerId` – `{string=}` - Banner ID (required)
+         *
+         *  - `bannerName` – `{string=}` - Banner Name
+         *
+         *  - `hotspotId` – `{string=}` - Hotspot ID (required)
+         *
+         *  - `hotspotName` – `{string=}` - Hotspot Name
+         *
+         *  - `os` – `{string=}` - User device`s OS
+         *
+         *  - `device` – `{string=}` - User`s device type (mobile, tablet, laptop)
+         *
+         *  - `device_model` – `{string=}` - User`s device model (Galaxy S7, HTC One 10,...)
+         *
+         *  - `name` – `{string=}` - User`s full name
+         *
+         *  - `email` – `{string=}` - User`s email
+         *
+         *  - `gender` – `{string=}` - User`s gender (male|female)
+         *
+         *  - `age` – `{string=}` - User`s age
+         *
+         *  - `income` – `{string=}` - User`s income
+         *
+         *  - `country` – `{string=}` - User`s nationality
+         *
+         *  - `phone` – `{string=}` - User`s phone number
+         *
+         *  - `favorite` – `{string=}` - User`s hobbies
+         *
+         *  - `userType` – `{string=}` - User type (form|facebook|google)
+         *
+         *  - `startTime` – `{date=}` - Time when user started using internet
+         *
+         *  - `stopTime` – `{date=}` - Time when user stopped using internet
+         *
+         *  - `sessionTime` – `{number=}` - Session duration in second
+         *
+         *  - `dataUsage` – `{number=}` - Total data uploaded and downloaded in KB
          *
          * @param {function(Object,Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -2765,142 +1555,16 @@ module.factory(
          *
          * Data properties:
          *
-         *  - `changes` – `{ReadableStream=}` - 
+         *  - `clickId` – `{string=}` - 
          */
-        "createChangeStream": {
-          url: urlBase + "/TrackingClicks/change-stream",
+        "click": {
+          url: urlBase + "/tracking/click",
           method: "POST"
         },
       }
     );
 
 
-
-        /**
-         * @ngdoc method
-         * @name lbServices.TrackingClick#updateOrCreate
-         * @methodOf lbServices.TrackingClick
-         *
-         * @description
-         *
-         * Update an existing model instance or insert a new one into the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *   This method does not accept any parameters.
-         *   Supply an empty object or omit this argument altogether.
-         *
-         * @param {Object} postData Request data.
-         *
-         * This method expects a subset of model properties as request parameters.
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `TrackingClick` object.)
-         * </em>
-         */
-        R["updateOrCreate"] = R["upsert"];
-
-        /**
-         * @ngdoc method
-         * @name lbServices.TrackingClick#update
-         * @methodOf lbServices.TrackingClick
-         *
-         * @description
-         *
-         * Update instances of the model matched by where from the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `where` – `{object=}` - Criteria to match model instances
-         *
-         * @param {Object} postData Request data.
-         *
-         * This method expects a subset of model properties as request parameters.
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * The number of instances updated
-         */
-        R["update"] = R["updateAll"];
-
-        /**
-         * @ngdoc method
-         * @name lbServices.TrackingClick#destroyById
-         * @methodOf lbServices.TrackingClick
-         *
-         * @description
-         *
-         * Delete a model instance by id from the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - Model id
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `TrackingClick` object.)
-         * </em>
-         */
-        R["destroyById"] = R["deleteById"];
-
-        /**
-         * @ngdoc method
-         * @name lbServices.TrackingClick#removeById
-         * @methodOf lbServices.TrackingClick
-         *
-         * @description
-         *
-         * Delete a model instance by id from the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - Model id
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `TrackingClick` object.)
-         * </em>
-         */
-        R["removeById"] = R["deleteById"];
 
 
     /**

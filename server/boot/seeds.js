@@ -30,8 +30,8 @@ module.exports = (app, cb) => {
       return Promise.all(selectOptions);
     })
     .then(() => {
-      const findOrCreate = Promise.promisify(app.models.TrackingClick.findOrCreate, {context: app.models.TrackingClick});
-      return findOrCreate({
+      const create = Promise.promisify(app.models.TrackingClick.create, {context: app.models.TrackingClick});
+      return create({
         mac: 'AC:AC:AC:AC:AC:AC',
         advertiserId: 1, advertiserName: 'defaultAdvertiser',
         campaignId: 1, campaignName: 'defaultCampaign',
@@ -41,20 +41,29 @@ module.exports = (app, cb) => {
     })
     .then(() => {
       const findOrCreate = Promise.promisify(app.models.Tracking1.findOrCreate, {context: app.models.Tracking1});
-      return findOrCreate({
+      return findOrCreate({where: {
+        mac: 'AC:AC:AC:AC:AC:AC'
+      }}, {
         mac: 'AC:AC:AC:AC:AC:AC'
       });
     })
     .then(() => {
       const findOrCreate = Promise.promisify(app.models.Tracking2.findOrCreate, {context: app.models.Tracking2});
-      return findOrCreate({
+      return findOrCreate({where: {
+        mac: 'AC:AC:AC:AC:AC:AC',
+        advertiserId: 1
+      }}, {
         mac: 'AC:AC:AC:AC:AC:AC',
         advertiserId: 1, advertiserName: 'defaultAdvertiser'
       });
     })
     .then(() => {
       const findOrCreate = Promise.promisify(app.models.Tracking3.findOrCreate, {context: app.models.Tracking3});
-      return findOrCreate({
+      return findOrCreate({where: {
+        mac: 'AC:AC:AC:AC:AC:AC',
+        advertiserId: 1,
+        campaignId: 1
+      }}, {
         mac: 'AC:AC:AC:AC:AC:AC',
         advertiserId: 1, advertiserName: 'defaultAdvertiser',
         campaignId: 1, campaignName: 'defaultCampaign'
@@ -62,7 +71,12 @@ module.exports = (app, cb) => {
     })
     .then(() => {
       const findOrCreate = Promise.promisify(app.models.Tracking4.findOrCreate, {context: app.models.Tracking4});
-      return findOrCreate({
+      return findOrCreate({where: {
+        mac: 'AC:AC:AC:AC:AC:AC',
+        advertiserId: 1,
+        campaignId: 1,
+        bannerId: 1
+      }}, {
         mac: 'AC:AC:AC:AC:AC:AC',
         advertiserId: 1, advertiserName: 'defaultAdvertiser',
         campaignId: 1, campaignName: 'defaultCampaign',
@@ -71,7 +85,12 @@ module.exports = (app, cb) => {
     })
     .then(() => {
       const findOrCreate = Promise.promisify(app.models.Tracking5.findOrCreate, {context: app.models.Tracking5});
-      return findOrCreate({
+      return findOrCreate({where: {
+        mac: 'AC:AC:AC:AC:AC:AC',
+        advertiserId: 1,
+        campaignId: 1,
+        hotspotId: 1
+      }}, {
         mac: 'AC:AC:AC:AC:AC:AC',
         advertiserId: 1, advertiserName: 'defaultAdvertiser',
         campaignId: 1, campaignName: 'defaultCampaign',
@@ -80,7 +99,13 @@ module.exports = (app, cb) => {
     })
     .then(() => {
       const findOrCreate = Promise.promisify(app.models.Tracking6.findOrCreate, {context: app.models.Tracking6});
-      return findOrCreate({
+      return findOrCreate({where: {
+        mac: 'AC:AC:AC:AC:AC:AC',
+        advertiserId: 1,
+        campaignId: 1,
+        bannerId: 1,
+        hotspotId: 1
+      }}, {
         mac: 'AC:AC:AC:AC:AC:AC',
         advertiserId: 1, advertiserName: 'defaultAdvertiser',
         campaignId: 1, campaignName: 'defaultCampaign',

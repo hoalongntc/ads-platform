@@ -1,6 +1,21 @@
 'use strict';
 
 module.exports = function(SelectOption) {
+  /**
+   * Hiding all methods
+   * */
+  SelectOption.disableRemoteMethod('create', true);
+  SelectOption.disableRemoteMethod('upsert', true);
+  SelectOption.disableRemoteMethod('updateAll', true);
+  SelectOption.disableRemoteMethod('updateAttributes', false);
+  SelectOption.disableRemoteMethod('find', true);
+  SelectOption.disableRemoteMethod('findById', true);
+  SelectOption.disableRemoteMethod('findOne', true);
+  SelectOption.disableRemoteMethod('deleteById', true);
+  SelectOption.disableRemoteMethod('count', true);
+  SelectOption.disableRemoteMethod('exists', true);
+  SelectOption.disableRemoteMethod('createChangeStream', true);
+
   SelectOption.cities = (cb) => {
     SelectOption.find({where: {type: 'city'}, fields: {type: 0}}, (err, response) => {
       if (err) return cb(err, null);
@@ -19,7 +34,7 @@ module.exports = function(SelectOption) {
     });
   };
   SelectOption.remoteMethod('campaignCategories', {
-    http: {verb: 'get'},
+    http: {verb: 'get', path: '/campaigns/categories'},
     returns: {type: 'array', root: true}
   });
 
@@ -30,7 +45,7 @@ module.exports = function(SelectOption) {
     });
   };
   SelectOption.remoteMethod('hotspotCategories', {
-    http: {verb: 'get'},
+    http: {verb: 'get', path: '/hotspots/categories'},
     returns: {type: 'array', root: true}
   });
 };

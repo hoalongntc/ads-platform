@@ -10,7 +10,25 @@
     "mac": {
       "type": "string",
       "required": true
-    }
+    },
+    "os": "string",
+    "device": "string",
+    "device_type": "string",
+
+    "name": "string",
+    "email": "string",
+    "gender": "string",
+    "age": "string",
+    "income": "string",
+    "country": "string",
+    "phone": "string",
+    "favorite": "string",
+    "userType": "string",
+
+    "startTime": "date",
+    "stopTime": "date",
+    "sessionTime": "number",
+    "dataUsage": "number"
   },
   "indexes": {
     "key_index": {
