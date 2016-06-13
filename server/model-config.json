@@ -45,27 +45,27 @@
     "dataSource": "mongo",
     "public": true
   },
-  "Tracking1": {
+  "TrackingClick1": {
     "dataSource": "mongo",
     "public": false
   },
-  "Tracking2": {
+  "TrackingClick2": {
     "dataSource": "mongo",
     "public": false
   },
-  "Tracking3": {
+  "TrackingClick3": {
     "dataSource": "mongo",
     "public": false
   },
-  "Tracking4": {
+  "TrackingClick4": {
     "dataSource": "mongo",
     "public": false
   },
-  "Tracking5": {
+  "TrackingClick5": {
     "dataSource": "mongo",
     "public": false
   },
-  "Tracking6": {
+  "TrackingClick6": {
     "dataSource": "mongo",
     "public": false
   },
@@ -76,5 +76,25 @@
   "TrackingImpression": {
     "dataSource": "mongo",
     "public": true
+  },
+  "TrackingImpression1": {
+    "dataSource": "mongo",
+    "public": false
+  },
+  "TrackingImpression2": {
+    "dataSource": "mongo",
+    "public": false
+  },
+  "TrackingImpression3": {
+    "dataSource": "mongo",
+    "public": false
+  },
+  "TrackingImpression4": {
+    "dataSource": "mongo",
+    "public": false
+  },
+  "TrackingImpression5": {
+    "dataSource": "mongo",
+    "public": false
   }
 }

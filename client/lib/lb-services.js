@@ -1393,13 +1393,13 @@ module.factory(
   "TrackingClick",
   ['LoopBackResource', 'LoopBackAuth', '$injector', function(Resource, LoopBackAuth, $injector) {
     var R = Resource(
-      urlBase + "/tracking/:id",
+      urlBase + "/clicks/:id",
       { 'id': '@id' },
       {
 
         /**
          * @ngdoc method
-         * @name lbServices.TrackingClick#click
+         * @name lbServices.TrackingClick#new
          * @methodOf lbServices.TrackingClick
          *
          * @description
@@ -1472,14 +1472,14 @@ module.factory(
          *
          *  - `clickId` – `{string=}` - 
          */
-        "click": {
-          url: urlBase + "/tracking/click",
+        "new": {
+          url: urlBase + "/clicks/new",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.TrackingClick#click
+         * @name lbServices.TrackingClick#new
          * @methodOf lbServices.TrackingClick
          *
          * @description
@@ -1557,8 +1557,8 @@ module.factory(
          *
          *  - `clickId` – `{string=}` - 
          */
-        "click": {
-          url: urlBase + "/tracking/click",
+        "new": {
+          url: urlBase + "/clicks/new",
           method: "POST"
         },
       }
@@ -1602,137 +1602,38 @@ module.factory(
   "TrackingImpression",
   ['LoopBackResource', 'LoopBackAuth', '$injector', function(Resource, LoopBackAuth, $injector) {
     var R = Resource(
-      urlBase + "/TrackingImpressions/:id",
+      urlBase + "/impressions/:id",
       { 'id': '@id' },
       {
 
         /**
          * @ngdoc method
-         * @name lbServices.TrackingImpression#create
+         * @name lbServices.TrackingImpression#new
          * @methodOf lbServices.TrackingImpression
          *
          * @description
          *
-         * Create a new instance of the model and persist it into the data source.
+         * Tracking an impress from user
          *
          * @param {Object=} parameters Request parameters.
          *
-         *   This method does not accept any parameters.
-         *   Supply an empty object or omit this argument altogether.
+         *  - `mac` – `{string=}` - Device MAC address (required)
          *
-         * @param {Object} postData Request data.
+         *  - `advertiserId` – `{string=}` - Advertiser ID (required)
          *
-         * This method expects a subset of model properties as request parameters.
+         *  - `advertiserName` – `{string=}` - Advertiser Name
          *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *  - `campaignId` – `{string=}` - Campaign ID (required)
          *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
+         *  - `campaignName` – `{string=}` - Campaign Name
          *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
+         *  - `bannerId` – `{string=}` - Banner ID (required)
          *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `TrackingImpression` object.)
-         * </em>
-         */
-        "create": {
-          url: urlBase + "/TrackingImpressions",
-          method: "POST"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.TrackingImpression#createMany
-         * @methodOf lbServices.TrackingImpression
+         *  - `bannerName` – `{string=}` - Banner Name
          *
-         * @description
+         *  - `hotspotId` – `{string=}` - Hotspot ID (required)
          *
-         * Create a new instance of the model and persist it into the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *   This method does not accept any parameters.
-         *   Supply an empty object or omit this argument altogether.
-         *
-         * @param {Object} postData Request data.
-         *
-         * This method expects a subset of model properties as request parameters.
-         *
-         * @param {function(Array.<Object>,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Array.<Object>} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `TrackingImpression` object.)
-         * </em>
-         */
-        "createMany": {
-          isArray: true,
-          url: urlBase + "/TrackingImpressions",
-          method: "POST"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.TrackingImpression#upsert
-         * @methodOf lbServices.TrackingImpression
-         *
-         * @description
-         *
-         * Update an existing model instance or insert a new one into the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *   This method does not accept any parameters.
-         *   Supply an empty object or omit this argument altogether.
-         *
-         * @param {Object} postData Request data.
-         *
-         * This method expects a subset of model properties as request parameters.
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `TrackingImpression` object.)
-         * </em>
-         */
-        "upsert": {
-          url: urlBase + "/TrackingImpressions",
-          method: "PUT"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.TrackingImpression#exists
-         * @methodOf lbServices.TrackingImpression
-         *
-         * @description
-         *
-         * Check whether a model instance exists in the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - Model id
+         *  - `hotspotName` – `{string=}` - Hotspot Name
          *
          * @param {function(Object,Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -1746,259 +1647,21 @@ module.factory(
          *
          * Data properties:
          *
-         *  - `exists` – `{boolean=}` - 
+         *  - `impressCount` – `{number=}` - 
          */
-        "exists": {
-          url: urlBase + "/TrackingImpressions/:id/exists",
+        "new": {
+          url: urlBase + "/impressions/new",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.TrackingImpression#findById
+         * @name lbServices.TrackingImpression#new
          * @methodOf lbServices.TrackingImpression
          *
          * @description
          *
-         * Find a model instance by id from the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - Model id
-         *
-         *  - `filter` – `{object=}` - Filter defining fields and include
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `TrackingImpression` object.)
-         * </em>
-         */
-        "findById": {
-          url: urlBase + "/TrackingImpressions/:id",
-          method: "GET"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.TrackingImpression#find
-         * @methodOf lbServices.TrackingImpression
-         *
-         * @description
-         *
-         * Find all instances of the model matched by filter from the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
-         *
-         * @param {function(Array.<Object>,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Array.<Object>} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `TrackingImpression` object.)
-         * </em>
-         */
-        "find": {
-          isArray: true,
-          url: urlBase + "/TrackingImpressions",
-          method: "GET"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.TrackingImpression#findOne
-         * @methodOf lbServices.TrackingImpression
-         *
-         * @description
-         *
-         * Find first instance of the model matched by filter from the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `TrackingImpression` object.)
-         * </em>
-         */
-        "findOne": {
-          url: urlBase + "/TrackingImpressions/findOne",
-          method: "GET"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.TrackingImpression#updateAll
-         * @methodOf lbServices.TrackingImpression
-         *
-         * @description
-         *
-         * Update instances of the model matched by where from the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `where` – `{object=}` - Criteria to match model instances
-         *
-         * @param {Object} postData Request data.
-         *
-         * This method expects a subset of model properties as request parameters.
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * The number of instances updated
-         */
-        "updateAll": {
-          url: urlBase + "/TrackingImpressions/update",
-          method: "POST"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.TrackingImpression#deleteById
-         * @methodOf lbServices.TrackingImpression
-         *
-         * @description
-         *
-         * Delete a model instance by id from the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - Model id
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `TrackingImpression` object.)
-         * </em>
-         */
-        "deleteById": {
-          url: urlBase + "/TrackingImpressions/:id",
-          method: "DELETE"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.TrackingImpression#count
-         * @methodOf lbServices.TrackingImpression
-         *
-         * @description
-         *
-         * Count instances of the model matched by where from the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `where` – `{object=}` - Criteria to match model instances
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * Data properties:
-         *
-         *  - `count` – `{number=}` - 
-         */
-        "count": {
-          url: urlBase + "/TrackingImpressions/count",
-          method: "GET"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.TrackingImpression#prototype$updateAttributes
-         * @methodOf lbServices.TrackingImpression
-         *
-         * @description
-         *
-         * Update attributes for a model instance and persist it into the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - PersistedModel id
-         *
-         * @param {Object} postData Request data.
-         *
-         * This method expects a subset of model properties as request parameters.
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `TrackingImpression` object.)
-         * </em>
-         */
-        "prototype$updateAttributes": {
-          url: urlBase + "/TrackingImpressions/:id",
-          method: "PUT"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.TrackingImpression#createChangeStream
-         * @methodOf lbServices.TrackingImpression
-         *
-         * @description
-         *
-         * Create a change stream.
+         * Tracking an impress from user
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -2007,7 +1670,23 @@ module.factory(
          *
          * @param {Object} postData Request data.
          *
-         *  - `options` – `{object=}` - 
+         *  - `mac` – `{string=}` - Device MAC address (required)
+         *
+         *  - `advertiserId` – `{string=}` - Advertiser ID (required)
+         *
+         *  - `advertiserName` – `{string=}` - Advertiser Name
+         *
+         *  - `campaignId` – `{string=}` - Campaign ID (required)
+         *
+         *  - `campaignName` – `{string=}` - Campaign Name
+         *
+         *  - `bannerId` – `{string=}` - Banner ID (required)
+         *
+         *  - `bannerName` – `{string=}` - Banner Name
+         *
+         *  - `hotspotId` – `{string=}` - Hotspot ID (required)
+         *
+         *  - `hotspotName` – `{string=}` - Hotspot Name
          *
          * @param {function(Object,Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -2021,142 +1700,16 @@ module.factory(
          *
          * Data properties:
          *
-         *  - `changes` – `{ReadableStream=}` - 
+         *  - `impressCount` – `{number=}` - 
          */
-        "createChangeStream": {
-          url: urlBase + "/TrackingImpressions/change-stream",
+        "new": {
+          url: urlBase + "/impressions/new",
           method: "POST"
         },
       }
     );
 
 
-
-        /**
-         * @ngdoc method
-         * @name lbServices.TrackingImpression#updateOrCreate
-         * @methodOf lbServices.TrackingImpression
-         *
-         * @description
-         *
-         * Update an existing model instance or insert a new one into the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *   This method does not accept any parameters.
-         *   Supply an empty object or omit this argument altogether.
-         *
-         * @param {Object} postData Request data.
-         *
-         * This method expects a subset of model properties as request parameters.
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `TrackingImpression` object.)
-         * </em>
-         */
-        R["updateOrCreate"] = R["upsert"];
-
-        /**
-         * @ngdoc method
-         * @name lbServices.TrackingImpression#update
-         * @methodOf lbServices.TrackingImpression
-         *
-         * @description
-         *
-         * Update instances of the model matched by where from the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `where` – `{object=}` - Criteria to match model instances
-         *
-         * @param {Object} postData Request data.
-         *
-         * This method expects a subset of model properties as request parameters.
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * The number of instances updated
-         */
-        R["update"] = R["updateAll"];
-
-        /**
-         * @ngdoc method
-         * @name lbServices.TrackingImpression#destroyById
-         * @methodOf lbServices.TrackingImpression
-         *
-         * @description
-         *
-         * Delete a model instance by id from the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - Model id
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `TrackingImpression` object.)
-         * </em>
-         */
-        R["destroyById"] = R["deleteById"];
-
-        /**
-         * @ngdoc method
-         * @name lbServices.TrackingImpression#removeById
-         * @methodOf lbServices.TrackingImpression
-         *
-         * @description
-         *
-         * Delete a model instance by id from the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - Model id
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `TrackingImpression` object.)
-         * </em>
-         */
-        R["removeById"] = R["deleteById"];
 
 
     /**
