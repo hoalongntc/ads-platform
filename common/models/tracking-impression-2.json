@@ -1,8 +1,20 @@
 {
-  "name": "Tracking2",
+  "name": "TrackingImpression2",
   "base": "PersistedModel",
-  "idInjection": true,
   "strict": true,
+  "idInjection": true,
+  "indexes": {
+    "key_index": {
+      "keys": {
+        "mac": 1,
+        "advertiserId": 1,
+        "reportEpoch": 1
+      },
+      "options": {
+        "unique": true
+      }
+    }
+  },
   "options": {
     "validateUpsert": true
   },
@@ -17,17 +29,13 @@
     },
     "advertiserName": {
       "type": "string"
-    }
-  },
-  "indexes": {
-    "key_index": {
-      "keys": {
-        "mac": 1,
-        "advertiserId": 1
-      },
-      "options": {
-        "unique": true
-      }
+    },
+    "count": {
+      "type": "number",
+      "default": "1"
+    },
+    "reportEpoch": {
+      "type": "number"
     }
   },
   "validations": [],

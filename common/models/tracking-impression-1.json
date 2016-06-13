@@ -1,0 +1,37 @@
+{
+  "name": "TrackingImpression1",
+  "base": "PersistedModel",
+  "strict": true,
+  "idInjection": true,
+  "indexes": {
+    "key_index": {
+      "keys": {
+        "mac": 1,
+        "reportEpoch": 1
+      },
+      "options": {
+        "unique": true
+      }
+    }
+  },
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "mac": {
+      "type": "string",
+      "required": true
+    },
+    "count": {
+      "type": "number",
+      "default": "1"
+    },
+    "reportEpoch": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

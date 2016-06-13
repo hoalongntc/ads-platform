@@ -1,10 +1,13 @@
 {
   "name": "TrackingImpression",
   "base": "PersistedModel",
-  "idInjection": true,
   "strict": true,
+  "idInjection": true,
   "options": {
     "validateUpsert": true
+  },
+  "http": {
+    "path": "/impressions"
   },
   "properties": {
     "mac": {
@@ -36,10 +39,10 @@
     },
     "count": {
       "type": "number",
-      "default": "0"
+      "default": 1
     },
-    "reportDate": {
-      "type": "date"
+    "reportEpoch": {
+      "type": "number"
     }
   },
   "validations": [],

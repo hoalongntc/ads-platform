@@ -1,41 +1,53 @@
 {
-  "name": "TrackingClick",
+  "name": "TrackingClick4",
   "base": "PersistedModel",
   "strict": true,
   "idInjection": true,
+  "indexes": {
+    "key_index": {
+      "keys": {
+        "mac": 1,
+        "advertiserId": 1,
+        "campaignId": 1,
+        "bannerId": 1
+      },
+      "options": {
+        "unique": true
+      }
+    }
+  },
   "options": {
     "validateUpsert": true
   },
-  "http": {
-    "path": "/clicks"
-  },
   "properties": {
     "mac": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "advertiserId": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "advertiserName": {
       "type": "string"
     },
     "campaignId": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "campaignName": {
       "type": "string"
     },
     "bannerId": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "bannerName": {
       "type": "string"
     },
-    "hotspotId": {
-      "type": "string"
-    },
-    "hotspotName": {
-      "type": "string"
+    "count": {
+      "type": "number",
+      "default": 1
     },
     "os": {
       "type": "string"

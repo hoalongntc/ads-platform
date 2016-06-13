@@ -2,10 +2,13 @@
   "name": "SelectOption",
   "plural": "SelectOptions",
   "base": "PersistedModel",
-  "idInjection": true,
   "strict": true,
+  "idInjection": true,
   "options": {
     "validateUpsert": true
+  },
+  "http": {
+    "path": "/common"
   },
   "properties": {
     "type": {
