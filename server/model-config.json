@@ -102,4 +102,8 @@
     "dataSource": "mongo",
     "public": false
   }
+  "Banner": {
+    "dataSource": "mongo",
+    "public": true
+  },
 }

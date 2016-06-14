@@ -17,6 +17,12 @@ export default function routes($stateProvider, $urlRouterProvider) {
       controller: 'CampaignCtrl',
       controllerAs: 'cam'
     })
+    .state('banner', {
+      url: '/banner',
+      templateUrl: require('./components/banner/banner.jade'),
+      controller: 'BannerCtrl',
+      controllerAs: 'ban'
+    })
     .state('locations', {
       url: '/locations',
       templateUrl: require('./components/location/location.jade'),

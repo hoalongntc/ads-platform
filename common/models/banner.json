@@ -1,0 +1,35 @@
+{
+  "name": "Banner",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "required": true
+    },
+    "size": {
+      "type": "string"
+    },
+    "htmlCode": {
+      "type": "string",
+      "default": "diviceType"
+    },
+    "diviceType": {
+      "type": "string",
+      "required": true
+    },
+    "campain_name": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
