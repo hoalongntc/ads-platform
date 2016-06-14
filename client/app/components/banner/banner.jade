@@ -1,25 +1,25 @@
-div
+div(ng-show='ban.banner')
   .col-sm-8.col-sm-push-2.padding0.mainCampaign(style='position:absolute; background-color:rgba(192,192,192,0.5); margin: auto; height: 100%')
-    .col-xs-4.text-center(style='background-color:rgba(49,176,213,0.7);    margin-left: 20px; border-radius: 0px 0px 10px 10px; height: 25px; line-height: 25px; margin-bottom: 5px; color: #ffffff') Create Banner
     .clearfix
-    .col-md-4.hidden-xs.colCampaign(style='background-color: #585858; text-align: left; color: #ffffff; min-height: 450px')
-    .col-xs-12.col-md-8.colCampaign(style='background-color: #ffffff; height: 450px; margin: 0px 0px;')
+    .col-xs-12.colCampaign(style='background-color: #ffffff; height: 450px; margin: 0px 0px;')
       div.row
         div.col-xs-12
-          form(role=form)
+          form.form-horizontal(role=form)
             .titlestep3 Banner Information
-            .margin_create_ads
-              .col-xs-3.padding0
-                  span - Name:
-              .col-xs-9.padding0
-                input.cusInput(placeholder="Name")
-            .margin_create_ads
-              .col-xs-3.padding0
-                span - Type:
-              .col-xs-9.padding0
+            div.form-group
+              label.control-label.col-xs-2 Name:
+              div.col-xs-10
+                input.form-control.cusInput(placeholder="Name")
+            div.form-group
+              label.control-label.col-xs-2 Name:
+              div.col-xs-10
                 select#select_city_from.select_location_create_ads
                   option(value="standar") Image
                   option(value="rick") Html Code
+            div.form-group
+              div.col-xs-12
+                label#htmlCode Html Code:
+                textarea#htmlEditor(name="htmlEditor" rows="10" cols="80")
 
 
 
