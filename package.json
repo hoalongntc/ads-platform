@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "server/server.js",
   "scripts": {
-    "start": "gulp build && ./node_modules/.bin/babel-node server/server",
+    "start": "gulp build && './node_modules/.bin/babel-node' server/server",
     "dev-server": "gulp",
     "dev-client": "webpack-dev-server --history-api-fallback --progress",
     "build": "gulp build"
