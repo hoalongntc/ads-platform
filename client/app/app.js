@@ -21,6 +21,7 @@ import HomeCtrl from './components/home/home.controller';
 import NavCtrl from './components/nav/nav.controller';
 import LocationCtrl from './components/location/location.controller';
 import CampaignCtrl from './components/campaign/campaign.controller';
+import BannerCtrl from './components/banner/banner.controller';
 
 const app = angular.module('app', [blueBird, uirouter, lbServices, extensions]);
 app.config(routes);
@@ -28,3 +29,4 @@ app.controller('NavCtrl', NavCtrl);
 app.controller('HomeCtrl', HomeCtrl);
 app.controller('LocationCtrl', LocationCtrl);
 app.controller('CampaignCtrl', CampaignCtrl);
+app.controller('BannerCtrl', BannerCtrl);
