@@ -4,9 +4,9 @@
     "connector": "memory"
   },
   "mongo": {
-    "host": "127.0.0.1",
+    "host": "45.63.22.83",
     "port": 27017,
-    "url": "mongodb://127.0.0.1:27017/test",
+    "url": "mongodb://45.63.22.83:27017/test",
     "database": "test",
     "password": "",
     "name": "mongo",
