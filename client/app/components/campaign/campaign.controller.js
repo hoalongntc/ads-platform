@@ -1,8 +1,9 @@
 import $ from 'jquery'
 
 export default class CampaignCtrl {
-  constructor() {
+  constructor(Campaign) {
     this.setup();
+    this.Campaign = Campaign;
   }
 
   setup() {
@@ -31,12 +32,12 @@ export default class CampaignCtrl {
 
     this.ages = [];
     for (var i = 0; i < 45; i++) {
-      this.ages.push({id: i + 1, label: i + 1});
+      this.ages.push({ id: i + 1, label: i + 1 });
     }
 
     this.times = [];
     for (var i = 0; i < 24; i++) {
-      this.times.push({id: i + 1, label: i + 1 + ':00'});
+      this.times.push({ id: i + 1, label: i + 1 + ':00' });
     }
 
     this.agesfrom = this.ages[17];
@@ -58,7 +59,13 @@ export default class CampaignCtrl {
     });
   }
 
+  getSelectOption() {
+
+  }
+
   next1_1() {
+    if (!this.option || !this.option.step1)
+      return;
     this.showstep1 = false;
     this.next12 = true;
     switch (this.option.step1) {
