@@ -3,11 +3,28 @@
   "base": "PersistedModel",
   "strict": true,
   "idInjection": true,
+  "indexes": {
+    "key_index": {
+      "keys": {
+        "mac": 1,
+        "advertiserId": 1,
+        "campaignId": 1,
+        "bannerId": 1,
+        "hotspotId": 1
+      }
+    }
+  },
   "options": {
     "validateUpsert": true
   },
   "http": {
     "path": "/clicks"
+  },
+  "mixins": {
+    "TimeStamp": {
+      "validateUpsert": true,
+      "required": false
+    }
   },
   "properties": {
     "mac": {

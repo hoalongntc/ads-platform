@@ -1479,7 +1479,7 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.TrackingClick#new
+         * @name lbServices.TrackingClick#newWithPost
          * @methodOf lbServices.TrackingClick
          *
          * @description
@@ -1557,7 +1557,7 @@ module.factory(
          *
          *  - `clickId` – `{string=}` - 
          */
-        "new": {
+        "newWithPost": {
           url: urlBase + "/clicks/new",
           method: "POST"
         },

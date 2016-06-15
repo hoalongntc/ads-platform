@@ -10,7 +10,8 @@
       "loopback/common/mixins",
       "loopback/server/mixins",
       "../common/mixins",
-      "./mixins"
+      "./mixins",
+      "../node_modules/loopback-ds-timestamp-mixin"
     ]
   },
   "accessToken": {
@@ -94,6 +95,10 @@
     "public": false
   },
   "TrackingImpression5": {
+    "dataSource": "mongo",
+    "public": false
+  },
+  "TrackingClick7": {
     "dataSource": "mongo",
     "public": false
   }

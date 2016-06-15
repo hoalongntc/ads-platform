@@ -1,8 +1,9 @@
 import lodash from 'lodash';
+import moment from 'moment';
 import Promise from 'bluebird';
-import { getMethodArguments } from '../utils';
+import {getMethodArguments, standardizeMacAddress, standardizeGender} from '../utils';
 
-module.exports = function(TrackingClick) {
+module.exports = function (TrackingClick) {
   /**
    * Hiding all methods
    * */
@@ -36,6 +37,7 @@ module.exports = function(TrackingClick) {
         } else {
           // Create new
           opts.count = 1;
+          opts.trackingDate = keys.trackingDate;
           return model.create(opts);
         }
       })
@@ -45,9 +47,10 @@ module.exports = function(TrackingClick) {
       });
   };
 
-  TrackingClick.new = function() {
+  TrackingClick.newWithDate = function () {
     const models = TrackingClick.app.models;
     const cb = arguments[arguments.length - 1];
+    const trackingDate = arguments[arguments.length - 2] || moment().startOf('day');
     const opts = getMethodArguments(TrackingClick, 'new', true, arguments);
     const trackingClicks = [];
 
@@ -57,21 +60,22 @@ module.exports = function(TrackingClick) {
     // Insert to Tracking1
     if (opts.mac) {
       trackingClicks.push(upsertTrackingClick(models.TrackingClick1,
-        { mac: opts.mac },
+        {mac: opts.mac},
         opts));
     }
 
     // Insert to Tracking2
     if (opts.mac && opts.advertiserId) {
       trackingClicks.push(upsertTrackingClick(models.TrackingClick2,
-        { mac: opts.mac, advertiserId: opts.advertiserId },
+        {mac: opts.mac, advertiserId: opts.advertiserId},
         opts));
     }
 
     // Insert to Tracking3
     if (opts.mac && opts.advertiserId && opts.campaignId) {
       trackingClicks.push(upsertTrackingClick(models.TrackingClick3,
-        { mac: opts.mac,
+        {
+          mac: opts.mac,
           advertiserId: opts.advertiserId,
           campaignId: opts.campaignId
         },
@@ -81,7 +85,8 @@ module.exports = function(TrackingClick) {
     // Insert to Tracking4
     if (opts.mac && opts.advertiserId && opts.campaignId && opts.bannerId) {
       trackingClicks.push(upsertTrackingClick(models.TrackingClick4,
-        { mac: opts.mac,
+        {
+          mac: opts.mac,
           advertiserId: opts.advertiserId,
           campaignId: opts.campaignId,
           bannerId: opts.bannerId
@@ -92,7 +97,8 @@ module.exports = function(TrackingClick) {
     // Insert to Tracking5
     if (opts.mac && opts.advertiserId && opts.campaignId && opts.hotspotId) {
       trackingClicks.push(upsertTrackingClick(models.TrackingClick5,
-        { mac: opts.mac,
+        {
+          mac: opts.mac,
           advertiserId: opts.advertiserId,
           campaignId: opts.campaignId,
           hotspotId: opts.hotspotId
@@ -103,7 +109,8 @@ module.exports = function(TrackingClick) {
     // Insert to Tracking6
     if (opts.mac && opts.advertiserId && opts.campaignId && opts.bannerId && opts.hotspotId) {
       trackingClicks.push(upsertTrackingClick(models.TrackingClick6,
-        { mac: opts.mac,
+        {
+          mac: opts.mac,
           advertiserId: opts.advertiserId,
           campaignId: opts.campaignId,
           bannerId: opts.bannerId,
@@ -112,7 +119,21 @@ module.exports = function(TrackingClick) {
         opts));
     }
 
-    Promise
+    // Insert to Tracking7
+    if (opts.mac && opts.advertiserId && opts.campaignId && opts.bannerId && opts.hotspotId) {
+      trackingClicks.push(upsertTrackingClick(models.TrackingClick7,
+        {
+          mac: opts.mac,
+          advertiserId: opts.advertiserId,
+          campaignId: opts.campaignId,
+          bannerId: opts.bannerId,
+          hotspotId: opts.hotspotId,
+          trackingDate: trackingDate
+        },
+        opts));
+    }
+
+    return Promise
       .all(trackingClicks)
       .then(data => {
         // Update total click to Campaign ??
@@ -120,6 +141,12 @@ module.exports = function(TrackingClick) {
       })
       .catch(cb);
   };
+
+  TrackingClick.new = function() {
+    arguments.splice(arguments.length - 1, 0, moment().startOf('day'));
+    return TrackingClick.newWithDate.apply(TrackingClick, arguments);
+  };
+  TrackingClick.newWithPost = TrackingClick.new;
 
   const clickMethodOptions = {
     description: 'Tracking a click from user',
@@ -159,9 +186,16 @@ module.exports = function(TrackingClick) {
     returns: {arg: 'clickId', type: 'string'}
   };
   TrackingClick.remoteMethod('new', lodash.extend({http: {verb: 'get'}}, clickMethodOptions));
-  TrackingClick.remoteMethod('new', clickMethodOptions);
+  TrackingClick.remoteMethod('newWithPost', lodash.extend({http: {path: '/new'}}, clickMethodOptions));
+  TrackingClick.observe('before save', (ctx, next) => {
+    if (ctx.instance) {
+      ctx.instance.mac = standardizeMacAddress(ctx.instance.mac);
+      ctx.instance.gender = standardizeGender(ctx.instance.gender);
+    } else {
+      ctx.data.mac = standardizeMacAddress(ctx.data.mac);
+      ctx.data.gender = standardizeGender(ctx.data.gender);
+    }
 
-  /**
-   * Remote hook: normalize options
-   * */
+    next();
+  });
 };
