@@ -97,7 +97,7 @@
     "dataSource": "mongo",
     "public": false
   },
-  "campaign": {
+  "Campaign": {
     "dataSource": "mongo",
     "public": true
   }

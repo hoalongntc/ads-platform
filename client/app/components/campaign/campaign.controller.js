@@ -1,9 +1,16 @@
 import $ from 'jquery'
 
 export default class CampaignCtrl {
-  constructor(Campaign) {
+  constructor(Campaign, CommonData) {
     this.setup();
     this.Campaign = Campaign;
+    CommonData.cities()
+      .then((data) => {
+        console.log('Cities', data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   }
 
   setup() {
