@@ -18,13 +18,13 @@
     },
     "htmlCode": {
       "type": "string",
-      "default": "diviceType"
+      "required": true
     },
-    "diviceType": {
+    "deviceType": {
       "type": "string",
       "required": true
     },
-    "campain_name": {
+    "campaign_name": {
       "type": "string"
     }
   },
