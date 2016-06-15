@@ -101,5 +101,9 @@
   "TrackingClick7": {
     "dataSource": "mongo",
     "public": false
+  },
+  "Campaign": {
+    "dataSource": "mongo",
+    "public": true
   }
 }
