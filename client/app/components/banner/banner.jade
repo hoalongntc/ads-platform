@@ -1,25 +1,40 @@
 div(ng-show='ban.banner')
   .col-sm-8.col-sm-push-2.padding0.mainCampaign(style='position:absolute; background-color:rgba(192,192,192,0.5); margin: auto; height: 100%')
+    .col-xs-4.text-center(style='background-color:rgba(49,176,213,0.7);    margin-left: 20px; border-radius: 0px 0px 10px 10px; height: 25px; line-height: 25px; margin-bottom: 5px; color: #ffffff') Banner
     .clearfix
-    .col-xs-12.colCampaign(style='background-color: #ffffff; height: 450px; margin: 0px 0px;')
+    .col-xs-12.colCampaign(style='background-color: #ffffff; margin: 0px 0px;')
       div.row
         div.col-xs-12
-          form.form-horizontal(role=form)
+          form.form-horizontal(role="form" name="bannerForm" ng-submit="ban.edit()")
             .titlestep3 Banner Information
-            div.form-group
+            div.form-group(class="{{(!bannerForm.name.$valid && bannerForm.name.$touched)?'has-error':''}}")
               label.control-label.col-xs-2 Name:
               div.col-xs-10
-                input.form-control.cusInput(placeholder="Name")
-            div.form-group
-              label.control-label.col-xs-2 Name:
+                input.form-control.cusInput(placeholder="Name" ng-model="ban.pojo.name" name="name" required)
+            div.form-group(class="{{(!bannerForm.type.$valid && bannerForm.type.$touched)?'has-error':''}}")
+              label.control-label.col-xs-2 Type:
               div.col-xs-10
-                select#select_city_from.select_location_create_ads
+                select#select_city_from.select_location_create_ads(ng-model="ban.pojo.type" name="type" required)
                   option(value="standar") Image
                   option(value="rick") Html Code
+            div.form-group(class="{{(!bannerForm.divice.$valid && bannerForm.divice.$touched)?'has-error':''}}")
+              label.control-label.col-xs-2 Divice:
+              div.col-xs-10
+                select#select_divice.select_location_create_ads(ng-model="ban.pojo.diviceType" name="divice" required)
+                  option(value="all") All
+                  option(value="mobile") Mobile
+                  option(value="desktop") Desktop
+            div.form-group
+              label.control-label.col-xs-2 Campaign:
+              div.col-xs-10
+                select#select_campaign.select_location_create_ads
             div.form-group
               div.col-xs-12
                 label#htmlCode Html Code:
-                textarea#htmlEditor(name="htmlEditor" rows="10" cols="80")
+                textarea#htmlEditor(name="htmlEditor" rows="10" cols="80" ng-model="ban.pojo.htmlCode")
+            div
+              button.btn.btn-primary(ng-show="!angular.isUndefined(ban.pojo.id)" ) Submit
+              button.btn.btn-primary(ng-show="angular.isUndefined(ban.pojo.id)" ) Edit
 
 
 
