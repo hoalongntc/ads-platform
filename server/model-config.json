@@ -98,10 +98,13 @@
     "dataSource": "mongo",
     "public": false
   },
+<<<<<<< HEAD
   "TrackingClick7": {
     "dataSource": "mongo",
     "public": false
   },
+=======
+>>>>>>> d93bc717a6d86293573246526de77a10ced5f73c
   "Campaign": {
     "dataSource": "mongo",
     "public": true
