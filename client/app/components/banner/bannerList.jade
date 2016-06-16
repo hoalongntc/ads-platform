@@ -1,0 +1,33 @@
+div
+  .col-sm-8.col-sm-push-2.padding0.mainCampaign(style='position:absolute; background-color:rgba(192,192,192,0.5); margin: auto; height: 100%')
+    .col-xs-4.text-center(style='background-color:rgba(49,176,213,0.7);    margin-left: 20px; border-radius: 0px 0px 10px 10px; height: 25px; line-height: 25px; margin-bottom: 5px; color: #ffffff') Banner
+    .clearfix
+    .col-xs-12.colCampaign(style='background-color: #ffffff; margin: 0px 0px;')
+      div.row
+        div.col-xs-12
+          div.pull-right.padding-3
+            a.btn.btn-primary(ui-sref='banner') Create New
+          table.table.table-striped
+            thead
+              tr
+                th Name
+                th Type
+                th Divice Type
+                th code
+            tbody
+              tr(ng-repeat="banner in banList.listBanner")
+                td {{banner.name}}
+                td {{banner.type}}
+                td {{banner.deviceType}}
+                td {{banner.htmlCode}}
+          div
+            span Total: {{banList.total.count}}
+          ul.pagination.pull-right
+            li(ng-repeat="page in banList.pageList")
+              a(href="#") {{page}}
+
+
+
+
+
+

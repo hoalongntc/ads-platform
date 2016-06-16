@@ -8,13 +8,16 @@ export default class BannerCtrl {
     // assign rich text manualy because
     // ckeditor plugin cannot bind data directly with ng-model
     this.pojo.htmlCode=CKEDITOR.instances.htmlEditor.getData();
-    this.pojo = this.Banner.create(this.pojo)
-    
+    if(!this.pojo.id){
+      this.pojo = this.Banner.create(this.pojo)
+    }else{
+      this.pojo.$save()
+    }
+    this.actionSuccess = true
   }
   setup() {
     this.banner = true;
     this.pojo={}
-
     //innit ckeditor plugin for richtext
     CKEDITOR.replace( 'htmlEditor' );
   }
