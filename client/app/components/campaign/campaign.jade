@@ -43,41 +43,45 @@ div(ng-show='cam.campaign')
       // Campaign
       #step1(ng-show='cam.showstep1')
         ul.nav.h410(style='overflow: auto')
-          li
-            input#op1(type='radio', name='checkradio', style='display: none', ng-model='cam.option.step1', value='option1')
-            label.step1-ot(for='op1')
-              i.fa.fa-globe.fa-lg
-              |       Send people to website
-          li
-            input#op2(type='radio', name='checkradio', style='display: none', ng-model='cam.option.step1', value='option2')
-            label.step1-ot(for='op2')
+          //- li
+          //-   input#op1(type='radio', name='checkradio', style='display: none', ng-model='cam.option.step1', value='option1')
+          //-   label.step1-ot(for='op1')
+          //-     i.fa.fa-globe.fa-lg
+          //-     |       Send people to website
+          //- li
+          //-   input#op2(type='radio', name='checkradio', style='display: none', ng-model='cam.option.step1', value='option2')
+          //-   label.step1-ot(for='op2')
+          //-     i.fa.fa-play-circle-o.fa-lg
+          //-     |       Get video views
+          //- li
+          //-   input#op3(type='radio', name='checkradio', style='display: none', ng-model='cam.option.step1', value='option3')
+          //-   label.step1-ot(for='op3')
+          //-     i.fa.fa-heartbeat.fa-lg
+          //-     |       Get engagement
+          //- li
+          //-   input#op4(type='radio', name='checkradio', style='display: none', ng-model='cam.option.step1', value='option4')
+          //-   label.step1-ot(for='op4')
+          //-     i.fa.fa-group.fa-lg
+          //-     |       Raise attendance at your event
+          //- li
+          //-   input#op5(type='radio', name='checkradio', style='display: none', ng-model='cam.option.step1', value='option5')
+          //-   label.step1-ot(for='op5')
+          //-     i.fa.fa-retweet.fa-lg
+          //-     |       Get people to claim your offer
+          //- li
+          //-   input#op6(type='radio', name='checkradio', style='display: none', ng-model='cam.option.step1', value='option6')
+          //-   label.step1-ot(for='op6')
+          //-     i.fa.fa-file-text-o.fa-lg
+          //-     |       Collect leads for your business
+          li(ng-repeat='cc in cam.campaignCategories')
+            input(ng-attr-id='{{cc.value}}' ,type='radio', name='checkradio', style='display: none', ng-model='cam.option.step1', value='{{cc.value}}')
+            label.step1-ot(for='{{cc.value}}')
               i.fa.fa-play-circle-o.fa-lg
-              |       Get video views
-          li
-            input#op3(type='radio', name='checkradio', style='display: none', ng-model='cam.option.step1', value='option3')
-            label.step1-ot(for='op3')
-              i.fa.fa-heartbeat.fa-lg
-              |       Get engagement
-          li
-            input#op4(type='radio', name='checkradio', style='display: none', ng-model='cam.option.step1', value='option4')
-            label.step1-ot(for='op4')
-              i.fa.fa-group.fa-lg
-              |       Raise attendance at your event
-          li
-            input#op5(type='radio', name='checkradio', style='display: none', ng-model='cam.option.step1', value='option5')
-            label.step1-ot(for='op5')
-              i.fa.fa-retweet.fa-lg
-              |       Get people to claim your offer
-          li
-            input#op6(type='radio', name='checkradio', style='display: none', ng-model='cam.option.step1', value='option6')
-            label.step1-ot(for='op6')
-              i.fa.fa-file-text-o.fa-lg
-              |       Collect leads for your business
+              |       {{cc.text}}
         .col-xs-12(style='height: 40px; line-height: 40px;')
           span(style='float: left') 1/2
           span(style='float: right')
             button#next.btn.radius-50.btn-default.btn-sm(style='width: 150px; margin-right: 0px', ng-click='cam.next1_1()') Next
-      .h410(ng-show='cam.showstep1_1') option1
       .h410(ng-show='cam.showstep1_2')
         label.step1-ot(for='op1', style='background-color: #2A86D1; color: #ffffff')
           i.fa.fa-globe.fa-lg
@@ -94,10 +98,6 @@ div(ng-show='cam.campaign')
             br
             input(type='radio', name='brand', value='X-men Boss')
             label(for='')    X-men Boss
-      .h410(ng-show='cam.showstep1_3') option3
-      .h410(ng-show='cam.showstep1_4') option4
-      .h410(ng-show='cam.showstep1_5') option5
-      .h410(ng-show='cam.showstep1_6') option6
       .col-xs-12(style='height: 40px; line-height: 40px;', ng-show='cam.next12')
         span(style='float: left') 2/2
         span(style='float: right')
