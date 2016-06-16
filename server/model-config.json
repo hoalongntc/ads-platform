@@ -42,7 +42,7 @@
     "dataSource": "mongo",
     "public": true
   },
-  "Hotspot": {
+  "Location": {
     "dataSource": "mongo",
     "public": true
   },

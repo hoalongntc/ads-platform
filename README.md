@@ -35,6 +35,11 @@ Start development client server. Default client server will start at [localhost:
 npm run dev-client
 ```
 
+### Init database
+```
+./node_modules/.bin/node-babel tasks/init-db
+```
+
 ### Folder structure
 ```
 .
