@@ -11,9 +11,19 @@ export default class BannerListCtrl {
     this.Banner.count().$promise.then((result)=>{
       this.total = result;
       let totalPage = parseInt(this.total.count/50)+1
-      this.pageList = (new Array(totalPage)).map((i,index)=>(index));
+      this.pageList = Array.apply(null, {length: totalPage}).map((item,index)=>(index+1))
     });
 
+  }
+  alertDelete(banner){
+    this.deleteBanerConfirm = banner
+    $("#deleteAlert").modal()
+  }
+  deleteBanner(banner){
+    this.Banner.deleteById({ id: banner.id }).$promise.then(()=>{
+      this.load();
+      $("#deleteAlert").modal('hide');
+    })
   }
   setup() {
     this.currentPage = 1;

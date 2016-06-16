@@ -1,8 +1,19 @@
 div
-  .col-sm-8.col-sm-push-2.padding0.mainCampaign(style='position:absolute; background-color:rgba(192,192,192,0.5); margin: auto; height: 100%')
-    .col-xs-4.text-center(style='background-color:rgba(49,176,213,0.7);    margin-left: 20px; border-radius: 0px 0px 10px 10px; height: 25px; line-height: 25px; margin-bottom: 5px; color: #ffffff') Banner
+  div.modal.fade#deleteAlert(role="dialog")
+    div.modal-dialog
+      div.modal-content
+        div.modal-header
+          button.close(type="button" data-dismiss="modal") &times;
+          h4.modal-title Confirm delete this banner name <strong>{{banList.deleteBanerConfirm.name}}</strong> ?
+        div.modal-body
+          p This action cannot recover, removed data will be gone forever!
+        div.modal-footer
+          button.btn.btn-default(type="button" data-dismiss="modal") Cancel
+          button.btn.btn-warning(type="button" data-dismiss="modal" ng-click="banList.deleteBanner(banList.deleteBanerConfirm)") Yes
+  .col-sm-8.col-sm-push-2.padding0.mainCampaign(style='position:absolute; background-color:rgba(192,192,192,0.5); margin: auto;')
+    .col-xs-4.text-center(style='background-color:rgba(49,176,213,0.7);margin-left: 20px; border-radius: 0px 0px 10px 10px; height: 25px; line-height: 25px; margin-bottom: 5px; color: #ffffff') Banner
     .clearfix
-    .col-xs-12.colCampaign(style='background-color: #ffffff; margin: 0px 0px;')
+    .col-xs-12.colCampaign(style='background-color: #ffffff; margin-bottom: 60px;')
       div.row
         div.col-xs-12
           div.pull-right.padding-3
@@ -13,13 +24,19 @@ div
                 th Name
                 th Type
                 th Divice Type
-                th code
+                th Code
+                th Action
             tbody
-              tr(ng-repeat="banner in banList.listBanner")
-                td {{banner.name}}
-                td {{banner.type}}
-                td {{banner.deviceType}}
-                td {{banner.htmlCode}}
+              tr(ng-repeat="bannerItem in banList.listBanner")
+                td {{bannerItem.name}}
+                td {{bannerItem.type}}
+                td {{bannerItem.deviceType}}
+                td {{bannerItem.htmlCode}}
+                td
+                 a.margin-right-5(ui-sref='banner({id:"{{bannerItem.id}}"})')
+                  i.fa.fa-edit
+                 a.btn.margin-right-5(ng-click='banList.alertDelete(bannerItem)')
+                  i.fa.fa-remove
           div
             span Total: {{banList.total.count}}
           ul.pagination.pull-right

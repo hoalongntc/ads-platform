@@ -1,8 +1,8 @@
 div(ng-show='ban.banner')
-  .col-sm-8.col-sm-push-2.padding0.mainCampaign(style='position:absolute; background-color:rgba(192,192,192,0.5); margin: auto; height: 100%')
+  .col-sm-8.col-sm-push-2.padding0.mainCampaign(style='position:absolute; background-color:rgba(192,192,192,0.5); margin: auto;')
     .col-xs-4.text-center(style='background-color:rgba(49,176,213,0.7);    margin-left: 20px; border-radius: 0px 0px 10px 10px; height: 25px; line-height: 25px; margin-bottom: 5px; color: #ffffff') Banner
     .clearfix
-    .col-xs-12.colCampaign(style='background-color: #ffffff; margin: 0px 0px;')
+    .col-xs-12.colCampaign(style='background-color: #ffffff; margin-bottom: 60px;')
       div.row.margin-10
         div.col-xs-12
           form.form-horizontal(role="form" name="bannerForm" ng-submit="ban.edit()")
@@ -25,10 +25,7 @@ div(ng-show='ban.banner')
                   option(value="all") All
                   option(value="mobile") Mobile
                   option(value="desktop") Desktop
-            div.form-group
-              label.control-label.col-xs-2 Campaign:
-              div.col-xs-10
-                select#select_campaign.select_location_create_ads
+
             div.form-group
               div.col-xs-12
                 label#htmlCode Html Code:

@@ -18,7 +18,7 @@ export default function routes($stateProvider, $urlRouterProvider) {
       controllerAs: 'cam'
     })
     .state('banner', {
-      url: '/banner',
+      url: '/banner/:id?',
       templateUrl: require('./components/banner/banner.jade'),
       controller: 'BannerCtrl',
       controllerAs: 'ban'
@@ -30,7 +30,7 @@ export default function routes($stateProvider, $urlRouterProvider) {
       controllerAs: 'loc'
     })
   .state('bannerList', {
-      url: '/banner/list',
+      url: '/banners',
       templateUrl: require('./components/banner/bannerList.jade'),
       controller: 'BannerListCtrl',
       controllerAs: 'banList'

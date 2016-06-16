@@ -1,8 +1,9 @@
 
 export default class BannerCtrl {
-  constructor(Banner) {
+  constructor(Banner,state) {
     this.Banner =Banner;
-    this.setup();
+    console.log(state)
+    this.setup(state.params);
   }
   edit(){
     // assign rich text manualy because
@@ -15,11 +16,23 @@ export default class BannerCtrl {
     }
     this.actionSuccess = true
   }
-  setup() {
+  setup(params) {
     this.banner = true;
     this.pojo={}
+
+    if(params.id){
+      this.Banner.findById({id:params.id}).$promise.then(result=>{
+        this.pojo = result;
+        CKEDITOR.replace( 'htmlEditor' );
+      }).catch(error=>{
+        this.actionError = true;
+      });
+    }else{
+       CKEDITOR.replace( 'htmlEditor' );
+    }
     //innit ckeditor plugin for richtext
-    CKEDITOR.replace( 'htmlEditor' );
+
   }
+  
 }
-BannerCtrl.$inject = ['Banner'];
+BannerCtrl.$inject = ['Banner','$state'];
