@@ -2,7 +2,7 @@ nav.site-navbar.navbar.navbar-default.navbar-fixed-top.navbar-mega(role='navigat
   .navbar-header
     button.navbar-toggle.collapsed(type='button', data-target='#site-navbar-collapse', data-toggle='collapse')
       i.fa.fa-navicon
-    .navbar-brand.navbar-brand-center.site-gridmenu-toggle(data-toggle='gridmenu')
+    a.navbar-brand.navbar-brand-center.site-gridmenu-toggle(data-toggle='gridmenu', data-sref='locations')
       img.navbar-brand-logo(src='../../../assets/images/logo.png', title='Remark')
   .navbar-container.container-fluid
     // Navbar Collapse
@@ -10,9 +10,9 @@ nav.site-navbar.navbar.navbar-default.navbar-fixed-top.navbar-mega(role='navigat
       // Navbar Toolbar Right
       ul.nav.navbar-toolbar.navbar-right.navbar-toolbar-right
         li(ui-sref-active='active')
-          a(ui-sref='locations')
+          a(ui-sref='dashboard')
             i.fa.fa-location-arrow.fa-1x
-            span.location.none.hidden-xs Location
+            span.location.none.hidden-xs Dashboard
         li(ui-sref-active='active')
           a(ui-sref='users')
             i.fa.fa-users.fa-1x
@@ -34,9 +34,9 @@ nav.site-navbar.navbar.navbar-default.navbar-fixed-top.navbar-mega(role='navigat
             i.fa.fa-area-chart.fa-1x
             span.report.none.hidden-xs Report
         li(ui-sref-active='active')
-          a(ui-sref='hotspots')
-            i.fa.fa-wifi.fa-1x
-            span.hotspots.none.hidden-xs Hotspots
+          a(ui-sref='locations')
+            i.fa.fa-map-marker.fa-1x
+            span.hotspots.none.hidden-xs Location
         li.dropdown.navbar-user
           a.navbar-avatar.dropdown-toggle(data-toggle='dropdown', aria-expanded='false', data-animation='scale-up', role='button')
             span.username.hidden-xs Nguyen Huu Tung

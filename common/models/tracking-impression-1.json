@@ -6,8 +6,8 @@
   "indexes": {
     "key_index": {
       "keys": {
-        "mac": 1,
-        "reportEpoch": 1
+        "advertiserId": 1,
+        "trackingDate": -1
       },
       "options": {
         "unique": true
@@ -18,16 +18,19 @@
     "validateUpsert": true
   },
   "properties": {
-    "mac": {
+    "advertiserId": {
       "type": "string",
       "required": true
+    },
+    "advertiserName": {
+      "type": "string"
     },
     "count": {
       "type": "number",
       "default": "1"
     },
-    "reportEpoch": {
-      "type": "number"
+    "trackingDate": {
+      "type": "date"
     }
   },
   "validations": [],

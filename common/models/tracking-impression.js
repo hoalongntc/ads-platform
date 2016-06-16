@@ -1,7 +1,7 @@
 import lodash from 'lodash';
 import moment from 'moment';
 import Promise from 'bluebird';
-import { getMethodArguments } from '../utils';
+import { getMethodArguments, standardizeMacAddress } from '../utils';
 
 module.exports = function(TrackingImpression) {
 
@@ -21,15 +21,14 @@ module.exports = function(TrackingImpression) {
   TrackingImpression.disableRemoteMethod('createChangeStream', true);
 
   const upsertTrackingImpression = (model, keys, imOpts) => {
-    const opts = lodash.cloneDeep(imOpts);
-
     return Promise
       .all([
-        model.findOne({where: lodash.extend(keys, {reportEpoch: null})}),
-        model.findOne({where: lodash.extend(keys, {reportEpoch: moment().startOf('day').valueOf()})})
+        model.findOne({where: lodash.extend({}, keys, {trackingDate: null})}),
+        model.findOne({where: keys})
       ])
       .then(objs => {
         return Promise.all(objs.map((obj, index) => {
+          const opts = lodash.cloneDeep(imOpts);
           if (obj) {
             for (const key in keys) {
               delete opts[key];
@@ -39,8 +38,7 @@ module.exports = function(TrackingImpression) {
           } else {
             // Create new
             opts.count = 1;
-            opts.reportEpoch = (index == 0 ? null : moment().startOf('day').valueOf());
-
+            opts.trackingDate = (index == 0 ? null : keys.trackingDate);
             return model.create(opts);
           }
         }));
@@ -50,67 +48,80 @@ module.exports = function(TrackingImpression) {
         return Promise.resolve(false);
       });
   };
-  TrackingImpression.new = function () {
+  TrackingImpression.newWithDate = function () {
     const models = TrackingImpression.app.models;
     const cb = arguments[arguments.length - 1];
+    const trackingDate = arguments[arguments.length - 2] || moment().startOf('day');
     const opts = getMethodArguments(TrackingImpression, 'new', true, arguments);
     const trackingImpressions = [];
 
     if (opts.mac && opts.advertiserId && opts.campaignId && opts.bannerId && opts.hotspotId) {
       trackingImpressions.push(upsertTrackingImpression(TrackingImpression,
-        { mac: opts.mac,
+        {
+          mac: opts.mac,
           advertiserId: opts.advertiserId,
           campaignId: opts.campaignId,
           bannerId: opts.bannerId,
-          hotspotId: opts.hotspotId
+          hotspotId: opts.hotspotId,
+          trackingDate: trackingDate
         },
         opts
       ));
     }
 
-    if (opts.mac) {
+    if (opts.advertiserId) {
       trackingImpressions.push(upsertTrackingImpression(models.TrackingImpression1,
-        { mac: opts.mac },
+        {
+          advertiserId: opts.advertiserId,
+          trackingDate: trackingDate
+        },
         opts
       ));
     }
 
-    if (opts.mac && opts.advertiserId) {
+    if (opts.advertiserId && opts.campaignId) {
       trackingImpressions.push(upsertTrackingImpression(models.TrackingImpression2,
-        { mac: opts.mac,
-          advertiserId: opts.advertiserId
+        {
+          advertiserId: opts.advertiserId,
+          campaignId: opts.campaignId,
+          trackingDate: trackingDate
         },
         opts
       ));
     }
 
-    if (opts.mac && opts.advertiserId && opts.campaignId) {
+    if (opts.advertiserId && opts.campaignId && opts.bannerId) {
       trackingImpressions.push(upsertTrackingImpression(models.TrackingImpression3,
-        { mac: opts.mac,
+        {
           advertiserId: opts.advertiserId,
-          campaignId: opts.campaignId
+          campaignId: opts.campaignId,
+          bannerId: opts.bannerId,
+          trackingDate: trackingDate
         },
         opts
       ));
     }
 
-    if (opts.mac && opts.advertiserId && opts.campaignId && opts.bannerId) {
+    if (opts.advertiserId && opts.campaignId && opts.hotspotId) {
       trackingImpressions.push(upsertTrackingImpression(models.TrackingImpression4,
-        { mac: opts.mac,
+        {
           advertiserId: opts.advertiserId,
           campaignId: opts.campaignId,
-          bannerId: opts.bannerId
+          hotspotId: opts.hotspotId,
+          trackingDate: trackingDate
         },
         opts
       ));
     }
 
-    if (opts.mac && opts.advertiserId && opts.campaignId && opts.hotspotId) {
+    if (opts.advertiserId && opts.campaignId && opts.bannerId && opts.hotspotId) {
       trackingImpressions.push(upsertTrackingImpression(models.TrackingImpression5,
-        { mac: opts.mac,
+        {
           advertiserId: opts.advertiserId,
           campaignId: opts.campaignId,
-          hotspotId: opts.hotspotId
+          bannerId: opts.bannerId,
+          hotspotId: opts.hotspotId,
+          trackingDate: trackingDate
         },
         opts
       ));
@@ -118,10 +129,13 @@ module.exports = function(TrackingImpression) {
 
     Promise
       .all(trackingImpressions)
-      .then(data => {
-        cb(null, data && data[0] && data[0][0] && data[0][0].count);
-      })
+      .then(data => cb(null, data && data[5] && data[5][0] && data[5][0].count))
       .catch(cb);
+  };
+
+  TrackingImpression.new = function() {
+    arguments.splice(arguments.length - 1, 0, moment().startOf('day'));
+    return TrackingImpression.newWithDate.apply(TrackingImpression, arguments);
   };
 
   const impressMethodOptions = {
@@ -141,4 +155,8 @@ module.exports = function(TrackingImpression) {
   };
   TrackingImpression.remoteMethod('new', lodash.extend({http: {verb: 'get'}}, impressMethodOptions));
   TrackingImpression.remoteMethod('new', impressMethodOptions);
+  TrackingImpression.beforeRemote('new', (ctx, unused, next) => {
+    ctx.args.mac = standardizeMacAddress(ctx.args.mac);
+    next();
+  });
 };

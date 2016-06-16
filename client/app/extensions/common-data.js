@@ -32,13 +32,13 @@ export default class CommonData {
       });
   }
 
-  hotspotCategories() {
-    if (this._hotspotCategories)
-      return this.Promise.resolve(this._hotspotCategories);
+  locationCategories() {
+    if (this._locationCategories)
+      return this.Promise.resolve(this._locationCategories);
 
-    return this.SelectOption.hotspotCategories().$promise
+    return this.SelectOption.locationCategories().$promise
       .then((data) => {
-        this._hotspotCategories = data;
+        this._locationCategories = data;
         return this.Promise.resolve(data);
       })
       .catch((err) => {

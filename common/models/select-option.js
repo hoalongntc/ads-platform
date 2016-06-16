@@ -38,14 +38,14 @@ module.exports = function(SelectOption) {
     returns: {type: 'array', root: true}
   });
 
-  SelectOption.hotspotCategories = (cb) => {
-    SelectOption.find({where: {type: 'hotspot_category'}, fields: {type: 0}}, (err, response) => {
+  SelectOption.locationCategories = (cb) => {
+    SelectOption.find({where: {type: 'location_category'}, fields: {type: 0}}, (err, response) => {
       if (err) return cb(err, null);
       cb(null, response);
     });
   };
-  SelectOption.remoteMethod('hotspotCategories', {
-    http: {verb: 'get', path: '/hotspots/categories'},
+  SelectOption.remoteMethod('locationCategories', {
+    http: {verb: 'get', path: '/locations/categories'},
     returns: {type: 'array', root: true}
   });
 };

@@ -1,4 +1,4 @@
 import 'jquery'
 import 'bootstrap/dist/js/bootstrap';
-import './jquery.nicescroll'
-import './bootstrap-datetimepicker.min'
+import './vendor/jquery.nicescroll'
+import './vendor/bootstrap-datetimepicker.min'

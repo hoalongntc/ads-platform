@@ -6,11 +6,11 @@
   "indexes": {
     "key_index": {
       "keys": {
-        "mac": 1,
         "advertiserId": 1,
         "campaignId": 1,
+        "bannerId": 1,
         "hotspotId": 1,
-        "reportEpoch": 1
+        "trackingDate": -1
       },
       "options": {
         "unique": true
@@ -21,10 +21,6 @@
     "validateUpsert": true
   },
   "properties": {
-    "mac": {
-      "type": "string",
-      "required": true
-    },
     "advertiserId": {
       "type": "string",
       "required": true
@@ -39,6 +35,13 @@
     "campaignName": {
       "type": "string"
     },
+    "bannerId": {
+      "type": "string",
+      "required": true
+    },
+    "bannerName": {
+      "type": "string"
+    },
     "hotspotId": {
       "type": "string",
       "required": true
@@ -50,8 +53,8 @@
       "type": "number",
       "default": "1"
     },
-    "reportEpoch": {
-      "type": "number"
+    "trackingDate": {
+      "type": "date"
     }
   },
   "validations": [],
