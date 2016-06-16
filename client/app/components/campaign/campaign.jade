@@ -155,13 +155,14 @@ div(ng-show='cam.campaign')
               span - City:
             .col-xs-9.padding0
               select.select_location_create_ads
+                option(ng-repeat="city in cam.cities", ng-value="city.value"){{city.text}}
           .clearfix
           .margin_create_ads
             .col-xs-3.padding0
               span - Category:
             .col-xs-9.padding0
               select.select_location_create_ads
-                option
+                option(ng-repeat="lc in cam.locationCategories", ng-value="lc.value"){{lc.text}}
           .clearfix
           .margin_create_ads
             .col-xs-3.padding0

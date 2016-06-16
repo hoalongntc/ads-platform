@@ -18,9 +18,10 @@ export default class CampaignCtrl {
       .catch((err) => {
         console.error(err);
       });
-    CommonData.cities()
+    CommonData.locationCategories()
       .then((data) => {
-        this.cities = data;
+        this.locationCategories = data;
+        console.log(data);
       })
       .catch((err) => {
         console.error(err);
