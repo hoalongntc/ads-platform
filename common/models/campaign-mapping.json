@@ -1,0 +1,38 @@
+{
+  "name": "CampaignMapping",
+  "plural": "CampaignMappings",
+  "base": "PersistedModel",
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "campaignId": {
+      "type": "string",
+      "required": true
+    },
+    "campaignName": {
+      "type": "string",
+      "required": true
+    },
+    "hotspotId": {
+      "type": "string",
+      "required": true
+    },
+    "audience": {
+      "type": "string",
+      "required": true
+    },
+    "priority": {
+      "type": "number",
+      "required": true
+    },
+    "kpiPerDay": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

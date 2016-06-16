@@ -1,6 +1,6 @@
 {
   "name": "Campaign",
-  "plural": "campains",
+  "plural": "Campaigns",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
