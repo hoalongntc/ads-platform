@@ -134,7 +134,7 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.SelectOption#hotspotCategories
+         * @name lbServices.SelectOption#locationCategories
          * @methodOf lbServices.SelectOption
          *
          * @description
@@ -163,9 +163,9 @@ module.factory(
          * This usually means the response is a `SelectOption` object.)
          * </em>
          */
-        "hotspotCategories": {
+        "locationCategories": {
           isArray: true,
-          url: urlBase + "/common/hotspots/categories",
+          url: urlBase + "/common/locations/categories",
           method: "GET"
         },
       }
@@ -782,13 +782,13 @@ module.factory(
 
 /**
  * @ngdoc object
- * @name lbServices.Hotspot
- * @header lbServices.Hotspot
+ * @name lbServices.Location
+ * @header lbServices.Location
  * @object
  *
  * @description
  *
- * A $resource object for interacting with the `Hotspot` model.
+ * A $resource object for interacting with the `Location` model.
  *
  * ## Example
  *
@@ -798,17 +798,17 @@ module.factory(
  *
  */
 module.factory(
-  "Hotspot",
+  "Location",
   ['LoopBackResource', 'LoopBackAuth', '$injector', function(Resource, LoopBackAuth, $injector) {
     var R = Resource(
-      urlBase + "/Hotspots/:id",
+      urlBase + "/Locations/:id",
       { 'id': '@id' },
       {
 
         /**
          * @ngdoc method
-         * @name lbServices.Hotspot#create
-         * @methodOf lbServices.Hotspot
+         * @name lbServices.Location#create
+         * @methodOf lbServices.Location
          *
          * @description
          *
@@ -835,18 +835,18 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Hotspot` object.)
+         * This usually means the response is a `Location` object.)
          * </em>
          */
         "create": {
-          url: urlBase + "/Hotspots",
+          url: urlBase + "/Locations",
           method: "POST"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Hotspot#createMany
-         * @methodOf lbServices.Hotspot
+         * @name lbServices.Location#createMany
+         * @methodOf lbServices.Location
          *
          * @description
          *
@@ -873,19 +873,19 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Hotspot` object.)
+         * This usually means the response is a `Location` object.)
          * </em>
          */
         "createMany": {
           isArray: true,
-          url: urlBase + "/Hotspots",
+          url: urlBase + "/Locations",
           method: "POST"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Hotspot#upsert
-         * @methodOf lbServices.Hotspot
+         * @name lbServices.Location#upsert
+         * @methodOf lbServices.Location
          *
          * @description
          *
@@ -912,18 +912,18 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Hotspot` object.)
+         * This usually means the response is a `Location` object.)
          * </em>
          */
         "upsert": {
-          url: urlBase + "/Hotspots",
+          url: urlBase + "/Locations",
           method: "PUT"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Hotspot#exists
-         * @methodOf lbServices.Hotspot
+         * @name lbServices.Location#exists
+         * @methodOf lbServices.Location
          *
          * @description
          *
@@ -948,14 +948,14 @@ module.factory(
          *  - `exists` – `{boolean=}` - 
          */
         "exists": {
-          url: urlBase + "/Hotspots/:id/exists",
+          url: urlBase + "/Locations/:id/exists",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Hotspot#findById
-         * @methodOf lbServices.Hotspot
+         * @name lbServices.Location#findById
+         * @methodOf lbServices.Location
          *
          * @description
          *
@@ -979,18 +979,18 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Hotspot` object.)
+         * This usually means the response is a `Location` object.)
          * </em>
          */
         "findById": {
-          url: urlBase + "/Hotspots/:id",
+          url: urlBase + "/Locations/:id",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Hotspot#find
-         * @methodOf lbServices.Hotspot
+         * @name lbServices.Location#find
+         * @methodOf lbServices.Location
          *
          * @description
          *
@@ -1012,19 +1012,19 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Hotspot` object.)
+         * This usually means the response is a `Location` object.)
          * </em>
          */
         "find": {
           isArray: true,
-          url: urlBase + "/Hotspots",
+          url: urlBase + "/Locations",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Hotspot#findOne
-         * @methodOf lbServices.Hotspot
+         * @name lbServices.Location#findOne
+         * @methodOf lbServices.Location
          *
          * @description
          *
@@ -1046,18 +1046,18 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Hotspot` object.)
+         * This usually means the response is a `Location` object.)
          * </em>
          */
         "findOne": {
-          url: urlBase + "/Hotspots/findOne",
+          url: urlBase + "/Locations/findOne",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Hotspot#updateAll
-         * @methodOf lbServices.Hotspot
+         * @name lbServices.Location#updateAll
+         * @methodOf lbServices.Location
          *
          * @description
          *
@@ -1084,14 +1084,14 @@ module.factory(
          * The number of instances updated
          */
         "updateAll": {
-          url: urlBase + "/Hotspots/update",
+          url: urlBase + "/Locations/update",
           method: "POST"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Hotspot#deleteById
-         * @methodOf lbServices.Hotspot
+         * @name lbServices.Location#deleteById
+         * @methodOf lbServices.Location
          *
          * @description
          *
@@ -1113,18 +1113,18 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Hotspot` object.)
+         * This usually means the response is a `Location` object.)
          * </em>
          */
         "deleteById": {
-          url: urlBase + "/Hotspots/:id",
+          url: urlBase + "/Locations/:id",
           method: "DELETE"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Hotspot#count
-         * @methodOf lbServices.Hotspot
+         * @name lbServices.Location#count
+         * @methodOf lbServices.Location
          *
          * @description
          *
@@ -1149,14 +1149,14 @@ module.factory(
          *  - `count` – `{number=}` - 
          */
         "count": {
-          url: urlBase + "/Hotspots/count",
+          url: urlBase + "/Locations/count",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Hotspot#prototype$updateAttributes
-         * @methodOf lbServices.Hotspot
+         * @name lbServices.Location#prototype$updateAttributes
+         * @methodOf lbServices.Location
          *
          * @description
          *
@@ -1182,18 +1182,18 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Hotspot` object.)
+         * This usually means the response is a `Location` object.)
          * </em>
          */
         "prototype$updateAttributes": {
-          url: urlBase + "/Hotspots/:id",
+          url: urlBase + "/Locations/:id",
           method: "PUT"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Hotspot#createChangeStream
-         * @methodOf lbServices.Hotspot
+         * @name lbServices.Location#createChangeStream
+         * @methodOf lbServices.Location
          *
          * @description
          *
@@ -1223,7 +1223,7 @@ module.factory(
          *  - `changes` – `{ReadableStream=}` - 
          */
         "createChangeStream": {
-          url: urlBase + "/Hotspots/change-stream",
+          url: urlBase + "/Locations/change-stream",
           method: "POST"
         },
       }
@@ -1233,8 +1233,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Hotspot#updateOrCreate
-         * @methodOf lbServices.Hotspot
+         * @name lbServices.Location#updateOrCreate
+         * @methodOf lbServices.Location
          *
          * @description
          *
@@ -1261,15 +1261,15 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Hotspot` object.)
+         * This usually means the response is a `Location` object.)
          * </em>
          */
         R["updateOrCreate"] = R["upsert"];
 
         /**
          * @ngdoc method
-         * @name lbServices.Hotspot#update
-         * @methodOf lbServices.Hotspot
+         * @name lbServices.Location#update
+         * @methodOf lbServices.Location
          *
          * @description
          *
@@ -1299,8 +1299,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Hotspot#destroyById
-         * @methodOf lbServices.Hotspot
+         * @name lbServices.Location#destroyById
+         * @methodOf lbServices.Location
          *
          * @description
          *
@@ -1322,15 +1322,15 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Hotspot` object.)
+         * This usually means the response is a `Location` object.)
          * </em>
          */
         R["destroyById"] = R["deleteById"];
 
         /**
          * @ngdoc method
-         * @name lbServices.Hotspot#removeById
-         * @methodOf lbServices.Hotspot
+         * @name lbServices.Location#removeById
+         * @methodOf lbServices.Location
          *
          * @description
          *
@@ -1352,7 +1352,7 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Hotspot` object.)
+         * This usually means the response is a `Location` object.)
          * </em>
          */
         R["removeById"] = R["deleteById"];
@@ -1360,13 +1360,13 @@ module.factory(
 
     /**
     * @ngdoc property
-    * @name lbServices.Hotspot#modelName
-    * @propertyOf lbServices.Hotspot
+    * @name lbServices.Location#modelName
+    * @propertyOf lbServices.Location
     * @description
     * The name of the model represented by this $resource,
-    * i.e. `Hotspot`.
+    * i.e. `Location`.
     */
-    R.modelName = "Hotspot";
+    R.modelName = "Location";
 
 
     return R;
