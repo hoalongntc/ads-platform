@@ -100,5 +100,9 @@
   "Campaign": {
     "dataSource": "mongo",
     "public": true
+  },
+  "CampaignMapping": {
+    "dataSource": "mongo",
+    "public": true
   }
 }
