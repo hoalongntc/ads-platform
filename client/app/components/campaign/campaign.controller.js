@@ -4,9 +4,23 @@ export default class CampaignCtrl {
   constructor(Campaign, CommonData) {
     this.setup();
     this.Campaign = Campaign;
+    CommonData.campaignCategories()
+      .then((data) => {
+        this.campaignCategories = data;
+      })
+      .catch((err) => {
+        console.error(err);
+      });
     CommonData.cities()
       .then((data) => {
-        console.log('Cities', data);
+        this.cities = data;
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+    CommonData.cities()
+      .then((data) => {
+        this.cities = data;
       })
       .catch((err) => {
         console.error(err);
@@ -66,35 +80,12 @@ export default class CampaignCtrl {
     });
   }
 
-  getSelectOption() {
-
-  }
-
   next1_1() {
     if (!this.option || !this.option.step1)
       return;
     this.showstep1 = false;
     this.next12 = true;
-    switch (this.option.step1) {
-      case "option1":
-        this.showstep1_1 = true;
-        break;
-      case "option2":
-        this.showstep1_2 = true;
-        break;
-      case "option3":
-        this.showstep1_3 = true;
-        break;
-      case "option4":
-        this.showstep1_4 = true;
-        break;
-      case "option5":
-        this.showstep1_5 = true;
-        break;
-      case "option6":
-        this.showstep1_6 = true;
-        break;
-    }
+    this.showstep1_2 = true;
   }
 
   modalClick() {
