@@ -24,24 +24,23 @@ div
                 th Name
                 th Type
                 th Divice Type
-                th Code
                 th Action
             tbody
               tr(ng-repeat="bannerItem in banList.listBanner")
                 td {{bannerItem.name}}
                 td {{bannerItem.type}}
                 td {{bannerItem.deviceType}}
-                td {{bannerItem.htmlCode}}
                 td
                  a.margin-right-5(ui-sref='banner({id:"{{bannerItem.id}}"})')
                   i.fa.fa-edit
                  a.btn.margin-right-5(ng-click='banList.alertDelete(bannerItem)')
                   i.fa.fa-remove
-          div
-            span Total: {{banList.total.count}}
+          div.inline-block.pull-left
+            span
+              |Total banner: <strong>{{banList.total.count}}</strong>
           ul.pagination.pull-right
             li(ng-repeat="page in banList.pageList")
-              a(href="#") {{page}}
+              a(ng-click="banList.gotoPage(page)") {{page}}
 
 
 

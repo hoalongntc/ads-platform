@@ -7,7 +7,9 @@ div(ng-show='ban.banner')
         div.col-xs-12
           form.form-horizontal(role="form" name="bannerForm" ng-submit="ban.edit()")
             .titlestep3 Banner Information
-            div.alert.success(ng-show="ban.actionSuccess") This Actine has been send successfull
+            div.alert.alert-success.fade.in(ng-show="ban.actionSuccess")
+              a.close(data-dismiss="alert" aria-label="close" href="#")
+              |This Action has been send successful
             div.form-group(class="{{(!bannerForm.name.$valid && bannerForm.name.$touched)?'has-error':''}}")
               label.control-label.col-xs-2 Name:
               div.col-xs-10
@@ -33,6 +35,7 @@ div(ng-show='ban.banner')
             div
               button.btn.btn-primary.margin-right-5(ng-disabled="bannerForm.$invalid" ng-show="!ban.pojo.id" ) Submit
               button.btn.btn-primary.margin-right-5(ng-disabled="bannerForm.$invalid" ng-show="ban.pojo.id" ) Edit
+              button.btn.btn-primary.margin-right-5(ng-show="ban.pojo.id" ng-click="ban.clearPojo()") Create New
               a.btn.btn-primary.margin-right-5(ui-sref='bannerList') List
 
 
