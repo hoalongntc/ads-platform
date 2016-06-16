@@ -1,16 +1,23 @@
+import angular from 'angular';
+
 export default class NiceScroll {
   constructor($parse) {
     this.$parse = $parse;
     this.scope = {};
   }
 
-  // Directive compile function
-  compile() {
-  }
-
   // Directive link function
   link(scope, element, attrs) {
-    const niceOption = scope.$eval(attrs.niceOption);
+    const defaultOptions = {
+      cursorcolor: '#526069',
+      cursorwidth: '3px',
+      cursorborder: 'none',
+      cursoropacitymax: 0.7,
+      scrollspeed: 100,
+      mousescrollstep: 100,
+      railpadding: { top: 10, right: 10, left: 0, bottom: 10 }
+    };
+    const niceOption = angular.extend({}, defaultOptions, scope.$eval(attrs.niceOption));
     const niceScroll = $(element).niceScroll(niceOption);
     const nice = $(element).getNiceScroll();
 

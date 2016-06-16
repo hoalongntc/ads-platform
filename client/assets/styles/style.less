@@ -1,4 +1,3 @@
-@import 'bootstrap-extend.css';
 @import 'variables/vars-color';
 
 /* Background image */
@@ -10,22 +9,13 @@ html {
   background-size: cover;
 }
 
-/* main */
-main {
-  position: absolute;
-  top: 70px;
-  bottom: 30px;
-  left: 0;
-  right: 0;
-  margin: 30px 0;
-  z-index: 1;
-  overflow: scroll;
-  overflow-x: hidden;
+body {
+  padding-top: 70px;
+  background: none;
 }
 
-/*Footer*/
 footer {
-  position: absolute;
+  position: fixed;
   width: 100%;
   height: 30px;
   bottom: 0;
@@ -33,28 +23,11 @@ footer {
   background-color: #ffffff
 }
 
-/*Scrollbar*/
-::-webkit-scrollbar{
-  width: 5px;
-  height:5px;
-}
-::-webkit-scrollbar-button {
-  width: 5px;
-  height:5px;
-}
-::-webkit-scrollbar-track {
-  background:#eee;
-  border: thin solid lightgray;
-  box-shadow: 0px 0px 3px #dfdfdf inset;
-  border-radius:10px;
-}
-::-webkit-scrollbar-thumb {
-  background:#999;
-  border: thin solid gray;
-  border-radius:10px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background:#7d7d7d;
+.page {
+  background: transparent;
+  .page-content {
+    padding: 0;
+  }
 }
 .step1-ot{
   min-height: 55px;
@@ -117,18 +90,6 @@ input[type=radio]:checked ~ .step1-ot::before{
   margin-bottom: 5px;
 }
 
-.margin5{
-  margin: 5px 5px;
-}
-.margin10{
-  margin: 10px 10px;
-}
-.margin0{
-  margin: 0px 0px;
-}
-.padding0{
-  padding: 0px 0px;
-}
 #myselection select option{
   background-color: #ffffff; color: #333333;
   border-radius: 10px 10px;
@@ -354,51 +315,5 @@ input[type=radio]:checked ~ .label_radio_device::before{
 
 .slideThree input[type=checkbox]:checked + label {
   left: 43px;
-}
-
-/* Color */
-.bg-white-trans {
-  color: #76838f;
-  background-color: rgba(255, 255, 255, 0.8);
-}
-
-.bg-trans {
-  background-color: transparent !important;
-}
-
-/* Panel */
-.panel.panel-rounded {
-  background-color: transparent;
-
-  .panel-title {
-    padding: 5px;
-    color: #fff;
-    text-align: center;
-    border-radius: 20px 20px 0 0;
-    height: 55px;
-  }
-
-  .panel-body {
-    border-radius: 20px;
-    background: white;
-    margin-top: -20px;
-  }
-}
-
-.panel-header.panel-header-rounded {
-  height: 35px;
-  padding: 0 15px;
-
-  .panel-title {
-    text-align: center;
-    color: #ffffff;
-    font-weight: bold;
-    background-color: @color-blue-800-trans;
-    line-height: 35px;
-    padding: 0 50px;
-    display: inline-block;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px
-  }
 }
 
