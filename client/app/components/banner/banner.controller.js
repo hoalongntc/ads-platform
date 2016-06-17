@@ -1,3 +1,4 @@
+import _ from 'lodash'
 const type_table_values=[{key:"standard",label:"Image"},{key:"rich",label:"Html Code"}]
 const device_table_values=[{key:"all",label:"All"},{key:"mobile",label:"Mobile"},{key:"desktop",label:"Desktop"}]
 export default class BannerCtrl {
@@ -6,29 +7,37 @@ export default class BannerCtrl {
     console.log(state)
     this.setup(state.params);
   }
-  edit(){
+  edit(bannerForm){
     // assign rich text manualy because
     // ckeditor plugin cannot bind data directly with ng-model
     this.deviceOption = device_table_values;
     this.typeOption = type_table_values;
     this.pojo.htmlCode=CKEDITOR.instances.htmlEditor.getData();
+    console.log(bannerForm);
     if(!this.pojo.id){
       this.Banner.create(this.pojo).$promise.then(reponse=>{
         this.pojo = reponse;
+        this.actionSuccess = true
       }).catch(response=>{
         if(response.data.error.status ==422){
           let message = response.data.error.details.messages;
+          this.messageList = [];
           Object.keys(message).forEach((item)=>{
-            this.pojo[item].$valid = false;
-            this.pojo[item].$invalid = true;
+            _.set(bannerForm,`${item}.$valid`,false);
+            _.set(bannerForm,`${item}.$invalid`,true);
+            this.messageList.push(item + ": "+message[item]);
+            console.log(bannerForm);
+            this.actionSuccess = false;
           })
         }
 
       })
     }else{
-      this.pojo.$save()
+      this.pojo.$save().$promise.then(()=>{
+        this.actionSuccess = true
+      })
     }
-    this.actionSuccess = true
+
   }
   clearPojo(){
     this.pojo={}

@@ -5,11 +5,14 @@ div(ng-show='ban.banner')
     .col-xs-12.colCampaign(style='background-color: #ffffff; margin-bottom: 60px;')
       div.row.margin-10
         div.col-xs-12
-          form.form-horizontal(role="form" name="bannerForm" ng-submit="ban.edit()")
+          form.form-horizontal(role="form" name="bannerForm" ng-submit="ban.edit(bannerForm)")
             .titlestep3 Banner Information
             div.alert.alert-success.fade.in(ng-show="ban.actionSuccess")
               a.close(data-dismiss="alert" aria-label="close" href="#")
               |This Action has been send successful
+            div.alert.alert-danger.fade.in(ng-show="ban.actionSuccess==false")
+              a.close(data-dismiss="alert" aria-label="close" href="#")
+              p.error(ng-repeat="er in ban.messageList") {{er}}
             div.form-group(class="{{(!bannerForm.name.$valid && bannerForm.name.$touched)?'has-error':''}}")
               label.control-label.col-xs-2 Name:
               div.col-xs-10
