@@ -30,7 +30,7 @@ export default function routes($stateProvider, $urlRouterProvider) {
       controllerAs: 'loc'
     })
   .state('bannerList', {
-      url: '/banners',
+      url: '/banners?:orderKey&:orderDirect:&page',
       templateUrl: require('./components/banner/bannerList.jade'),
       controller: 'BannerListCtrl',
       controllerAs: 'banList'
