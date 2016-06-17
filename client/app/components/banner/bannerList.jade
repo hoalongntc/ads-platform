@@ -36,30 +36,41 @@ div
                         i.fa.fa-sort-alpha-asc
 
                 th
-                  |Type
+                  |width
                   span(ng-switch on="banList.orderKey")
-                    span.sort(ng-switch-when="type" ng-switch on="banList.orderDirect")
-                      a(ng-switch-when="DESC" ui-sref='bannerList({orderKey:"type",orderDirect:"ASC"})')
+                    span.sort(ng-switch-when="width" ng-switch on="banList.orderDirect")
+                      a(ng-switch-when="DESC" ui-sref='bannerList({orderKey:"width",orderDirect:"ASC"})')
                         i.fa.fa-sort-amount-asc
-                      a(ng-switch-when="ASC" ui-sref='bannerList({orderKey:"type",orderDirect:"DESC"})')
+                      a(ng-switch-when="ASC" ui-sref='bannerList({orderKey:"width",orderDirect:"DESC"})')
                         i.fa.fa-sort-amount-desc()
-                    a(ng-switch-default ui-sref='bannerList({orderKey:"type",orderDirect:"DESC"})')
+                    a(ng-switch-default ui-sref='bannerList({orderKey:"width",orderDirect:"DESC"})')
                       i.fa.fa-sort-alpha-asc
                 th
-                  |Device Type
+                  |Height
                   span(ng-switch on="banList.orderKey")
-                    span.sort(ng-switch-when="device" ng-switch on="banList.orderDirect")
-                      a(ng-switch-when="DESC" ui-sref='bannerList({orderKey:"device",orderDirect:"ASC"})')
+                    span.sort(ng-switch-when="height" ng-switch on="banList.orderDirect")
+                      a(ng-switch-when="DESC" ui-sref='bannerList({orderKey:"height",orderDirect:"ASC"})')
                         i.fa.fa-sort-amount-asc
-                      a(ng-switch-when="ASC" ui-sref='bannerList({orderKey:"device",orderDirect:"DESC"})')
+                      a(ng-switch-when="ASC" ui-sref='bannerList({orderKey:"height",orderDirect:"DESC"})')
                         i.fa.fa-sort-amount-desc()
-                    a(ng-switch-default ui-sref='bannerList({orderKey:"device",orderDirect:"DESC"})')
+                    a(ng-switch-default ui-sref='bannerList({orderKey:"height",orderDirect:"DESC"})')
+                      i.fa.fa-sort-alpha-asc
+                th
+                  |Target
+                  span(ng-switch on="banList.orderKey")
+                    span.sort(ng-switch-when="target" ng-switch on="banList.orderDirect")
+                      a(ng-switch-when="DESC" ui-sref='bannerList({orderKey:"target",orderDirect:"ASC"})')
+                        i.fa.fa-sort-amount-asc
+                      a(ng-switch-when="ASC" ui-sref='bannerList({orderKey:"target",orderDirect:"DESC"})')
+                        i.fa.fa-sort-amount-desc()
+                    a(ng-switch-default ui-sref='bannerList({orderKey:"target",orderDirect:"DESC"})')
                       i.fa.fa-sort-alpha-asc
                 th Action
             tbody
               tr(ng-repeat="bannerItem in banList.listBanner")
                 td {{bannerItem.name}}
-                td {{bannerItem.type}}
+                td {{bannerItem.width}}
+                td {{bannerItem.height}}
                 td {{bannerItem.deviceType}}
                 td
                  a.margin-right-5(ui-sref='banner({id:bannerItem.id})')

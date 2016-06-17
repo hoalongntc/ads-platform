@@ -17,16 +17,18 @@ div(ng-show='ban.banner')
               label.control-label.col-xs-2 Name:
               div.col-xs-10
                 input.form-control.cusInput(placeholder="Name" ng-model="ban.pojo.name" name="name" required)
-            div.form-group(class="{{(!bannerForm.type.$valid && bannerForm.type.$touched)?'has-error':''}}")
-              label.control-label.col-xs-2 Type:
+            div.form-group(class="{{(!bannerForm.width.$valid && bannerForm.width.$touched)?'has-error':''}}")
+              label.control-label.col-xs-2 Width:
               div.col-xs-10
-                select#select_city_from.select_location_create_ads(ng-model="ban.pojo.type" name="type" required)
-                  option(value="standar") Image
-                  option(value="rick") Html Code
-            div.form-group(class="{{(!bannerForm.deviceType.$valid && bannerForm.deviceType.$touched)?'has-error':''}}")
-              label.control-label.col-xs-2 Divice:
+                input.form-control.cusInput(placeholder="Width" ng-model="ban.pojo.width" name="width" type="number" required)
+            div.form-group(class="{{(!bannerForm.hight.$valid && bannerForm.hight.$touched)?'has-error':''}}")
+              label.control-label.col-xs-2 Height:
               div.col-xs-10
-                select#select_divice.select_location_create_ads(ng-model="ban.pojo.deviceType" name="deviceType" required)
+                input.form-control.cusInput(placeholder="Height" ng-model="ban.pojo.hight" name="hight" type="number" required)
+            div.form-group(class="{{(!bannerForm.target.$valid && bannerForm.target.$touched)?'has-error':''}}")
+              label.control-label.col-xs-2 Target:
+              div.col-xs-10
+                select#select_divice.select_location_create_ads(ng-model="ban.pojo.target" name="target" required)
                   option(value="all") All
                   option(value="mobile") Mobile
                   option(value="desktop") Desktop

@@ -9,20 +9,22 @@
     "name": {
       "type": "string"
     },
-    "type": {
-      "type": "string",
-      "required": true
+    "width": {
+      "type": "number"
     },
-    "size": {
-      "type": "string"
+    "height": {
+      "type": "number"
     },
     "htmlCode": {
       "type": "string",
       "required": true
     },
-    "deviceType": {
+    "target": {
       "type": "string",
       "required": true
+    },
+    "campaign_Id": {
+      "type": "string"
     },
     "campaign_name": {
       "type": "string"
