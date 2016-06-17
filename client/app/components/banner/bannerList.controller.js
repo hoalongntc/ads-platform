@@ -45,7 +45,7 @@ export default class BannerListCtrl {
   }
   deleteBanner(banner){
     this.Banner.deleteById({ id: banner.id }).$promise.then(()=>{
-      this.load();
+      this.load(this.page,this.orderKey,this.orderDirect);
       $("#deleteAlert").modal('hide');
     })
   }
