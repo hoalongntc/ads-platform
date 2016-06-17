@@ -49,25 +49,30 @@ div
                       |Width
                       i.fa.fa-sort-alpha-asc
                 th
-                  |Height
+
                   span(ng-switch on="banList.orderKey")
                     span.sort(ng-switch-when="height" ng-switch on="banList.orderDirect")
                       a(ng-switch-when="DESC" ui-sref='bannerList({orderKey:"height",orderDirect:"ASC"})')
                         |Height
                         i.fa.fa-sort-amount-asc
                       a(ng-switch-when="ASC" ui-sref='bannerList({orderKey:"height",orderDirect:"DESC"})')
+                        |Height
                         i.fa.fa-sort-amount-desc()
                     a(ng-switch-default ui-sref='bannerList({orderKey:"height",orderDirect:"DESC"})')
+                      |Height
                       i.fa.fa-sort-alpha-asc
                 th
-                  |Target
+
                   span(ng-switch on="banList.orderKey")
                     span.sort(ng-switch-when="target" ng-switch on="banList.orderDirect")
                       a(ng-switch-when="DESC" ui-sref='bannerList({orderKey:"target",orderDirect:"ASC"})')
+                        |Target
                         i.fa.fa-sort-amount-asc
                       a(ng-switch-when="ASC" ui-sref='bannerList({orderKey:"target",orderDirect:"DESC"})')
+                        |Target
                         i.fa.fa-sort-amount-desc()
                     a(ng-switch-default ui-sref='bannerList({orderKey:"target",orderDirect:"DESC"})')
+                      |Target
                       i.fa.fa-sort-alpha-asc
                 th Action
             tbody
