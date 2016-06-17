@@ -62,10 +62,12 @@ div
                 td {{bannerItem.type}}
                 td {{bannerItem.deviceType}}
                 td
-                 a.margin-right-5(ui-sref='banner({id:"{{bannerItem.id}}"})')
+                 a.margin-right-5(ui-sref='banner({id:bannerItem.id})')
                   i.fa.fa-edit
-                 a.btn.margin-right-5(ng-click='banList.alertDelete(bannerItem)')
+                 a.margin-right-5(ng-click='banList.alertDelete(bannerItem)')
                   i.fa.fa-remove
+                 a.margin-right-5(ui-sref='bannerPreview({id:"{{bannerItem.id}}"})')
+                  i.fa.fa-eye
           div.inline-block.pull-left
             span
               |Total banner: <strong>{{banList.total.count}}</strong>

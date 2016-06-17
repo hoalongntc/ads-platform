@@ -1,6 +1,7 @@
 import _ from 'lodash'
 const type_table_values=[{key:"standard",label:"Image"},{key:"rich",label:"Html Code"}]
 const device_table_values=[{key:"all",label:"All"},{key:"mobile",label:"Mobile"},{key:"desktop",label:"Desktop"}]
+CKEDITOR.config.allowedContent = true;
 export default class BannerCtrl {
   constructor(Banner,state) {
     this.Banner =Banner;
@@ -33,9 +34,8 @@ export default class BannerCtrl {
 
       })
     }else{
-      this.pojo.$save().$promise.then(()=>{
-        this.actionSuccess = true
-      })
+      this.pojo.$save()
+      this.actionSuccess = true;
     }
 
   }

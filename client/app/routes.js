@@ -29,10 +29,16 @@ export default function routes($stateProvider, $urlRouterProvider) {
       controller: 'LocationCtrl',
       controllerAs: 'loc'
     })
-  .state('bannerList', {
+    .state('bannerList', {
       url: '/banners?:orderKey&:orderDirect:&page',
       templateUrl: require('./components/banner/bannerList.jade'),
       controller: 'BannerListCtrl',
       controllerAs: 'banList'
+    })
+    .state('bannerPreview', {
+      url: '/bannersPreview/:id?',
+      templateUrl: require('./components/banner/bannerPreview.jade'),
+      controller: 'BannerPreviewCtrl',
+      controllerAs: 'banPreview'
     });
 }
