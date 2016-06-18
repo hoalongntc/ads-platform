@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 export default class Scrollable {
   constructor() {
     this.scope = {};
@@ -5,11 +7,10 @@ export default class Scrollable {
 
   // Directive link function
   link(scope, element, attrs) {
-    console.log('link');
     const asScrollableOptions = {
-      namespace: "scrollable",
-      contentSelector: "> [data-scrollable-content]",
-      containerSelector: "> [data-scrollable-container]",
+      namespace: 'scrollable',
+      contentSelector: '> [data-scrollable-content]',
+      containerSelector: '> [data-scrollable-container]',
 
       direction: 'vertical' // vertical, horizontal, both, auto
     };
@@ -21,7 +22,6 @@ export default class Scrollable {
 
     const asScrollable = $(element).asScrollable(asScrollableOptions);
     scope.$on('$destroy', () => {
-      console.log('link destroy');
       asScrollable.remove();
     });
   }

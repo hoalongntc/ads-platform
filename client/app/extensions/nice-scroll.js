@@ -1,4 +1,5 @@
 import angular from 'angular';
+import $ from 'jquery';
 
 export default class NiceScroll {
   constructor($parse) {
@@ -14,8 +15,7 @@ export default class NiceScroll {
       cursorborder: 'none',
       cursoropacitymax: 0.7,
       scrollspeed: 100,
-      mousescrollstep: 100,
-      railpadding: { top: 10, right: 10, left: 0, bottom: 10 }
+      mousescrollstep: 100
     };
     const niceOption = angular.extend({}, defaultOptions, scope.$eval(attrs.niceOption));
     const niceScroll = $(element).niceScroll(niceOption);
