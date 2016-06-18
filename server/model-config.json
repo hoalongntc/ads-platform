@@ -105,5 +105,13 @@
   "Banner": {
     "dataSource": "mongo",
     "public": true
+  },
+  "Campaign": {
+    "dataSource": "mongo",
+    "public": true
+  },
+  "CampaignMapping": {
+    "dataSource": "mongo",
+    "public": true
   }
 }

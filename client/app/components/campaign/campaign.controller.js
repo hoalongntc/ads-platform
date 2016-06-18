@@ -1,16 +1,20 @@
 import $ from 'jquery'
 
 export default class CampaignCtrl {
-  constructor() {
+  constructor(Campaign, CommonData, Location) {
+    this.Campaign = Campaign;
+    this.CommonData = CommonData;
+    this.Location = Location;
     this.setup();
   }
 
   setup() {
     this.campaign = true;
-
+    this.selected = {};
     //step1
     this.showstep1 = true;
-    this.next12 = false;
+    this.step1_2 = false;
+    this.showstep1_2 = false;
     //step2
     this.step2 = false;
     this.next21 = false;
@@ -18,30 +22,21 @@ export default class CampaignCtrl {
     this.step3 = false;
     this.next31 = false;
 
-    this.showstep1_1 = false;
-    this.showstep1_2 = false;
-    this.showstep1_3 = false;
-    this.showstep1_4 = false;
-    this.showstep1_5 = false;
-    this.showstep1_6 = false;
-
-
     this.step3_2 = false;
     this.divLocation = false;
 
+    this.preview = false;
+
+    // prepare data
     this.ages = [];
     for (var i = 0; i < 45; i++) {
-      this.ages.push({id: i + 1, label: i + 1});
+      this.ages.push({ id: i + 1, label: i + 1 });
     }
 
     this.times = [];
     for (var i = 0; i < 24; i++) {
-      this.times.push({id: i + 1, label: i + 1 + ':00'});
+      this.times.push({ id: i + 1, label: i + 1 + ':00' });
     }
-
-    this.agesfrom = this.ages[17];
-    this.agesto = this.ages[22];
-
 
     $('#datetimepicker6').datetimepicker({
       format: 'MMM - DD, YYYY'
@@ -56,31 +51,75 @@ export default class CampaignCtrl {
     $("#datetimepicker7").on("dp.change", function (e) {
       $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
     });
+
+    // fetch select data
+    this.CommonData.campaignCategories()
+      .then((data) => {
+        this.campaignCategories = data;
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+
+    this.CommonData.cities()
+      .then((data) => {
+        this.cities = data;
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+
+    this.CommonData.locationCategories()
+      .then((data) => {
+        this.locationCategories = data;
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+
+    this.branches = ['X-men', 'Hp', 'Vinamilk', 'HTC'];
+    this.kpiTypes = ['Clicks', 'Views'];
+    this.genders = [{ text: 'All', value: 'all_gender' },
+                    { text: 'Men', value: 'men' },
+                    { text: 'Women', value: 'women' }];
+    this.devices = [{ text: 'All', value: 'all_device' },
+                    { text: 'iOS', value: 'ios' },
+                    { text: 'Android', value: 'android' },
+                    { text: 'Other', value: 'other' }];
+    this.adSets = ['Brand_Apr_Name_01', 'Brand_Apr_Name_02', 'Brand_Apr_Name_03'];
+    this.bannerFormats = [{ text: 'Standard Banner', value: 'standard'},
+                         { text: 'Rich Banner', value: 'rich'}];
+
+    this.Location.find()
+      .$promise.then((data) => {
+        this.locations = data
+          .map((location) =>
+            {
+              location.selected = false;
+              location.kpi = 0;
+              return location;
+            });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+
+      this.selected.ageFrom = this.ages[17];
+      this.selected.ageTo = this.ages[22];
+      this.selected.gender = this.genders[0];
+      this.selected.device = this.devices[0];
+      this.selected.kpi = 1000;
+      this.selected.kpiType = this.kpiTypes[0];
+      this.selected.bannerFormat = this.bannerFormats[0];
   }
 
   next1_1() {
+    if (!this.selected.campaignCategory)
+      return;
+
     this.showstep1 = false;
-    this.next12 = true;
-    switch (this.option.step1) {
-      case "option1":
-        this.showstep1_1 = true;
-        break;
-      case "option2":
-        this.showstep1_2 = true;
-        break;
-      case "option3":
-        this.showstep1_3 = true;
-        break;
-      case "option4":
-        this.showstep1_4 = true;
-        break;
-      case "option5":
-        this.showstep1_5 = true;
-        break;
-      case "option6":
-        this.showstep1_6 = true;
-        break;
-    }
+    this.step1_2 = true;
+    this.showstep1_2 = true;
   }
 
   modalClick() {
@@ -91,18 +130,16 @@ export default class CampaignCtrl {
   };
 
   next1_2() {
+    if(!this.selected.branch)
+      return;
+
     $('#campaign-icon').css('color', '#45E252');
-    this.next12 = false;
-    this.showstep1_1 = false;
+    this.step1_2 = false;
     this.showstep1_2 = false;
-    this.showstep1_3 = false;
-    this.showstep1_4 = false;
-    this.showstep1_5 = false;
-    this.showstep1_6 = false;
     this.next21 = true;
     this.step2 = true;
 
-  };
+  }
 
   next2() {
     $('#adset-icon').css('color', '#45E252');
@@ -112,45 +149,21 @@ export default class CampaignCtrl {
     this.next31 = true;
     this.show3 = true;
     this.show31 = false;
-  };
+  }
 
   back1() {
     this.showstep1 = true;
-    this.next12 = false;
-    this.showstep1_1 = false;
+    this.step1_2 = false;
     this.showstep1_2 = false;
-    this.showstep1_3 = false;
-    this.showstep1_4 = false;
-    this.showstep1_5 = false;
-    this.showstep1_6 = false;
-  };
+  }
 
   back2() {
     this.next21 = false;
     this.step2 = false;
-    this.next12 = true;
-    switch (this.option.step1) {
-      case "option1":
-        this.showstep1_1 = true;
-        break;
-      case "option2":
-        this.showstep1_2 = true;
-        break;
-      case "option3":
-        this.showstep1_3 = true;
-        break;
-      case "option4":
-        this.showstep1_4 = true;
-        break;
-      case "option5":
-        this.showstep1_5 = true;
-        break;
-      case "option6":
-        this.showstep1_6 = true;
-        break;
-    }
+    this.step1_2 = true;
+    this.showstep1_2 = true;
     $('#campaign-icon').css('color', '#ffffff');
-  };
+  }
 
   back3() {
     $('#adset-icon').css('color', '#ffffff');
@@ -158,14 +171,14 @@ export default class CampaignCtrl {
     this.step2 = true;
     this.step3 = false;
     this.next31 = false;
-  };
+  }
 
   prebook() {
     this.show3 = false;
     this.show31 = true;
     this.preview = true;
     this.step3 = false;
-  };
+  }
 
   editbook() {
     this.show3 = true;
@@ -173,12 +186,15 @@ export default class CampaignCtrl {
     this.preview = false;
     this.step3 = true;
     this.next31 = true;
-  };
+  }
 
   placebook() {
-    this.finalstep = false;
     this.campaign = false;
     this.step3_2 = true;
     this.actionprocess = "Processing...";
+  }
+
+  setLocationSelected(location, isSelected) {
+    location.selected = isSelected;
   }
 }

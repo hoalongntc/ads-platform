@@ -11,7 +11,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' && module.ex
 
 (function(window, angular, undefined) {'use strict';
 
-var urlBase = "http://localhost:3000/api";
+var urlBase = "http://0.0.0.0:3000/api";
 var authHeader = 'authorization';
 
 function getHost(url) {
@@ -1728,13 +1728,13 @@ module.factory(
 
 /**
  * @ngdoc object
- * @name lbServices.Banner
- * @header lbServices.Banner
+ * @name lbServices.Campaign
+ * @header lbServices.Campaign
  * @object
  *
  * @description
  *
- * A $resource object for interacting with the `Banner` model.
+ * A $resource object for interacting with the `Campaign` model.
  *
  * ## Example
  *
@@ -1744,17 +1744,17 @@ module.factory(
  *
  */
 module.factory(
-  "Banner",
+  "Campaign",
   ['LoopBackResource', 'LoopBackAuth', '$injector', function(Resource, LoopBackAuth, $injector) {
     var R = Resource(
-      urlBase + "/Banners/:id",
+      urlBase + "/Campaigns/:id",
       { 'id': '@id' },
       {
 
         /**
          * @ngdoc method
-         * @name lbServices.Banner#create
-         * @methodOf lbServices.Banner
+         * @name lbServices.Campaign#create
+         * @methodOf lbServices.Campaign
          *
          * @description
          *
@@ -1781,18 +1781,18 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Banner` object.)
+         * This usually means the response is a `Campaign` object.)
          * </em>
          */
         "create": {
-          url: urlBase + "/Banners",
+          url: urlBase + "/Campaigns",
           method: "POST"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Banner#createMany
-         * @methodOf lbServices.Banner
+         * @name lbServices.Campaign#createMany
+         * @methodOf lbServices.Campaign
          *
          * @description
          *
@@ -1819,19 +1819,19 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Banner` object.)
+         * This usually means the response is a `Campaign` object.)
          * </em>
          */
         "createMany": {
           isArray: true,
-          url: urlBase + "/Banners",
+          url: urlBase + "/Campaigns",
           method: "POST"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Banner#upsert
-         * @methodOf lbServices.Banner
+         * @name lbServices.Campaign#upsert
+         * @methodOf lbServices.Campaign
          *
          * @description
          *
@@ -1858,18 +1858,18 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Banner` object.)
+         * This usually means the response is a `Campaign` object.)
          * </em>
          */
         "upsert": {
-          url: urlBase + "/Banners",
+          url: urlBase + "/Campaigns",
           method: "PUT"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Banner#exists
-         * @methodOf lbServices.Banner
+         * @name lbServices.Campaign#exists
+         * @methodOf lbServices.Campaign
          *
          * @description
          *
@@ -1894,14 +1894,14 @@ module.factory(
          *  - `exists` – `{boolean=}` - 
          */
         "exists": {
-          url: urlBase + "/Banners/:id/exists",
+          url: urlBase + "/Campaigns/:id/exists",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Banner#findById
-         * @methodOf lbServices.Banner
+         * @name lbServices.Campaign#findById
+         * @methodOf lbServices.Campaign
          *
          * @description
          *
@@ -1925,18 +1925,18 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Banner` object.)
+         * This usually means the response is a `Campaign` object.)
          * </em>
          */
         "findById": {
-          url: urlBase + "/Banners/:id",
+          url: urlBase + "/Campaigns/:id",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Banner#find
-         * @methodOf lbServices.Banner
+         * @name lbServices.Campaign#find
+         * @methodOf lbServices.Campaign
          *
          * @description
          *
@@ -1958,19 +1958,19 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Banner` object.)
+         * This usually means the response is a `Campaign` object.)
          * </em>
          */
         "find": {
           isArray: true,
-          url: urlBase + "/Banners",
+          url: urlBase + "/Campaigns",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Banner#findOne
-         * @methodOf lbServices.Banner
+         * @name lbServices.Campaign#findOne
+         * @methodOf lbServices.Campaign
          *
          * @description
          *
@@ -1992,18 +1992,18 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Banner` object.)
+         * This usually means the response is a `Campaign` object.)
          * </em>
          */
         "findOne": {
-          url: urlBase + "/Banners/findOne",
+          url: urlBase + "/Campaigns/findOne",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Banner#updateAll
-         * @methodOf lbServices.Banner
+         * @name lbServices.Campaign#updateAll
+         * @methodOf lbServices.Campaign
          *
          * @description
          *
@@ -2030,14 +2030,14 @@ module.factory(
          * The number of instances updated
          */
         "updateAll": {
-          url: urlBase + "/Banners/update",
+          url: urlBase + "/Campaigns/update",
           method: "POST"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Banner#deleteById
-         * @methodOf lbServices.Banner
+         * @name lbServices.Campaign#deleteById
+         * @methodOf lbServices.Campaign
          *
          * @description
          *
@@ -2059,18 +2059,18 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Banner` object.)
+         * This usually means the response is a `Campaign` object.)
          * </em>
          */
         "deleteById": {
-          url: urlBase + "/Banners/:id",
+          url: urlBase + "/Campaigns/:id",
           method: "DELETE"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Banner#count
-         * @methodOf lbServices.Banner
+         * @name lbServices.Campaign#count
+         * @methodOf lbServices.Campaign
          *
          * @description
          *
@@ -2095,14 +2095,14 @@ module.factory(
          *  - `count` – `{number=}` - 
          */
         "count": {
-          url: urlBase + "/Banners/count",
+          url: urlBase + "/Campaigns/count",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Banner#prototype$updateAttributes
-         * @methodOf lbServices.Banner
+         * @name lbServices.Campaign#prototype$updateAttributes
+         * @methodOf lbServices.Campaign
          *
          * @description
          *
@@ -2128,18 +2128,18 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Banner` object.)
+         * This usually means the response is a `Campaign` object.)
          * </em>
          */
         "prototype$updateAttributes": {
-          url: urlBase + "/Banners/:id",
+          url: urlBase + "/Campaigns/:id",
           method: "PUT"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Banner#createChangeStream
-         * @methodOf lbServices.Banner
+         * @name lbServices.Campaign#createChangeStream
+         * @methodOf lbServices.Campaign
          *
          * @description
          *
@@ -2169,7 +2169,7 @@ module.factory(
          *  - `changes` – `{ReadableStream=}` - 
          */
         "createChangeStream": {
-          url: urlBase + "/Banners/change-stream",
+          url: urlBase + "/Campaigns/change-stream",
           method: "POST"
         },
       }
@@ -2179,8 +2179,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Banner#updateOrCreate
-         * @methodOf lbServices.Banner
+         * @name lbServices.Campaign#updateOrCreate
+         * @methodOf lbServices.Campaign
          *
          * @description
          *
@@ -2207,15 +2207,15 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Banner` object.)
+         * This usually means the response is a `Campaign` object.)
          * </em>
          */
         R["updateOrCreate"] = R["upsert"];
 
         /**
          * @ngdoc method
-         * @name lbServices.Banner#update
-         * @methodOf lbServices.Banner
+         * @name lbServices.Campaign#update
+         * @methodOf lbServices.Campaign
          *
          * @description
          *
@@ -2245,8 +2245,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Banner#destroyById
-         * @methodOf lbServices.Banner
+         * @name lbServices.Campaign#destroyById
+         * @methodOf lbServices.Campaign
          *
          * @description
          *
@@ -2268,15 +2268,15 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Banner` object.)
+         * This usually means the response is a `Campaign` object.)
          * </em>
          */
         R["destroyById"] = R["deleteById"];
 
         /**
          * @ngdoc method
-         * @name lbServices.Banner#removeById
-         * @methodOf lbServices.Banner
+         * @name lbServices.Campaign#removeById
+         * @methodOf lbServices.Campaign
          *
          * @description
          *
@@ -2298,7 +2298,7 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Banner` object.)
+         * This usually means the response is a `Campaign` object.)
          * </em>
          */
         R["removeById"] = R["deleteById"];
@@ -2306,13 +2306,605 @@ module.factory(
 
     /**
     * @ngdoc property
-    * @name lbServices.Banner#modelName
-    * @propertyOf lbServices.Banner
+    * @name lbServices.Campaign#modelName
+    * @propertyOf lbServices.Campaign
     * @description
     * The name of the model represented by this $resource,
-    * i.e. `Banner`.
+    * i.e. `Campaign`.
     */
-    R.modelName = "Banner";
+    R.modelName = "Campaign";
+
+
+    return R;
+  }]);
+
+/**
+ * @ngdoc object
+ * @name lbServices.CampaignMapping
+ * @header lbServices.CampaignMapping
+ * @object
+ *
+ * @description
+ *
+ * A $resource object for interacting with the `CampaignMapping` model.
+ *
+ * ## Example
+ *
+ * See
+ * {@link http://docs.angularjs.org/api/ngResource.$resource#example $resource}
+ * for an example of using this object.
+ *
+ */
+module.factory(
+  "CampaignMapping",
+  ['LoopBackResource', 'LoopBackAuth', '$injector', function(Resource, LoopBackAuth, $injector) {
+    var R = Resource(
+      urlBase + "/CampaignMappings/:id",
+      { 'id': '@id' },
+      {
+
+        /**
+         * @ngdoc method
+         * @name lbServices.CampaignMapping#create
+         * @methodOf lbServices.CampaignMapping
+         *
+         * @description
+         *
+         * Create a new instance of the model and persist it into the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `CampaignMapping` object.)
+         * </em>
+         */
+        "create": {
+          url: urlBase + "/CampaignMappings",
+          method: "POST"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.CampaignMapping#createMany
+         * @methodOf lbServices.CampaignMapping
+         *
+         * @description
+         *
+         * Create a new instance of the model and persist it into the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Array.<Object>,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Array.<Object>} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `CampaignMapping` object.)
+         * </em>
+         */
+        "createMany": {
+          isArray: true,
+          url: urlBase + "/CampaignMappings",
+          method: "POST"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.CampaignMapping#upsert
+         * @methodOf lbServices.CampaignMapping
+         *
+         * @description
+         *
+         * Update an existing model instance or insert a new one into the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `CampaignMapping` object.)
+         * </em>
+         */
+        "upsert": {
+          url: urlBase + "/CampaignMappings",
+          method: "PUT"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.CampaignMapping#exists
+         * @methodOf lbServices.CampaignMapping
+         *
+         * @description
+         *
+         * Check whether a model instance exists in the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - Model id
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * Data properties:
+         *
+         *  - `exists` – `{boolean=}` - 
+         */
+        "exists": {
+          url: urlBase + "/CampaignMappings/:id/exists",
+          method: "GET"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.CampaignMapping#findById
+         * @methodOf lbServices.CampaignMapping
+         *
+         * @description
+         *
+         * Find a model instance by id from the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - Model id
+         *
+         *  - `filter` – `{object=}` - Filter defining fields and include
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `CampaignMapping` object.)
+         * </em>
+         */
+        "findById": {
+          url: urlBase + "/CampaignMappings/:id",
+          method: "GET"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.CampaignMapping#find
+         * @methodOf lbServices.CampaignMapping
+         *
+         * @description
+         *
+         * Find all instances of the model matched by filter from the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
+         *
+         * @param {function(Array.<Object>,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Array.<Object>} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `CampaignMapping` object.)
+         * </em>
+         */
+        "find": {
+          isArray: true,
+          url: urlBase + "/CampaignMappings",
+          method: "GET"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.CampaignMapping#findOne
+         * @methodOf lbServices.CampaignMapping
+         *
+         * @description
+         *
+         * Find first instance of the model matched by filter from the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `CampaignMapping` object.)
+         * </em>
+         */
+        "findOne": {
+          url: urlBase + "/CampaignMappings/findOne",
+          method: "GET"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.CampaignMapping#updateAll
+         * @methodOf lbServices.CampaignMapping
+         *
+         * @description
+         *
+         * Update instances of the model matched by where from the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `where` – `{object=}` - Criteria to match model instances
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * The number of instances updated
+         */
+        "updateAll": {
+          url: urlBase + "/CampaignMappings/update",
+          method: "POST"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.CampaignMapping#deleteById
+         * @methodOf lbServices.CampaignMapping
+         *
+         * @description
+         *
+         * Delete a model instance by id from the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - Model id
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `CampaignMapping` object.)
+         * </em>
+         */
+        "deleteById": {
+          url: urlBase + "/CampaignMappings/:id",
+          method: "DELETE"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.CampaignMapping#count
+         * @methodOf lbServices.CampaignMapping
+         *
+         * @description
+         *
+         * Count instances of the model matched by where from the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `where` – `{object=}` - Criteria to match model instances
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * Data properties:
+         *
+         *  - `count` – `{number=}` - 
+         */
+        "count": {
+          url: urlBase + "/CampaignMappings/count",
+          method: "GET"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.CampaignMapping#prototype$updateAttributes
+         * @methodOf lbServices.CampaignMapping
+         *
+         * @description
+         *
+         * Update attributes for a model instance and persist it into the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `CampaignMapping` object.)
+         * </em>
+         */
+        "prototype$updateAttributes": {
+          url: urlBase + "/CampaignMappings/:id",
+          method: "PUT"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.CampaignMapping#createChangeStream
+         * @methodOf lbServices.CampaignMapping
+         *
+         * @description
+         *
+         * Create a change stream.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Object} postData Request data.
+         *
+         *  - `options` – `{object=}` - 
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * Data properties:
+         *
+         *  - `changes` – `{ReadableStream=}` - 
+         */
+        "createChangeStream": {
+          url: urlBase + "/CampaignMappings/change-stream",
+          method: "POST"
+        },
+      }
+    );
+
+
+
+        /**
+         * @ngdoc method
+         * @name lbServices.CampaignMapping#updateOrCreate
+         * @methodOf lbServices.CampaignMapping
+         *
+         * @description
+         *
+         * Update an existing model instance or insert a new one into the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `CampaignMapping` object.)
+         * </em>
+         */
+        R["updateOrCreate"] = R["upsert"];
+
+        /**
+         * @ngdoc method
+         * @name lbServices.CampaignMapping#update
+         * @methodOf lbServices.CampaignMapping
+         *
+         * @description
+         *
+         * Update instances of the model matched by where from the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `where` – `{object=}` - Criteria to match model instances
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * The number of instances updated
+         */
+        R["update"] = R["updateAll"];
+
+        /**
+         * @ngdoc method
+         * @name lbServices.CampaignMapping#destroyById
+         * @methodOf lbServices.CampaignMapping
+         *
+         * @description
+         *
+         * Delete a model instance by id from the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - Model id
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `CampaignMapping` object.)
+         * </em>
+         */
+        R["destroyById"] = R["deleteById"];
+
+        /**
+         * @ngdoc method
+         * @name lbServices.CampaignMapping#removeById
+         * @methodOf lbServices.CampaignMapping
+         *
+         * @description
+         *
+         * Delete a model instance by id from the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - Model id
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `CampaignMapping` object.)
+         * </em>
+         */
+        R["removeById"] = R["deleteById"];
+
+
+    /**
+    * @ngdoc property
+    * @name lbServices.CampaignMapping#modelName
+    * @propertyOf lbServices.CampaignMapping
+    * @description
+    * The name of the model represented by this $resource,
+    * i.e. `CampaignMapping`.
+    */
+    R.modelName = "CampaignMapping";
 
 
     return R;
