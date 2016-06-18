@@ -1,0 +1,66 @@
+.page-content.container-fluid
+  .bg-white-trans.margin-horizontal-15
+    .panel.bg-trans
+      .panel-heading.panel-heading-rounded
+        .panel-title.pull-right Campaign Report
+      .panel-body.padding-0
+        .col-sm-9.padding-0
+          .panel.panel-sm.panel-primary.radius-0
+            .panel-heading.panel-heading-invert.radius-0
+              .panel-title
+                i.icon.fa.fa-play
+                | Campaign
+                select(select-picker)
+                  option Mustard
+                  option Ketchup
+                  option Relish
+              .panel-actions
+                a.panel-action(ui-sref='reports.performance', ui-sref-active='active')
+                  i.icon.fa.fa-external-link.padding-right-5
+                  | Performance
+                span.inline-block.padding-horizontal-5 |
+                a.panel-action(ui-sref='reports.placement', ui-sref-active='active')
+                  i.icon.fa.fa-exchange.padding-right-5
+                  | Placement
+            .panel-body
+              section(ui-view)
+              .clearfix
+              #grid.ag-blue.padding0.margin0.hidden-xs(style='width: 100%;')
+        .col-sm-3.colReport(style='min-height:500px; background-color: #585858; text-align: left; color: #ffffff;')
+                .col-xs-12.text-center
+                  button.btn.btn-dark.btn-sm.collapsed.btn-animated(data-toggle='collapse', href='#collapseContent', aria-expanded='false', aria-controls='collapseContent')
+                    i.fa.fa-plus
+                    |  Export
+                  #collapseContent.collapse
+                    #reportrange.col-xs-12(style='background-color: #ffffff; color: #333333; border-radius: 10px 10px; padding: 5px 0px')
+                      i.glyphicon.glyphicon-calendar.fa.fa-calendar
+                      span
+                    button.btn.btn-sm.btn-default.radius-50(style='float: left')
+                      i.fa.fa-file-excel-o
+                      |  Export
+                .clearfix(style='padding: 20px 20px')
+                .col-xs-12.padding0
+                  span(style='float: left') Campaign Report
+                  .slideThree(style='float: right')
+                    input#slideThree(type='checkbox', value='None', name='check', style='display: none', checked='')
+                    label(for='slideThree')
+                  .clearfix(style='margin: 10px 0px;')
+                  .col-xs-6.padding0 Delivery
+                  .col-xs-6.padding0.text-right Active
+                  .clearfix(style='margin: 10px 0px;')
+                  .col-xs-6.padding0 Objectives
+                  .col-xs-6.padding0.text-right Click To Website
+                  .clearfix(style='margin: 10px 0px;')
+                  .col-xs-6.padding0 Archived
+                  .col-xs-6.padding0.text-right
+                    .progress.style-2
+                      .progress-bar.progress-bar-success.progress-bar-striped.active(role='progressbar', aria-valuenow='40', aria-valuemin='0', aria-valuemax='100', style='width: 77%')
+                        span 77%
+                  .clearfix(style='margin: 10px 0px;')
+                  .col-xs-12.padding0
+                    | Total Schedule:
+                    p
+                      | 10:30 am
+                      strong Mar 28, 2016
+                      |  - 10:30 am
+                      strong Apr 03, 2016

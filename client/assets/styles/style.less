@@ -1,6 +1,6 @@
 @import 'variables/vars-color';
 
-/* Background image */
+/* Main */
 html {
   background: url('../images/bg.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
@@ -9,9 +9,11 @@ html {
   background-size: cover;
 }
 
-body {
-  padding-top: 70px;
+body.site-navbar-small {
+  padding-top: 100px;
+  padding-bottom: 50px;
   background: none;
+  font-family: Roboto,sans-serif;
 }
 
 footer {
@@ -29,6 +31,48 @@ footer {
     padding: 0;
   }
 }
+
+.circle {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  text-align: center;
+
+  span, i {
+    line-height: 50px;
+  }
+}
+.circle.circle-sm {
+  width: 30px;
+  height: 30px;
+
+  span, i {
+    line-height: 30px;
+  }
+}
+.circle.circle-lg {
+  width: 70px;
+  height: 70px;
+
+  span, i {
+    line-height: 70px;
+  }
+
+  i {
+    font-size: 2.5em;
+  }
+}
+.circle.circle-xlg {
+  width: 100px;
+  height: 100px;
+
+  span, i {
+    line-height: 100px;
+  }
+}
+
+
 .step1-ot{
   min-height: 55px;
   line-height: 55px;
@@ -55,31 +99,6 @@ input[type=radio]:checked ~ .step1-ot::before{
 }
 .text-italic{
   font-style: italic;
-}
-.left{
-  float: left;
-  margin-left: 10px;
-}
-.right{
-  float: right;
-  margin-right: 10px;
-}
-
-.h410{
-  width: 100%;
-  height: 410px;
-}
-.h400{
-  height: 400px;
-}
-
-.selectCus{
-  background: none;
-  border:none;
-  outline: none;
-}
-.h250{
-  min-height: 250px;
 }
 .titlestep3{
   height: 30px;

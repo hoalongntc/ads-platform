@@ -1,12 +1,13 @@
 export default class CommonData {
   constructor(Promise, SelectOption) {
     this.Promise = Promise;
-    this.SelectOption = SelectOption
+    this.SelectOption = SelectOption;
   }
 
   cities() {
-    if (this._cities)
+    if (this._cities) {
       return this.Promise.resolve(this._cities);
+    }
 
     return this.SelectOption.cities().$promise
       .then((data) => {
@@ -19,8 +20,9 @@ export default class CommonData {
   }
 
   campaignCategories() {
-    if (this._campaignCategories)
-      return self.Promise.resolve(this._campaignCategories);
+    if (this._campaignCategories) {
+      return this.Promise.resolve(this._campaignCategories);
+    }
 
     return this.SelectOption.campaignCategories().$promise
       .then((data) => {
@@ -33,8 +35,9 @@ export default class CommonData {
   }
 
   locationCategories() {
-    if (this._locationCategories)
+    if (this._locationCategories) {
       return this.Promise.resolve(this._locationCategories);
+    }
 
     return this.SelectOption.locationCategories().$promise
       .then((data) => {

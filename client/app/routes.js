@@ -2,7 +2,7 @@ routes.$inject = ['$stateProvider', '$urlRouterProvider'];
 
 export default function routes($stateProvider, $urlRouterProvider) {
   // For any unmatched url, redirect to /dashboard
-  $urlRouterProvider.otherwise("/dashboard");
+  $urlRouterProvider.otherwise('/dashboard');
 
   $stateProvider
     .state('dashboard', {
@@ -40,5 +40,19 @@ export default function routes($stateProvider, $urlRouterProvider) {
       templateUrl: require('./components/banner/bannerPreview.jade'),
       controller: 'BannerPreviewCtrl',
       controllerAs: 'banPreview'
+    })
+    .state('reports', {
+      url: '/reports',
+      templateUrl: require('./components/report/report.jade'),
+      controller: 'ReportCtrl',
+      controllerAs: 'rep'
+    })
+    .state('reports.performance', {
+      url: '/performance',
+      templateUrl: require('./components/report/report.performance.jade')
+    })
+    .state('reports.placement', {
+      url: '/placement',
+      templateUrl: require('./components/report/report.placement.jade')
     });
 }
