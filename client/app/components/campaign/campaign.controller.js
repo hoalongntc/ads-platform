@@ -29,7 +29,7 @@ export default class CampaignCtrl {
 
     // prepare data
     this.ages = [];
-    for (var i = 0; i < 45; i++) {
+    for (var i = 0; i < 99; i++) {
       this.ages.push({ id: i + 1, label: i + 1 });
     }
 
@@ -45,11 +45,14 @@ export default class CampaignCtrl {
       useCurrent: false,
       format: 'MMM - DD, YYYY'
     });
+    var seft = this;
     $("#datetimepicker6").on("dp.change", function (e) {
       $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+      seft.selected.scheduleFrom = e.date;
     });
     $("#datetimepicker7").on("dp.change", function (e) {
       $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+      seft.selected.scheduleTo = e.date;
     });
 
     // fetch select data
@@ -78,7 +81,7 @@ export default class CampaignCtrl {
       });
 
     this.branches = ['X-men', 'Hp', 'Vinamilk', 'HTC'];
-    this.kpiTypes = ['Clicks', 'Views'];
+    this.kpiTypes = ['Clicks'];
     this.genders = [{ text: 'All', value: 'all_gender' },
                     { text: 'Men', value: 'men' },
                     { text: 'Women', value: 'women' }];
@@ -86,9 +89,6 @@ export default class CampaignCtrl {
                     { text: 'iOS', value: 'ios' },
                     { text: 'Android', value: 'android' },
                     { text: 'Other', value: 'other' }];
-    this.adSets = ['Brand_Apr_Name_01', 'Brand_Apr_Name_02', 'Brand_Apr_Name_03'];
-    this.bannerFormats = [{ text: 'Standard Banner', value: 'standard'},
-                         { text: 'Rich Banner', value: 'rich'}];
 
     this.Location.find()
       .$promise.then((data) => {
@@ -104,13 +104,14 @@ export default class CampaignCtrl {
         console.error(err);
       });
 
-      this.selected.ageFrom = this.ages[17];
-      this.selected.ageTo = this.ages[22];
-      this.selected.gender = this.genders[0];
-      this.selected.device = this.devices[0];
-      this.selected.kpi = 1000;
-      this.selected.kpiType = this.kpiTypes[0];
-      this.selected.bannerFormat = this.bannerFormats[0];
+    this.selected.ageFrom = this.ages[17];
+    this.selected.ageTo = this.ages[22];
+    this.selected.gender = this.genders[0];
+    this.selected.device = this.devices[0];
+    this.selected.kpi = 1000;
+    this.selected.kpiType = this.kpiTypes[0];
+    this.selected.branch = this.branches[0];
+
   }
 
   next1_1() {
@@ -149,6 +150,7 @@ export default class CampaignCtrl {
     this.next31 = true;
     this.show3 = true;
     this.show31 = false;
+    console.log(this.parent);
   }
 
   back1() {

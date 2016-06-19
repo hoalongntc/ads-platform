@@ -61,10 +61,11 @@ div(ng-show='cam.campaign')
         .col-xs-10.col-xs-push-1(style='background-color: #D2D2D2; padding: 0; margin: 0; border-radius: 5px')
           input.form-control.input-sm(placeholder='Type to search Branches', ng-model="searchText")
           .col-xs-10.col-xs-push-1
-            div(ng-repeat="branch in cam.branches | filter:searchText", ng-model='cam.selected.branch')
-              input(type='radio', name='brand', ng-value='branch', ng-model='cam.selected.branch')
-              label(for='')    {{branch}}
-              br
+            .radioFormat(ng-repeat='branch in cam.branches | filter:searchText')
+              input(type='radio', name='branch', ng-value='branch', ng-model='cam.selected.branch', ng-attr-id='{{ "branch-" + branch }}')
+              label(for='{{ "branch-" + branch }}')
+                span
+                | {{branch}}
       .col-xs-12(style='height: 40px; line-height: 40px;', ng-show='cam.step1_2')
         span(style='float: left') 2/2
         span(style='float: right')
@@ -136,7 +137,7 @@ div(ng-show='cam.campaign')
               span.col-xs-2.padding0  Start
               .co-xs-4.padding0
                 #datetimepicker6.input-group.date
-                  input.input_create_ads(ng-model='cam.selectedScheduleFrom', style='width:40%; float: left; border-radius: 15px 0px 0px 15px;border: none', type='text')
+                  input.input_create_ads(style='width:40%; float: left; border-radius: 15px 0px 0px 15px;border: none', type='text')
                   span.input-group-addon(style='float: left; padding: 5px 27px 5px 0px;background-color: #EBEBEB;border-radius: 0px 15px 15px 0px')
                     span.glyphicon.glyphicon-calendar(style='padding: 0px 5px')
                   span(style='margin: 0px 7px 0px 7px; float: left; padding: 3.5px 0px') Time
@@ -145,7 +146,7 @@ div(ng-show='cam.campaign')
               span.col-xs-2.padding0  End
               .co-xs-4.padding0
                 #datetimepicker7.input-group.date
-                  input.input_create_ads(ng-model='cam.selectedScheduleTo', style='width:40%; float: left; border-radius: 15px 0px 0px 15px;border: none', type='text')
+                  input.input_create_ads(style='width:40%; float: left; border-radius: 15px 0px 0px 15px;border: none', type='text')
                   span.input-group-addon(style='float: left; padding: 5px 27px 5px 0px;background-color: #EBEBEB;border-radius: 0px 15px 15px 0px')
                     span.glyphicon.glyphicon-calendar(style='padding: 0px 5px')
                   span(style='margin: 0px 7px 0px 7px; float: left; padding: 3.5px 0px') Time
@@ -156,23 +157,13 @@ div(ng-show='cam.campaign')
             .col-xs-3.padding0
               span - Name:
             .col-xs-9.padding0
-              select#select_city_from.select_location_create_ads
-                option(ng-repeat='adSet in cam.adSets', ng-model='cam.selected.adSet') {{adSet}}
+              input.cusInput(ng-model='cam.selected.adSet', type='text')
         .col-xs-12(style='height: 40px; line-height: 40px;', ng-show='cam.next21')
           span(style='float: right')
             button.btn.radius-50.btn-gray.btn-sm(style='', ng-click='cam.back2()') Back
             button.btn.radius-50.btn-default.btn-sm(style='', ng-click='cam.next2()') Choose Ad Creative
         // AD
         .h410(ng-show='cam.step3')
-          #format
-            .row.titlestep3 Format
-            .col-xs-6(ng-repeat='format in cam.bannerFormats')
-              .radioFormat
-                input(type='radio', name='format', ng-value='format', ng-model='cam.selected.bannerFormat', ng-attr-id='{{ "format-" + format.value }}')
-                label(for='{{ "format-" + format.value }}')
-                  span
-                  | {{format.text}}
-          .clearfix
           #creative
             .row.titlestep3 Creative
             .col-xs-12.margin5
@@ -186,14 +177,6 @@ div(ng-show='cam.campaign')
           .clearfix
           #tracking
             .row.titlestep3 Tracking Code
-            .col-xs-12.margin5
-              .col-xs-4 - Mobile
-              .col-xs-8
-                input.cusInput(type='text')
-            .col-xs-12.margin5
-              .col-xs-4 - Desktop
-              .col-xs-8
-                input.cusInput(type='text')
             .col-xs-12.margin5
               .col-xs-4 - Landing page
               .col-xs-8
