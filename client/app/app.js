@@ -1,3 +1,8 @@
+import angular from 'angular';
+import 'angular-resource';
+import 'angular-animate';
+import 'angular-touch';
+
 // GLOBAL IMPORT
 // JS
 import '../assets/scripts/assets.js';
@@ -9,12 +14,10 @@ import '../assets/styles/assets.less';
 //@require "./components/**/*.html"
 //@require "./components/**/*.jade"
 
-import angular from 'angular';
-import ngResource from 'angular-resource';
 import blueBird from 'angular-bluebird-promises';
 import uirouter from 'angular-ui-router';
 import lbServices from '../lib/lb-services';
-import agGrid from 'ag-grid';
+import agGrid from 'ag-grid/dist/ag-grid.noStyle';
 import extensions from './extensions/extensions';
 
 agGrid.initialiseAgGridWithAngular1(angular);
@@ -30,7 +33,7 @@ import BannerPreviewCtrl from './components/banner/bannerPreview.controller';
 import ReportCtrl from './components/report/report.controller';
 import CampaignGridCtrl from './components/grid/campaign.grid.controller';
 
-const app = angular.module('app', [blueBird, uirouter, lbServices, 'agGrid', extensions]);
+const app = angular.module('app', [blueBird, uirouter, lbServices, 'agGrid', 'ui.grid', 'ui.grid.edit', 'ui.bootstrap', extensions]);
 app.config(routes);
 app.controller('NavCtrl', NavCtrl);
 app.controller('DashboardCtrl', DashboardCtrl);

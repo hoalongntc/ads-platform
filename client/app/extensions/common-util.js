@@ -63,7 +63,7 @@ export default class CommonUtil {
         },
         tooltip: {
           formatter: function() {
-            const template = $templateCache.get('chart/tooltip.jade');
+            const template = $templateCache.get('template/chart.pie.tooltip.jade');
             const compiledTemplate = $interpolate(template)(this);
             return compiledTemplate;
           }

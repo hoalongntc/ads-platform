@@ -1,5 +1,5 @@
 export default class CampaignGridCtrl {
-  constructor() {
+  constructor(uiGridConstants) {
     const columnDefs = [
       {headerName: "Make", field: "make", editable: true},
       {headerName: "Model", field: "model", editable: true},
@@ -80,5 +80,44 @@ export default class CampaignGridCtrl {
         // columnGroupClosed: '<i class="fa fa-plus-square-o"/>'
       }
     };
+
+    this.gridOptions1 = {
+      rowHeight: 38,
+      enableSorting: true,
+      enableFiltering: true,
+      columnDefs: [
+        { field: 'name', editableCellTemplate: 'template/grid.input-editor.jade' },
+        { name: 'age', displayName: 'Age' , type: 'number', width: '10%' },
+        {
+          field: 'gender',
+          filter: {
+            type: uiGridConstants.filter.SELECT,
+            selectOptions: [ { value: 'male', label: 'Male' }, { value: 'female', label: 'Female' }, { value: 'other', label: 'Unknown'} ]
+          },
+          editableCellTemplate: 'ui-grid/dropdownEditor', width: '20%',
+          editDropdownValueLabel: 'gender', editDropdownOptionsArray: [
+            { id: 'male', gender: 'Male' },
+            { id: 'female', gender: 'Female' }
+          ]
+        },
+        { name: 'registered', displayName: 'Registered' , type: 'date', cellFilter: 'date:"dd/MM/yyyy"', width: '20%' },
+        { field: 'company'}
+      ],
+      onRegisterApi: gridApi => {
+        this.grid1Api = gridApi;
+      }
+    };
+
+    setTimeout(() => {
+      const data = require('./data.json');
+      data.forEach(item => {
+        item.registered = new Date(item.registered);
+        return item;
+      });
+
+      this.gridOptions1.data = data;
+    }, 200);
   }
 }
+
+CampaignGridCtrl.$inject = ['uiGridConstants'];

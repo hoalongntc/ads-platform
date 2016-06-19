@@ -9,6 +9,7 @@ export default class LocationCtrl {
     this.$timeout(() => {
       this.initLocationPerCityChart();
       this.initLocationPerCategoryChart();
+      this.initLocationChart();
       this.initGenderChart();
       this.initAgeChart();
       this.initIncomeChart();
@@ -20,28 +21,28 @@ export default class LocationCtrl {
     this.locationPerCityChartOptions = lodash.merge(this.CommonUtil.defaultChartOptions('pie'), {
       chart: {
         renderTo: 'city_chart',
-        height: 200
+        height: 250
       },
       title: {
         text: 'City',
         align: 'left',
         verticalAlign: 'middle',
-        x: 68
+        x: 85
       },
       plotOptions: {
         pie: {
-          size: '80%',
-          center: [70, 75]
+          size: '85%',
+          center: [90, 98]
         }
       },
       legend: {
         align: 'left',
-        x: 150
+        x: 220
       },
       series: [{
         name: 'City',
         data: [{name: 'Ho Chi Minh', y: 100}, {name: 'Ha Noi', y: 110}, {name: 'Da Nang', y: 30}, { name: 'Vung Tau', y: 20}, {name: 'Nha Trang', y: 30}],
-        startAngle: 0, innerSize: '50%'
+        startAngle: 0, innerSize: '45%'
       }]
     });
     this.locationPerCityChart = Highcharts.chart(this.locationPerCityChartOptions);
@@ -51,32 +52,64 @@ export default class LocationCtrl {
     this.locationPerCategoryChartOptions = lodash.merge(this.CommonUtil.defaultChartOptions('pie'), {
       chart: {
         renderTo: 'category_chart',
-        height: 200
+        height: 250
       },
       title: {
         text: 'Category',
         align: 'left',
         verticalAlign: 'middle',
-        x: 50
+        x: 73
       },
       plotOptions: {
         pie: {
-          size: '80%',
-          center: [70, 75]
+          size: '85%',
+          center: [90, 98]
         }
       },
       legend: {
         align: 'left',
         verticalAlign: 'middle',
-        x: 150
+        x: 220
       },
       series: [{
         name: 'Category',
         data: [{name: 'Coffee Shops', y: 100}, {name: 'Public areas', y: 110}, { name: 'Airports', y: 30}, {name: 'Universities', y: 20}, {name: 'Shopping Malls', y: 30}],
-        startAngle: 0, innerSize: '50%'
+        startAngle: 0, innerSize: '45%'
       }]
     });
     this.locationPerCategoryChart = Highcharts.chart(this.locationPerCategoryChartOptions);
+  }
+
+  initLocationChart() {
+    this.locationChartOptions = lodash.merge(this.CommonUtil.defaultChartOptions('pie'), {
+      chart: {
+        renderTo: 'location_chart',
+        height: 250
+      },
+      title: {
+        text: 'Location',
+        align: 'left',
+        verticalAlign: 'middle',
+        x: 73
+      },
+      plotOptions: {
+        pie: {
+          size: '85%',
+          center: [90, 98]
+        }
+      },
+      legend: {
+        align: 'left',
+        verticalAlign: 'middle',
+        x: 220
+      },
+      series: [{
+        name: 'Category',
+        data: [{name: 'Coffee Shops', y: 100}, {name: 'Public areas', y: 110}, { name: 'Airports', y: 30}, {name: 'Universities', y: 20}, {name: 'Shopping Malls', y: 30}],
+        startAngle: 0, innerSize: '45%'
+      }]
+    });
+    this.locationChart = Highcharts.chart(this.locationChartOptions);
   }
 
   initGenderChart() {
@@ -208,9 +241,9 @@ export default class LocationCtrl {
     });
     this.deviceChart = Highcharts.chart(this.deviceChartOptions);
   }
-  
+
   initCampaignGrid() {
-    
+
   }
 }
 
