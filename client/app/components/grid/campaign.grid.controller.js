@@ -1,4 +1,6 @@
-export default class CampaignGridCtrl {
+import 'angular-ui-grid/ui-grid';
+
+class CampaignGridCtrl {
   constructor(uiGridConstants) {
     const columnDefs = [
       {headerName: "Make", field: "make", editable: true},
@@ -86,7 +88,7 @@ export default class CampaignGridCtrl {
       enableSorting: true,
       enableFiltering: true,
       columnDefs: [
-        { field: 'name', editableCellTemplate: 'template/grid.input-editor.jade' },
+        { field: 'name', editableCellTemplate: 'template/grid.input-editor.template.jade' },
         { name: 'age', displayName: 'Age' , type: 'number', width: '10%' },
         {
           field: 'gender',
@@ -120,4 +122,6 @@ export default class CampaignGridCtrl {
   }
 }
 
-CampaignGridCtrl.$inject = ['uiGridConstants'];
+export default angular
+  .module('campaign.grid.controller', ['ui.grid'])
+  .controller('CampaignGridCtrl', CampaignGridCtrl);

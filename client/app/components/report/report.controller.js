@@ -1,7 +1,7 @@
 import lodash from 'lodash';
 import Highcharts from 'highcharts';
 
-export default class ReportCtrl {
+class ReportCtrl {
   constructor($rootScope, $state, $timeout, CommonUtil) {
     this.$timeout = $timeout;
     this.CommonUtil = CommonUtil;
@@ -84,7 +84,8 @@ export default class ReportCtrl {
     });
     this.impressionChart = Highcharts.chart(this.impressionChartOptions);
   }
-  
+
 }
 
-ReportCtrl.$inject = ['$rootScope', '$state', '$timeout', 'CommonUtil'];
+export default angular.module('report.controller', [])
+  .controller('ReportCtrl', ReportCtrl);

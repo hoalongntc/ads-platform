@@ -1,4 +1,4 @@
-import $ from 'jquery';
+import 'bootstrap-select/dist/js/bootstrap-select';
 
 export default class SelectPicker {
   constructor() {

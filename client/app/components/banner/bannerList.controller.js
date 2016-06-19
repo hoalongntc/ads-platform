@@ -1,9 +1,9 @@
 const page_size = 10
-export default class BannerListCtrl {
-  constructor(Banner,state) {
+class BannerListCtrl {
+  constructor(Banner, $state) {
     this.Banner =Banner;
-    this.state = state
-    this.setup(state);
+    this.$state = $state;
+    this.setup($state);
   }
   setup(state) {
     this.orderDirect = state.params.orderDirect?state.params.orderDirect:'DESC';
@@ -34,7 +34,7 @@ export default class BannerListCtrl {
       this.orderDirect = "DESC"
     }
     this.orderKey = orderKey;
-    this.state.transitionTo("banList",{orderKey:orderKey,orderDirect:this.orderDirect});
+    this.$state.transitionTo("banList",{orderKey:orderKey,orderDirect:this.orderDirect});
   }
   alertDelete(banner){
     this.deleteBanerConfirm = banner
@@ -51,4 +51,5 @@ export default class BannerListCtrl {
   }
 
 }
-BannerListCtrl.$inject = ['Banner','$state'];
+
+export default angular.module('banner.list.controller', []).controller('BannerListCtrl', BannerListCtrl);

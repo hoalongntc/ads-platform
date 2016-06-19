@@ -1,48 +1,22 @@
 import angular from 'angular';
-import 'angular-resource';
-import 'angular-animate';
-import 'angular-touch';
-
-// GLOBAL IMPORT
-// JS
-import '../assets/scripts/assets.js';
+require('angular-resource');
+require('bootstrap');
+require('lodash');
 
 // STYLES
 import '../assets/styles/assets.less';
 
-// TEMPLATE
-//@require "./components/**/*.html"
-//@require "./components/**/*.jade"
+// JADE TEMPLATE
+//@require "./components/**/*.template.jade"
 
-import blueBird from 'angular-bluebird-promises';
-import uirouter from 'angular-ui-router';
-import lbServices from '../lib/lb-services';
-import agGrid from 'ag-grid/dist/ag-grid.noStyle';
-import extensions from './extensions/extensions';
+export default angular
+  .module('app', [
+    require('angular-bluebird-promises'),
+    require('angular-ui-router'),
+    (() => { require('oclazyload'); return 'oc.lazyLoad' })(),
+    require('./app.routing').name,
 
-agGrid.initialiseAgGridWithAngular1(angular);
-
-import routes from './routes';
-import NavCtrl from './components/nav/nav.controller';
-import DashboardCtrl from './components/dashboard/dashboard.controller';
-import CampaignCtrl from './components/campaign/campaign.controller';
-import LocationCtrl from './components/location/location.controller';
-import BannerCtrl from './components/banner/banner.controller';
-import BannerListCtrl from './components/banner/bannerList.controller';
-import BannerPreviewCtrl from './components/banner/bannerPreview.controller';
-import ReportCtrl from './components/report/report.controller';
-import CampaignGridCtrl from './components/grid/campaign.grid.controller';
-
-const app = angular.module('app', [blueBird, uirouter, lbServices, 'agGrid', 'ui.grid', 'ui.grid.edit', 'ui.bootstrap', extensions]);
-app.config(routes);
-app.controller('NavCtrl', NavCtrl);
-app.controller('DashboardCtrl', DashboardCtrl);
-app.controller('CampaignCtrl', CampaignCtrl);
-app.controller('LocationCtrl', LocationCtrl);
-app.controller('BannerCtrl', BannerCtrl);
-app.controller('BannerListCtrl', BannerListCtrl);
-app.controller('BannerCtrl', BannerCtrl);
-app.controller('BannerListCtrl', BannerListCtrl);
-app.controller('BannerPreviewCtrl', BannerPreviewCtrl);
-app.controller('ReportCtrl', ReportCtrl);
-app.controller('CampaignGridCtrl', CampaignGridCtrl);
+    // global
+    require('../lib/lb-services'),
+    require('./extensions/extensions').name
+  ]);

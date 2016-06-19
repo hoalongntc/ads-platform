@@ -135,8 +135,8 @@ div(ng-show='cam.campaign')
             .col-sm-9.padding0
               span.col-xs-2.padding0  Start
               .co-xs-4.padding0
-                #datetimepicker6.input-group.date
-                  input.input_create_ads(ng-model='cam.selectedScheduleFrom', style='width:40%; float: left; border-radius: 15px 0px 0px 15px;border: none', type='text')
+                .input-group.date(date-time-picker, data-options='cam.dpFromOptions', ng-model='cam.selectedScheduleFrom')
+                  input.input_create_ads(style='width:40%; float: left; border-radius: 15px 0px 0px 15px;border: none', type='text')
                   span.input-group-addon(style='float: left; padding: 5px 27px 5px 0px;background-color: #EBEBEB;border-radius: 0px 15px 15px 0px')
                     span.glyphicon.glyphicon-calendar(style='padding: 0px 5px')
                   span(style='margin: 0px 7px 0px 7px; float: left; padding: 3.5px 0px') Time
@@ -144,8 +144,8 @@ div(ng-show='cam.campaign')
               .clear
               span.col-xs-2.padding0  End
               .co-xs-4.padding0
-                #datetimepicker7.input-group.date
-                  input.input_create_ads(ng-model='cam.selectedScheduleTo', style='width:40%; float: left; border-radius: 15px 0px 0px 15px;border: none', type='text')
+                .input-group.date(date-time-picker, data-options='cam.dpToOptions', ng-model='cam.selectedScheduleTo')
+                  input.input_create_ads(style='width:40%; float: left; border-radius: 15px 0px 0px 15px;border: none', type='text')
                   span.input-group-addon(style='float: left; padding: 5px 27px 5px 0px;background-color: #EBEBEB;border-radius: 0px 15px 15px 0px')
                     span.glyphicon.glyphicon-calendar(style='padding: 0px 5px')
                   span(style='margin: 0px 7px 0px 7px; float: left; padding: 3.5px 0px') Time

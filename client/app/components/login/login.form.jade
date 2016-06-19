@@ -1,0 +1,6 @@
+form(name='loginForm' ng-controller='LoginCtrl as login', ng-submit='login.login(credentials)', novalidate, form-autofill-fix)
+  label(for='username') Username:
+  input#username(type='text', ng-model='login.credentials.username')
+  label(for='password') Password:
+  input#password(type='password', ng-model='login.credentials.password')
+  button(type='submit') Login

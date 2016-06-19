@@ -1,6 +1,4 @@
-import $ from 'jquery'
-
-export default class CampaignCtrl {
+class CampaignCtrl {
   constructor(Campaign, CommonData, Location) {
     this.Campaign = Campaign;
     this.CommonData = CommonData;
@@ -38,19 +36,12 @@ export default class CampaignCtrl {
       this.times.push({ id: i + 1, label: i + 1 + ':00' });
     }
 
-    $('#datetimepicker6').datetimepicker({
+    this.dpFromOptions = {
       format: 'MMM - DD, YYYY'
-    });
-    $('#datetimepicker7').datetimepicker({
-      useCurrent: false,
+    };
+    this.dpToOptions = {
       format: 'MMM - DD, YYYY'
-    });
-    $("#datetimepicker6").on("dp.change", function (e) {
-      $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
-    });
-    $("#datetimepicker7").on("dp.change", function (e) {
-      $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
-    });
+    };
 
     // fetch select data
     this.CommonData.campaignCategories()
@@ -198,3 +189,7 @@ export default class CampaignCtrl {
     location.selected = isSelected;
   }
 }
+
+export default angular
+  .module('campaign.controller', [])
+  .controller('CampaignCtrl', CampaignCtrl);

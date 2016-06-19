@@ -1,7 +1,9 @@
+'use strict';
+
 import lodash from 'lodash';
 import Highcharts from 'highcharts';
 
-export default class LocationCtrl {
+class LocationCtrl {
   constructor($timeout, CommonUtil) {
     this.$timeout = $timeout;
     this.CommonUtil = CommonUtil;
@@ -247,4 +249,8 @@ export default class LocationCtrl {
   }
 }
 
-LocationCtrl.$inject = ['$timeout', 'CommonUtil'];
+export default angular
+  .module('location.controller', [
+    require('../grid/campaign.grid.controller').name
+  ])
+  .controller('LocationCtrl', LocationCtrl);

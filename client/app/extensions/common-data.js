@@ -49,10 +49,8 @@ export default class CommonData {
       });
   }
 
-  static factory(Promise, SelectOption) {
-    CommonData.instance = new CommonData(Promise, SelectOption);
+  static factory($q, SelectOption) {
+    CommonData.instance = new CommonData($q, SelectOption);
     return CommonData.instance;
   }
 }
-
-CommonData.factory.$inject = ['$q', 'SelectOption'];

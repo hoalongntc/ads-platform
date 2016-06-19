@@ -1,4 +1,4 @@
-export default class DashboardCtrl {
+class DashboardCtrl {
   constructor(CommonData) {
     this.CommonData = CommonData;
 
@@ -12,4 +12,6 @@ export default class DashboardCtrl {
   }
 }
 
-DashboardCtrl.$inject = ['CommonData'];
+export default angular
+  .module('dashboard.controller', [])
+  .controller('DashboardCtrl', DashboardCtrl);

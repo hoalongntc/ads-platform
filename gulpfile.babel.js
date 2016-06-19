@@ -21,7 +21,6 @@ gulp.task('lint', () => gulp
     // 'client/**/*.js',
     'common/**/*.js',
     'server/**/*.js',
-    'client/app/**/*.js',
   ])
   .pipe(eslint())
   .pipe(eslint.format())
