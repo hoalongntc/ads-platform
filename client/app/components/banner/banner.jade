@@ -1,52 +1,54 @@
 div(ng-show='ban.banner')
-  .col-sm-8.col-sm-push-2.padding0.mainCampaign(style='position:absolute; background-color:rgba(192,192,192,0.5); margin: auto;')
-    .col-xs-4.text-center(style='background-color:rgba(49,176,213,0.7);    margin-left: 20px; border-radius: 0px 0px 10px 10px; height: 25px; line-height: 25px; margin-bottom: 5px; color: #ffffff') Banner
-    .clearfix
-    .col-xs-12.colCampaign(style='background-color: #ffffff; margin-bottom: 60px;')
-      div.row.margin-10
-        div.col-xs-12
-          form.form-horizontal(role="form" name="bannerForm" ng-submit="ban.edit(bannerForm)")
-            .titlestep3 Banner Information
-            div.alert.alert-success.fade.in(ng-show="ban.actionSuccess")
-              a.close(data-dismiss="alert" aria-label="close" href="#")
-              |This Action has been send successful
-            div.alert.alert-danger.fade.in(ng-show="ban.actionSuccess==false")
-              a.close(data-dismiss="alert" aria-label="close" href="#")
-              p.error(ng-repeat="er in ban.messageList") {{er}}
-            div.form-group(class="{{(!bannerForm.name.$valid && bannerForm.name.$touched)?'has-error':''}}")
-              label.control-label.col-xs-2 Name:
-              div.col-xs-10
-                input.form-control.cusInput(placeholder="Name" ng-model="ban.pojo.name" name="name" required)
-            div.form-group(class="{{(!bannerForm.width.$valid && bannerForm.width.$touched)?'has-error':''}}")
-              label.control-label.col-xs-2 Width:
-              div.col-xs-10
-                input.form-control.cusInput(placeholder="Width" ng-model="ban.pojo.width" name="width" type="number" required)
-            div.form-group(class="{{(!bannerForm.height.$valid && bannerForm.height.$touched)?'has-error':''}}")
-              label.control-label.col-xs-2 Height:
-              div.col-xs-10
-                input.form-control.cusInput(placeholder="Height" ng-model="ban.pojo.height" name="height" type="number" required)
-            div.form-group(class="{{(!bannerForm.target.$valid && bannerForm.target.$touched)?'has-error':''}}")
-              label.control-label.col-xs-2 Target:
-              div.col-xs-10
-                select#select_divice.select_location_create_ads(ng-model="ban.pojo.target" name="target" required)
-                  option(value="all") All
-                  option(value="mobile") Mobile
-                  option(value="desktop") Desktop
+  .bg-white-trans.margin-horizontal-15
+    .panel.bg-trans
+      .panel-heading.panel-heading-rounded
+        .panel-title.pull-right Banner
+      .panel-body
+        .col-xs-12.colCampaign(style='background-color: #ffffff; margin-bottom: 60px;')
+          div.row.margin-10
+            div.col-xs-12
+              form.form-horizontal(role="form" name="bannerForm" ng-submit="ban.edit(bannerForm)")
+                .titlestep3 Banner Information
+                div.alert.alert-success.fade.in(ng-show="ban.actionSuccess")
+                  a.close(data-dismiss="alert" aria-label="close" href="#")
+                  |This Action has been send successful
+                div.alert.alert-danger.fade.in(ng-show="ban.actionSuccess==false")
+                  a.close(data-dismiss="alert" aria-label="close" href="#")
+                  p.error(ng-repeat="er in ban.messageList") {{er}}
+                div.form-group(class="{{(!bannerForm.name.$valid && bannerForm.name.$touched)?'has-error':''}}")
+                  label.control-label.col-xs-2 Name:
+                  div.col-xs-10
+                    input.form-control.cusInput(placeholder="Name" ng-model="ban.pojo.name" name="name" required)
+                div.form-group(class="{{(!bannerForm.width.$valid && bannerForm.width.$touched)?'has-error':''}}")
+                  label.control-label.col-xs-2 Width:
+                  div.col-xs-10
+                    input.form-control.cusInput(placeholder="Width" ng-model="ban.pojo.width" name="width" type="number" required)
+                div.form-group(class="{{(!bannerForm.height.$valid && bannerForm.height.$touched)?'has-error':''}}")
+                  label.control-label.col-xs-2 Height:
+                  div.col-xs-10
+                    input.form-control.cusInput(placeholder="Height" ng-model="ban.pojo.height" name="height" type="number" required)
+                div.form-group(class="{{(!bannerForm.target.$valid && bannerForm.target.$touched)?'has-error':''}}")
+                  label.control-label.col-xs-2 Target:
+                  div.col-xs-10
+                    select#select_divice.select_location_create_ads(ng-model="ban.pojo.target" name="target" required)
+                      option(value="all") All
+                      option(value="mobile") Mobile
+                      option(value="desktop") Desktop
 
-            div.form-group
-              div.col-xs-12
-                label#htmlCode Html Code:
-                textarea#htmlEditor(name="htmlEditor" rows="10" cols="80" ng-model="ban.pojo.htmlCode")
-            div
-              button.btn.btn-primary.margin-right-5(ng-disabled="bannerForm.$invalid" ng-show="!ban.pojo.id" ) Save
-              button.btn.btn-primary.margin-right-5(ng-disabled="bannerForm.$invalid" ng-show="ban.pojo.id" ) Update
-              button.btn.btn-primary.margin-right-5(ng-show="ban.pojo.id" ng-click="ban.clearPojo()") Reset
-              a.btn.btn-primary.margin-right-5(ui-sref='bannerList')
-                i.fa.fa-list.margin-right-5
-                |List
-              a.btn.btn-primary.margin-right-5(ng-show="ban.pojo.id" ui-sref='bannerPreview({id:ban.pojo.id})')
-                i.fa.fa-eye.margin-right-5
-                |Preview
+                div.form-group
+                  div.col-xs-12
+                    label#htmlCode Html Code:
+                    textarea#htmlEditor(name="htmlEditor" rows="10" cols="80" ng-model="ban.pojo.htmlCode")
+                div
+                  button.btn.btn-primary.margin-right-5(ng-disabled="bannerForm.$invalid" ng-show="!ban.pojo.id" ) Save
+                  button.btn.btn-primary.margin-right-5(ng-disabled="bannerForm.$invalid" ng-show="ban.pojo.id" ) Update
+                  button.btn.btn-primary.margin-right-5(ng-show="ban.pojo.id" ng-click="ban.clearPojo()") Reset
+                  a.btn.btn-primary.margin-right-5(ui-sref='bannerList')
+                    i.fa.fa-list.margin-right-5
+                    |List
+                  a.btn.btn-primary.margin-right-5(ng-show="ban.pojo.id" ui-sref='bannerPreview({id:ban.pojo.id})')
+                    i.fa.fa-eye.margin-right-5
+                    |Preview
 
 
 
