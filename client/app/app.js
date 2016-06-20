@@ -9,6 +9,8 @@ import '../assets/styles/assets.less';
 // JADE TEMPLATE
 //@require "./components/**/*.template.jade"
 
+require('angucomplete-alt');
+
 export default angular
   .module('app', [
     require('angular-bluebird-promises'),
@@ -18,5 +20,6 @@ export default angular
 
     // global
     require('../lib/lb-services'),
-    require('./extensions/extensions').name
+    require('./extensions/extensions').name,
+    'angucomplete-alt'
   ]);

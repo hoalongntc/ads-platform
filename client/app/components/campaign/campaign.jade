@@ -51,6 +51,7 @@ div(ng-show='cam.campaign')
               i.fa.fa-play-circle-o.fa-lg
               |       {{cc.text}}
         .col-xs-12(style='height: 40px; line-height: 40px;')
+        .col-xs-12(style='height: 40px; line-height: 40px;')
           span(style='float: left') 1/2
           span(style='float: right')
             button#next.btn.radius-50.btn-default.btn-sm(style='width: 150px; margin-right: 0px', ng-click='cam.next1_1()') Next
@@ -59,13 +60,13 @@ div(ng-show='cam.campaign')
           i.fa.fa-globe.fa-lg
           |       {{cam.selected.campaignCategory.text}}
         .col-xs-10.col-xs-push-1(style='background-color: #D2D2D2; padding: 0; margin: 0; border-radius: 5px')
-          input.form-control.input-sm(placeholder='Type to search Branches', ng-model="searchText")
+          input.form-control.input-sm(placeholder='Type to search brands', ng-model="searchText")
           .col-xs-10.col-xs-push-1
-            .radioFormat(ng-repeat='branch in cam.branches | filter:searchText')
-              input(type='radio', name='branch', ng-value='branch', ng-model='cam.selected.branch', ng-attr-id='{{ "branch-" + branch }}')
-              label(for='{{ "branch-" + branch }}')
+            .radioFormat(ng-repeat='brand in cam.brands | filter:searchText')
+              input(type='radio', name='brand', ng-value='brand', ng-model='cam.selected.brand', ng-attr-id='{{ "brand-" + brand.id }}')
+              label(for='{{ "brand-" + brand.id }}')
                 span
-                | {{branch}}
+                | {{brand.name}}
       .col-xs-12(style='height: 40px; line-height: 40px;', ng-show='cam.step1_2')
         span(style='float: left') 2/2
         span(style='float: right')
@@ -169,18 +170,20 @@ div(ng-show='cam.campaign')
             .col-xs-12.margin5
               .col-xs-4 - Mobile
               .col-xs-8
-                input.cusInput(type='text')
+                //input.cusInput(type='text')
+                angucomplete-alt(selected-object='cam.selected.bannerMobile' local-data='cam.bannerMobiles', minlength='1', search-fields='name', title-field='name', input-class='cusInput', placeholder='Type to search banner mobile')
             .col-xs-12.margin5
               .col-xs-4 - Desktop
               .col-xs-8
-                input.cusInput(type='text')
+                //input.cusInput(type='text')
+                angucomplete-alt(selected-object='cam.selected.bannerDesktop' local-data='cam.bannerDesktops',minlength='1', search-fields='name', title-field='name', input-class='cusInput', placeholder='Type to search banner desktop')
           .clearfix
           #tracking
             .row.titlestep3 Tracking Code
             .col-xs-12.margin5
               .col-xs-4 - Landing page
               .col-xs-8
-                input.cusInput(type='text')
+                input.cusInput(ng-model='cam.selected.landingPage', type='text')
         .h410(ng-show='cam.preview', style='overflow: auto')
           .titlestep3 Preview Booking
           .col-xs-12(style='margin: 5px 0px; padding-left: 0px')
@@ -229,7 +232,7 @@ div(ng-show='cam.campaign')
               span.col-xs-8.padding0.text-italic {{cam.selected.adSet}}
             .col-xs-12.padding0
               span.col-xs-4 - Landing page:
-              span.col-sm-8.padding0.text-italic(style='text-decoration: underline') www.xmen.com.vn
+              span.col-sm-8.padding0.text-italic(style='text-decoration: underline') {{cam.selected.landingPage}}
         .col-xs-12(style='height: 40px; line-height: 40px;', ng-show='cam.next31')
           span(style='float: right')
             button.btn.radius-50.btn-sm.btn-gray(style='', ng-click='cam.back3()', ng-show='cam.show3') Back
