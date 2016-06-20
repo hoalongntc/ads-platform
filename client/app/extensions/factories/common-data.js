@@ -1,4 +1,4 @@
-export default class CommonData {
+class CommonData {
   constructor(Promise, SelectOption) {
     this.Promise = Promise;
     this.SelectOption = SelectOption;
@@ -54,3 +54,7 @@ export default class CommonData {
     return CommonData.instance;
   }
 }
+
+export default angular
+  .module('app.factory.common-data', [])
+  .factory('CommonData', CommonData.factory);

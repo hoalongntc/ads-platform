@@ -1,5 +1,5 @@
 class DashboardCtrl {
-  constructor(CommonData) {
+  constructor(currentUser, CommonData) {
     this.CommonData = CommonData;
 
     CommonData.cities()

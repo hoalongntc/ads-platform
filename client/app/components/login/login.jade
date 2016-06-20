@@ -1,2 +1,19 @@
-h4 Login
-ng-include(src='login/login.form.jade')
+.col-sm-6.col-sm-offset-3.col-lg-4.col-lg-offset-4
+  .panel.panel-bordered
+    .panel-heading
+      h3.panel-title Login
+    .alert.alert-danger.alert-dismissible(role='alert', ng-show='login.errorMessage')
+      button.close(type='button', data-dismiss='alert')
+        i.fa.fa-close
+        span.sr-only Close
+      span {{login.errorMessage}}
+    .panel-body
+      form(name='loginForm', ng-submit='login.login(login.credentials)', novalidate, autocomplete='off')
+        .form-group
+          label.control-label(for='email') Email:
+          input.form-control#email(type='email', ng-model='login.credentials.username')
+        .form-group
+          label.control-label(for='password') Password:
+          input.form-control#password(type='password', ng-model='login.credentials.password')
+        .form-group
+          button.btn.btn-primary(type='submit') Login

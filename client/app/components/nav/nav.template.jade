@@ -8,7 +8,7 @@ nav.site-navbar.navbar.navbar-default.navbar-fixed-top.navbar-mega(role='navigat
     // Navbar Collapse
     #site-navbar-collapse.collapse.navbar-collapse.navbar-collapse-toolbar
       // Navbar Toolbar Right
-      ul.nav.navbar-toolbar.navbar-right.navbar-toolbar-right
+      ul.nav.navbar-toolbar.navbar-right.navbar-toolbar-right(ng-if='app.isAuthenticated()')
         li(ui-sref-active='active')
           a(ui-sref='dashboard')
             i.fa.fa-location-arrow.fa-1x
@@ -43,22 +43,18 @@ nav.site-navbar.navbar.navbar-default.navbar-fixed-top.navbar-mega(role='navigat
             span.hotspots.none.hidden-xs.hidden-sm Location
         li.dropdown.navbar-user
           a.navbar-avatar.dropdown-toggle(data-toggle='dropdown', aria-expanded='false', data-animation='scale-up', role='button')
-            span.username.hidden-xs.hidden-sm Nguyen Huu Tung
+            span.username.hidden-xs.hidden-sm(ng-bind='app.currentUser.email')
             span.avatar.avatar-online
               img(src='../../../assets/images/default_avatar.png', alt='...')
               i
-          ul.dropdown-menu(role='menu')
-            li(role='presentation')
-              a(href='javascript:void(0)', role='menuitem')
-                i.fa.fa-user(aria-hidden='true')
-                |  Profile
-            li(role='presentation')
-              a(href='javascript:void(0)', role='menuitem')
+          ul.dropdown-menu()
+            li
+              a(href='javascript:void(0)')
                 i.fa.fa-gears(aria-hidden='true')
                 |  Settings
             li.divider(role='presentation')
-            li(role='presentation')
-              a(href='javascript:void(0)', role='menuitem')
+            li(ng-click='app.logout()')
+              a
                 i.fa.fa-sign-out(aria-hidden='true')
                 |  Logout
       // End Navbar Toolbar Right

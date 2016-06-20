@@ -14,7 +14,10 @@ function routes($urlRouterProvider, $stateProvider) {
       },
       controller: 'DashboardCtrl as dash',
       resolve: {
-        loadDashboardCtrl: ($q, $ocLazyLoad) => {
+        currentUser: (AuthResolver) => {
+          return AuthResolver.getCurrentUser();
+        },
+        loadCtrl: ($q, $ocLazyLoad) => {
           // lazy load the controller
           return $q(resolve => {
             require.ensure([], () => {

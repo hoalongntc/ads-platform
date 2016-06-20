@@ -18,15 +18,15 @@
     "dataSource": "mongo",
     "public": false
   },
-  "acl": {
+  "ACL": {
     "dataSource": "mongo",
     "public": false
   },
-  "roleMapping": {
+  "RoleMapping": {
     "dataSource": "mongo",
     "public": false
   },
-  "role": {
+  "Role": {
     "dataSource": "mongo",
     "public": false
   },

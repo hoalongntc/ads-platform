@@ -1,7 +1,7 @@
 import moment from 'moment';
-require('../../assets/scripts/vendor/bootstrap-datetimepicker');
+import '../../../assets/scripts/vendor/bootstrap-datetimepicker';
 
-export default class DateTimePicker {
+class DateTimePicker {
   constructor($timeout) {
     this.$timeout = $timeout;
 
@@ -58,3 +58,7 @@ export default class DateTimePicker {
     return DateTimePicker.instance;
   }
 }
+
+export default angular
+  .module('app.directive.date-time-picker', [])
+  .directive('dateTimePicker', DateTimePicker.factory);

@@ -14,9 +14,15 @@ export default angular
     require('angular-bluebird-promises'),
     require('angular-ui-router'),
     (() => { require('oclazyload'); return 'oc.lazyLoad' })(),
-    require('./app.routing').name,
 
     // global
-    require('../lib/lb-services'),
-    require('./extensions/extensions').name
-  ]);
+    require('./extensions/extensions').name,
+    require('./app.routing').name,
+    require('./components/login/login.controller').name,
+    require('./components/application/application.controller').name,
+    require('../lib/lb-services')
+  ])
+  .config(require('./extensions/config/inject-auth'))
+  .run(require('./extensions/init/get-current-user'))
+  .run(require('./extensions/init/access-control'))
+  .run(require('./extensions/init/access-control-handle'));

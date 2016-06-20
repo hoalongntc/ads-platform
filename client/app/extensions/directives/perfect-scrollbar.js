@@ -1,6 +1,6 @@
 import Ps from 'perfect-scrollbar';
 
-export default class PerfectScrollbar {
+class PerfectScrollbar {
   constructor() {
     this.scope = {};
   }
@@ -36,3 +36,7 @@ export default class PerfectScrollbar {
     return PerfectScrollbar.instance;
   }
 }
+
+export default angular
+  .module('app.directive.perfect-scrollbar', [])
+  .directive('perfectScrollbar', PerfectScrollbar.factory);
