@@ -51,6 +51,7 @@ div(ng-show='cam.campaign')
               i.fa.fa-play-circle-o.fa-lg
               |       {{cc.text}}
         .col-xs-12(style='height: 40px; line-height: 40px;')
+        .col-xs-12(style='height: 40px; line-height: 40px;')
           span(style='float: left') 1/2
           span(style='float: right')
             button#next.btn.radius-50.btn-default.btn-sm(style='width: 150px; margin-right: 0px', ng-click='cam.next1_1()') Next
@@ -59,12 +60,13 @@ div(ng-show='cam.campaign')
           i.fa.fa-globe.fa-lg
           |       {{cam.selected.campaignCategory.text}}
         .col-xs-10.col-xs-push-1(style='background-color: #D2D2D2; padding: 0; margin: 0; border-radius: 5px')
-          input.form-control.input-sm(placeholder='Type to search Branches', ng-model="searchText")
+          input.form-control.input-sm(placeholder='Type to search brands', ng-model="searchText")
           .col-xs-10.col-xs-push-1
-            div(ng-repeat="branch in cam.branches | filter:searchText", ng-model='cam.selected.branch')
-              input(type='radio', name='brand', ng-value='branch', ng-model='cam.selected.branch')
-              label(for='')    {{branch}}
-              br
+            .radioFormat(ng-repeat='brand in cam.brands | filter:searchText')
+              input(type='radio', name='brand', ng-value='brand', ng-model='cam.selected.brand', ng-attr-id='{{ "brand-" + brand.id }}')
+              label(for='{{ "brand-" + brand.id }}')
+                span
+                | {{brand.name}}
       .col-xs-12(style='height: 40px; line-height: 40px;', ng-show='cam.step1_2')
         span(style='float: left') 2/2
         span(style='float: right')
@@ -135,7 +137,7 @@ div(ng-show='cam.campaign')
             .col-sm-9.padding0
               span.col-xs-2.padding0  Start
               .co-xs-4.padding0
-                .input-group.date(date-time-picker, data-options='cam.dpFromOptions', ng-model='cam.selectedScheduleFrom')
+                .input-group.date(date-time-picker, data-options='cam.dpFromOptions', ng-model='cam.selected.scheduleFrom')
                   input.input_create_ads(style='width:40%; float: left; border-radius: 15px 0px 0px 15px;border: none', type='text')
                   span.input-group-addon(style='float: left; padding: 5px 27px 5px 0px;background-color: #EBEBEB;border-radius: 0px 15px 15px 0px')
                     span.glyphicon.glyphicon-calendar(style='padding: 0px 5px')
@@ -144,7 +146,7 @@ div(ng-show='cam.campaign')
               .clear
               span.col-xs-2.padding0  End
               .co-xs-4.padding0
-                .input-group.date(date-time-picker, data-options='cam.dpToOptions', ng-model='cam.selectedScheduleTo')
+                .input-group.date(date-time-picker, data-options='cam.dpToOptions', ng-model='cam.selected.scheduleTo')
                   input.input_create_ads(style='width:40%; float: left; border-radius: 15px 0px 0px 15px;border: none', type='text')
                   span.input-group-addon(style='float: left; padding: 5px 27px 5px 0px;background-color: #EBEBEB;border-radius: 0px 15px 15px 0px')
                     span.glyphicon.glyphicon-calendar(style='padding: 0px 5px')
@@ -156,55 +158,39 @@ div(ng-show='cam.campaign')
             .col-xs-3.padding0
               span - Name:
             .col-xs-9.padding0
-              select#select_city_from.select_location_create_ads
-                option(ng-repeat='adSet in cam.adSets', ng-model='cam.selected.adSet') {{adSet}}
+              input.cusInput(ng-model='cam.selected.adSet', type='text')
         .col-xs-12(style='height: 40px; line-height: 40px;', ng-show='cam.next21')
           span(style='float: right')
             button.btn.radius-50.btn-gray.btn-sm(style='', ng-click='cam.back2()') Back
             button.btn.radius-50.btn-default.btn-sm(style='', ng-click='cam.next2()') Choose Ad Creative
         // AD
         .h410(ng-show='cam.step3')
-          #format
-            .row.titlestep3 Format
-            .col-xs-6(ng-repeat='format in cam.bannerFormats')
-              .radioFormat
-                input(type='radio', name='format', ng-value='format', ng-model='cam.selected.bannerFormat', ng-attr-id='{{ "format-" + format.value }}')
-                label(for='{{ "format-" + format.value }}')
-                  span
-                  | {{format.text}}
-          .clearfix
           #creative
             .row.titlestep3 Creative
             .col-xs-12.margin5
               .col-xs-4 - Mobile
               .col-xs-8
-                input.cusInput(type='text')
+                //input.cusInput(type='text')
+                angucomplete-alt(selected-object='cam.selected.bannerMobile' local-data='cam.bannerMobiles', minlength='1', search-fields='name', title-field='name', input-class='cusInput', placeholder='Type to search banner mobile')
             .col-xs-12.margin5
               .col-xs-4 - Desktop
               .col-xs-8
-                input.cusInput(type='text')
+                //input.cusInput(type='text')
+                angucomplete-alt(selected-object='cam.selected.bannerDesktop' local-data='cam.bannerDesktops',minlength='1', search-fields='name', title-field='name', input-class='cusInput', placeholder='Type to search banner desktop')
           .clearfix
           #tracking
             .row.titlestep3 Tracking Code
             .col-xs-12.margin5
-              .col-xs-4 - Mobile
-              .col-xs-8
-                input.cusInput(type='text')
-            .col-xs-12.margin5
-              .col-xs-4 - Desktop
-              .col-xs-8
-                input.cusInput(type='text')
-            .col-xs-12.margin5
               .col-xs-4 - Landing page
               .col-xs-8
-                input.cusInput(type='text')
+                input.cusInput(ng-model='cam.selected.landingPage', type='text')
         .h410(ng-show='cam.preview', style='overflow: auto')
           .titlestep3 Preview Booking
           .col-xs-12(style='margin: 5px 0px; padding-left: 0px')
             .col-xs-12
               label Campaign:
             span.col-xs-6 - Campaign Name:
-            span.col-xs-6.text-italic X-Men Apr
+            span.col-xs-6.text-italic {{cam.selected.adSet}}
             .clearfix
             span.col-xs-6 - Campaign Objective:
             span.col-xs-6.text-italic {{cam.selected.campaignCategory.text}}
@@ -235,7 +221,7 @@ div(ng-show='cam.campaign')
                       span.col-xs-8.padding0.text-italic {{cam.selected.kpi}} {{cam.selected.kpiType}}
                     div
                       span.col-xs-4.padding0 * Schedule:
-                      span.col-xs-8.padding0.text-italic {{cam.selected.scheduleFrom}} - {{cam.selected.scheduleTo}}
+                      span.col-xs-8.padding0.text-italic {{cam.selected.scheduleFrom.valueOf() | date: 'MMM - dd, yyyy'}} {{cam.selected.timeFrom.label}} to {{cam.selected.scheduleTo.valueOf() | date: 'MMM - dd, yyyy'}} {{cam.selected.timeTo.label}}
                   .clearfix
           .clearfix
           .col-xs-12.padding0
@@ -243,10 +229,10 @@ div(ng-show='cam.campaign')
               label Ad:
             .col-xs-12.padding0
               span.col-xs-4 - Ad Name:
-              span.col-xs-8.padding0.text-italic X-Men Apr
+              span.col-xs-8.padding0.text-italic {{cam.selected.adSet}}
             .col-xs-12.padding0
               span.col-xs-4 - Landing page:
-              span.col-sm-8.padding0.text-italic(style='text-decoration: underline') www.xmen.com.vn
+              span.col-sm-8.padding0.text-italic(style='text-decoration: underline') {{cam.selected.landingPage}}
         .col-xs-12(style='height: 40px; line-height: 40px;', ng-show='cam.next31')
           span(style='float: right')
             button.btn.radius-50.btn-sm.btn-gray(style='', ng-click='cam.back3()', ng-show='cam.show3') Back
