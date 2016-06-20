@@ -1,6 +1,6 @@
 import 'bootstrap-select/dist/js/bootstrap-select';
 
-export default class SelectPicker {
+class SelectPicker {
   constructor() {
     this.scope = {};
   }
@@ -18,3 +18,7 @@ export default class SelectPicker {
     return SelectPicker.instance;
   }
 }
+
+export default angular
+  .module('app.directive.select-picker', [])
+  .directive('selectPicker', SelectPicker.factory);

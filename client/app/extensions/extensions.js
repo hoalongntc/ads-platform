@@ -1,6 +1,17 @@
-export default angular.module('app.extensions', [])
-  .factory('CommonData', require('./common-data').factory)
-  .factory('CommonUtil', require('./common-util').factory)
-  .directive('dateTimePicker', require('./date-time-picker').factory)
-  .directive('perfectScrollbar', require('./perfect-scrollbar').factory)
-  .directive('selectPicker', require('./select-picker').factory);
+export default angular.module('app.extensions', [
+  require('./constants/auth').name,
+
+  require('./directives/login-dialog').name,
+  require('./directives/page-loading').name,
+  require('./directives/date-time-picker').name,
+  require('./directives/perfect-scrollbar').name,
+  require('./directives/select-picker').name,
+
+  require('./factories/auth-inteceptor').name,
+  require('./factories/auth-resolver').name,
+  require('./factories/auth-service').name,
+  require('./factories/common-data').name,
+  require('./factories/common-util').name,
+
+  // require('./services/session').name,
+]);

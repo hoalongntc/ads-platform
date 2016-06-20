@@ -1,6 +1,6 @@
 import lodash from 'lodash';
 
-export default class CommonUtil {
+class CommonUtil {
   constructor($interpolate, $templateCache) {
     this.$interpolate = $interpolate;
     this.$templateCache = $templateCache;
@@ -98,3 +98,7 @@ export default class CommonUtil {
     return CommonUtil.instance;
   }
 }
+
+export default angular
+  .module('app.factory.common-util', [])
+  .factory('CommonUtil', CommonUtil.factory);

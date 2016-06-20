@@ -1,5 +1,6 @@
 import $ from 'jquery'
 import moment from 'moment'
+require('angucomplete-alt');
 
 export default class CampaignCtrl {
   constructor(Campaign, CommonData, Location, Brand, Banner) {
