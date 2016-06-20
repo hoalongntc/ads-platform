@@ -4,7 +4,8 @@ module.exports = function (shipit) {
   require('shipit-shared')(shipit);
 
   const APP_NAME = 'ads-platform';
-
+  const APP_DEPLOY_TO = `/var/www/${APP_NAME}`;
+  
   shipit.initConfig({
     default: {
       workspace: `/tmp/${APP_NAME}`,
@@ -29,12 +30,12 @@ module.exports = function (shipit) {
     },
     staging: {
       servers: 'adsplatform@112.109.90.105:2022',
-      branch: 'development'
+      branch: 'tracking'
     }
   });
 
   shipit.blTask('build', function () {
-    shipit.remote('npm run build').then(function (res) {
+    shipit.remote(`cd "${APP_DEPLOY_TO}/current" && npm run build`).then(function (res) {
       console.log(res[0].stdout);
       console.log(res[0].stderr);
     });
