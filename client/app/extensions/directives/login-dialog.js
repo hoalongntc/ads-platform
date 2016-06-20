@@ -16,8 +16,9 @@ class LoginDialog {
     scope.$on(this.authEvents.notAuthenticated, showDialog);
     scope.$on(this.authEvents.sessionTimeout, showDialog)
   }
-
+  
   static factory(AUTH_EVENTS) {
+    "ngInject";
     LoginDialog.instance = new LoginDialog(AUTH_EVENTS);
     return LoginDialog.instance;
   }

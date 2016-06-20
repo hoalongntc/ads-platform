@@ -18,6 +18,7 @@ class AuthInterceptor {
   }
 
   static factory($rootScope, $q, AUTH_EVENTS) {
+    "ngInject";
     AuthInterceptor.instance = new AuthInterceptor($rootScope, $q, AUTH_EVENTS);
     return AuthInterceptor.instance;
   }

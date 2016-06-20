@@ -50,6 +50,7 @@ class CommonData {
   }
 
   static factory($q, SelectOption) {
+    "ngInject";
     CommonData.instance = new CommonData($q, SelectOption);
     return CommonData.instance;
   }

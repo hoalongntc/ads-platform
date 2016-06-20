@@ -11,7 +11,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' && module.ex
 
 (function(window, angular, undefined) {'use strict';
 
-var urlBase = "http://112.109.90.105:5000/api";
+var urlBase = "http://127.0.0.1:3000/api";
 var authHeader = 'authorization';
 
 function getHost(url) {

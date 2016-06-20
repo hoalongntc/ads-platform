@@ -25,6 +25,7 @@ class AuthResolver {
   }
 
   static factory($rootScope, $q, User) {
+    "ngInject";
     AuthResolver.instance = new AuthResolver($rootScope, $q, User);
     return AuthResolver.instance;
   }
