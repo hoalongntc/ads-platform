@@ -1,6 +1,7 @@
 import 'dotenv/config';
 import loopback from 'loopback';
 import boot from 'loopback-boot';
+import path from 'path';
 
 const app = module.exports = loopback();
 
@@ -21,9 +22,8 @@ boot(app, __dirname, (err) => {
   if (err) {
     throw err;
   }
-
   // start the server if `$ node server.js`
-  if (require.main === module) {
+  if (require.main === module || path.basename(require.main.filename) === 'server.babel.js') {
     app.start();
   }
 });

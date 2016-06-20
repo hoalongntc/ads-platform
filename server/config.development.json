@@ -1,0 +1,7 @@
+{
+  "restApiRoot": "/api",
+  "host": "localhost",
+  "port": 3000,
+  "fileServer":"http://localhost:3000/testFileSystem.html",
+  "fileSerect":"token123456"
+}
