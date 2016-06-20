@@ -1,173 +1,80 @@
 .page-content.container-fluid
   .bg-white-trans.margin-horizontal-15
     .panel.bg-trans
-      .panel-header.panel-header-rounded
+      .panel-heading.panel-heading-rounded
         .panel-title.pull-right Locations
       .panel-body
-        .row
-          .col-md-6.padding-horizontal-5
-            .panel.margin-bottom-10
-              .panel-header.panel-header-sm.panel-header-rounded.text-center
-                .panel-title.bg-yellow-800 Total Hotspots: 1900
-              .panel-body.height-200
-                #city_chart.col-md-6
-                #category_chart.col-md-6
-          .col-md-3.padding-horizontal-5
-            .panel.margin-bottom-10
-              .panel-header.panel-header-sm.panel-header-rounded.text-center
-                .panel-title.bg-green-600 Top 10 Cities
-              .panel-body.height-200(nice-scroll, data-nice-option="{cursorcolor: '#CCD5DB'}")
-                ul.list-group.padding-bottom-20
-                  li.list-group-item(style='border:none')
-                    a(style='border:1px solid #E6E6E6;background-color:#E6E6E6;color:#000000;font-size:14px;text-decoration:none;border-radius:20px;padding:5px 15px;box-sizing:border-box') English
-                  li.list-group-item(style='border:none')
-                    a(style='border:1px solid #E6E6E6;background-color:#E6E6E6;color:#000000;font-size:14px;text-decoration:none;border-radius:20px;padding:5px 15px;box-sizing:border-box') Art and Design
-                  li.list-group-item(style='border:none')
-                    a(style='border:1px solid #E6E6E6;background-color:#E6E6E6;color:#000000;font-size:14px;text-decoration:none;border-radius:20px;padding:5px 15px;box-sizing:border-box') Drama
-                  li.list-group-item(style='border:none')
-                    a(style='border:1px solid #E6E6E6;background-color:#E6E6E6;color:#000000;font-size:14px;text-decoration:none;border-radius:20px;padding:5px 15px;box-sizing:border-box') Music
-                  li.list-group-item(style='border:none')
-                    a(style='border:1px solid #E6E6E6;background-color:#E6E6E6;color:#000000;font-size:14px;text-decoration:none;border-radius:20px;padding:5px 15px;box-sizing:border-box') Physics
-                  li.list-group-item(style='border:none')
-                    a(style='border:1px solid #E6E6E6;background-color:#E6E6E6;color:#000000;font-size:14px;text-decoration:none;border-radius:20px;padding:5px 15px;box-sizing:border-box') Chemistry
-                  li.list-group-item(style='border:none')
-                    a(style='border:1px solid #E6E6E6;background-color:#E6E6E6;color:#000000;font-size:14px;text-decoration:none;border-radius:20px;padding:5px 15px;box-sizing:border-box') Biology
-                  li.list-group-item(style='border:none')
-                    a(style='border:1px solid #E6E6E6;background-color:#E6E6E6;color:#000000;font-size:14px;text-decoration:none;border-radius:20px;padding:5px 15px;box-sizing:border-box') Home economics
-                  li.list-group-item(style='border:none')
-                    a(style='border:1px solid #E6E6E6;background-color:#E6E6E6;color:#000000;font-size:14px;text-decoration:none;border-radius:20px;padding:5px 15px;box-sizing:border-box') Physical Education
-                  li.list-group-item(style='border:none')
-                    a(style='border:1px solid #E6E6E6;background-color:#E6E6E6;color:#000000;font-size:14px;text-decoration:none;border-radius:20px;padding:5px 15px;box-sizing:border-box') Computing Science
-          .col-md-3.padding-horizontal-5
-            .panel.margin-bottom-10
-              .panel-header.panel-header-sm.panel-header-rounded.text-center
-                .panel-title.bg-purple-600 Top 10 Locations
-              .panel-body.height-200(nice-scroll, data-nice-option="{cursorcolor: '#CCD5DB'}")
-                ul.list-group.padding-bottom-20
-                  li.list-group-item(style='border:none')
-                    a(style='border:1px solid #E6E6E6;background-color:#E6E6E6;color:#000000;font-size:14px;text-decoration:none;border-radius:20px;padding:5px 15px;box-sizing:border-box') English
-                  li.list-group-item(style='border:none')
-                    a(style='border:1px solid #E6E6E6;background-color:#E6E6E6;color:#000000;font-size:14px;text-decoration:none;border-radius:20px;padding:5px 15px;box-sizing:border-box') Art and Design
-                  li.list-group-item(style='border:none')
-                    a(style='border:1px solid #E6E6E6;background-color:#E6E6E6;color:#000000;font-size:14px;text-decoration:none;border-radius:20px;padding:5px 15px;box-sizing:border-box') Drama
-                  li.list-group-item(style='border:none')
-                    a(style='border:1px solid #E6E6E6;background-color:#E6E6E6;color:#000000;font-size:14px;text-decoration:none;border-radius:20px;padding:5px 15px;box-sizing:border-box') Music
-                  li.list-group-item(style='border:none')
-                    a(style='border:1px solid #E6E6E6;background-color:#E6E6E6;color:#000000;font-size:14px;text-decoration:none;border-radius:20px;padding:5px 15px;box-sizing:border-box') Physics
-                  li.list-group-item(style='border:none')
-                    a(style='border:1px solid #E6E6E6;background-color:#E6E6E6;color:#000000;font-size:14px;text-decoration:none;border-radius:20px;padding:5px 15px;box-sizing:border-box') Chemistry
-                  li.list-group-item(style='border:none')
-                    a(style='border:1px solid #E6E6E6;background-color:#E6E6E6;color:#000000;font-size:14px;text-decoration:none;border-radius:20px;padding:5px 15px;box-sizing:border-box') Biology
-                  li.list-group-item(style='border:none')
-                    a(style='border:1px solid #E6E6E6;background-color:#E6E6E6;color:#000000;font-size:14px;text-decoration:none;border-radius:20px;padding:5px 15px;box-sizing:border-box') Home economics
-                  li.list-group-item(style='border:none')
-                    a(style='border:1px solid #E6E6E6;background-color:#E6E6E6;color:#000000;font-size:14px;text-decoration:none;border-radius:20px;padding:5px 15px;box-sizing:border-box') Physical Education
         .row.padding-horizontal-5
           .panel.margin-bottom-10
-            .panel-header
-              .panel-title.padding-10.white.bg-blue-800.font-size-14 Audience Report
-            .panel-body.height-200
-              #gender_chart.col-md-3
-              #age_chart.col-md-3
-              #income_chart.col-md-3
-              #device_chart.col-md-3
+            .panel-heading.panel-heading-sm.panel-heading-rounded.text-center
+              .panel-title.bg-yellow-800 Total Locations: 1900
+            .panel-body
+              #city_chart.col-md-6.col-lg-4.height-250.padding-0
+              #category_chart.col-md-6.col-lg-4.height-250.padding-0
+              #location_chart.col-md-6.col-lg-4.height-250.padding-0
+                //.col-sm-6.col-lg-3.padding-horizontal-5
+                //  .panel.margin-bottom-10
+                //    .panel-heading.panel-heading-sm.panel-heading-rounded.text-center
+                //      .panel-title.bg-green-600 Top 10 Cities
+                //    .panel-body
+                //      ul.list-group.margin-bottom-0.height-200.relative(perfect-scrollbar)
+                //        ul.list-group.margin-bottom-0
+                //          li.list-group-item
+                //            lable.label.lable-chip.label-round.label-default English
+                //          li.list-group-item
+                //            lable.label.lable-chip.label-round.label-default Art and Design
+                //          li.list-group-item
+                //            lable.label.lable-chip.label-round.label-default Drama
+                //          li.list-group-item
+                //            lable.label.lable-chip.label-round.label-default Music
+                //          li.list-group-item
+                //            lable.label.lable-chip.label-round.label-default Physics
+                //          li.list-group-item
+                //            lable.label.lable-chip.label-round.label-default Chemistry
+                //          li.list-group-item
+                //            lable.label.lable-chip.label-round.label-default Biology
+                //          li.list-group-item
+                //            lable.label.lable-chip.label-round.label-default Home economics
+                //          li.list-group-item
+                //            lable.label.lable-chip.label-round.label-default Physical Education
+                //          li.list-group-item
+                //            lable.label.lable-chip.label-round.label-default Computing Science
+                //.col-sm-6.col-lg-3.padding-horizontal-5
+                //  .panel.margin-bottom-10
+                //    .panel-heading.panel-heading-sm.panel-heading-rounded.text-center
+                //      .panel-title.bg-purple-600 Top 10 Locations
+                //    .panel-body
+                //      ul.list-group.margin-bottom-0.height-200.relative(perfect-scrollbar)
+                //        li.list-group-item
+                //          lable.label.lable-chip.label-round.label-default English
+                //        li.list-group-item
+                //          lable.label.lable-chip.label-round.label-default Art and Design
+                //        li.list-group-item
+                //          lable.label.lable-chip.label-round.label-default Drama
+                //        li.list-group-item
+                //          lable.label.lable-chip.label-round.label-default Music
+                //        li.list-group-item
+                //          lable.label.lable-chip.label-round.label-default Physics
+                //        li.list-group-item
+                //          lable.label.lable-chip.label-round.label-default Chemistry
+                //        li.list-group-item
+                //          lable.label.lable-chip.label-round.label-default Biology
+                //        li.list-group-item
+                //          lable.label.lable-chip.label-round.label-default Home economics
+                //        li.list-group-item
+                //          lable.label.lable-chip.label-round.label-default Physical Education
         .row.padding-horizontal-5
           .panel.margin-bottom-10
-            .panel-header
-              .panel-title.padding-10.white.bg-blue-800.font-size-14 Campaign Overview
-            .panel-body.height-200.table-responsive
-              table.table.table-small-font.table-bordered.table-striped
-                thead
-                  tr
-                    th(data-priority='1', style='background-color:#787878')
-                    th(data-priority='1', style='background-color:#787878;text-align: center')
-                      a(style='font-size:12px;color:#ffffff;text-decoration:none') Campaign Name
-                    th(data-priority='3', style='background-color:#787878;text-align: center')
-                      a(style='font-size:12px;color:#ffffff;text-decoration:none') Buying Type
-                    th(data-priority='3', style='background-color:#787878;text-align: center')
-                      a(style='font-size:12px;color:#ffffff;text-decoration:none') Location
-                    th(data-priority='3', style='background-color:#787878;text-align: center')
-                      a(style='font-size:12px;color:#ffffff;text-decoration:none', a='') %KPI
-                    th(data-priority='3', style='background-color:#787878;text-align: center')
-                      a(style='font-size:12px;color:#ffffff;text-decoration:none', a='') Schedule
-                tbody
-                  tr
-                    td(data-priority='1', style='text-align: center;color:#000000;font-weight:bold;background-color:#ffffff;vertical-align: middle')
-                      label.switch
-                        input(type='checkbox')
-                        .slider.round
-                    td(data-priority='1', style='text-align: center;color:#000000;font-weight:bold;background-color:#ffffff;vertical-align: middle') YoMost CPC
-                    td(data-priority='3', style='text-align: center;color:#000000;font-weight:bold;background-color:#ffffff;vertical-align: middle') CPC
-                    td(data-priority='3', style='text-align: center;color:#000000;font-weight:bold;background-color:#ffffff;vertical-align: middle') 7 Coffee Shops, HCM
-                    td(data-priority='3', style='text-align: center;color:#000000;font-weight:bold;background-color:#ffffff;vertical-align: middle') 69%
-                    td(data-priority='3', style='text-align: center;color:#000000;font-weight:bold;background-color:#ffffff;vertical-align: middle') Apr 21,2016-Apr 28,2016
-                  tr
-                    td(data-priority='1', style='text-align: center;color:#000000;font-weight:bold;background-color:#ffffff;vertical-align: middle')
-                      label.switch
-                        input(type='checkbox')
-                        .slider.round
-                    td(data-priority='1', style='text-align: center;color:#000000;font-weight:bold;background-color:#ffffff;vertical-align: middle') YoMost CPC
-                    td(data-priority='3', style='text-align: center;color:#000000;font-weight:bold;background-color:#ffffff;vertical-align: middle') CPC
-                    td(data-priority='3', style='text-align: center;color:#000000;font-weight:bold;background-color:#ffffff;vertical-align: middle') 7 Coffee Shops, HCM
-                    td(data-priority='3', style='text-align: center;color:#000000;font-weight:bold;background-color:#ffffff;vertical-align: middle') 69%
-                    td(data-priority='3', style='text-align: center;color:#000000;font-weight:bold;background-color:#ffffff;vertical-align: middle') Apr 21,2016-Apr 28,2016
-                  tr
-                    td(data-priority='1', style='text-align: center;color:#000000;font-weight:bold;background-color:#ffffff;vertical-align: middle')
-                      label.switch
-                        input(type='checkbox')
-                        .slider.round
-                    td(data-priority='1', style='text-align: center;color:#000000;font-weight:bold;background-color:#ffffff;vertical-align: middle') YoMost CPC
-                    td(data-priority='3', style='text-align: center;color:#000000;font-weight:bold;background-color:#ffffff;vertical-align: middle') CPC
-                    td(data-priority='3', style='text-align: center;color:#000000;font-weight:bold;background-color:#ffffff;vertical-align: middle') 7 Coffee Shops, HCM
-                    td(data-priority='3', style='text-align: center;color:#000000;font-weight:bold;background-color:#ffffff;vertical-align: middle') 69%
-                    td(data-priority='3', style='text-align: center;color:#000000;font-weight:bold;background-color:#ffffff;vertical-align: middle') Apr 21,2016-Apr 28,2016
-                  tr
-                    td(data-priority='1', style='text-align: center;color:#000000;font-weight:bold;background-color:#ffffff;vertical-align: middle')
-                      label.switch
-                        input(type='checkbox')
-                        .slider.round
-                    td(data-priority='1', style='text-align: center;color:#000000;font-weight:bold;background-color:#ffffff;vertical-align: middle') YoMost CPC
-                    td(data-priority='3', style='text-align: center;color:#000000;font-weight:bold;background-color:#ffffff;vertical-align: middle') CPC
-                    td(data-priority='3', style='text-align: center;color:#000000;font-weight:bold;background-color:#ffffff;vertical-align: middle') 7 Coffee Shops, HCM
-                    td(data-priority='3', style='text-align: center;color:#000000;font-weight:bold;background-color:#ffffff;vertical-align: middle') 69%
-                    td(data-priority='3', style='text-align: center;color:#000000;font-weight:bold;background-color:#ffffff;vertical-align: middle') Apr 21,2016-Apr 28,2016
-                  tr
-                    td(data-priority='1', style='text-align: center;color:#000000;font-weight:bold;background-color:#ffffff;vertical-align: middle')
-                      label.switch
-                        input(type='checkbox')
-                        .slider.round
-                    td(data-priority='1', style='text-align: center;color:#000000;font-weight:bold;background-color:#ffffff;vertical-align: middle') YoMost CPC
-                    td(data-priority='3', style='text-align: center;color:#000000;font-weight:bold;background-color:#ffffff;vertical-align: middle') CPC
-                    td(data-priority='3', style='text-align: center;color:#000000;font-weight:bold;background-color:#ffffff;vertical-align: middle') 7 Coffee Shops, HCM
-                    td(data-priority='3', style='text-align: center;color:#000000;font-weight:bold;background-color:#ffffff;vertical-align: middle') 69%
-                    td(data-priority='3', style='text-align: center;color:#000000;font-weight:bold;background-color:#ffffff;vertical-align: middle') Apr 21,2016-Apr 28,2016
-                  tr
-                    td(data-priority='1', style='text-align: center;color:#000000;font-weight:bold;background-color:#ffffff;vertical-align: middle')
-                      label.switch
-                        input(type='checkbox')
-                        .slider.round
-                    td(data-priority='1', style='text-align: center;color:#000000;font-weight:bold;background-color:#ffffff;vertical-align: middle') YoMost CPC
-                    td(data-priority='3', style='text-align: center;color:#000000;font-weight:bold;background-color:#ffffff;vertical-align: middle') CPC
-                    td(data-priority='3', style='text-align: center;color:#000000;font-weight:bold;background-color:#ffffff;vertical-align: middle') 7 Coffee Shops, HCM
-                    td(data-priority='3', style='text-align: center;color:#000000;font-weight:bold;background-color:#ffffff;vertical-align: middle') 69%
-                    td(data-priority='3', style='text-align: center;color:#000000;font-weight:bold;background-color:#ffffff;vertical-align: middle') Apr 21,2016-Apr 28,2016
-                  tr
-                    td(data-priority='1', style='text-align: center;color:#000000;font-weight:bold;background-color:#ffffff;vertical-align: middle')
-                      label.switch
-                        input(type='checkbox')
-                        .slider.round
-                    td(data-priority='1', style='text-align: center;color:#000000;font-weight:bold;background-color:#ffffff;vertical-align: middle') YoMost CPC
-                    td(data-priority='3', style='text-align: center;color:#000000;font-weight:bold;background-color:#ffffff;vertical-align: middle') CPC
-                    td(data-priority='3', style='text-align: center;color:#000000;font-weight:bold;background-color:#ffffff;vertical-align: middle') 7 Coffee Shops, HCM
-                    td(data-priority='3', style='text-align: center;color:#000000;font-weight:bold;background-color:#ffffff;vertical-align: middle') 69%
-                    td(data-priority='3', style='text-align: center;color:#000000;font-weight:bold;background-color:#ffffff;vertical-align: middle') Apr 21,2016-Apr 28,2016
-                  tr
-                    td(data-priority='1', style='text-align: center;color:#000000;font-weight:bold;background-color:#ffffff;vertical-align: middle')
-                      label.switch
-                        input(type='checkbox')
-                        .slider.round
-                    td(data-priority='1', style='text-align: center;color:#000000;font-weight:bold;background-color:#ffffff;vertical-align: middle') YoMost CPC
-                    td(data-priority='3', style='text-align: center;color:#000000;font-weight:bold;background-color:#ffffff;vertical-align: middle') CPC
-                    td(data-priority='3', style='text-align: center;color:#000000;font-weight:bold;background-color:#ffffff;vertical-align: middle') 7 Coffee Shops, HCM
-                    td(data-priority='3', style='text-align: center;color:#000000;font-weight:bold;background-color:#ffffff;vertical-align: middle') 69%
-                    td(data-priority='3', style='text-align: center;color:#000000;font-weight:bold;background-color:#ffffff;vertical-align: middle') Apr 21,2016-Apr 28,2016
+            .panel-heading.panel-heading-rounded.panel-heading-sm.text-center
+              .panel-title.bg-blue-800 Audience Report
+            .panel-body
+              #gender_chart.col-md-6.col-lg-3.height-200.padding-0
+              #age_chart.col-md-6.col-lg-3.height-200.padding-0
+              #income_chart.col-md-6.col-lg-3.height-200.padding-0
+              #device_chart.col-md-6.col-lg-3.height-200.padding-0
+        .row.padding-horizontal-5
+          .panel.margin-bottom-10
+            .panel-heading.panel-heading-rounded.panel-heading-sm.text-center
+              .panel-title.bg-blue-800 Campaign Overview
+            .table-responsive
+              ng-include(src="'grid/campaign.gird.template.jade'")

@@ -1,30 +1,22 @@
-// GLOBAL IMPORT
-// JS
-import '../assets/scripts/assets.js'
+import angular from 'angular';
+require('angular-resource');
+require('bootstrap');
+require('lodash');
 
 // STYLES
-import '../assets/styles/assets.less'
+import '../assets/styles/assets.less';
 
-// TEMPLATE
-//@require "./components/**/*.html"
-//@require "./components/**/*.jade"
+// JADE TEMPLATE
+//@require "./components/**/*.template.jade"
 
-import angular from 'angular';
-import ngResource from 'angular-resource'
-import blueBird from 'angular-bluebird-promises'
-import uirouter from 'angular-ui-router';
-import lbServices from '../lib/lb-services';
-import extensions from './extensions/extensions';
+export default angular
+  .module('app', [
+    require('angular-bluebird-promises'),
+    require('angular-ui-router'),
+    (() => { require('oclazyload'); return 'oc.lazyLoad' })(),
+    require('./app.routing').name,
 
-import routes from './routes';
-import NavCtrl from './components/nav/nav.controller';
-import DashboardCtrl from './components/dashboard/dashboard.controller';
-import CampaignCtrl from './components/campaign/campaign.controller';
-import LocationCtrl from './components/location/location.controller';
-
-const app = angular.module('app', [blueBird, uirouter, lbServices, extensions]);
-app.config(routes);
-app.controller('NavCtrl', NavCtrl);
-app.controller('DashboardCtrl', DashboardCtrl);
-app.controller('CampaignCtrl', CampaignCtrl);
-app.controller('LocationCtrl', LocationCtrl);
+    // global
+    require('../lib/lb-services'),
+    require('./extensions/extensions').name
+  ]);

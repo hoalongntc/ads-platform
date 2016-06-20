@@ -136,7 +136,7 @@ div(ng-show='cam.campaign')
             .col-sm-9.padding0
               span.col-xs-2.padding0  Start
               .co-xs-4.padding0
-                #datetimepicker6.input-group.date
+                .input-group.date(date-time-picker, data-options='cam.dpFromOptions', ng-model='cam.selectedScheduleFrom')
                   input.input_create_ads(style='width:40%; float: left; border-radius: 15px 0px 0px 15px;border: none', type='text')
                   span.input-group-addon(style='float: left; padding: 5px 27px 5px 0px;background-color: #EBEBEB;border-radius: 0px 15px 15px 0px')
                     span.glyphicon.glyphicon-calendar(style='padding: 0px 5px')
@@ -145,7 +145,7 @@ div(ng-show='cam.campaign')
               .clear
               span.col-xs-2.padding0  End
               .co-xs-4.padding0
-                #datetimepicker7.input-group.date
+                .input-group.date(date-time-picker, data-options='cam.dpToOptions', ng-model='cam.selectedScheduleTo')
                   input.input_create_ads(style='width:40%; float: left; border-radius: 15px 0px 0px 15px;border: none', type='text')
                   span.input-group-addon(style='float: left; padding: 5px 27px 5px 0px;background-color: #EBEBEB;border-radius: 0px 15px 15px 0px')
                     span.glyphicon.glyphicon-calendar(style='padding: 0px 5px')
@@ -236,5 +236,5 @@ div(ng-show='cam.campaign')
             button.btn.radius-50.btn-dark.btn-sm(style='', ng-click='cam.prebook()', ng-show='cam.show3') Preview Booking
             button.btn.radius-50.btn-dark.btn-sm(style='', ng-click='cam.editbook()', ng-show='cam.show31') Edit Booking
             button.btn.radius-50.btn-default.btn-sm(style='', ng-click='cam.placebook()') Place Booking
-.col-xs-10.col-xs-push-1.col-sm-4.col-sm-push-4.processing(ng-show='cam.step3_2')
+  .col-xs-10.col-xs-push-1.col-sm-4.col-sm-push-4.processing(ng-show='cam.step3_2')
   p(ng-bind='cam.actionprocess')

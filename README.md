@@ -48,7 +48,7 @@ npm run dev-client
 |   |   ├── components
 |   |   ├── extensions
 |   |   ├── app.js
-|   |   └── routes.js
+|   |   └── app.routing.js
 |   ├── assets
 |   |   ├── images
 |   |   ├── scripts
@@ -70,7 +70,7 @@ npm run dev-client
 - `client/app/components`: App components
 - `client/app/extensions`: App directives, factories, serivices
 - `client/app/app.js`: App main file
-- `client/app/routes.js`: App routes config
+- `client/app/app.routing.js`: App routes config
 - `client/assets`: App assets
 - `client/assets/images`: Images
 - `client/assets/scripts/assets.js`: Main asset script

@@ -84,7 +84,7 @@ module.exports = function makeWebpackConfig () {
   } else if (isProd) {
     config.devtool = 'source-map'
   } else {
-    config.devtool = 'eval-source-map'
+    config.devtool = 'inline-source-map'
     config.progress = true
   }
 
@@ -105,7 +105,7 @@ module.exports = function makeWebpackConfig () {
       // Compiles ES6 and ES7 into ES5 code
       // Reference: https://github.com/shanhaichik/webpack-require-loader
       test: /\.js$/,
-      loaders: ['babel', 'required?import[]=angular'],
+      loaders: ['ng-annotate', 'babel', 'required?import[]=angular'],
       exclude: /node_modules/,
     }, {
       // JSON LOADER
@@ -148,12 +148,21 @@ module.exports = function makeWebpackConfig () {
       exclude: [
         /\.template\.html/,
       ],
-      loader: 'ngtemplate?relativeTo=client/app/components/!html',
+      loader: 'html',
     }, {
       // JADE LOADER
       // Reference: https://github.com/bline/jade-html-loader
       // Allow loading jade through js
       test: /\.jade$/,
+      exclude: [
+        /\.template\.jade/,
+      ],
+      loader: 'html!jade-html-loader',
+    }, {
+      // JADE TEMPLATE LOADER
+      // Reference: https://github.com/bline/jade-html-loader
+      // Allow loading jade through js
+      test: /\.template\.jade$/,
       loader: 'ngtemplate?relativeTo=client/app/components/!html!jade-html-loader',
     }],
   }

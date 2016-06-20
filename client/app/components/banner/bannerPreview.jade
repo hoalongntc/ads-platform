@@ -1,0 +1,22 @@
+div
+  .col-sm-8.col-sm-push-2.padding0.mainCampaign(style='position:absolute; background-color:rgba(192,192,192,0.5); margin: auto;')
+    .col-xs-4.text-center(style='background-color:rgba(49,176,213,0.7);    margin-left: 20px; border-radius: 0px 0px 10px 10px; height: 25px; line-height: 25px; margin-bottom: 5px; color: #ffffff') Banner
+    .clearfix
+    .col-xs-12.colCampaign(style='background-color: #ffffff; margin-bottom: 60px;')
+      div.row.margin-10
+        div.col-xs-12
+            .titlestep3 Preview Banner
+            //div.content#contentPreview
+            div.content#content(ng-bind-html="banPreview.previewCode")
+            div
+              a.btn.btn-primary.margin-right-5(ui-sref='banner({id:banPreview.pojo.id})')
+                i.fa.fa-edit.margin-right-5
+                |Edit
+              a.btn.btn-primary(ui-sref="bannerList")
+                i.fa.fa-list.margin-right-5
+                |List
+
+
+
+
+

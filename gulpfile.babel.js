@@ -102,7 +102,7 @@ gulp.task('default', [
 ])
 
 // Build
-gulp.task('build', [
+gulp.task('build',[
   'lint',
   'loopback',
   'webpack:build'
