@@ -5,7 +5,14 @@ const device_table_values = [{key: "all", label: "All"}, {key: "mobile", label: 
   label: "Desktop"
 }]
 CKEDITOR.config.allowedContent = true;
-
+var innitCkEdittor = (id) =>{
+  CKEDITOR.replace(id,{
+    filebrowserBrowseUrl: '/FileSystem',
+    filebrowserImageBrowseUrl: '/FileSystem',
+    filebrowserUploadUrl: '/FileSystem',
+    filebrowserImageUploadUrl: '/FileSystem'
+  });
+}
 class BannerCtrl {
   constructor(Banner, $state) {
     this.Banner = Banner;
@@ -55,12 +62,12 @@ class BannerCtrl {
     if (params.id) {
       this.Banner.findById({id: params.id}).$promise.then(result=> {
         this.pojo = result;
-        CKEDITOR.replace('htmlEditor');
+        innitCkEdittor('htmlEditor');
       }).catch(error=> {
         this.actionError = true;
       });
     } else {
-      CKEDITOR.replace('htmlEditor');
+      innitCkEdittor('htmlEditor');
     }
     //innit ckeditor plugin for richtext
 

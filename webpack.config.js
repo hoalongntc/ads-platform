@@ -215,6 +215,11 @@ module.exports = function makeWebpackConfig () {
         template: `${clientApp}/index.template.html`,
         inject: 'body',
       }),
+      new HtmlWebpackPlugin({
+        filename: 'testFileSystem.html',
+        template: `${clientApp}/testFileSystem.html`,
+        inject: 'body',
+      }),
 
       // Reference: https://github.com/webpack/extract-text-webpack-plugin
       // Extract css files

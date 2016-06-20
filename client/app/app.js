@@ -13,7 +13,9 @@ export default angular
   .module('app', [
     require('angular-bluebird-promises'),
     require('angular-ui-router'),
-    (() => { require('oclazyload'); return 'oc.lazyLoad' })(),
+    (() => { 
+      require('oclazyload'); 
+      return 'oc.lazyLoad' })(),
     require('./app.routing').name,
 
     // global

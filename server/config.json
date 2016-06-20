@@ -23,5 +23,7 @@
       "disableStackTrace": false
     }
   },
+  "fileServer":"http://localhost:3000/testFileSystem.html",
+  "fileSerect":"token123456",
   "legacyExplorer": false
 }
