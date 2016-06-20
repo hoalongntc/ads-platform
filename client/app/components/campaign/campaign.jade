@@ -136,7 +136,7 @@ div(ng-show='cam.campaign')
             .col-sm-9.padding0
               span.col-xs-2.padding0  Start
               .co-xs-4.padding0
-                .input-group.date(date-time-picker, data-options='cam.dpFromOptions', ng-model='cam.selectedScheduleFrom')
+                .input-group.date(date-time-picker, data-options='cam.dpFromOptions', ng-model='cam.selected.scheduleFrom')
                   input.input_create_ads(style='width:40%; float: left; border-radius: 15px 0px 0px 15px;border: none', type='text')
                   span.input-group-addon(style='float: left; padding: 5px 27px 5px 0px;background-color: #EBEBEB;border-radius: 0px 15px 15px 0px')
                     span.glyphicon.glyphicon-calendar(style='padding: 0px 5px')
@@ -145,7 +145,7 @@ div(ng-show='cam.campaign')
               .clear
               span.col-xs-2.padding0  End
               .co-xs-4.padding0
-                .input-group.date(date-time-picker, data-options='cam.dpToOptions', ng-model='cam.selectedScheduleTo')
+                .input-group.date(date-time-picker, data-options='cam.dpToOptions', ng-model='cam.selected.scheduleTo')
                   input.input_create_ads(style='width:40%; float: left; border-radius: 15px 0px 0px 15px;border: none', type='text')
                   span.input-group-addon(style='float: left; padding: 5px 27px 5px 0px;background-color: #EBEBEB;border-radius: 0px 15px 15px 0px')
                     span.glyphicon.glyphicon-calendar(style='padding: 0px 5px')
@@ -187,7 +187,7 @@ div(ng-show='cam.campaign')
             .col-xs-12
               label Campaign:
             span.col-xs-6 - Campaign Name:
-            span.col-xs-6.text-italic X-Men Apr
+            span.col-xs-6.text-italic {{cam.selected.adSet}}
             .clearfix
             span.col-xs-6 - Campaign Objective:
             span.col-xs-6.text-italic {{cam.selected.campaignCategory.text}}
@@ -218,7 +218,7 @@ div(ng-show='cam.campaign')
                       span.col-xs-8.padding0.text-italic {{cam.selected.kpi}} {{cam.selected.kpiType}}
                     div
                       span.col-xs-4.padding0 * Schedule:
-                      span.col-xs-8.padding0.text-italic {{cam.selected.scheduleFrom}} - {{cam.selected.scheduleTo}}
+                      span.col-xs-8.padding0.text-italic {{cam.selected.scheduleFrom.valueOf() | date: 'MMM - dd, yyyy'}} {{cam.selected.timeFrom.label}} to {{cam.selected.scheduleTo.valueOf() | date: 'MMM - dd, yyyy'}} {{cam.selected.timeTo.label}}
                   .clearfix
           .clearfix
           .col-xs-12.padding0
@@ -226,7 +226,7 @@ div(ng-show='cam.campaign')
               label Ad:
             .col-xs-12.padding0
               span.col-xs-4 - Ad Name:
-              span.col-xs-8.padding0.text-italic X-Men Apr
+              span.col-xs-8.padding0.text-italic {{cam.selected.adSet}}
             .col-xs-12.padding0
               span.col-xs-4 - Landing page:
               span.col-sm-8.padding0.text-italic(style='text-decoration: underline') www.xmen.com.vn

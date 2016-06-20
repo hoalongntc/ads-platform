@@ -1,4 +1,5 @@
 import $ from 'jquery'
+import moment from 'moment'
 
 export default class CampaignCtrl {
   constructor(Campaign, CommonData, Location) {
@@ -101,6 +102,10 @@ export default class CampaignCtrl {
     this.selected.kpi = 1000;
     this.selected.kpiType = this.kpiTypes[0];
     this.selected.branch = this.branches[0];
+    this.selected.scheduleFrom = moment();
+    this.selected.scheduleTo = moment();
+    this.selected.timeFrom = this.times[11];
+    this.selected.timeTo = this.times[11];
 
   }
 
