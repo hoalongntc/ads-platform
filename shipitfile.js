@@ -40,10 +40,6 @@ module.exports = function (shipit) {
   shipit.blTask('build', function () {
     return shipit
       .remote(`cd "${APP_DEPLOY_TO}/current" && npm run build`)
-      .then(function (res) {
-        // console.log(res[0].stdout);
-        console.log(res[0].stderr);
-      })
       .then(function () {
         shipit.emit('built');
       });
@@ -52,10 +48,6 @@ module.exports = function (shipit) {
   shipit.blTask('start_server', function () {
     return shipit
       .remote(`cd "${APP_DEPLOY_TO}/current" && pm2 startOrRestart pm2.json --env production`)
-      .then(function (res) {
-        // console.log(res[0].stdout);
-        console.log(res[0].stderr);
-      });
   });
 
   shipit.on('published', function () {
