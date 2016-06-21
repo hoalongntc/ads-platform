@@ -1,6 +1,7 @@
 import $ from 'jquery'
 import moment from 'moment'
 require('angucomplete-alt');
+import '../../../assets/styles/components/campaign.less';
 
 export default class CampaignCtrl {
   constructor(Campaign, CommonData, Location, Brand, Banner, CampaignMapping) {
@@ -54,6 +55,9 @@ export default class CampaignCtrl {
     this.CommonData.campaignCategories()
       .then((data) => {
         this.campaignCategories = data;
+        if(data.length > 0) {
+          this.selected.campaignCategory = data[0];
+        }
       })
       .catch((err) => {
         console.error(err);
@@ -87,7 +91,9 @@ export default class CampaignCtrl {
     this.Brand.find()
       .$promise.then((data) => {
         this.brands = data;
-        this.selected.brand = this.brands[0];
+        if(data.length > 0) {
+          this.selected.brand = data[0];
+        }
       })
       .catch((err) => {
         console.error(err);
@@ -222,16 +228,26 @@ export default class CampaignCtrl {
     this.campaign = false;
     this.step3_2 = true;
 
+    this.actionprocess = "Processing...";
+
+    this.saveCampain();
+  }
+
+  setLocationSelected(location, isSelected) {
+    location.selected = isSelected;
+  }
+
+  saveCampain() {
     let scheduleFromStr = this.selected.scheduleFrom.format('YYYYMMDD') + this.selected.timeFrom.id;
     let scheduleFrom = moment(scheduleFromStr, 'YYYYMMDDH').valueOf();
     let scheduleToStr = this.selected.scheduleTo.format('YYYYMMDD') + this.selected.timeTo.id;
     let scheduleTo = moment(scheduleToStr, 'YYYYMMDDH').valueOf();
 
     let audience = {
-      age: [ this.selected.ageFrom.id, this.selected.ageTo.id ],
+      age: [this.selected.ageFrom.id, this.selected.ageTo.id],
       gender: this.selected.gender.value,
       os: this.selected.device.value
-      };
+    };
 
     this.campaignObj = {
       active: false,
@@ -279,18 +295,14 @@ export default class CampaignCtrl {
             this.actionprocess = "Your booking has been placed!";
           })
           .catch((error) => {
+            this.actionprocess = "Error when save campain!";
             console.error(error);
           });
       })
       .catch((error) => {
+        this.actionprocess = "Error when save campain!";
         console.error(error);
       });
-
-    this.actionprocess = "Processing...";
-  }
-
-  setLocationSelected(location, isSelected) {
-    location.selected = isSelected;
   }
 }
 
