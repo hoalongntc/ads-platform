@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-const appConfig = require('./server.js');
+const appConfig = require('../server/server.js');
 const value = appConfig.get('fileServer');
 const serect = appConfig.get('fileSerect');
 
