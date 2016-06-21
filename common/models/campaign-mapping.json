@@ -14,7 +14,11 @@
       "type": "string",
       "required": true
     },
-    "hotspotId": {
+    "locationId": {
+      "type": "string",
+      "required": true
+    },
+    "locationName": {
       "type": "string",
       "required": true
     },
