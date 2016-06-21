@@ -30,3 +30,8 @@ export function standardizeGender(gender) {
   }
   return gender;
 }
+
+export function standardizeAgeAndIncome(value) {
+  if (!value) return null;
+  return value.replace(/[\s]+/g, '').replace(/-/g, '_to_').replace(/</g, 'under_').replace(/>/g, 'higher_').replace(/^\$/, '_$');
+}

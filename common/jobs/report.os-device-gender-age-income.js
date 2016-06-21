@@ -1,7 +1,8 @@
 import moment from 'moment';
 import Promise from 'bluebird';
 
-export default function (app, agenda) {
+export default (app) => {
+  console.log(app.get('SelectOption:age_category'));
   const models = app.models;
   const debug = require('debug')('jobs:calculate-daily-report');
 
@@ -9,33 +10,51 @@ export default function (app, agenda) {
     return models.TrackingImpression3
       .find({
         where: {trackingDate: reportDate},
-        fields: {advertiserId: 1, campaignId: 1, hotspotId: 1, trackingDate: 1}
+        fields: {advertiserId: 1, campaignId: 1, locationId: 1, trackingDate: 1}
       });
   };
-
   const getTrackingDataByKeys = (filterKeys) => {
     return models.TrackingClick7.find({where: filterKeys});
   };
-
   const calculateReport = data => {
     let genderReport = {male: 0, female: 0, other: 0};
     let osReport = {android: 0, ios: 0, windows_phone: 0, windows: 0, mac: 0, linux: 0, other: 0};
     let deviceReport = {mobile: 0, tablet: 0, pc: 0, other: 0};
 
-    return Promise
-      .map(data, row => {
-        return Promise.all([
-          calculateGenderReport(row, genderReport),
-          calculateOsReport(row, osReport),
-          calculateDeviceReport(row, deviceReport)
-        ]);
-      }, {concurrency: 10})
-      .then(() => {
-        debug('gender report', genderReport);
-        debug('os report', osReport);
-        debug('device report', deviceReport);
-        return Promise.resolve(genderReport);
+    let ageReport = { other: 0 };
+    const ageCategories = app.get('SelectOption:age_category');
+    if (ageCategories) {
+      ageCategories.forEach(cat => {
+        ageReport[cat['value']] = 0;
       });
+    }
+
+    let incomeReport = { other: 0 };
+    const incomeCategories = app.get('SelectOption:income_category');
+    if (incomeCategories) {
+      incomeCategories.forEach(cat => {
+        incomeReport[cat['value']] = 0;
+      });
+    }
+
+    data.forEach(row => {
+      calculateGenderReport(row, genderReport);
+      calculateOsReport(row, osReport);
+      calculateDeviceReport(row, deviceReport);
+
+      if (ageCategories) {
+        calculateAgeReport(row, ageReport);
+      }
+      if (incomeCategories) {
+        calculateIncomeReport(row, incomeReport);
+      }
+    });
+
+    debug('gender report', genderReport);
+    debug('os report', osReport);
+    debug('device report', deviceReport);
+    debug('age report', ageReport);
+    debug('income report', incomeReport);
   };
 
   const calculateGenderReport = (row, result) => {
@@ -79,20 +98,45 @@ export default function (app, agenda) {
       result.other++;
     }
   };
+  const calculateAgeReport = (row, result) => {
+    if (!row.age) {
+      result.other++;
+    } else if (~Object.keys(result).indexOf(row.age)) {
+      result[row.age]++;
+    } else {
+      result.other++;
+    }
+  };
+  const calculateIncomeReport = (row, result) => {
+    if (!row.income) {
+      result.other++;
+    } else if (~Object.keys(result).indexOf(row.income)) {
+      result[row.income]++;
+    } else {
+      result.other++;
+    }
+  };
 
-  agenda.define('calculate-daily-report', {concurrency: 1, priority: 'normal'}, (job, cb) => {
+  return (job, cb) => {
     const reportDate = moment(job.attrs.data.reportDate || undefined).startOf('day');
     debug('Start calculate-daily-report job', reportDate.toISOString());
 
-    getKeysByDate(reportDate)
-      .then(keys => Promise.map(keys, key => {
-        return getTrackingDataByKeys(key.toJSON())
-          .then(calculateReport);
-      }, {concurrency: 3}))
+    models.ReportAudience.createReport(reportDate)
       .then(() => cb())
       .catch(err => {
         console.error(err);
         cb(err);
       });
-  });
+
+    // getKeysByDate(reportDate)
+    //   .then(keys => Promise.map(keys, key => {
+    //     return getTrackingDataByKeys(key.toJSON())
+    //       .then(calculateReport);
+    //   }, {concurrency: 3}))
+    //   .then(() => cb())
+    //   .catch(err => {
+    //     console.error(err);
+    //     cb(err);
+    //   });
+  };
 };

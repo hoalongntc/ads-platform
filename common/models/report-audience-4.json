@@ -1,5 +1,5 @@
 {
-  "name": "ReportTracking5",
+  "name": "ReportAudience4",
   "base": "PersistedModel",
   "strict": true,
   "idInjection": true,
@@ -7,8 +7,8 @@
     "key_index": {
       "keys": {
         "advertiserId": 1,
-        "locationId": 1,
-        "trackingDate": -1
+        "campaignId": 1,
+        "reportDate": -1
       },
       "options": {
         "unique": true
@@ -26,23 +26,30 @@
     "advertiserName": {
       "type": "string"
     },
-    "locationId": {
+    "campaignId": {
       "type": "string",
       "required": true
     },
-    "locationName": {
+    "campaignName": {
       "type": "string"
     },
-    "clickCount": {
-      "type": "number",
-      "default": "0"
-    },
-    "impressionCount": {
-      "type": "number",
-      "default": "0"
-    },
-    "trackingDate": {
+    "reportDate": {
       "type": "date"
+    },
+    "reportOs": {
+      "type": "object"
+    },
+    "reportDevice": {
+      "type": "object"
+    },
+    "reportGender": {
+      "type": "object"
+    },
+    "reportAge": {
+      "type": "object"
+    },
+    "reportIncome": {
+      "type": "object"
     }
   },
   "validations": [],

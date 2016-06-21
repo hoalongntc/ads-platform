@@ -11,7 +11,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' && module.ex
 
 (function(window, angular, undefined) {'use strict';
 
-var urlBase = "http://127.0.0.1:3000/api";
+var urlBase = "http://localhost:3000/api";
 var authHeader = 'authorization';
 
 function getHost(url) {
@@ -2880,9 +2880,9 @@ module.factory(
          *
          *  - `bannerName` – `{string=}` - Banner Name
          *
-         *  - `hotspotId` – `{string=}` - Hotspot ID (required)
+         *  - `locationId` – `{string=}` - Hotspot ID (required)
          *
-         *  - `hotspotName` – `{string=}` - Hotspot Name
+         *  - `locationName` – `{string=}` - Hotspot Name
          *
          *  - `os` – `{string=}` - User device`s OS
          *
@@ -2965,9 +2965,9 @@ module.factory(
          *
          *  - `bannerName` – `{string=}` - Banner Name
          *
-         *  - `hotspotId` – `{string=}` - Hotspot ID (required)
+         *  - `locationId` – `{string=}` - Hotspot ID (required)
          *
-         *  - `hotspotName` – `{string=}` - Hotspot Name
+         *  - `locationName` – `{string=}` - Hotspot Name
          *
          *  - `os` – `{string=}` - User device`s OS
          *
@@ -3089,9 +3089,9 @@ module.factory(
          *
          *  - `bannerName` – `{string=}` - Banner Name
          *
-         *  - `hotspotId` – `{string=}` - Hotspot ID (required)
+         *  - `locationId` – `{string=}` - Hotspot ID (required)
          *
-         *  - `hotspotName` – `{string=}` - Hotspot Name
+         *  - `locationName` – `{string=}` - Hotspot Name
          *
          * @param {function(Object,Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -3142,9 +3142,9 @@ module.factory(
          *
          *  - `bannerName` – `{string=}` - Banner Name
          *
-         *  - `hotspotId` – `{string=}` - Hotspot ID (required)
+         *  - `locationId` – `{string=}` - Hotspot ID (required)
          *
-         *  - `hotspotName` – `{string=}` - Hotspot Name
+         *  - `locationName` – `{string=}` - Hotspot Name
          *
          * @param {function(Object,Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.

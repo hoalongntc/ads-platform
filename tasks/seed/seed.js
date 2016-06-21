@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import Promise from 'bluebird';
 import moment from 'moment';
-import {standardizeMacAddress, standardizeGender} from '../../common/utils';
+import {standardizeMacAddress, standardizeGender, standardizeAgeAndIncome} from '../../common/utils';
 
 module.exports = (app, cb) => {
   'use strict';
@@ -32,8 +32,8 @@ module.exports = (app, cb) => {
     args.push(row.name);
     args.push(row.email);
     args.push(standardizeGender(row.gender));
-    args.push(undefined);
-    args.push(undefined);
+    args.push(standardizeAgeAndIncome(row.survey01));
+    args.push(standardizeAgeAndIncome(row.survey02));
     args.push(undefined);
     args.push(row.phone);
     args.push(undefined);

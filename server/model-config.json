@@ -115,23 +115,43 @@
     "public": true
   },
   "ReportTracking1": {
-    "dataSource": "db",
+    "dataSource": "mongo",
     "public": false
   },
   "ReportTracking2": {
-    "dataSource": "db",
+    "dataSource": "mongo",
     "public": false
   },
   "ReportTracking3": {
-    "dataSource": "db",
+    "dataSource": "mongo",
     "public": false
   },
   "ReportTracking4": {
-    "dataSource": "db",
+    "dataSource": "mongo",
     "public": false
   },
   "ReportTracking5": {
-    "dataSource": "db",
+    "dataSource": "mongo",
+    "public": false
+  },
+  "ReportAudience1": {
+    "dataSource": "mongo",
+    "public": false
+  },
+  "ReportAudience2": {
+    "dataSource": "mongo",
+    "public": false
+  },
+  "ReportAudience3": {
+    "dataSource": "mongo",
+    "public": false
+  },
+  "ReportAudience4": {
+    "dataSource": "mongo",
+    "public": false
+  },
+  "ReportAudience": {
+    "dataSource": "mongo",
     "public": false
   }
 }
