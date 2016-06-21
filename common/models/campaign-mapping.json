@@ -18,6 +18,10 @@
       "type": "string",
       "required": true
     },
+    "locationName": {
+      "type": "string",
+      "required": true
+    },
     "audience": {
       "type": "string",
       "required": true

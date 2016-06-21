@@ -54,11 +54,19 @@
       "type": "string",
       "required": true
     },
-    "bannerMobile": {
+    "bannerMobileId": {
       "type": "string",
       "required": true
     },
-    "bannerDesktop": {
+    "bannerMobileName": {
+      "type": "string",
+      "required": true
+    },
+    "bannerDesktopId": {
+      "type": "string",
+      "required": true
+    },
+    "bannerDesktopName": {
       "type": "string",
       "required": true
     },

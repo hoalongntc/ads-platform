@@ -1,14 +1,16 @@
 import $ from 'jquery'
 import moment from 'moment'
 require('angucomplete-alt');
+import '../../../assets/styles/components/campaign.less';
 
 export default class CampaignCtrl {
-  constructor(Campaign, CommonData, Location, Brand, Banner) {
+  constructor(Campaign, CommonData, Location, Brand, Banner, CampaignMapping) {
     this.Campaign = Campaign;
     this.CommonData = CommonData;
     this.Location = Location;
     this.Banner = Banner;
     this.Brand = Brand;
+    this.CampaignMapping = CampaignMapping;
     this.setup();
   }
 
@@ -53,6 +55,9 @@ export default class CampaignCtrl {
     this.CommonData.campaignCategories()
       .then((data) => {
         this.campaignCategories = data;
+        if(data.length > 0) {
+          this.selected.campaignCategory = data[0];
+        }
       })
       .catch((err) => {
         console.error(err);
@@ -86,7 +91,9 @@ export default class CampaignCtrl {
     this.Brand.find()
       .$promise.then((data) => {
         this.brands = data;
-        this.selected.brand = this.brands[0];
+        if(data.length > 0) {
+          this.selected.brand = data[0];
+        }
       })
       .catch((err) => {
         console.error(err);
@@ -167,7 +174,8 @@ export default class CampaignCtrl {
           kpiPerDay: location.kpi
         };
       });
-    if(this.selected.locations.length < 0 || !this.selected.adSet)
+
+    if(this.selected.locations.length <= 0 || !this.selected.adSet)
       return;
 
     $('#adset-icon').css('color', '#45E252');
@@ -220,11 +228,26 @@ export default class CampaignCtrl {
     this.campaign = false;
     this.step3_2 = true;
 
+    this.actionprocess = "Processing...";
+
+    this.saveCampain();
+  }
+
+  setLocationSelected(location, isSelected) {
+    location.selected = isSelected;
+  }
+
+  saveCampain() {
     let scheduleFromStr = this.selected.scheduleFrom.format('YYYYMMDD') + this.selected.timeFrom.id;
     let scheduleFrom = moment(scheduleFromStr, 'YYYYMMDDH').valueOf();
     let scheduleToStr = this.selected.scheduleTo.format('YYYYMMDD') + this.selected.timeTo.id;
     let scheduleTo = moment(scheduleToStr, 'YYYYMMDDH').valueOf();
 
+    let audience = {
+      age: [this.selected.ageFrom.id, this.selected.ageTo.id],
+      gender: this.selected.gender.value,
+      os: this.selected.device.value
+    };
 
     this.campaignObj = {
       active: false,
@@ -233,18 +256,16 @@ export default class CampaignCtrl {
       brandName: this.selected.brand.name,
       categoryId: this.selected.campaignCategory.value,
       categoryName: this.selected.campaignCategory.text,
-      audience: {
-        age: [ this.selected.ageFrom.id, this.selected.ageTo.id ],
-        gender: this.selected.gender.value,
-        os: this.selected.device.value
-      },
+      audience: audience,
       scheduleFrom: scheduleFrom,
       scheduleTo: scheduleTo,
       kpi: this.selected.kpi,
       name: this.selected.adSet,
       landingPageUrl: this.selected.landingPage,
-      bannerDesktop: this.selected.bannerDesktop,
-      bannerMobile: this.selected.bannerMobile,
+      bannerDesktopId: this.selected.bannerDesktop.originalObject.id,
+      bannerDesktopName: this.selected.bannerDesktop.originalObject.name,
+      bannerMobileId: this.selected.bannerMobile.originalObject.id,
+      bannerMobileName: this.selected.bannerMobile.originalObject.name,
       locations: this.selected.locations
     };
 
@@ -252,20 +273,39 @@ export default class CampaignCtrl {
       .$promise
       .then((response) => {
         this.campaignObj = response;
-        this.actionSuccess = true
       })
-      .catch((response) => {
-        console.error(response.data.error);
+      .then((response) => {
+        let priority = new Date().getTime() / 1000;
+        let compaignMappings = this.locations
+          .filter((location) => { return location.selected === true; })
+          .map((location) => {
+            return {
+              campaignId: this.campaignObj.id,
+              campaignName: this.campaignObj.name,
+              audience: audience,
+              locationId: location.id,
+              locationName: location.name,
+              kpiPerDay: location.kpi,
+              priority: priority
+            };
+          });
+        this.CampaignMapping.createMany(compaignMappings)
+          .$promise
+          .then((response) => {
+            this.actionprocess = "Your booking has been placed!";
+          })
+          .catch((error) => {
+            this.actionprocess = "Error when save campain!";
+            console.error(error);
+          });
       })
-
-    this.actionprocess = "Processing...";
-  }
-
-  setLocationSelected(location, isSelected) {
-    location.selected = isSelected;
+      .catch((error) => {
+        this.actionprocess = "Error when save campain!";
+        console.error(error);
+      });
   }
 }
 
 export default angular
-  .module('campaign.controller', [])
+  .module('campaign.controller', ['angucomplete-alt'])
   .controller('CampaignCtrl', CampaignCtrl);
