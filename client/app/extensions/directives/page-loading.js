@@ -20,6 +20,7 @@ class PageLoading {
   }
 
   static factory($rootScope) {
+    "ngInject";
     PageLoading.instance = new PageLoading($rootScope);
     return PageLoading.instance;
   }

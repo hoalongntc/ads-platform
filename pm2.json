@@ -1,0 +1,10 @@
+{
+  "apps": [
+    {
+      "name"        : "ads-platform",
+      "script"      : "server/server.babel.js",
+      "instances"   : 1,
+      "exec_mode"   : "cluster"
+    }
+  ]
+}

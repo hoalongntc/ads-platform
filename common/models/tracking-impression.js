@@ -55,14 +55,14 @@ module.exports = function(TrackingImpression) {
     const opts = getMethodArguments(TrackingImpression, 'new', true, arguments);
     const trackingImpressions = [];
 
-    if (opts.mac && opts.advertiserId && opts.campaignId && opts.bannerId && opts.hotspotId) {
+    if (opts.mac && opts.advertiserId && opts.campaignId && opts.bannerId && opts.locationId) {
       trackingImpressions.push(upsertTrackingImpression(TrackingImpression,
         {
           mac: opts.mac,
           advertiserId: opts.advertiserId,
           campaignId: opts.campaignId,
           bannerId: opts.bannerId,
-          hotspotId: opts.hotspotId,
+          locationId: opts.locationId,
           trackingDate: trackingDate
         },
         opts
@@ -102,25 +102,25 @@ module.exports = function(TrackingImpression) {
       ));
     }
 
-    if (opts.advertiserId && opts.campaignId && opts.hotspotId) {
+    if (opts.advertiserId && opts.campaignId && opts.locationId) {
       trackingImpressions.push(upsertTrackingImpression(models.TrackingImpression4,
         {
           advertiserId: opts.advertiserId,
           campaignId: opts.campaignId,
-          hotspotId: opts.hotspotId,
+          locationId: opts.locationId,
           trackingDate: trackingDate
         },
         opts
       ));
     }
 
-    if (opts.advertiserId && opts.campaignId && opts.bannerId && opts.hotspotId) {
+    if (opts.advertiserId && opts.campaignId && opts.bannerId && opts.locationId) {
       trackingImpressions.push(upsertTrackingImpression(models.TrackingImpression5,
         {
           advertiserId: opts.advertiserId,
           campaignId: opts.campaignId,
           bannerId: opts.bannerId,
-          hotspotId: opts.hotspotId,
+          locationId: opts.locationId,
           trackingDate: trackingDate
         },
         opts
@@ -148,8 +148,8 @@ module.exports = function(TrackingImpression) {
       {arg: 'campaignName', type: 'string', description: 'Campaign Name'},
       {arg: 'bannerId', type: 'string', description: 'Banner ID (required)'},
       {arg: 'bannerName', type: 'string', description: 'Banner Name'},
-      {arg: 'hotspotId', type: 'string', description: 'Hotspot ID (required)'},
-      {arg: 'hotspotName', type: 'string', description: 'Hotspot Name'}
+      {arg: 'locationId', type: 'string', description: 'Hotspot ID (required)'},
+      {arg: 'locationName', type: 'string', description: 'Hotspot Name'}
     ],
     returns: {arg: 'impressCount', type: 'number'}
   };

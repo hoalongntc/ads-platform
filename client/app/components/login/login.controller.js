@@ -1,5 +1,6 @@
 class LoginCtrl {
-  constructor(AuthService) {
+  constructor(AuthService, $scope) {
+    this.$scope = $scope;
     this.AuthService = AuthService;
 
     this.credentials = {
@@ -12,6 +13,11 @@ class LoginCtrl {
   login(credentials) {
     this.errorMessage = null;
     this.AuthService.login(credentials)
+      .then(user => {
+        if (this.$scope.$parent.app) {
+          this.$scope.$parent.app.setCurrentUser(user);
+        }
+      })
       .catch(err => {
         if (err && err.data && err.data.error) {
           this.errorMessage = err.data.error.message;

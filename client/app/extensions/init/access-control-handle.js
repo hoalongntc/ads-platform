@@ -1,5 +1,5 @@
 export default function ($rootScope, $location, $state, AUTH_EVENTS) {
-
+  "ngInject";
   const goLogin = (event, next) => {
     if ($state.current && $state.current.name !== 'login') {
       $location.beforeLogin = $state.current.name;

@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "main": "server/server.js",
   "scripts": {
-    "start": "gulp build && ./node_modules/.bin/babel-node server/server",
-    "dev-server": "gulp",
+    "start": "./node_modules/.bin/gulp build && ./node_modules/.bin/babel-node server/server",
+    "dev-server": "./node_modules/.bin/gulp",
     "dev-client": "webpack-dev-server --history-api-fallback --progress",
-    "build": "gulp build"
+    "build": "./node_modules/.bin/gulp build"
   },
   "dependencies": {
     "ag-grid": "4.2.5",
@@ -47,6 +47,7 @@
     "moment": "2.13.0",
     "oclazyload": "1.0.9",
     "perfect-scrollbar": "0.6.11",
+    "redis": "2.6.2",
     "serve-favicon": "^2.0.1",
     "simpleweather": "3.1.0"
   },
@@ -91,6 +92,9 @@
     "raw-loader": "0.5.1",
     "required-loader": "1.0.0",
     "run-sequence": "1.1.5",
+    "shipit-deploy": "2.2.0",
+    "shipit-npm": "0.2.0",
+    "shipit-shared": "4.4.1",
     "style-loader": "0.13.1",
     "webpack": "^1.13.1",
     "webpack-angular-injector-plugin": "1.0.0",

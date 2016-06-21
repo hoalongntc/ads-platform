@@ -4,11 +4,19 @@ class ApplicationCtrl {
     this.AuthService = AuthService;
 
     // Get currentUser
-    AuthResolver
-      .getCurrentUser()
-      .then(user => {
-        this.currentUser = user;
-      });
+    const getCurrentUser =() => {
+      AuthResolver
+        .getCurrentUser()
+        .then(user => {
+          this.currentUser = user;
+        });  
+    };
+    
+    getCurrentUser();
+  }
+
+  setCurrentUser(currentUser) {
+    this.currentUser = currentUser;
   }
 
   logout() {

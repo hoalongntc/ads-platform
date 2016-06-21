@@ -1,21 +1,7 @@
 {
-  "name": "TrackingImpression4",
+  "name": "ReportTracking5",
   "base": "PersistedModel",
-  "strict": true,
   "idInjection": true,
-  "indexes": {
-    "key_index": {
-      "keys": {
-        "advertiserId": 1,
-        "campaignId": 1,
-        "locationId": 1,
-        "trackingDate": -1
-      },
-      "options": {
-        "unique": true
-      }
-    }
-  },
   "options": {
     "validateUpsert": true
   },
@@ -27,13 +13,6 @@
     "advertiserName": {
       "type": "string"
     },
-    "campaignId": {
-      "type": "string",
-      "required": true
-    },
-    "campaignName": {
-      "type": "string"
-    },
     "locationId": {
       "type": "string",
       "required": true
@@ -41,9 +20,13 @@
     "locationName": {
       "type": "string"
     },
-    "count": {
+    "clickCount": {
       "type": "number",
-      "default": 1
+      "default": "0"
+    },
+    "impressionCount": {
+      "type": "number",
+      "default": "0"
     },
     "trackingDate": {
       "type": "date"

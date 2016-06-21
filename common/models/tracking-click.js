@@ -95,39 +95,39 @@ module.exports = function (TrackingClick) {
     }
 
     // Insert to Tracking5
-    if (opts.mac && opts.advertiserId && opts.campaignId && opts.hotspotId) {
+    if (opts.mac && opts.advertiserId && opts.campaignId && opts.locationId) {
       trackingClicks.push(upsertTrackingClick(models.TrackingClick5,
         {
           mac: opts.mac,
           advertiserId: opts.advertiserId,
           campaignId: opts.campaignId,
-          hotspotId: opts.hotspotId
+          locationId: opts.locationId
         },
         opts));
     }
 
     // Insert to Tracking6
-    if (opts.mac && opts.advertiserId && opts.campaignId && opts.bannerId && opts.hotspotId) {
+    if (opts.mac && opts.advertiserId && opts.campaignId && opts.bannerId && opts.locationId) {
       trackingClicks.push(upsertTrackingClick(models.TrackingClick6,
         {
           mac: opts.mac,
           advertiserId: opts.advertiserId,
           campaignId: opts.campaignId,
           bannerId: opts.bannerId,
-          hotspotId: opts.hotspotId
+          locationId: opts.locationId
         },
         opts));
     }
 
     // Insert to Tracking7
-    if (opts.mac && opts.advertiserId && opts.campaignId && opts.bannerId && opts.hotspotId) {
+    if (opts.mac && opts.advertiserId && opts.campaignId && opts.bannerId && opts.locationId) {
       trackingClicks.push(upsertTrackingClick(models.TrackingClick7,
         {
           mac: opts.mac,
           advertiserId: opts.advertiserId,
           campaignId: opts.campaignId,
           bannerId: opts.bannerId,
-          hotspotId: opts.hotspotId,
+          locationId: opts.locationId,
           trackingDate: trackingDate
         },
         opts));
@@ -158,8 +158,8 @@ module.exports = function (TrackingClick) {
       {arg: 'campaignName', type: 'string', description: 'Campaign Name'},
       {arg: 'bannerId', type: 'string', description: 'Banner ID (required)'},
       {arg: 'bannerName', type: 'string', description: 'Banner Name'},
-      {arg: 'hotspotId', type: 'string', description: 'Hotspot ID (required)'},
-      {arg: 'hotspotName', type: 'string', description: 'Hotspot Name'},
+      {arg: 'locationId', type: 'string', description: 'Hotspot ID (required)'},
+      {arg: 'locationName', type: 'string', description: 'Hotspot Name'},
 
       // OS, Device
       {arg: 'os', type: 'string', description: 'User device`s OS'},

@@ -10,7 +10,7 @@
         "advertiserId": 1,
         "campaignId": 1,
         "bannerId": 1,
-        "hotspotId": 1
+        "locationId": 1
       },
       "options": {
         "unique": true
@@ -46,11 +46,11 @@
     "bannerName": {
       "type": "string"
     },
-    "hotspotId": {
+    "locationId": {
       "type": "string",
       "required": true
     },
-    "hotspotName": {
+    "locationName": {
       "type": "string"
     },
     "count": {

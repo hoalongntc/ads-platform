@@ -2,15 +2,5 @@
   "db": {
     "name": "db",
     "connector": "memory"
-  },
-  "mongo": {
-    "host": "127.0.0.1",
-    "port": 27017,
-    "url": "mongodb://127.0.0.1:27017/test",
-    "database": "test",
-    "password": "",
-    "name": "mongo",
-    "user": "",
-    "connector": "mongodb"
   }
 }
