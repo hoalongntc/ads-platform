@@ -9,8 +9,11 @@ import webpack from 'webpack'
 import webpackConfig from './webpack.config.js'
 import WebpackDevServer from 'webpack-dev-server'
 
-const serverConfig = require('./server/config.json');
+const env = process.env.NODE_ENV || 'development';
+const serverConfig = require(`./server/config.${env}.json`);
 const debugEnabled = process.env.DEBUG_API
+const apiUrl = process.env.API_URL || `http://${serverConfig.restApiHost || '0.0.0.0'}:${serverConfig.restApiPort || '3000'}${serverConfig.restApiRoot || '/api'}`
+const babelNode = './node_modules/.bin/babel-node'
 const apiUrl = process.env.API_URL || `http://${serverConfig.host || '0.0.0.0'}:${serverConfig.port || '3000'}${serverConfig.restApiRoot || '/api'}`
 const isWin = /^win/.test(process.platform);
 // use global babel-node on window OS

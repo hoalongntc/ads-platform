@@ -40,6 +40,7 @@ class AuthService {
   }
 
   static factory($rootScope, AUTH_EVENTS, User) {
+    "ngInject";
     AuthService.instance = new AuthService($rootScope, AUTH_EVENTS, User);
     return AuthService.instance;
   }

@@ -94,6 +94,7 @@ class CommonUtil {
   }
 
   static factory($interpolate, $templateCache) {
+    "ngInject";
     CommonUtil.instance = new CommonUtil($interpolate, $templateCache);
     return CommonUtil.instance;
   }

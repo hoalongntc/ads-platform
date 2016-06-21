@@ -1,34 +1,35 @@
 {
-  "name": "CampaignMapping",
-  "plural": "CampaignMappings",
+  "name": "ReportTracking5",
   "base": "PersistedModel",
+  "idInjection": true,
   "options": {
     "validateUpsert": true
   },
   "properties": {
-    "campaignId": {
+    "advertiserId": {
       "type": "string",
       "required": true
     },
-    "campaignName": {
-      "type": "string",
-      "required": true
+    "advertiserName": {
+      "type": "string"
     },
     "locationId": {
       "type": "string",
       "required": true
     },
-    "audience": {
-      "type": "string",
-      "required": true
+    "locationName": {
+      "type": "string"
     },
-    "priority": {
+    "clickCount": {
       "type": "number",
-      "required": true
+      "default": "0"
     },
-    "kpiPerDay": {
-      "type": "string",
-      "required": true
+    "impressionCount": {
+      "type": "number",
+      "default": "0"
+    },
+    "trackingDate": {
+      "type": "date"
     }
   },
   "validations": [],

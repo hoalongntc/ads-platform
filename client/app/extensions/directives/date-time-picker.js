@@ -54,6 +54,7 @@ class DateTimePicker {
   }
 
   static factory($timeout) {
+    "ngInject";
     DateTimePicker.instance = new DateTimePicker($timeout);
     return DateTimePicker.instance;
   }
