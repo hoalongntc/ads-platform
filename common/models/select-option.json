@@ -4,12 +4,6 @@
   "base": "PersistedModel",
   "strict": true,
   "idInjection": true,
-  "options": {
-    "validateUpsert": true
-  },
-  "http": {
-    "path": "/common"
-  },
   "indexes": {
     "key_index": {
       "keys": {
@@ -20,6 +14,12 @@
         "unique": true
       }
     }
+  },
+  "options": {
+    "validateUpsert": true
+  },
+  "http": {
+    "path": "/common"
   },
   "properties": {
     "type": {
@@ -34,7 +34,9 @@
       "type": "string",
       "required": true
     },
-    "options": "object"
+    "options": {
+      "type": "object"
+    }
   },
   "validations": [],
   "relations": {},

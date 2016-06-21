@@ -1,15 +1,13 @@
 {
-  "name": "TrackingImpression",
+  "name": "ReportTracking2",
   "base": "PersistedModel",
   "strict": true,
   "idInjection": true,
   "indexes": {
     "key_index": {
       "keys": {
-        "mac": 1,
         "advertiserId": 1,
         "campaignId": 1,
-        "bannerId": 1,
         "locationId": 1,
         "trackingDate": -1
       },
@@ -21,14 +19,7 @@
   "options": {
     "validateUpsert": true
   },
-  "http": {
-    "path": "/impressions"
-  },
   "properties": {
-    "mac": {
-      "type": "string",
-      "required": true
-    },
     "advertiserId": {
       "type": "string",
       "required": true
@@ -43,13 +34,6 @@
     "campaignName": {
       "type": "string"
     },
-    "bannerId": {
-      "type": "string",
-      "required": true
-    },
-    "bannerName": {
-      "type": "string"
-    },
     "locationId": {
       "type": "string",
       "required": true
@@ -57,9 +41,13 @@
     "locationName": {
       "type": "string"
     },
-    "count": {
+    "clickCount": {
       "type": "number",
-      "default": 1
+      "default": "0"
+    },
+    "impressionCount": {
+      "type": "number",
+      "default": "0"
     },
     "trackingDate": {
       "type": "date"

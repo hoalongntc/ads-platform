@@ -8,7 +8,7 @@
       "keys": {
         "advertiserId": 1,
         "campaignId": 1,
-        "hotspotId": 1,
+        "locationId": 1,
         "trackingDate": -1
       },
       "options": {
@@ -34,11 +34,11 @@
     "campaignName": {
       "type": "string"
     },
-    "hotspotId": {
+    "locationId": {
       "type": "string",
       "required": true
     },
-    "hotspotName": {
+    "locationName": {
       "type": "string"
     },
     "count": {

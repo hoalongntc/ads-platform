@@ -113,5 +113,25 @@
   "CampaignMapping": {
     "dataSource": "mongo",
     "public": true
+  },
+  "ReportTracking1": {
+    "dataSource": "db",
+    "public": false
+  },
+  "ReportTracking2": {
+    "dataSource": "db",
+    "public": false
+  },
+  "ReportTracking3": {
+    "dataSource": "db",
+    "public": false
+  },
+  "ReportTracking4": {
+    "dataSource": "db",
+    "public": false
+  },
+  "ReportTracking5": {
+    "dataSource": "db",
+    "public": false
   }
 }
