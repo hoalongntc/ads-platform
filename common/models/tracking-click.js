@@ -47,11 +47,8 @@ module.exports = function (TrackingClick) {
       });
   };
 
-  TrackingClick.newWithDate = function () {
+  TrackingClick.newWithOptions = function (trackingDate, opts, cb) {
     const models = TrackingClick.app.models;
-    const cb = arguments[arguments.length - 1];
-    const trackingDate = arguments[arguments.length - 2] || moment().startOf('day');
-    const opts = getMethodArguments(TrackingClick, 'new', true, arguments);
     const trackingClicks = [];
 
     // Insert to TrackingClick
@@ -119,20 +116,6 @@ module.exports = function (TrackingClick) {
         opts));
     }
 
-    // Insert to Tracking7
-    if (opts.mac && opts.advertiserId && opts.campaignId && opts.bannerId && opts.locationId) {
-      trackingClicks.push(upsertTrackingClick(models.TrackingClick7,
-        {
-          mac: opts.mac,
-          advertiserId: opts.advertiserId,
-          campaignId: opts.campaignId,
-          bannerId: opts.bannerId,
-          locationId: opts.locationId,
-          trackingDate: trackingDate
-        },
-        opts));
-    }
-
     return Promise
       .all(trackingClicks)
       .then(data => {
@@ -143,10 +126,11 @@ module.exports = function (TrackingClick) {
   };
 
   TrackingClick.new = function() {
-    arguments.splice(arguments.length - 1, 0, moment().startOf('day'));
-    return TrackingClick.newWithDate.apply(TrackingClick, arguments);
+    const cb = arguments[arguments.length - 1];
+    const opts = getMethodArguments(TrackingClick, 'new', true, arguments);
+    return TrackingClick.newWithOptions(moment().startOf('day'), opts, cb);
   };
-  TrackingClick.newWithPost = TrackingClick.new;
+  TrackingClick.newPost = TrackingClick.new;
 
   const clickMethodOptions = {
     description: 'Tracking a click from user',
@@ -186,7 +170,7 @@ module.exports = function (TrackingClick) {
     returns: {arg: 'clickId', type: 'string'}
   };
   TrackingClick.remoteMethod('new', lodash.extend({http: {verb: 'get'}}, clickMethodOptions));
-  TrackingClick.remoteMethod('newWithPost', lodash.extend({http: {path: '/new'}}, clickMethodOptions));
+  TrackingClick.remoteMethod('newPost', lodash.extend({http: {path: '/'}}, clickMethodOptions));
   TrackingClick.observe('before save', (ctx, next) => {
     if (ctx.instance) {
       ctx.instance.mac = standardizeMacAddress(ctx.instance.mac);

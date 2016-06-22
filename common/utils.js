@@ -35,3 +35,37 @@ export function standardizeAgeAndIncome(value) {
   if (!value) return null;
   return value.replace(/[\s]+/g, '').replace(/-/g, '_to_').replace(/</g, 'under_').replace(/>/g, 'higher_').replace(/^\$/, '_$');
 }
+
+export function standardizeOs(os) {
+  if (!os) {
+    return null;
+  } else if (os.match(/android/i)) {
+    return 'android';
+  } else if (os.match(/ios/i)) {
+    return 'ios';
+  } else if (os.match(/windows phone/i)) {
+    return 'windows_phone';
+  } else if (os.match(/windows/i)) {
+    return 'windows';
+  } else if (os.match(/(osx|os x|macos|mac os)/i)) {
+    return 'mac';
+  } else if (os.match(/(linux|ubuntu)/i)) {
+    return 'linux';
+  } else {
+    return 'other';
+  }
+}
+
+export function standardizeDevice(device) {
+  if (!device) {
+    return null;
+  } else if (device.match(/mobile/i)) {
+    return 'mobile';
+  } else if (device.match(/tablet/i)) {
+    return 'tablet';
+  } else if (device.match(/(pc|laptop|desktop)/i)) {
+    return 'pc';
+  } else {
+    return 'other';
+  }
+}

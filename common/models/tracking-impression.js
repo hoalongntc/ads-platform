@@ -1,7 +1,7 @@
 import lodash from 'lodash';
 import moment from 'moment';
 import Promise from 'bluebird';
-import { getMethodArguments, standardizeMacAddress } from '../utils';
+import { getMethodArguments, standardizeMacAddress, standardizeGender, standardizeOs, standardizeDevice } from '../utils';
 
 module.exports = function(TrackingImpression) {
 
@@ -48,11 +48,8 @@ module.exports = function(TrackingImpression) {
         return Promise.resolve(false);
       });
   };
-  TrackingImpression.newWithDate = function () {
+  TrackingImpression.newWithOptions = function (trackingDate, opts, cb) {
     const models = TrackingImpression.app.models;
-    const cb = arguments[arguments.length - 1];
-    const trackingDate = arguments[arguments.length - 2] || moment().startOf('day');
-    const opts = getMethodArguments(TrackingImpression, 'new', true, arguments);
     const trackingImpressions = [];
 
     if (opts.mac && opts.advertiserId && opts.campaignId && opts.bannerId && opts.locationId) {
@@ -134,9 +131,11 @@ module.exports = function(TrackingImpression) {
   };
 
   TrackingImpression.new = function() {
-    arguments.splice(arguments.length - 1, 0, moment().startOf('day'));
-    return TrackingImpression.newWithDate.apply(TrackingImpression, arguments);
+    const cb = arguments[arguments.length - 1];
+    const opts = getMethodArguments(TrackingImpression, 'new', true, arguments);
+    return TrackingImpression.newWithOptions(moment().startOf('day'), opts, cb);
   };
+  TrackingImpression.newPost = TrackingImpression.new;
 
   const impressMethodOptions = {
     description: 'Tracking an impress from user',
@@ -154,9 +153,12 @@ module.exports = function(TrackingImpression) {
     returns: {arg: 'impressCount', type: 'number'}
   };
   TrackingImpression.remoteMethod('new', lodash.extend({http: {verb: 'get'}}, impressMethodOptions));
-  TrackingImpression.remoteMethod('new', impressMethodOptions);
-  TrackingImpression.beforeRemote('new', (ctx, unused, next) => {
+  TrackingImpression.remoteMethod('newPost', lodash.extend({http: {path: '/'}}, impressMethodOptions));
+  TrackingImpression.beforeRemote('new*', (ctx, unused, next) => {
     ctx.args.mac = standardizeMacAddress(ctx.args.mac);
+    ctx.args.gender = standardizeGender(ctx.args.gender);
+    ctx.args.os = standardizeOs(ctx.args.os);
+    ctx.args.device = standardizeDevice(ctx.args.device);
     next();
   });
 };
