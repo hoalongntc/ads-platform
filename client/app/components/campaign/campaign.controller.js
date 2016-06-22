@@ -134,6 +134,7 @@ export default class CampaignCtrl {
     this.selected.bannerMobile ={};
     this.selected.bannerDesktop ={};
 
+    this.locationInvalid = 'locationInvalid';
   }
 
   next1_1() {
@@ -149,7 +150,15 @@ export default class CampaignCtrl {
     this.divLocation = true;
   };
   okLocation() {
+    this.getSelectedLocations();
+
+    if(this.selected.locations.length <= 0) {
+      this.locationInvalid = 'locationInvalid';
+      return
+    }
+
     this.divLocation = false;
+    this.locationInvalid = '';
   };
 
   next1_2() {
@@ -164,7 +173,7 @@ export default class CampaignCtrl {
 
   }
 
-  next2() {
+  getSelectedLocations() {
     this.selected.locations = this.locations
       .filter((location) => { return location.selected === true; })
       .map((location) => {
@@ -174,9 +183,19 @@ export default class CampaignCtrl {
           kpiPerDay: location.kpi
         };
       });
+  }
 
-    if(this.selected.locations.length <= 0 || !this.selected.adSet)
+  next2(form) {
+    this.getSelectedLocations();
+
+    if(this.selected.locations.length <= 0) {
+      this.locationInvalid = 'locationInvalid';
+      return
+    }
+
+    if(!this.selected.adSet) {
       return;
+    }
 
     $('#adset-icon').css('color', '#45E252');
     this.next21 = false;
@@ -225,6 +244,10 @@ export default class CampaignCtrl {
   }
 
   placebook() {
+    if(!this.selected.bannerDesktop.originalObject || !this.selected.bannerMobile.originalObject) {
+      return;
+    }
+
     this.campaign = false;
     this.step3_2 = true;
 

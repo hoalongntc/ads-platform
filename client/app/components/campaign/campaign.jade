@@ -1,21 +1,22 @@
 div(ng-show='cam.campaign')
   // Show Location
   .radius-50(ng-show='cam.divLocation', style='position: fixed; width: 40%; background-color: #323232; z-index: 2; margin-left: 30%; margin-top: 5%; padding-top: 10px; padding-bottom: 10px;')
-    .col-xs-12
-      .input-group
-        input.form-control(ng-model='locationQuery', type='text', style='background: none; color: #ffffff', placeholder='Type to search Location...', aria-describedby='basic-addon1')
-        span#basic-addon1.input-group-addon
-          i.fa.fa-search
-    .col-xs-12.radius-50(style='height: 120px; overflow-y: auto;')
-      label.input_campaign(ng-click='cam.setLocationSelected(location, true)', ng-repeat='location in cam.locations | filter: { selected: false } | filter:locationQuery', style='border: none; background: #EBEBEB; font-weight: normal', type='text') {{location.name}}
-    .col-xs-12.radius-50(style='height: 240px; overflow-y: auto; background-color: #4C4C4C')
-      p(style='color: #ffffff') Selected
-      .row(ng-repeat='location in cam.locations | filter: { selected: true }')
-        .col-sm-8
-          label.input_campaign(ng-click='cam.setLocationSelected(location, false)', style='border: none; background: #31B0D5; color: #ffffff; font-weight: normal', type='text') {{location.name}}
-        .col-sm-4
-          input.cusInput(ng-model='location.kpi', type='number', style='padding-left: 10px', min='1', required)
-    button.btn.radius-50.btn-sm.btn-default(style='float: right; margin-right: 20px', ng-click='cam.okLocation()') OK
+    form(name='location-form', ng-submit='cam.okLocation()')
+      .col-xs-12
+        .input-group
+          input.form-control(ng-model='locationQuery', type='text', style='background: none; color: #ffffff', placeholder='Type to search Location...', aria-describedby='basic-addon1')
+          span#basic-addon1.input-group-addon
+            i.fa.fa-search
+      .col-xs-12.radius-50(style='height: 120px; overflow-y: auto;')
+        label.input_campaign(ng-click='cam.setLocationSelected(location, true)', ng-repeat='location in cam.locations | filter: { selected: false } | filter:locationQuery', style='border: none; background: #EBEBEB; font-weight: normal', type='text') {{location.name}}
+      .col-xs-12.radius-50(style='height: 240px; overflow-y: auto; background-color: #4C4C4C')
+        p(style='color: #ffffff') Selected
+        .row(ng-repeat='location in cam.locations | filter: { selected: true }')
+          .col-sm-8
+            label.input_campaign(ng-click='cam.setLocationSelected(location, false)', style='border: none; background: #31B0D5; color: #ffffff; font-weight: normal', type='text') {{location.name}}
+          .col-sm-4
+            input.cusInput(ng-model='location.kpi', type='number', style='padding-left: 10px', min='1', required)
+      button.btn.radius-50.btn-sm.btn-default(style='float: right; margin-right: 20px') OK
   // End Show Location
   .col-sm-10.col-sm-push-1.padding0.mainCampaign(style='position:absolute; background-color:rgba(192,192,192,0.5); margin: auto; height: 100%')
     .col-xs-4.text-center(style='background-color:rgba(49,176,213,0.7);    margin-left: 20px; border-radius: 0px 0px 10px 10px; height: 25px; line-height: 25px; margin-bottom: 5px; color: #ffffff') Create Ads
@@ -73,7 +74,7 @@ div(ng-show='cam.campaign')
           button.btn.radius-50.btn-gray.btn-sm(style='', ng-click='cam.back1()') Back
           button.btn.radius-50.btn-default.btn-sm(style='', ng-click='cam.next1_2()') Set Audience & Budget
       // AD Set
-      form
+      form(name='step2-form', ng-submit='cam.next2(step2-form)')
         .h410(ng-show='cam.step2', style='overflow: auto')
           .titlestep3(style='') Audiance
           .margin_create_ads
@@ -119,7 +120,7 @@ div(ng-show='cam.campaign')
             .col-xs-3.padding0
               span - Location:
             .col-xs-9.padding0
-              button.select_location_create_ads(ng-click='cam.modalClick()') Click to select
+              button.select_location_create_ads(ng-click='cam.modalClick()', ng-class='cam.locationInvalid') Click to select
           .clearfix(style='margin-bottom: 5px')
           .titlestep3 KPI & Schedule
           .margin_create_ads
@@ -157,26 +158,25 @@ div(ng-show='cam.campaign')
           .margin_create_ads
             .col-xs-3.padding0
               span - Name:
+              span(ng-show="step2-form.adset.$touched && step2-form.adset.$invalid") The name is required.
             .col-xs-9.padding0
-              input.cusInput(ng-model='cam.selected.adSet', required, type='text')
+              input.cusInput(ng-model='cam.selected.adSet', name='adset', required, type='text')
         .col-xs-12(style='height: 40px; line-height: 40px;', ng-show='cam.next21')
           span(style='float: right')
             button.btn.radius-50.btn-gray.btn-sm(ng-click='cam.back2()', type='button') Back
-            button.btn.radius-50.btn-default.btn-sm(ng-click='cam.next2()', type='button') Choose Ad Creative
+            button.btn.radius-50.btn-default.btn-sm Choose Ad Creative
         // AD
-      form
+      form(name='step3-form', ng-submit='cam.placebook()')
         .h410(ng-show='cam.step3')
           #creative
             .row.titlestep3 Creative
             .col-xs-12.margin5
               .col-xs-4 - Mobile
               .col-xs-8
-                //input.cusInput(type='text')
                 angucomplete-alt(selected-object='cam.selected.bannerMobile' local-data='cam.bannerMobiles', minlength='1', search-fields='name', title-field='name', input-class='cusInput', placeholder='Type to search banner mobile')
             .col-xs-12.margin5
               .col-xs-4 - Desktop
               .col-xs-8
-                //input.cusInput(type='text')
                 angucomplete-alt(selected-object='cam.selected.bannerDesktop' local-data='cam.bannerDesktops',minlength='1', search-fields='name', title-field='name', input-class='cusInput', placeholder='Type to search banner desktop')
           .clearfix
           #tracking
@@ -185,60 +185,60 @@ div(ng-show='cam.campaign')
               .col-xs-4 - Landing page
               .col-xs-8
                 input.cusInput(ng-model='cam.selected.landingPage',required, type='text')
-      .h410(ng-show='cam.preview', style='overflow: auto')
-        .titlestep3 Preview Booking
-        .col-xs-12(style='margin: 5px 0px; padding-left: 0px')
-          .col-xs-12
-            label Campaign:
-          span.col-xs-6 - Campaign Name:
-          span.col-xs-6.text-italic {{cam.selected.adSet}}
-          .clearfix
-          span.col-xs-6 - Campaign Objective:
-          span.col-xs-6.text-italic {{cam.selected.campaignCategory.text}}
-          .clearfix
-          .col-xs-12.padding0(style='margin: 5px 0px; padding-left: 0px')
-            label.col-xs-12 Ad Set:
+        .h410(ng-show='cam.preview', style='overflow: auto')
+          .titlestep3 Preview Booking
+          .col-xs-12(style='margin: 5px 0px; padding-left: 0px')
             .col-xs-12
-              span.col-xs-4.padding0 - Ad Set Name:
-              span.col-xs-8.text-italic {{cam.selected.adSet}}
+              label Campaign:
+            span.col-xs-6 - Campaign Name:
+            span.col-xs-6.text-italic {{cam.selected.adSet}}
             .clearfix
+            span.col-xs-6 - Campaign Objective:
+            span.col-xs-6.text-italic {{cam.selected.campaignCategory.text}}
+            .clearfix
+            .col-xs-12.padding0(style='margin: 5px 0px; padding-left: 0px')
+              label.col-xs-12 Ad Set:
+              .col-xs-12
+                span.col-xs-4.padding0 - Ad Set Name:
+                span.col-xs-8.text-italic {{cam.selected.adSet}}
+              .clearfix
+              .col-xs-12.padding0
+                span.col-xs-4 - Targeting:
+                .col-xs-8.padding0
+                  span.col-sm-3.padding0 * Location:
+                  .col-sm-9.padding0
+                    .col-sm-12(style='padding: 5px 5px; overflow: auto; height: 100px; background-color: #B8B8B8; border-radius: 10px 10px;')
+                      label.input_campaign(ng-repeat='location in cam.locations | filter: { selected: true }', style='border: none; background: #31B0D5; color: #ffffff; font-weight: normal', type='text') {{location.name}} - {{location.kpi}}
+                  .clearfix
+                  .col-sm-12.padding0
+                    div
+                      span.col-xs-4.padding0 * Age:
+                      span.col-xs-8.padding0.text-italic {{cam.selected.ageFrom.label}} - {{cam.selected.ageTo.label}}
+                    div
+                      span.col-xs-4.padding0 * Gender:
+                      span.col-xs-8.padding0.text-italic {{cam.selected.gender.text}}
+                    div
+                      span.col-xs-4.padding0 * KPI:
+                      span.col-xs-8.padding0.text-italic {{cam.selected.kpi}} {{cam.selected.kpiType}}
+                    div
+                      span.col-xs-4.padding0 * Schedule:
+                      span.col-xs-8.padding0.text-italic {{cam.selected.scheduleFrom.valueOf() | date: 'MMM - dd, yyyy'}} {{cam.selected.timeFrom.label}} to {{cam.selected.scheduleTo.valueOf() | date: 'MMM - dd, yyyy'}} {{cam.selected.timeTo.label}}
+                  .clearfix
+          .clearfix
+          .col-xs-12.padding0
+            .col-xs-12
+              label Ad:
             .col-xs-12.padding0
-              span.col-xs-4 - Targeting:
-              .col-xs-8.padding0
-                span.col-sm-3.padding0 * Location:
-                .col-sm-9.padding0
-                  .col-sm-12(style='padding: 5px 5px; overflow: auto; height: 100px; background-color: #B8B8B8; border-radius: 10px 10px;')
-                    label.input_campaign(ng-repeat='location in cam.locations | filter: { selected: true }', style='border: none; background: #31B0D5; color: #ffffff; font-weight: normal', type='text') {{location.name}} - {{location.kpi}}
-                .clearfix
-                .col-sm-12.padding0
-                  div
-                    span.col-xs-4.padding0 * Age:
-                    span.col-xs-8.padding0.text-italic {{cam.selected.ageFrom.label}} - {{cam.selected.ageTo.label}}
-                  div
-                    span.col-xs-4.padding0 * Gender:
-                    span.col-xs-8.padding0.text-italic {{cam.selected.gender.text}}
-                  div
-                    span.col-xs-4.padding0 * KPI:
-                    span.col-xs-8.padding0.text-italic {{cam.selected.kpi}} {{cam.selected.kpiType}}
-                  div
-                    span.col-xs-4.padding0 * Schedule:
-                    span.col-xs-8.padding0.text-italic {{cam.selected.scheduleFrom.valueOf() | date: 'MMM - dd, yyyy'}} {{cam.selected.timeFrom.label}} to {{cam.selected.scheduleTo.valueOf() | date: 'MMM - dd, yyyy'}} {{cam.selected.timeTo.label}}
-                .clearfix
-        .clearfix
-        .col-xs-12.padding0
-          .col-xs-12
-            label Ad:
-          .col-xs-12.padding0
-            span.col-xs-4 - Ad Name:
-            span.col-xs-8.padding0.text-italic {{cam.selected.adSet}}
-          .col-xs-12.padding0
-            span.col-xs-4 - Landing page:
-            span.col-sm-8.padding0.text-italic(style='text-decoration: underline') {{cam.selected.landingPage}}
-      .col-xs-12(style='height: 40px; line-height: 40px;', ng-show='cam.next31')
-        span(style='float: right')
-          button.btn.radius-50.btn-sm.btn-gray(style='', ng-click='cam.back3()', ng-show='cam.show3') Back
-          button.btn.radius-50.btn-dark.btn-sm(style='', ng-click='cam.prebook()', ng-show='cam.show3') Preview Booking
-          button.btn.radius-50.btn-dark.btn-sm(style='', ng-click='cam.editbook()', ng-show='cam.show31') Edit Booking
-          button.btn.radius-50.btn-default.btn-sm(style='', ng-click='cam.placebook()') Place Booking
+              span.col-xs-4 - Ad Name:
+              span.col-xs-8.padding0.text-italic {{cam.selected.adSet}}
+            .col-xs-12.padding0
+              span.col-xs-4 - Landing page:
+              span.col-sm-8.padding0.text-italic(style='text-decoration: underline') {{cam.selected.landingPage}}
+        .col-xs-12(style='height: 40px; line-height: 40px;', ng-show='cam.next31')
+          span(style='float: right')
+            button.btn.radius-50.btn-sm.btn-gray(style='', ng-click='cam.back3()', ng-show='cam.show3') Back
+            button.btn.radius-50.btn-dark.btn-sm(style='', ng-click='cam.prebook()', ng-show='cam.show3') Preview Booking
+            button.btn.radius-50.btn-dark.btn-sm(style='', ng-click='cam.editbook()', ng-show='cam.show31') Edit Booking
+            button.btn.radius-50.btn-default.btn-sm(style='') Place Booking
 .col-xs-10.col-xs-push-1.col-sm-4.col-sm-push-4.processing(ng-show='cam.step3_2')
   p(ng-bind='cam.actionprocess')
