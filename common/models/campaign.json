@@ -51,7 +51,7 @@
       "required": true
     },
     "kpi": {
-      "type": "string",
+      "type": "number",
       "required": true
     },
     "bannerMobileId": {
