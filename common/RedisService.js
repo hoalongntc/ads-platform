@@ -6,11 +6,7 @@ var clientPub = null;
 var clientSub = null;
 var mainChannel = 'pubsub';
 var config = require('../server/config.json') || {};
-
 var socketIoEmitter = null;
-
-var sails = console;
-
 module.exports = {
   getSocketIoEmitter: getSocketIoEmitter,
   clientStore: clientStore, //TODO disable persistence to disk
@@ -45,15 +41,15 @@ function initRedisService() {
     clientSub.auth(config.redis.pass);
   }
   clientStore.on("error", function (err) {
-    sails.log(err);
+    console.log(err);
   });
   clientStore.on("connect", function (err) {
-    sails.log("Connected to Redis server");
+    console.log("Connected to Redis server");
   });
 
   clientSub.subscribe(mainChannel);
   clientSub.on("message", function(channel, message){
-    sails.log('Redis event, ' + channel + ', ' + message);
+    console.log('Redis event, ' + channel + ', ' + message);
     if(channel == mainChannel && message
       && message == Constants.reloadLeaderboardEventMsg) {
       LeaderboardService.loadLeaderboard();
@@ -88,7 +84,7 @@ function del(key) {
   clientStore.del(key);
 }
 
-function hdel(store, key) { 
+function hdel(store, key) {
   clientStore.hdel(store, key);
 }
 
