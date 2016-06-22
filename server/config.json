@@ -22,7 +22,7 @@
     }
   },
   "fileServer":"http://localhost:3000/testFileSystem.html",
-  "fileSerect":"token123456",
+  "fileSecret":"token123456",
   "legacyExplorer": false,
   "redis":{
     "host":"localhost",

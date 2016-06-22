@@ -6,10 +6,9 @@ var clientPub = null;
 var clientSub = null;
 var mainChannel = 'pubsub';
 var config = require('../server/config.json') || {};
-var socketIoEmitter = null;
+
 module.exports = {
-  getSocketIoEmitter: getSocketIoEmitter,
-  clientStore: clientStore, //TODO disable persistence to disk
+  clientStore: clientStore,
   clientPub: clientPub,
   clientSub: clientSub,
   initRedisService: initRedisService,
@@ -24,13 +23,6 @@ module.exports = {
   setex: setex
 }
 
-function getSocketIoEmitter() {
-  if (socketIoEmitter == null) {
-    socketIoEmitter = require('socket.io-emitter')({ host: config.redis.host, port: config.redis.port, auth: config.redis.pass });
-  }
-  return socketIoEmitter;
-}
-
 function initRedisService() {
   clientStore = redis.createClient(config.redis.port, config.redis.host);
   clientPub = redis.createClient(config.redis.port, config.redis.host);
@@ -41,7 +33,7 @@ function initRedisService() {
     clientSub.auth(config.redis.pass);
   }
   clientStore.on("error", function (err) {
-    console.log(err);
+    console.error(err);
   });
   clientStore.on("connect", function (err) {
     console.log("Connected to Redis server");
@@ -50,10 +42,6 @@ function initRedisService() {
   clientSub.subscribe(mainChannel);
   clientSub.on("message", function(channel, message){
     console.log('Redis event, ' + channel + ', ' + message);
-    if(channel == mainChannel && message
-      && message == Constants.reloadLeaderboardEventMsg) {
-      LeaderboardService.loadLeaderboard();
-    }
   });
 }
 
