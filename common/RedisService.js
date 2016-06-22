@@ -21,7 +21,8 @@ module.exports = {
   hkeys: hkeys,
   hdel: hdel,
   hexists: hexists,
-  setex: setex
+  setex: setex,
+  hgetall:hgetall
 }
 
 function getSocketIoEmitter() {
@@ -95,3 +96,8 @@ function hexists(store, key) {
 function setex(key, time, value) {
   clientStore.setex(key, time, value);
 }
+function hgetall(store) {
+  clientStore.hgetall(store);
+}
+
+

@@ -1,7 +1,7 @@
 'use strict';
 
 import fileSystemBridge from '../../common/FileSystemBridge';
-import RedisService from '../../common/RedisService'
+import RedisService from '../../common/RedisService';
 module.exports = function (server) {
   // Install a `/` route that returns server status
   const router = server.loopback.Router();

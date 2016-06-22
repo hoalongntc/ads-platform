@@ -2,8 +2,11 @@ import 'dotenv/config';
 import loopback from 'loopback';
 import boot from 'loopback-boot';
 import path from 'path';
+import jobs from '../common/jobs'
 
 const app = module.exports = loopback();
+
+jobs(app)
 
 // start the web server
 app.start = () => app.listen(() => {
