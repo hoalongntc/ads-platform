@@ -45,7 +45,7 @@ function initRedisService() {
     clientSub.auth(config.redis.pass);
   }
   clientStore.on("error", function (err) {
-    sails.log.error(err);
+    sails.log(err);
   });
   clientStore.on("connect", function (err) {
     sails.log("Connected to Redis server");
@@ -88,7 +88,7 @@ function del(key) {
   clientStore.del(key);
 }
 
-function hdel(store, key) {
+function hdel(store, key) { 
   clientStore.hdel(store, key);
 }
 
