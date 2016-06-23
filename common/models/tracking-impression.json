@@ -10,11 +10,12 @@
         "advertiserId": 1,
         "campaignId": 1,
         "bannerId": 1,
-        "locationId": 1,
-        "trackingDate": -1
-      },
-      "options": {
-        "unique": true
+        "locationId": 1
+      }
+    },
+    "key_processed": {
+      "keys": {
+        "processed": 1
       }
     }
   },
@@ -24,35 +25,36 @@
   "http": {
     "path": "/impressions"
   },
+  "mixins": {
+    "TimeStamp": {
+      "validateUpsert": true,
+      "required": false
+    }
+  },
   "properties": {
     "mac": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "advertiserId": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "advertiserName": {
       "type": "string"
     },
     "campaignId": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "campaignName": {
       "type": "string"
     },
     "bannerId": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "bannerName": {
       "type": "string"
     },
     "locationId": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "locationName": {
       "type": "string"
@@ -61,8 +63,9 @@
       "type": "number",
       "default": 1
     },
-    "trackingDate": {
-      "type": "date"
+    "processed": {
+      "type": "string",
+      "default": "not_yet"
     }
   },
   "validations": [],

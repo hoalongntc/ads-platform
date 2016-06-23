@@ -1,13 +1,12 @@
 {
-  "name": "TrackingImpression1",
+  "name": "ReportAudience1",
   "base": "PersistedModel",
   "strict": true,
   "idInjection": true,
   "indexes": {
     "key_index": {
       "keys": {
-        "advertiserId": 1,
-        "trackingDate": -1
+        "reportDate": -1
       },
       "options": {
         "unique": true
@@ -18,19 +17,23 @@
     "validateUpsert": true
   },
   "properties": {
-    "advertiserId": {
-      "type": "string",
-      "required": true
-    },
-    "advertiserName": {
-      "type": "string"
-    },
-    "count": {
-      "type": "number",
-      "default": "1"
-    },
-    "trackingDate": {
+    "reportDate": {
       "type": "date"
+    },
+    "reportOs": {
+      "type": "object"
+    },
+    "reportDevice": {
+      "type": "object"
+    },
+    "reportGender": {
+      "type": "object"
+    },
+    "reportAge": {
+      "type": "object"
+    },
+    "reportIncome": {
+      "type": "object"
     }
   },
   "validations": [],
