@@ -22,7 +22,7 @@ module.exports = function (TrackingClick) {
   /**
    * click
    * */
-  const upsertTrackingClick = (model, keys, clickOpts) => {
+  const upsertTracking = (model, keys, clickOpts, countField = 'count') => {
     const opts = lodash.cloneDeep(clickOpts);
 
     return model
@@ -32,48 +32,45 @@ module.exports = function (TrackingClick) {
           for (const key in keys) {
             delete opts[key];
           }
-          opts.count = (obj.count || 1) + 1;
+          opts[countField] = (obj[countField] || 1) + 1;
           return obj.updateAttributes(opts);
         } else {
           // Create new
-          opts.count = 1;
-          opts.trackingDate = keys.trackingDate;
+          opts[countField] = 1;
           return model.create(opts);
         }
-      })
-      .catch(err => {
-        console.error(err);
-        return Promise.resolve(false);
       });
   };
 
-  TrackingClick.newWithDate = function () {
+  TrackingClick.prototype.process = function () {
     const models = TrackingClick.app.models;
-    const cb = arguments[arguments.length - 1];
-    const trackingDate = arguments[arguments.length - 2] || moment().startOf('day');
-    const opts = getMethodArguments(TrackingClick, 'new', true, arguments);
     const trackingClicks = [];
 
-    // Insert to TrackingClick
-    trackingClicks.push(TrackingClick.create(opts));
+    const opts = lodash(this.toJSON()).omitBy(lodash.isUndefined).value();
+    const reportDate = moment(opts.createdAt).startOf('day');
+    delete opts.id;
+    delete opts.createdAt;
+    delete opts.updatedAt;
+    delete opts.count;
 
+    opts.reportDate = reportDate;
     // Insert to Tracking1
     if (opts.mac) {
-      trackingClicks.push(upsertTrackingClick(models.TrackingClick1,
+      trackingClicks.push(upsertTracking(models.TrackingClick1,
         {mac: opts.mac},
         opts));
     }
 
     // Insert to Tracking2
     if (opts.mac && opts.advertiserId) {
-      trackingClicks.push(upsertTrackingClick(models.TrackingClick2,
+      trackingClicks.push(upsertTracking(models.TrackingClick2,
         {mac: opts.mac, advertiserId: opts.advertiserId},
         opts));
     }
 
     // Insert to Tracking3
     if (opts.mac && opts.advertiserId && opts.campaignId) {
-      trackingClicks.push(upsertTrackingClick(models.TrackingClick3,
+      trackingClicks.push(upsertTracking(models.TrackingClick3,
         {
           mac: opts.mac,
           advertiserId: opts.advertiserId,
@@ -84,7 +81,7 @@ module.exports = function (TrackingClick) {
 
     // Insert to Tracking4
     if (opts.mac && opts.advertiserId && opts.campaignId && opts.bannerId) {
-      trackingClicks.push(upsertTrackingClick(models.TrackingClick4,
+      trackingClicks.push(upsertTracking(models.TrackingClick4,
         {
           mac: opts.mac,
           advertiserId: opts.advertiserId,
@@ -96,7 +93,7 @@ module.exports = function (TrackingClick) {
 
     // Insert to Tracking5
     if (opts.mac && opts.advertiserId && opts.campaignId && opts.locationId) {
-      trackingClicks.push(upsertTrackingClick(models.TrackingClick5,
+      trackingClicks.push(upsertTracking(models.TrackingClick5,
         {
           mac: opts.mac,
           advertiserId: opts.advertiserId,
@@ -108,7 +105,7 @@ module.exports = function (TrackingClick) {
 
     // Insert to Tracking6
     if (opts.mac && opts.advertiserId && opts.campaignId && opts.bannerId && opts.locationId) {
-      trackingClicks.push(upsertTrackingClick(models.TrackingClick6,
+      trackingClicks.push(upsertTracking(models.TrackingClick6,
         {
           mac: opts.mac,
           advertiserId: opts.advertiserId,
@@ -119,34 +116,91 @@ module.exports = function (TrackingClick) {
         opts));
     }
 
-    // Insert to Tracking7
-    if (opts.mac && opts.advertiserId && opts.campaignId && opts.bannerId && opts.locationId) {
-      trackingClicks.push(upsertTrackingClick(models.TrackingClick7,
+    // Update ReportTracking1
+    if (opts.advertiserId && opts.campaignId) {
+      trackingClicks.push(upsertTracking(models.ReportTracking1,
         {
-          mac: opts.mac,
+          advertiserId: opts.advertiserId,
+          campaignId: opts.campaignId,
+          reportDate: reportDate
+        },
+        opts, 'clickCount'));
+    }
+
+    // Update ReportTracking3
+    if (opts.advertiserId && opts.campaignId && opts.locationId) {
+      trackingClicks.push(upsertTracking(models.ReportTracking2,
+        {
+          advertiserId: opts.advertiserId,
+          campaignId: opts.campaignId,
+          locationId: opts.locationId,
+          reportDate: reportDate
+        },
+        opts, 'clickCount'));
+    }
+
+    // Update ReportTracking3
+    if (opts.advertiserId && opts.campaignId && opts.bannerId) {
+      trackingClicks.push(upsertTracking(models.ReportTracking3,
+        {
           advertiserId: opts.advertiserId,
           campaignId: opts.campaignId,
           bannerId: opts.bannerId,
-          locationId: opts.locationId,
-          trackingDate: trackingDate
+          reportDate: reportDate
         },
-        opts));
+        opts, 'clickCount'));
+    }
+
+    // Update ReportTracking4
+    if (opts.advertiserId && opts.campaignId && opts.locationId && opts.bannerId) {
+      trackingClicks.push(upsertTracking(models.ReportTracking4,
+        {
+          advertiserId: opts.advertiserId,
+          campaignId: opts.campaignId,
+          locationId: opts.locationId,
+          bannerId: opts.bannerId,
+          reportDate: reportDate
+        },
+        opts, 'clickCount'));
+    }
+
+    // Update ReportTracking5
+    if (opts.advertiserId && opts.locationId) {
+      trackingClicks.push(upsertTracking(models.ReportTracking5,
+        {
+          advertiserId: opts.advertiserId,
+          locationId: opts.locationId,
+          reportDate: reportDate
+        },
+        opts, 'clickCount'));
     }
 
     return Promise
       .all(trackingClicks)
+      .then(() => {
+        this.updateAttributes({'processed': 'success'});
+      })
+      .catch(err => {
+        console.error(err);
+        this.updateAttributes({'processed': 'failed'});
+      });
+  };
+
+  TrackingClick.import = function(opts) {
+    return TrackingClick.create(opts);
+  };
+  TrackingClick.new = function() {
+    const cb = arguments[arguments.length - 1];
+    const opts = getMethodArguments(TrackingClick, 'new', true, arguments);
+
+    return TrackingClick
+      .create(opts)
       .then(data => {
-        // Update total click to Campaign ??
-        cb(null, data && data[0] && data[0].id);
+        cb(null, data.id);
       })
       .catch(cb);
   };
-
-  TrackingClick.new = function() {
-    arguments.splice(arguments.length - 1, 0, moment().startOf('day'));
-    return TrackingClick.newWithDate.apply(TrackingClick, arguments);
-  };
-  TrackingClick.newWithPost = TrackingClick.new;
+  TrackingClick.newPost = TrackingClick.new;
 
   const clickMethodOptions = {
     description: 'Tracking a click from user',
@@ -185,8 +239,8 @@ module.exports = function (TrackingClick) {
     ],
     returns: {arg: 'clickId', type: 'string'}
   };
-  TrackingClick.remoteMethod('new', lodash.extend({http: {verb: 'get'}}, clickMethodOptions));
-  TrackingClick.remoteMethod('newWithPost', lodash.extend({http: {path: '/new'}}, clickMethodOptions));
+  TrackingClick.remoteMethod('new', lodash.extend({http: {verb: 'get', path: '/'}}, clickMethodOptions));
+  TrackingClick.remoteMethod('newPost', lodash.extend({http: {path: '/'}}, clickMethodOptions));
   TrackingClick.observe('before save', (ctx, next) => {
     if (ctx.instance) {
       ctx.instance.mac = standardizeMacAddress(ctx.instance.mac);

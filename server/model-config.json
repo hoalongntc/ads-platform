@@ -22,11 +22,11 @@
     "dataSource": "mongo",
     "public": false
   },
-  "RoleMapping": {
+  "role": {
     "dataSource": "mongo",
     "public": false
   },
-  "Role": {
+  "roleMapping": {
     "dataSource": "mongo",
     "public": false
   },
@@ -43,6 +43,10 @@
     "public": true
   },
   "Location": {
+    "dataSource": "mongo",
+    "public": true
+  },
+  "TrackingClick": {
     "dataSource": "mongo",
     "public": true
   },
@@ -70,37 +74,9 @@
     "dataSource": "mongo",
     "public": false
   },
-  "TrackingClick": {
-    "dataSource": "mongo",
-    "public": true
-  },
   "TrackingImpression": {
     "dataSource": "mongo",
     "public": true
-  },
-  "TrackingImpression1": {
-    "dataSource": "mongo",
-    "public": false
-  },
-  "TrackingImpression2": {
-    "dataSource": "mongo",
-    "public": false
-  },
-  "TrackingImpression3": {
-    "dataSource": "mongo",
-    "public": false
-  },
-  "TrackingImpression4": {
-    "dataSource": "mongo",
-    "public": false
-  },
-  "TrackingImpression5": {
-    "dataSource": "mongo",
-    "public": false
-  },
-  "TrackingClick7": {
-    "dataSource": "mongo",
-    "public": false
   },
   "Banner": {
     "dataSource": "mongo",
@@ -115,23 +91,43 @@
     "public": true
   },
   "ReportTracking1": {
-    "dataSource": "db",
+    "dataSource": "mongo",
     "public": false
   },
   "ReportTracking2": {
-    "dataSource": "db",
+    "dataSource": "mongo",
     "public": false
   },
   "ReportTracking3": {
-    "dataSource": "db",
+    "dataSource": "mongo",
     "public": false
   },
   "ReportTracking4": {
-    "dataSource": "db",
+    "dataSource": "mongo",
     "public": false
   },
   "ReportTracking5": {
-    "dataSource": "db",
+    "dataSource": "mongo",
+    "public": false
+  },
+  "ReportAudience1": {
+    "dataSource": "mongo",
+    "public": false
+  },
+  "ReportAudience2": {
+    "dataSource": "mongo",
+    "public": false
+  },
+  "ReportAudience3": {
+    "dataSource": "mongo",
+    "public": false
+  },
+  "ReportAudience4": {
+    "dataSource": "mongo",
+    "public": false
+  },
+  "ReportAudience": {
+    "dataSource": "mongo",
     "public": false
   }
 }

@@ -3,7 +3,7 @@
 function routes($stateProvider) {
   $stateProvider
     .state('campaigns', {
-      url: '/campaigns',
+      url: '/campaigns/:id?',
       templateProvider: ($q) => {
         return $q(resolve => {
           // lazy load the view

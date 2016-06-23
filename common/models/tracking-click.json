@@ -12,6 +12,11 @@
         "bannerId": 1,
         "locationId": 1
       }
+    },
+    "key_processed": {
+      "keys": {
+        "processed": 1
+      }
     }
   },
   "options": {
@@ -101,6 +106,10 @@
     },
     "dataUsage": {
       "type": "number"
+    },
+    "processed": {
+      "type": "string",
+      "default": "not_yet"
     }
   },
   "validations": [],

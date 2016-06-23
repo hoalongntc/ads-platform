@@ -1,7 +1,20 @@
 {
   "name": "ReportTracking5",
   "base": "PersistedModel",
+  "strict": true,
   "idInjection": true,
+  "indexes": {
+    "key_index": {
+      "keys": {
+        "advertiserId": 1,
+        "locationId": 1,
+        "reportDate": -1
+      },
+      "options": {
+        "unique": true
+      }
+    }
+  },
   "options": {
     "validateUpsert": true
   },
@@ -22,13 +35,13 @@
     },
     "clickCount": {
       "type": "number",
-      "default": "0"
+      "default": 0
     },
     "impressionCount": {
       "type": "number",
-      "default": "0"
+      "default": 0
     },
-    "trackingDate": {
+    "reportDate": {
       "type": "date"
     }
   },
