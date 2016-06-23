@@ -31,23 +31,23 @@
     },
     "noOfAccessPoint": {
       "type": "number",
-      "default": "0"
+      "default": 0
     },
     "clickPerMonth": {
       "type": "number",
-      "default": "0"
+      "default": 0
     },
     "reachPerMonth": {
       "type": "number",
-      "default": "0"
+      "default": 0
     },
     "clickPerDay": {
       "type": "number",
-      "default": "0"
+      "default": 0
     },
     "reachPerDay": {
       "type": "number",
-      "default": "0"
+      "default": 0
     },
     "activeCampaigns": {
       "type": "object",

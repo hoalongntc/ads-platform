@@ -2931,13 +2931,13 @@ module.factory(
          *  - `clickId` – `{string=}` - 
          */
         "new": {
-          url: urlBase + "/clicks/new",
+          url: urlBase + "/clicks",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.TrackingClick#newWithPost
+         * @name lbServices.TrackingClick#newPost
          * @methodOf lbServices.TrackingClick
          *
          * @description
@@ -3015,8 +3015,8 @@ module.factory(
          *
          *  - `clickId` – `{string=}` - 
          */
-        "newWithPost": {
-          url: urlBase + "/clicks/new",
+        "newPost": {
+          url: urlBase + "/clicks",
           method: "POST"
         },
       }
@@ -3108,13 +3108,13 @@ module.factory(
          *  - `impressCount` – `{number=}` - 
          */
         "new": {
-          url: urlBase + "/impressions/new",
+          url: urlBase + "/impressions",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.TrackingImpression#new
+         * @name lbServices.TrackingImpression#newPost
          * @methodOf lbServices.TrackingImpression
          *
          * @description
@@ -3160,8 +3160,8 @@ module.factory(
          *
          *  - `impressCount` – `{number=}` - 
          */
-        "new": {
-          url: urlBase + "/impressions/new",
+        "newPost": {
+          url: urlBase + "/impressions",
           method: "POST"
         },
       }
