@@ -1,11 +1,11 @@
 'use strict';
 
-var redis = require('redis');
-var clientStore = null;
-var clientPub = null;
-var clientSub = null;
-var mainChannel = 'pubsub';
-var config = require('../server/config.json') || {};
+const redis = require('redis');
+let clientStore = null;
+let clientPub = null;
+let clientSub = null;
+let mainChannel = 'pubsub';
+const config = require('../server/config.json') || {};
 
 module.exports = {
   clientStore: clientStore,
@@ -21,28 +21,28 @@ module.exports = {
   hdel: hdel,
   hexists: hexists,
   setex: setex,
-  hgetall:hgetall
-}
+  hgetall: hgetall
+};
 
 function initRedisService() {
   clientStore = redis.createClient(config.redis.port, config.redis.host);
   clientPub = redis.createClient(config.redis.port, config.redis.host);
   clientSub = redis.createClient(config.redis.port, config.redis.host);
-  if(config.redis.pass) {
+  if (config.redis.pass) {
     clientStore.auth(config.redis.pass);
     clientPub.auth(config.redis.pass);
     clientSub.auth(config.redis.pass);
   }
-  clientStore.on("error", function (err) {
+  clientStore.on('error', (err) => {
     console.error(err);
   });
-  clientStore.on("connect", function (err) {
-    console.log("Connected to Redis server");
+  clientStore.on('connect', (response) => {
+    console.log('Connected to Redis server');
   });
 
   clientSub.subscribe(mainChannel);
-  clientSub.on("message", function(channel, message){
-    console.log('Redis event, ' + channel + ', ' + message);
+  clientSub.on('message', (channel, message) => {
+    console.log(`Redis event, ${channel} ${message}`);
   });
 }
 
@@ -87,5 +87,3 @@ function setex(key, time, value) {
 function hgetall(store) {
   clientStore.hgetall(store);
 }
-
-

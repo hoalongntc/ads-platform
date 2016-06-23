@@ -26,7 +26,8 @@ export default (app, agenda) => {
 
     // convert active campaign to map
     let campaignIdMap = allActiveCampaign.reduce((last, item) => {
-      return last[item.id] = item;
+      last[item.id] = item;
+      return last;
     }, []);
 
     let allReferenceReportClick = ReportTracking1.find({
@@ -43,17 +44,16 @@ export default (app, agenda) => {
       }
     }, completedCampaign);
 
-    Campaign.updateAll({id: {"inq": completedCampaign}}, {active: false})
-      .then(function (result) {
+    Campaign.updateAll({id: {'inq': completedCampaign}}, {active: false})
+      .then((result) => {
         completedCampaign.forEach((item) => {
           redisService.hdel(config.campaign_list_redis_key, item.id);
-        })
+        });
         console.log(`Campaign ${completedCampaign} completed`);
         cb();
-      })
-      .catch(function (err) {
-        console, log(err);
+      }).catch((err) => {
+        console.log(err);
       });
 
-  })
-}
+  });
+};
