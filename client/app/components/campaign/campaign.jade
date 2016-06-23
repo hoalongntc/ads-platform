@@ -173,11 +173,11 @@ div(ng-show='cam.campaign')
             .col-xs-12.margin5
               .col-xs-4 - Mobile
               .col-xs-8
-                angucomplete-alt(selected-object='cam.selected.bannerMobile' local-data='cam.bannerMobiles', minlength='1', search-fields='name', title-field='name', input-class='cusInput', auto-match='true', placeholder='Type to search banner mobile')
+                angucomplete-alt(selected-object='cam.selected.bannerMobile' local-data='cam.bannerMobiles', minlength='1', search-fields='name', title-field='name', input-class='cusInput', auto-match='true', initial-value='cam.selected.bannerDesktop', placeholder='Type to search banner mobile')
             .col-xs-12.margin5
               .col-xs-4 - Desktop
               .col-xs-8
-                angucomplete-alt(selected-object='cam.selected.bannerDesktop' local-data='cam.bannerDesktops', minlength='1', search-fields='name', title-field='name', input-class='cusInput', auto-match='true', placeholder='Type to search banner desktop')
+                angucomplete-alt(selected-object='cam.selected.bannerDesktop' local-data='cam.bannerDesktops', minlength='1', search-fields='name', title-field='name', input-class='cusInput', auto-match='true', initial-value='cam.selected.bannerDesktop', placeholder='Type to search banner desktop')
           .clearfix
           #tracking
             .row.titlestep3 Tracking Code
