@@ -7,7 +7,7 @@ module.exports = function (server) {
   const router = server.loopback.Router();
   RedisService.initRedisService();
   router.get('/status', server.loopback.status());
-  router.get('/FileSystem', fileSystemBridge(() => ({userName: 'cthanhnguyen'})));
-  router.post('/FileSystem', fileSystemBridge(() => ({userName: 'cthanhnguyen'})));
+  router.get('/FileSystem', fileSystemBridge(() => ({userName: 'cthanhnguyen', role: 'user'})));
+  router.post('/FileSystem', fileSystemBridge(() => ({userName: 'cthanhnguyen',role: 'user'})));
   server.use(router);
 };
