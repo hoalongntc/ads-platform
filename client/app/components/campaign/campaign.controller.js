@@ -257,7 +257,6 @@ export default class CampaignCtrl {
     this.selected.timeTo = this.times[11]
     this.selected.bannerMobile ={}
     this.selected.bannerDesktop ={}
-    this.locationInvalid = 'locationInvalid'
   }
 
   next1_1() {
