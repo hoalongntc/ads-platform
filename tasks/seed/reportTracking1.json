@@ -1,0 +1,27 @@
+[
+  {
+    "advertiserId":"tesst",
+    "advertiserName":"tesst",
+    "campaignId":"576a5df6737a13df0becbe1d",
+    "campaignName":"tesst",
+    "clickCount":300,
+    "impressionCount":20,
+    "reportDate":null
+  },{
+    "advertiserId":"tesst",
+    "advertiserName":"tesst",
+    "campaignId":"576b58d5adb36115181cbce1",
+    "campaignName":"tesst",
+    "clickCount":100,
+    "impressionCount":20,
+    "reportDate":null
+  },{
+    "advertiserId":"tesst",
+    "advertiserName":"tesst",
+    "campaignId":"576b93f8fdd7046d48fcbee1",
+    "campaignName":"tesst",
+    "clickCount":200,
+    "impressionCount":20,
+    "reportDate":null
+  }
+]

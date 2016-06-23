@@ -84,6 +84,6 @@ function hexists(store, key) {
 function setex(key, time, value) {
   clientStore.setex(key, time, value);
 }
-function hgetall(store) {
-  clientStore.hgetall(store);
+function hgetall(store, callback) {
+  clientStore.hgetall(store, callback);
 }
