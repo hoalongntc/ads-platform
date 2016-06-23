@@ -1,11 +1,11 @@
-import Promise from 'bluebird';
-import redisService from '../RedisService'
-import config from '../../server/config.json'
+
+import redisService from '../RedisService';
+import config from '../../server/config.json';
 
 export default (app, agenda) => {
 
-  agenda.define("observer-campaign-completed", (job, cb) => {
-    console.log("starting observer-campaign-completed jobs");
+  agenda.define('observer-campaign-completed', (job, cb) => {
+    console.log('starting observer-campaign-completed jobs');
     const {ReportTracking1, Campaign} = app.models;
     // find all active campaign
     // Query all reference report click base on active campaign Id list
@@ -31,7 +31,7 @@ export default (app, agenda) => {
 
     let allReferenceReportClick = ReportTracking1.find({
       where: {
-        campaignId: {"inq": Object.keys(campaignIdMap)},
+        campaignId: {'inq': Object.keys(campaignIdMap)},
         trackingDate: null
       }
     });
