@@ -4,7 +4,7 @@ import Promise from 'bluebird';
 
 export default (app) => {
   const models = app.models;
-  const debug = require('debug')('jobs:calculate-daily-report');
+  const debug = require('debug')('jobs:report.audience');
 
   const getKeysByDate = (keyModel, keyFields, reportDate) => {
     if (!keyModel) return Promise.resolve([{}]);
@@ -16,7 +16,6 @@ export default (app) => {
       .then(keys => keys.map(key => lodash(key.toJSON()).omitBy(lodash.isUndefined).value()));
   };
   const calculateReport = (dataModel, reportDate, key) => {
-    // TrackingClick2 grouped by mac + advertiserId
     const collection = dataModel.getDataSource().connector.collection(dataModel.modelName);
     const reportTypes = ['os', 'device', 'gender', 'age', 'income'];
     const matchConditions = lodash.extend({}, key, {
@@ -61,7 +60,7 @@ export default (app) => {
       .then(keys => Promise.each(keys, key => {
         return calculateReport(dataModel, reportDate, key)
           .then(reports => insertReport(reportMode, lodash.extend({}, key, {reportDate: reportDate}), reports))
-          .then(console.log);
+          .then(debug);
       }))
       .catch(err => {
         console.error(err);
@@ -69,8 +68,13 @@ export default (app) => {
   };
 
   return (job, cb) => {
-    const reportDate = moment(job.attrs.data.reportDate || undefined).startOf('day');
-    debug('Start calculate-daily-report job', reportDate.toISOString());
+    let reportDate;
+    if (job.attrs.data && job.attrs.data.reportDate) {
+      reportDate = moment(job.attrs.data.reportDate).startOf('day');
+    } else {
+      reportDate = moment().startOf('day');
+    }
+    debug('Started at', moment().toISOString(), 'for', reportDate);
 
     Promise
       .each([

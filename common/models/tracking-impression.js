@@ -20,120 +20,130 @@ module.exports = function(TrackingImpression) {
   TrackingImpression.disableRemoteMethod('exists', true);
   TrackingImpression.disableRemoteMethod('createChangeStream', true);
 
-  const upsertTrackingImpression = (model, keys, imOpts) => {
-    return Promise
-      .all([
-        model.findOne({where: lodash.extend({}, keys, {trackingDate: null})}),
-        model.findOne({where: keys})
-      ])
-      .then(objs => {
-        return Promise.all(objs.map((obj, index) => {
-          const opts = lodash.cloneDeep(imOpts);
-          if (obj) {
-            for (const key in keys) {
-              delete opts[key];
-            }
-            opts.count = (obj.count || 1) + 1;
-            return obj.updateAttributes(opts);
-          } else {
-            // Create new
-            opts.count = 1;
-            opts.trackingDate = (index == 0 ? null : keys.trackingDate);
-            return model.create(opts);
+  const upsertTrackingImpression = (model, keys, imOpts, countField = 'count') => {
+    return model
+      .findOne({where: keys})
+      .then(obj => {
+        const opts = lodash.cloneDeep(imOpts);
+        if (obj) {
+          for (const key in keys) {
+            delete opts[key];
           }
-        }));
+          opts[countField] = (obj[countField] || 1) + 1;
+          return obj.updateAttributes(opts);
+        } else {
+          // Create new
+          opts[countField] = 1;
+          return model.create(opts);
+        }
       })
       .catch(err => {
         console.error(err);
         return Promise.resolve(false);
       });
   };
-  TrackingImpression.newWithOptions = function (trackingDate, opts, cb) {
+
+  TrackingImpression.prototype.process = function () {
     const models = TrackingImpression.app.models;
-    const trackingImpressions = [];
+    const impressionReports = [];
 
-    if (opts.mac && opts.advertiserId && opts.campaignId && opts.bannerId && opts.locationId) {
-      trackingImpressions.push(upsertTrackingImpression(TrackingImpression,
-        {
-          mac: opts.mac,
-          advertiserId: opts.advertiserId,
-          campaignId: opts.campaignId,
-          bannerId: opts.bannerId,
-          locationId: opts.locationId,
-          trackingDate: trackingDate
-        },
-        opts
-      ));
-    }
+    const opts = lodash(this.toJSON()).omitBy(lodash.isUndefined).value();
+    const reportDate = moment(opts.createdAt).startOf('day');
+    delete opts.id;
+    delete opts.createdAt;
+    delete opts.updatedAt;
+    delete opts.count;
 
-    if (opts.advertiserId) {
-      trackingImpressions.push(upsertTrackingImpression(models.TrackingImpression1,
-        {
-          advertiserId: opts.advertiserId,
-          trackingDate: trackingDate
-        },
-        opts
-      ));
-    }
+    opts.reportDate = reportDate;
 
     if (opts.advertiserId && opts.campaignId) {
-      trackingImpressions.push(upsertTrackingImpression(models.TrackingImpression2,
+      impressionReports.push(upsertTrackingImpression(models.ReportTracking1,
         {
           advertiserId: opts.advertiserId,
           campaignId: opts.campaignId,
-          trackingDate: trackingDate
+          reportDate: reportDate
         },
-        opts
-      ));
-    }
-
-    if (opts.advertiserId && opts.campaignId && opts.bannerId) {
-      trackingImpressions.push(upsertTrackingImpression(models.TrackingImpression3,
-        {
-          advertiserId: opts.advertiserId,
-          campaignId: opts.campaignId,
-          bannerId: opts.bannerId,
-          trackingDate: trackingDate
-        },
-        opts
+        opts, 'impressionCount'
       ));
     }
 
     if (opts.advertiserId && opts.campaignId && opts.locationId) {
-      trackingImpressions.push(upsertTrackingImpression(models.TrackingImpression4,
+      impressionReports.push(upsertTrackingImpression(models.ReportTracking2,
         {
           advertiserId: opts.advertiserId,
           campaignId: opts.campaignId,
           locationId: opts.locationId,
-          trackingDate: trackingDate
+          reportDate: reportDate
         },
-        opts
+        opts, 'impressionCount'
+      ));
+    }
+
+    if (opts.advertiserId && opts.campaignId && opts.bannerId) {
+      impressionReports.push(upsertTrackingImpression(models.ReportTracking3,
+        {
+          advertiserId: opts.advertiserId,
+          campaignId: opts.campaignId,
+          bannerId: opts.bannerId,
+          reportDate: reportDate
+        },
+        opts, 'impressionCount'
       ));
     }
 
     if (opts.advertiserId && opts.campaignId && opts.bannerId && opts.locationId) {
-      trackingImpressions.push(upsertTrackingImpression(models.TrackingImpression5,
+      impressionReports.push(upsertTrackingImpression(models.ReportTracking4,
         {
           advertiserId: opts.advertiserId,
           campaignId: opts.campaignId,
           bannerId: opts.bannerId,
           locationId: opts.locationId,
-          trackingDate: trackingDate
+          reportDate: reportDate
         },
-        opts
+        opts, 'impressionCount'
+      ));
+    }
+
+    if (opts.advertiserId && opts.locationId) {
+      impressionReports.push(upsertTrackingImpression(models.ReportTracking5,
+        {
+          advertiserId: opts.advertiserId,
+          locationId: opts.locationId,
+          reportDate: reportDate
+        },
+        opts, 'impressionCount'
       ));
     }
 
     Promise
-      .all(trackingImpressions)
-      .then(data => cb(null, data && data[5] && data[5][0] && data[5][0].count))
-      .catch(cb);
+      .all(impressionReports)
+      .then(() => {
+        this.updateAttributes({'processed': 'success'});
+      })
+      .catch(err => {
+        console.error(err);
+        this.updateAttributes({'processed': 'failed'});
+      });
+
   };
 
+  TrackingImpression.import = function(opts) {
+    return TrackingImpression.create(opts);
+  };
   TrackingImpression.new = function() {
     const cb = arguments[arguments.length - 1];
     const opts = getMethodArguments(TrackingImpression, 'new', true, arguments);
-    return TrackingImpression.newWithOptions(moment().startOf('day'), opts, cb);
+    opts.processed = 'not_yet';
+
+    return upsertTrackingImpression(TrackingImpression, {
+      mac: opts.mac,
+      advertiserId: opts.advertiserId,
+      campaignId: opts.campaignId,
+      bannerId: opts.bannerId,
+      locationId: opts.locationId
+    }, opts)
+    .then(data => cb(null, data.count))
+    .catch(cb);
   };
   TrackingImpression.newPost = TrackingImpression.new;
 
@@ -152,7 +162,7 @@ module.exports = function(TrackingImpression) {
     ],
     returns: {arg: 'impressCount', type: 'number'}
   };
-  TrackingImpression.remoteMethod('new', lodash.extend({http: {verb: 'get'}}, impressMethodOptions));
+  TrackingImpression.remoteMethod('new', lodash.extend({http: {verb: 'get', path: '/'}}, impressMethodOptions));
   TrackingImpression.remoteMethod('newPost', lodash.extend({http: {path: '/'}}, impressMethodOptions));
   TrackingImpression.beforeRemote('new*', (ctx, unused, next) => {
     ctx.args.mac = standardizeMacAddress(ctx.args.mac);

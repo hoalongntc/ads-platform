@@ -1,10 +1,28 @@
 {
   "apps": [
     {
-      "name"        : "ads-platform",
+      "name"        : "ads.tracking",
       "script"      : "server/server.babel.js",
       "instances"   : 1,
       "exec_mode"   : "cluster"
+    },
+    {
+      "name"        : "ads.click-process",
+      "script"      : "common/jobs/tracking.click-process.js",
+      "instances"   : 1,
+      "exec_mode"   : "fork"
+    },
+    {
+      "name"        : "ads.impression-process",
+      "script"      : "common/jobs/tracking.impression-process.js",
+      "instances"   : 1,
+      "exec_mode"   : "fork"
+    },
+    {
+      "name"        : "ads.report",
+      "script"      : "common/jobs/index.js",
+      "instances"   : 1,
+      "exec_mode"   : "fork"
     }
   ]
 }

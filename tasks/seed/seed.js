@@ -47,8 +47,8 @@ module.exports = (app, cb) => {
     arg2s.updatedAt = row.updated_at;
 
     return Promise.all([
-      app.models.TrackingClick.newWithOptions.apply(app.models.TrackingClick, [moment(row.created_at).startOf('day'), args, (() => {})]),
-      app.models.TrackingImpression.newWithOptions.apply(app.models.TrackingImpression, [moment(row.created_at).startOf('day'), arg2s, (() => {})])
+      app.models.TrackingClick.import(args),
+      app.models.TrackingImpression.import(arg2s)
     ]);
   };
   const importTracking = (file) => {

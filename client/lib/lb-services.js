@@ -2931,7 +2931,7 @@ module.factory(
          *  - `clickId` – `{string=}` - 
          */
         "new": {
-          url: urlBase + "/clicks/new",
+          url: urlBase + "/clicks",
           method: "GET"
         },
 
@@ -3108,7 +3108,7 @@ module.factory(
          *  - `impressCount` – `{number=}` - 
          */
         "new": {
-          url: urlBase + "/impressions/new",
+          url: urlBase + "/impressions",
           method: "GET"
         },
 

@@ -8,7 +8,7 @@
       "keys": {
         "advertiserId": 1,
         "campaignId": 1,
-        "trackingDate": -1
+        "reportDate": -1
       },
       "options": {
         "unique": true
@@ -35,13 +35,13 @@
     },
     "clickCount": {
       "type": "number",
-      "default": "0"
+      "default": 0
     },
     "impressionCount": {
       "type": "number",
-      "default": "0"
+      "default": 0
     },
-    "trackingDate": {
+    "reportDate": {
       "type": "date"
     }
   },
