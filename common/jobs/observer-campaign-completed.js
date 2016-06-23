@@ -14,6 +14,11 @@ export default (app, agenda) => {
 
     redisService.hgetall(config.campaign_list_redis_key, (reerr, obj) => {
 
+      if (reerr) {
+        cb(reerr);
+        return;
+      }
+
       let fromCache = obj;
       if (!fromCache) {
         cb();
@@ -36,10 +41,10 @@ export default (app, agenda) => {
       }, {});
 
       ReportTracking1.find({
-        // where: {
-        //   campaignId: {'inq': Object.keys(campaignIdMap)},
-        //   reportDate: null
-        // }
+        where: {
+          campaignId: {'inq': Object.keys(campaignIdMap)},
+          reportDate: null
+        }
       })
         .then((response) => {
           const allReferenceReportClick = response.map((item) => (item.__data));
@@ -52,20 +57,24 @@ export default (app, agenda) => {
             }
           });
 
-          Campaign.updateAll({id: {'inq': completedCampaign.map((item) => (item.id))}}, {active: false})
-            .then((result) => {
-              completedCampaign.forEach((item) => {
-                redisService.hdel(config.campaign_list_redis_key, item.id);
+          if (completedCampaign.length) {
+            Campaign.updateAll({id: {'inq': completedCampaign.map((item) => (item.id))}}, {active: false})
+              .then((result) => {
+                completedCampaign.forEach((item) => {
+                  redisService.hdel(config.campaign_list_redis_key, item.id);
+                });
+                console.log(`Campaign ${completedCampaign} completed`);
+                cb();
+              })
+              .catch((err) => {
+                console.log(err);
+                cb(err);
               });
-              console.log(`Campaign ${completedCampaign} completed`);
-              cb();
-            })
-            .catch((err) => {
-              console.log(err);
-            });
+          }
         })
         .catch((err) => {
           console.error(err);
+          cb(err);
         });
     });
   });
