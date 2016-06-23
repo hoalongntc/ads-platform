@@ -173,11 +173,11 @@ div(ng-show='cam.campaign')
             .col-xs-12.margin5
               .col-xs-4 - Mobile
               .col-xs-8
-                angucomplete-alt(selected-object='cam.selected.bannerMobile' local-data='cam.bannerMobiles', minlength='1', search-fields='name', title-field='name', input-class='cusInput', placeholder='Type to search banner mobile')
+                angucomplete-alt(selected-object='cam.selected.bannerMobile' local-data='cam.bannerMobiles', minlength='1', search-fields='name', title-field='name', input-class='cusInput', auto-match='true', placeholder='Type to search banner mobile')
             .col-xs-12.margin5
               .col-xs-4 - Desktop
               .col-xs-8
-                angucomplete-alt(selected-object='cam.selected.bannerDesktop' local-data='cam.bannerDesktops',minlength='1', search-fields='name', title-field='name', input-class='cusInput', placeholder='Type to search banner desktop')
+                angucomplete-alt(selected-object='cam.selected.bannerDesktop' local-data='cam.bannerDesktops', minlength='1', search-fields='name', title-field='name', input-class='cusInput', auto-match='true', placeholder='Type to search banner desktop')
           .clearfix
           #tracking
             .row.titlestep3 Tracking Code
@@ -236,8 +236,8 @@ div(ng-show='cam.campaign')
               span.col-sm-8.padding0.text-italic(style='text-decoration: underline') {{cam.selected.landingPage}}
         .col-xs-12(style='height: 40px; line-height: 40px;', ng-show='cam.next31')
           span(style='float: right')
-            button.btn.radius-50.btn-sm.btn-gray(style='', ng-click='cam.back3()', ng-show='cam.show3') Back
-            button.btn.radius-50.btn-dark.btn-sm(style='', ng-click='cam.prebook()', ng-show='cam.show3') Preview Booking
+            button.btn.radius-50.btn-sm.btn-gray(style='', ng-click='cam.back3()', ng-show='cam.show3', type='button') Back
+            button.btn.radius-50.btn-dark.btn-sm(style='', ng-click='cam.prebook()', ng-show='cam.show3', type='button') Preview Booking
             button.btn.radius-50.btn-dark.btn-sm(style='', ng-click='cam.editbook()', ng-show='cam.show31') Edit Booking
             button.btn.radius-50.btn-default.btn-sm(style='') Place Booking
 .col-xs-10.col-xs-push-1.col-sm-4.col-sm-push-4.processing(ng-show='cam.step3_2')

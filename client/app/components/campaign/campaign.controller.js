@@ -148,7 +148,6 @@ export default class CampaignCtrl {
     //step3
     this.step3 = false
     this.next31 = false
-    this.locationInvalid = 'locationInvalid'
     this.step3_2 = false
     this.divLocation = false
 
@@ -258,6 +257,7 @@ export default class CampaignCtrl {
     this.selected.timeTo = this.times[11]
     this.selected.bannerMobile ={}
     this.selected.bannerDesktop ={}
+    this.locationInvalid = 'locationInvalid'
   }
 
   next1_1() {
