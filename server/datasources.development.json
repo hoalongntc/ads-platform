@@ -1,12 +1,13 @@
 {
   "mongo": {
-    "host": "127.0.0.1",
+    "host": "45.63.22.83",
     "port": 27017,
-    "url": "mongodb://45.63.22.83:27017/test",
+    "url": "mongodb://localhost:27017/test?connectTimeoutMS=30000",
     "database": "test",
     "password": "",
     "name": "mongo",
     "user": "",
+    "connectTimeoutMS":3000,
     "connector": "mongodb"
   }
 }
