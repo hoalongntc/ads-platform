@@ -11,9 +11,8 @@ export default (app, agenda) => {
     // Query all reference report click base on active campaign Id list
     // Query all report click per day base on active campaign id list
 
-    let today = new Date();
+    const today = new Date();
 
-    // let allActiveCampain = Campaign.find({where: {active: true}})
     let fromCache = redisService.hgetall(config.campaign_list_redis_key);
     if (!fromCache) {
       cb();
@@ -26,7 +25,7 @@ export default (app, agenda) => {
     allActiveCampaign = allActiveCampaign.subtract(completedCampaign);
 
     // convert active campaign to map
-    let campaignIdMap = allActiveCampain.reduce((last, item) => {
+    let campaignIdMap = allActiveCampaign.reduce((last, item) => {
       return last[item.id] = item;
     }, []);
 
@@ -39,17 +38,13 @@ export default (app, agenda) => {
 
     completedCampaign = allReferenceReportClick.reduce((last, item) => {
       let campaign = campaignIdMap[item.campaignId];
-      if (campaign.kpi < item.clickCount) {
+      if (campaign.kpi <= item.clickCount) {
         last.push(campaign.id);
       }
     }, completedCampaign);
 
-    allActiveCampaign = allActiveCampaign.subtract(completedCampaign);
-
-    Campaign.updateAll({campaignId: {"inq": completedCampaign}}, {active: false})
+    Campaign.updateAll({id: {"inq": completedCampaign}}, {active: false})
       .then(function (result) {
-        allActiveCampaign = allActiveCampaign.filter(() => {
-        });
         completedCampaign.forEach((item) => {
           redisService.hdel(config.campaign_list_redis_key, item.id);
         })
