@@ -77,5 +77,33 @@
   { "type": "city", "text": "Vĩnh Long", "value": "vinh_long" },
   { "type": "city", "text": "Vĩnh Phúc", "value": "vinh_phuc" },
   { "type": "city", "text": "Yên Bái", "value": "yen_bai" },
-  { "type": "city", "text": "Phú Yên", "value": "phu_yen" }
+  { "type": "city", "text": "Phú Yên", "value": "phu_yen" },
+
+  { "type" : "os_category", "text" : "Android",       "value" : "android", "options": { "match": "android" } },
+  { "type" : "os_category", "text" : "iOS",           "value" : "ios", "options": { "match": "ios" } },
+  { "type" : "os_category", "text" : "Windows Phone", "value" : "windows_phone", "options": { "match": "windows phone" } },
+  { "type" : "os_category", "text" : "Windows",       "value" : "windows", "options": { "match": "windows" } },
+  { "type" : "os_category", "text" : "macOS",         "value" : "mac", "options": { "match": "(macos|mac os|osx|os x)" } },
+  { "type" : "os_category", "text" : "Linux",         "value" : "linux", "options": { "match": "(linux|ubuntu)" } },
+  { "type" : "os_category", "text" : "Other",         "value" : "other" },
+
+  { "type" : "device_category", "text" : "Mobile", "value" : "mobile", "options": { "match": "mobile" } },
+  { "type" : "device_category", "text" : "Tablet", "value" : "tablet", "options": { "match": "tablet" } },
+  { "type" : "device_category", "text" : "PC",     "value" : "pc", "options": { "match": "(pc|laptop|desktop)" }  },
+  { "type" : "device_category", "text" : "Other",  "value" : "other" },
+
+  { "type" : "age_category", "text" : "< 18",    "value" : "under_18" },
+  { "type" : "age_category", "text" : "18 - 24", "value" : "18_to_24" },
+  { "type" : "age_category", "text" : "25 - 34", "value" : "25_to_34" },
+  { "type" : "age_category", "text" : "35 - 44", "value" : "35_to_44" },
+  { "type" : "age_category", "text" : "> 45",    "value" : "higher_45" },
+
+  { "type" : "gender_category", "text" : "Male",   "value" : "male" },
+  { "type" : "gender_category", "text" : "Female", "value" : "female" },
+
+  { "type" : "income_category", "text" : "< $300",        "value" : "under_$300" },
+  { "type" : "income_category", "text" : "$300 - $600",   "value" : "_$300_to_$600" },
+  { "type" : "income_category", "text" : "$700 - $1200",  "value" : "_$700_to_$1200" },
+  { "type" : "income_category", "text" : "$1200 - $2000", "value" : "_$1200_to_$2000" },
+  { "type" : "income_category", "text" : "> $2000",       "value" : "higher_$2000"}
 ]

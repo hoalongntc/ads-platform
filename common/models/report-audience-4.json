@@ -1,5 +1,5 @@
 {
-  "name": "TrackingImpression2",
+  "name": "ReportAudience4",
   "base": "PersistedModel",
   "strict": true,
   "idInjection": true,
@@ -8,7 +8,7 @@
       "keys": {
         "advertiserId": 1,
         "campaignId": 1,
-        "trackingDate": -1
+        "reportDate": -1
       },
       "options": {
         "unique": true
@@ -33,12 +33,23 @@
     "campaignName": {
       "type": "string"
     },
-    "count": {
-      "type": "number",
-      "default": "1"
-    },
-    "trackingDate": {
+    "reportDate": {
       "type": "date"
+    },
+    "reportOs": {
+      "type": "object"
+    },
+    "reportDevice": {
+      "type": "object"
+    },
+    "reportGender": {
+      "type": "object"
+    },
+    "reportAge": {
+      "type": "object"
+    },
+    "reportIncome": {
+      "type": "object"
     }
   },
   "validations": [],

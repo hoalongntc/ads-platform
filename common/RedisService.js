@@ -7,13 +7,8 @@ var clientSub = null;
 var mainChannel = 'pubsub';
 var config = require('../server/config.json') || {};
 
-var socketIoEmitter = null;
-
-var sails = console;
-
 module.exports = {
-  getSocketIoEmitter: getSocketIoEmitter,
-  clientStore: clientStore, //TODO disable persistence to disk
+  clientStore: clientStore,
   clientPub: clientPub,
   clientSub: clientSub,
   initRedisService: initRedisService,
@@ -25,14 +20,8 @@ module.exports = {
   hkeys: hkeys,
   hdel: hdel,
   hexists: hexists,
-  setex: setex
-}
-
-function getSocketIoEmitter() {
-  if (socketIoEmitter == null) {
-    socketIoEmitter = require('socket.io-emitter')({ host: config.redis.host, port: config.redis.port, auth: config.redis.pass });
-  }
-  return socketIoEmitter;
+  setex: setex,
+  hgetall:hgetall
 }
 
 function initRedisService() {
@@ -45,19 +34,15 @@ function initRedisService() {
     clientSub.auth(config.redis.pass);
   }
   clientStore.on("error", function (err) {
-    sails.log.error(err);
+    console.error(err);
   });
   clientStore.on("connect", function (err) {
-    sails.log("Connected to Redis server");
+    console.log("Connected to Redis server");
   });
 
   clientSub.subscribe(mainChannel);
   clientSub.on("message", function(channel, message){
-    sails.log('Redis event, ' + channel + ', ' + message);
-    if(channel == mainChannel && message
-      && message == Constants.reloadLeaderboardEventMsg) {
-      LeaderboardService.loadLeaderboard();
-    }
+    console.log('Redis event, ' + channel + ', ' + message);
   });
 }
 
@@ -99,3 +84,8 @@ function hexists(store, key) {
 function setex(key, time, value) {
   clientStore.setex(key, time, value);
 }
+function hgetall(store) {
+  clientStore.hgetall(store);
+}
+
+
