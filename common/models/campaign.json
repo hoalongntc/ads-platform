@@ -51,14 +51,22 @@
       "required": true
     },
     "kpi": {
+      "type": "number",
+      "required": true
+    },
+    "bannerMobileId": {
       "type": "string",
       "required": true
     },
-    "bannerMobile": {
+    "bannerMobileName": {
       "type": "string",
       "required": true
     },
-    "bannerDesktop": {
+    "bannerDesktopId": {
+      "type": "string",
+      "required": true
+    },
+    "bannerDesktopName": {
       "type": "string",
       "required": true
     },
