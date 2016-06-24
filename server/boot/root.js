@@ -8,6 +8,6 @@ module.exports = function (server) {
   RedisService.initRedisService();
   router.get('/status', server.loopback.status());
   router.get('/FileSystem', fileSystemBridge(() => ({userName: 'cthanhnguyen', role: 'user'})));
-  router.post('/FileSystem', fileSystemBridge(() => ({userName: 'cthanhnguyen',role: 'user'})));
+  router.post('/FileSystem', fileSystemBridge(() => ({userName: 'cthanhnguyen', role: 'user'})));
   server.use(router);
 };

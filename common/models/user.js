@@ -19,7 +19,7 @@ module.exports = function (User) {
     const currentUserId = ctx.req.accessToken.userId.toString();
     if (currentUserId && user && currentUserId == user.id.toString()) {
       const getRoles = Promise.promisify(models.role.getRoles, {context: models.role});
-  
+
       getRoles({principalType: models.roleMapping.USER, principalId: currentUserId})
         .then(roles => Promise.filter(roles, role => role.toString().indexOf('$') == -1))
         .then(roleIds => Promise.map(roleIds, roleId => models.role.findById(roleId, {include: 'menus'})))
