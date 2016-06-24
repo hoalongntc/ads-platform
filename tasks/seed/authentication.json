@@ -1,0 +1,58 @@
+{
+  "profiles": [
+    {
+      "name": "admin",
+      "description": "Admin Profile"
+    },
+    {
+      "name": "advertiser",
+      "description": "Advertiser Profile"
+    },
+    {
+      "name": "publisher",
+      "description": "Publisher Profile"
+    }
+  ],
+  "users": [
+    {
+      "email": "admin@ads.com",
+      "password": "123456"
+    },
+    {
+      "email": "advertiser@ads.com",
+      "password": "123456"
+    },
+    {
+      "email": "publisher@ads.com",
+      "password": "123456"
+    }
+  ],
+  "roles": [
+    {
+      "name": "admin",
+      "description": "Admin"
+    },
+    {
+      "name": "advertiser",
+      "description": "Advertiser"
+    },
+    {
+      "name": "publisher",
+      "description": "Publisher"
+    }
+  ],
+  "menus": [
+    {
+      "name": "dashboard",
+      "text": "Dashboard",
+      "url": "dashboard",
+      "icon": "fa-location-arrow"
+    },
+    {
+      "name": "report",
+      "text": "Report",
+      "url": "report",
+      "icon": ""
+    }
+  ]
+}

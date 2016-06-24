@@ -5,8 +5,14 @@ app.dataSources.mongo.automigrate(err => {
   console.log('Drop and recreate tables finished.');
 
   // DB seed
-  require('./seed/seed')(app, () => {
-    console.log('Initialize data finished.');
-    process.exit(0);
-  });
+  const selectOptions = require('./seed/select_options');
+  const trackingData = require('./seed/tracking');
+  const authentication = require('./seed/authentication');
+
+  selectOptions(app)
+    .then(() => authentication(app))
+    .then(() => {
+      console.log('Done');
+      process.exit(0);
+    })
 });

@@ -1,8 +1,10 @@
 class AuthInterceptor {
-  constructor($rootScope, Promise, authEvents) {
+  constructor($rootScope, Promise, authEvents, LoopBackAuth) {
     this.responseError = (response) => {
       switch (response.status) {
         case 401:
+          LoopBackAuth.clearUser();
+          LoopBackAuth.clearStorage();
           $rootScope.$broadcast(authEvents.notAuthenticated, response);
           break;
         case 403:
@@ -10,6 +12,8 @@ class AuthInterceptor {
           break;
         case 419:
         case 440:
+          LoopBackAuth.clearUser();
+          LoopBackAuth.clearStorage();
           $rootScope.$broadcast(authEvents.sessionTimeout, response);
           break;
       }
@@ -17,9 +21,9 @@ class AuthInterceptor {
     }
   }
 
-  static factory($rootScope, $q, AUTH_EVENTS) {
+  static factory($rootScope, $q, AUTH_EVENTS, LoopBackAuth) {
     "ngInject";
-    AuthInterceptor.instance = new AuthInterceptor($rootScope, $q, AUTH_EVENTS);
+    AuthInterceptor.instance = new AuthInterceptor($rootScope, $q, AUTH_EVENTS, LoopBackAuth);
     return AuthInterceptor.instance;
   }
 }

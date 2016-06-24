@@ -34,6 +34,26 @@
     "dataSource": "mongo",
     "public": true
   },
+  "Profile": {
+    "dataSource": "db",
+    "public": false
+  },
+  "Menu": {
+    "dataSource": "mongo",
+    "public": false
+  },
+  "MenuTree": {
+    "dataSource": "db",
+    "public": false
+  },
+  "RoleProfileMapping": {
+    "dataSource": "db",
+    "public": false
+  },
+  "RoleMenuMapping": {
+    "dataSource": "mongo",
+    "public": false
+  },
   "SelectOption": {
     "dataSource": "mongo",
     "public": true
@@ -110,6 +130,10 @@
     "dataSource": "mongo",
     "public": false
   },
+  "ReportAudience": {
+    "dataSource": "mongo",
+    "public": false
+  },
   "ReportAudience1": {
     "dataSource": "mongo",
     "public": false
@@ -123,10 +147,6 @@
     "public": false
   },
   "ReportAudience4": {
-    "dataSource": "mongo",
-    "public": false
-  },
-  "ReportAudience": {
     "dataSource": "mongo",
     "public": false
   }

@@ -1,13 +1,21 @@
 {
-  "name": "roleMapping",
-  "base": "RoleMapping",
+  "name": "RoleProfileMapping",
+  "base": "PersistedModel",
   "idInjection": true,
   "options": {
     "validateUpsert": true
   },
-  "properties": {},
+  "properties": {
+    "profileName": "string",
+    "roleName": "string"
+  },
   "validations": [],
   "relations": {
+    "profile": {
+      "type": "belongsTo",
+      "model": "Profile",
+      "foreignKey": "profileId"
+    },
     "role": {
       "type": "belongsTo",
       "model": "role",
