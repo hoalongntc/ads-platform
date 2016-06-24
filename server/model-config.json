@@ -35,7 +35,7 @@
     "public": true
   },
   "Profile": {
-    "dataSource": "db",
+    "dataSource": "mongo",
     "public": false
   },
   "Menu": {
@@ -43,11 +43,11 @@
     "public": false
   },
   "MenuTree": {
-    "dataSource": "db",
+    "dataSource": "mongo",
     "public": false
   },
   "RoleProfileMapping": {
-    "dataSource": "db",
+    "dataSource": "mongo",
     "public": false
   },
   "RoleMenuMapping": {

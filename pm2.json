@@ -7,14 +7,15 @@
       "exec_mode"   : "cluster",
       "env": {
         "NODE_ENV"  : "production",
-        "SCRIPT"    : "./server/server.js"
+        "SCRIPT"    : "./server/server.js",
+        "BOOT"      : "true"
       }
     },
     {
       "name"        : "ads.click-process",
       "script"      : "boot.babel.js",
       "instances"   : 1,
-      "exec_mode"   : "fork",
+      "exec_mode"   : "cluster",
       "env": {
         "NODE_ENV"  : "production",
         "SCRIPT"    : "./common/jobs/tracking.click-process.js"
@@ -24,7 +25,7 @@
       "name"        : "ads.impression-process",
       "script"      : "boot.babel.js",
       "instances"   : 1,
-      "exec_mode"   : "fork",
+      "exec_mode"   : "cluster",
       "env": {
         "NODE_ENV"  : "production",
         "SCRIPT"    : "./common/jobs/tracking.impression-process.js"
@@ -34,7 +35,7 @@
       "name"        : "ads.report",
       "script"      : "boot.babel.js",
       "instances"   : 1,
-      "exec_mode"   : "fork",
+      "exec_mode"   : "cluster",
       "env": {
         "NODE_ENV"  : "production",
         "SCRIPT"    : "./common/jobs/index.js"
