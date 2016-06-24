@@ -1,0 +1,26 @@
+{
+  "name": "role",
+  "base": "Role",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {},
+  "validations": [],
+  "relations": {
+    "principals": {
+      "type": "hasMany",
+      "model": "roleMapping",
+      "foreignKey": "roleId"
+    },
+    "menus": {
+      "type": "hasMany",
+      "model": "Menu",
+      "foreignKey": "roleId",
+      "through": "RoleMenuMapping",
+      "keyThrough": "menuId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

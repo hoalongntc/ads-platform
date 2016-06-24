@@ -34,6 +34,14 @@
     "dataSource": "mongo",
     "public": true
   },
+  "Menu": {
+    "dataSource": "mongo",
+    "public": false
+  },
+  "RoleMenuMapping": {
+    "dataSource": "mongo",
+    "public": false
+  },
   "SelectOption": {
     "dataSource": "mongo",
     "public": true
@@ -128,6 +136,18 @@
   },
   "ReportAudience": {
     "dataSource": "mongo",
+    "public": false
+  },
+  "Profile": {
+    "dataSource": "db",
+    "public": false
+  },
+  "MenuTree": {
+    "dataSource": "db",
+    "public": false
+  },
+  "RoleProfileMapping": {
+    "dataSource": "db",
     "public": false
   }
 }

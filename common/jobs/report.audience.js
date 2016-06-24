@@ -74,7 +74,7 @@ export default (app) => {
     } else {
       reportDate = moment().startOf('day');
     }
-    debug('Started at', moment().toISOString(), 'for', reportDate);
+    debug('Started at', moment().toISOString(), 'for', reportDate.toISOString());
 
     Promise
       .each([
