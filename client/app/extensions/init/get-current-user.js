@@ -1,9 +1,11 @@
 export default function ($rootScope, $q, User) {
-  "ngInject";
+  'ngInject';
   return User.getCurrent().$promise
     .then(user => {
       $rootScope.currentUser = user;
       return user;
     })
-    .catch(err => {});
+    .catch(err => {
+      console.error(err);
+    });
 }

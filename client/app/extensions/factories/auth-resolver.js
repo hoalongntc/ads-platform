@@ -1,3 +1,5 @@
+import angular from 'angular';
+
 class AuthResolver {
   constructor($rootScope, Promise, User) {
     this.$rootScope = $rootScope;
@@ -11,7 +13,7 @@ class AuthResolver {
     }
 
     return this.Promise((resolve, reject) => {
-      const unwatch = this.$rootScope.$watch('currentUser', function (currentUser) {
+      const unwatch = this.$rootScope.$watch('currentUser', (currentUser) => {
         if (angular.isDefined(currentUser)) {
           if (currentUser) {
             resolve(currentUser);
@@ -25,7 +27,7 @@ class AuthResolver {
   }
 
   static factory($rootScope, $q, User) {
-    "ngInject";
+    'ngInject';
     AuthResolver.instance = new AuthResolver($rootScope, $q, User);
     return AuthResolver.instance;
   }

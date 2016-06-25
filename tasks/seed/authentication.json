@@ -11,6 +11,10 @@
     {
       "name": "publisher",
       "description": "Publisher Profile"
+    },
+    {
+      "name": "client",
+      "description": "Client Profile"
     }
   ],
   "users": [
@@ -25,6 +29,10 @@
     {
       "email": "publisher@ads.com",
       "password": "123456"
+    },
+    {
+      "email": "client@ads.com",
+      "password": "123456"
     }
   ],
   "roles": [
@@ -33,12 +41,106 @@
       "description": "Admin"
     },
     {
-      "name": "advertiser",
-      "description": "Advertiser"
+      "name": "viewDashboard",
+      "description": "Can view Dashboard"
     },
     {
-      "name": "publisher",
-      "description": "Publisher"
+      "name": "viewCampaign",
+      "description": "Can view Campaign info"
+    },
+    {
+      "name": "createCampaign",
+      "description": "Can create Campaign"
+    },
+    {
+      "name": "approveCampaign",
+      "description": "Can approve Campaign"
+    },
+    {
+      "name": "viewLocationReport",
+      "description": "Can view Location report"
+    },
+    {
+      "name": "viewCampaignCMS",
+      "description": "Can view Campaign info (CMS)"
+    },
+    {
+      "name": "viewUserCMS",
+      "description": "Can view User info (CMS)"
+    },
+    {
+      "name": "viewDashboardCMS",
+      "description": "Can view Dashboard (CMS)"
+    },
+    {
+      "name": "manageLocationCMS",
+      "description": "Can manage Location (CMS)"
+    },
+    {
+      "name": "manageAccountCMS",
+      "description": "Can manage Account (CMS)"
+    }
+  ],
+  "roleProfileMappings": [
+    {
+      "profileName": "admin",
+      "roleName": "admin"
+    },
+    {
+      "profileName": "advertiser",
+      "roleName": "viewDashboard"
+    },
+    {
+      "profileName": "advertiser",
+      "roleName": "viewCampaign"
+    },
+    {
+      "profileName": "advertiser",
+      "roleName": "createCampaign"
+    },
+    {
+      "profileName": "advertiser",
+      "roleName": "viewLocationReport"
+    },
+    {
+      "profileName": "advertiser",
+      "roleName": "viewCampaignCMS"
+    },
+    {
+      "profileName": "advertiser",
+      "roleName": "viewUserCMS"
+    },
+    {
+      "profileName": "advertiser",
+      "roleName": "viewDashboardCMS"
+    },
+    {
+      "profileName": "publisher",
+      "roleName": "viewDashboard"
+    },
+    {
+      "profileName": "publisher",
+      "roleName": "viewCampaign"
+    },
+    {
+      "profileName": "publisher",
+      "roleName": "viewLocationReport"
+    },
+    {
+      "profileName": "publisher",
+      "roleName": "viewCampaignCMS"
+    },
+    {
+      "profileName": "publisher",
+      "roleName": "viewDashboardCMS"
+    },
+    {
+      "profileName": "client",
+      "roleName": "viewDashboard"
+    },
+    {
+      "profileName": "client",
+      "roleName": "viewCampaign"
     }
   ],
   "menus": [

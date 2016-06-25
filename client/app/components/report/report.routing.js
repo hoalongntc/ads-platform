@@ -1,4 +1,5 @@
 'use strict';
+import angular from 'angular';
 
 function routes($stateProvider) {
   $stateProvider
@@ -40,7 +41,7 @@ function routes($stateProvider) {
         return $q(resolve => {
           // lazy load the view
           require.ensure([], () => resolve(require('./report.placement.jade')));
-        })
+        });
       }
     });
 }

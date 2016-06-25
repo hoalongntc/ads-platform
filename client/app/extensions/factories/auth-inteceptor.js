@@ -1,3 +1,5 @@
+import angular from 'angular';
+
 class AuthInterceptor {
   constructor($rootScope, Promise, authEvents, LoopBackAuth) {
     this.responseError = (response) => {
@@ -18,11 +20,11 @@ class AuthInterceptor {
           break;
       }
       return Promise.reject(response);
-    }
+    };
   }
 
   static factory($rootScope, $q, AUTH_EVENTS, LoopBackAuth) {
-    "ngInject";
+    'ngInject';
     AuthInterceptor.instance = new AuthInterceptor($rootScope, $q, AUTH_EVENTS, LoopBackAuth);
     return AuthInterceptor.instance;
   }
@@ -30,4 +32,4 @@ class AuthInterceptor {
 
 export default angular
   .module('app.factory.auth-interceptor', [])
-  .factory('AuthInterceptor', AuthInterceptor.factory)
+  .factory('AuthInterceptor', AuthInterceptor.factory);

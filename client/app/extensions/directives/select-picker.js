@@ -1,3 +1,5 @@
+import $ from 'jquery';
+import angular from 'angular';
 import 'bootstrap-select/dist/js/bootstrap-select';
 
 class SelectPicker {

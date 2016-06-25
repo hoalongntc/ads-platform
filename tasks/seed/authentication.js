@@ -9,36 +9,48 @@ export default function(app) {
 
   return Promise
     .all([
-      Promise.map(authenticationInfo.roles, role => {
-        return models.role.create(role);
+      Promise.map(authenticationInfo.profiles, profile => {
+        return models.Profile.create(profile);
       }),
       Promise.map(authenticationInfo.users, user => {
         return models.user.create(user);
+      })
+    ])
+    .then(([profiles, users]) => {
+      debug('Profiles', profiles);
+      debug('Users', users);
+
+      return Promise
+        .map(lodash.cloneDeep(users), (user, index) => {
+          return user.updateAttributes({profileId: profiles[index].id, profileName: profiles[index].name});
+        });
+    })
+    .then(() => Promise.all([
+      Promise.map(authenticationInfo.roles, role => {
+        return models.role.create(role);
       }),
       Promise.map(authenticationInfo.menus, menu => {
         return models.Menu.create(menu);
       })
-    ])
-    .then(([roles, users, menus]) => {
+    ]))
+    .then(([roles, menus]) => {
       debug('Roles', roles);
-      debug('Users', users);
-      debug('Menus', menus);
 
-      return Promise
+      return Promise.map(authenticationInfo.roleProfileMappings, map => Promise
         .all([
-          Promise.map(lodash.cloneDeep(users), (user, index) => {
-            return models.roleMapping.create({principalId: users[index].id, principalType: models.roleMapping.USER, roleId: roles[index].id});
-          }),
-          Promise.map(lodash.cloneDeep(roles), role => {
-            return models.RoleMenuMapping.create(lodash.cloneDeep(menus).map(menu => {
-              return {menuId: menu.id, menuName: menu.name, roleId: role.id, roleName: role.name}
-            }));
-          })
-        ]);
+          models.Profile.findOne({where: {name: map.profileName}}),
+          models.role.findOne({where: {name: map.roleName}})
+        ])
+        .then(([profile, role]) => {
+          return models.RoleProfileMapping.create({
+            roleId: role.id, roleName: role.name,
+            profileId: profile.id, proileName: profile.name
+          });
+        })
+      );
     })
-    .then(([roleMappings, menuMappings]) => {
+    .then((roleMappings) => {
       debug('Role Mappings', roleMappings);
-      debug('Menu Mappings', menuMappings);
     })
     .catch(err => {
       console.error(err);

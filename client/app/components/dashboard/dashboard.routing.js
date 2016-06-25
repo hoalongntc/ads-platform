@@ -1,4 +1,5 @@
 'use strict';
+import angular from 'angular';
 
 function routes($urlRouterProvider, $stateProvider) {
   $urlRouterProvider.otherwise('/dashboard');

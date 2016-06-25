@@ -75,6 +75,7 @@
     "gulp-loopback-sdk-angular": "0.1.4",
     "gulp-nodemon": "2.0.6",
     "gulp-rename": "1.2.2",
+    "gulp-watch": "4.3.8",
     "html-loader": "0.4.3",
     "html-webpack-plugin": "2.16.1",
     "imports-loader": "0.6.5",

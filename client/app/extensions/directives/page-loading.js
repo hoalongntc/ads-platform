@@ -1,9 +1,11 @@
+import angular from 'angular';
+
 class PageLoading {
   constructor($rootScope) {
     this.$rootScope = $rootScope;
 
     this.restrict = 'AE';
-    this.template = `<div ng-show="visible" class="progress-wrapper"><div class="loading-progress"><div class="indeterminate"></div></div></div>`;
+    this.template = `<div ng-show='visible' class='progress-wrapper'><div class='loading-progress'><div class='indeterminate'>${''}</div></div></div>`;
   }
 
   link(scope) {
@@ -20,7 +22,7 @@ class PageLoading {
   }
 
   static factory($rootScope) {
-    "ngInject";
+    'ngInject';
     PageLoading.instance = new PageLoading($rootScope);
     return PageLoading.instance;
   }

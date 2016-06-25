@@ -1,3 +1,4 @@
+import angular from 'angular';
 import lodash from 'lodash';
 
 class CommonUtil {
@@ -94,7 +95,7 @@ class CommonUtil {
   }
 
   static factory($interpolate, $templateCache) {
-    "ngInject";
+    'ngInject';
     CommonUtil.instance = new CommonUtil($interpolate, $templateCache);
     return CommonUtil.instance;
   }

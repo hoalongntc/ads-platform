@@ -1,3 +1,4 @@
+import angular from 'angular';
 import lodash from 'lodash';
 import Highcharts from 'highcharts';
 

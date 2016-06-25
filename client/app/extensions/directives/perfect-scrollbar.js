@@ -1,3 +1,4 @@
+import angular from 'angular';
 import Ps from 'perfect-scrollbar';
 
 class PerfectScrollbar {

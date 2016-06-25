@@ -1,17 +1,19 @@
+import angular from 'angular';
+
 class ApplicationCtrl {
   constructor(AuthResolver, AuthService) {
     this.currentUser = null;
     this.AuthService = AuthService;
 
     // Get currentUser
-    const getCurrentUser =() => {
+    const getCurrentUser = () => {
       AuthResolver
         .getCurrentUser()
         .then(user => {
           this.currentUser = user;
-        });  
+        });
     };
-    
+
     getCurrentUser();
   }
 

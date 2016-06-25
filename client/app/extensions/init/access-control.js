@@ -1,7 +1,7 @@
 // import angular from 'angular';
 
 export default function ($rootScope, $state, AUTH_EVENTS, USER_ROLES, User) {
-  "ngInject";
+  'ngInject';
   $rootScope.$on('$stateChangeStart', (event, next) => {
     const authenticated = User.isAuthenticated();
 
