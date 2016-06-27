@@ -17,7 +17,7 @@ const apiUrl = process.env.API_URL || `http://${serverConfig.restApiHost || '0.0
 const isWin = /^win/.test(process.platform);
 // use global babel-node on window OS
 // make sure npm install -g babel-cli to run script on window
-const babelNode = isWin?'babel-node':'./node_modules/.bin/babel-node'
+const babelNode = isWin ? 'babel-node' : './node_modules/.bin/babel-node'
 
 const exec = debugEnabled ? `${babelNode} --debug` : `${babelNode}`
 
