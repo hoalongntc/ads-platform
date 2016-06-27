@@ -6,19 +6,25 @@ module.exports = function(RoleProfileMapping) {
     if (ctx.instance && ctx.isNewInstance) {
       const models = RoleProfileMapping.app.models;
 
-      models.user
-        .find({where: {profileId: ctx.instance.profileId}})
+      models.Group
+        .find({where: {profileId: ctx.instance.profileId}, fields: {id: 1}})
+        .then(groups => {
+          const groupIds = groups.map(group => group.id);
+          return models.user.find({where: {groupId: {inq: groupIds}}, fields: {id: 1}});
+        })
         .then(users => {
           return Promise.map(users, user => {
             return models.roleMapping.create({principalType: models.roleMapping.USER, principalId: user.id, roleId: ctx.instance.roleId});
           });
         })
-        .then(console.log)
+        // .then(console.log)
         .then(next)
         .catch(err => {
           console.error(err);
           next();
         });
+    } else {
+      next();
     }
   });
 
@@ -26,22 +32,24 @@ module.exports = function(RoleProfileMapping) {
     if (ctx.instance) {
       const models = RoleProfileMapping.app.models;
 
-      Promise
-        .all([
-          models.role.findById(ctx.instance.roleId),
-          models.Profile.findById(ctx.instance.profileId, {include: 'users'})
-        ])
-        .then(([role, profile]) => {
-          return Promise.map(profile.users, user => {
-            return models.roleMapping.destroyAll({principalType: models.roleMapping.USER, principalId: user.id, roleId: role.id});
-          });
+      models.Group
+        .find({where: {profileId: ctx.instance.profileId}, fields: {id: 1}})
+        .then(groups => {
+          const groupIds = groups.map(group => group.id);
+          return models.user.find({where: {groupId: {inq: groupIds}}, fields: {id: 1}});
         })
-        .then(console.log)
+        .then(users => {
+          const userIds = users.map(user => user.id);
+          return models.roleMapping.destroyAll({principalType: models.roleMapping.USER, principalId: {inq: userIds}, roleId: ctx.instance.roleId});
+        })
+        // .then(console.log)
         .then(next)
         .catch(err => {
           console.error(err);
           next();
         });
+    } else {
+      next();
     }
   });
 };

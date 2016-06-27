@@ -1,18 +1,15 @@
-import Promise from 'bluebird';
-
 module.exports = function (User) {
 
-  User.prototype.updateRoleMapping = () => {
+  User.prototype.updateRoleMapping = function(forceDelete = false) {
     const models = User.app.models;
-
-    if (this.profileId) {
+    if (this.groupId && !forceDelete) {
       return models.roleMapping
         .destroyAll({principalType: models.roleMapping.USER, principalId: this.id})
-        .then(() => models.RoleProfileMapping.find({where: {profileId: this.profileId}}))
+        .then(() => models.Group.findById(this.groupId, {fields: {profileId: 1}}))
+        .then(group => models.RoleProfileMapping.find({where: {profileId: group.profileId}}))
         .then(mappings => models.roleMapping.create(mappings.map(map => {
-          return {principalType: models.roleMapping.USER, principalId: this.id, roleId: map.roleId}
+          return {principalType: models.roleMapping.USER, principalId: this.id, roleId: map.roleId};
         })))
-        .then(console.log)
         .catch(console.error);
     } else {
       return models.roleMapping
@@ -32,26 +29,25 @@ module.exports = function (User) {
     next();
   });
 
-  // User.afterRemote('findById', (ctx, user, next) => {
-  //   const models = User.app.models;
-  //   const currentUserId = ctx.req.accessToken.userId.toString();
-  //   if (currentUserId && user && currentUserId == user.id.toString()) {
-  //     const getRoles = Promise.promisify(models.role.getRoles, {context: models.role});
-  //
-  //     getRoles({principalType: models.roleMapping.USER, principalId: currentUserId})
-  //       .then(roles => Promise.filter(roles, role => role.toString().indexOf('$') == -1))
-  //       .then(roleIds => Promise.map(roleIds, roleId => models.role.findById(roleId)))
-  //       .then(roles => {
-  //         console.log(roles);
-  //         ctx.result.roles = roles;
-  //         next();
-  //       })
-  //       .catch(err => {
-  //         console.error(err);
-  //         next();
-  //       });
-  //   } else {
-  //     next();
-  //   }
-  // });
+  // Update role mapping
+  User.observe('after save', (ctx, next) => {
+    if (ctx.instance) {
+      ctx.instance
+        .updateRoleMapping()
+        .then(() => next());
+    } else {
+      next();
+    }
+  });
+
+  // Remove role mapping
+  User.observe('before delete', (ctx, next) => {
+    if (ctx.instance) {
+      ctx.instance
+        .updateRoleMapping(true)
+        .then(() => next());
+    } else {
+      next();
+    }
+  });
 };

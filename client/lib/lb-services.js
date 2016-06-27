@@ -175,12 +175,12 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.User#prototype$__get__profile
+         * @name lbServices.User#prototype$__get__group
          * @methodOf lbServices.User
          *
          * @description
          *
-         * Fetches belongsTo relation profile.
+         * Fetches belongsTo relation group.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -203,8 +203,8 @@ module.factory(
          * This usually means the response is a `User` object.)
          * </em>
          */
-        "prototype$__get__profile": {
-          url: urlBase + "/users/:id/profile",
+        "prototype$__get__group": {
+          url: urlBase + "/users/:id/group",
           method: "GET"
         },
 

@@ -12,18 +12,26 @@ export default function(app) {
       Promise.map(authenticationInfo.profiles, profile => {
         return models.Profile.create(profile);
       }),
+      Promise.map(authenticationInfo.groups, group => {
+        return models.Group.create(group);
+      }),
       Promise.map(authenticationInfo.users, user => {
         return models.user.create(user);
       })
     ])
-    .then(([profiles, users]) => {
+    .then(([profiles, groups, users]) => {
       debug('Profiles', profiles);
+      debug('Groups', groups);
       debug('Users', users);
 
-      return Promise
-        .map(lodash.cloneDeep(users), (user, index) => {
-          return user.updateAttributes({profileId: profiles[index].id, profileName: profiles[index].name});
-        });
+      return Promise.all([
+        Promise.map(users, (user, index) => {
+          return user.updateAttributes({groupId: groups[index].id, groupName: groups[index].name});
+        }),
+        Promise.map(groups, (group, index) => {
+          return group.updateAttributes({profileId: profiles[index].id, profileName: profiles[index].name});
+        })
+      ]);
     })
     .then(() => Promise.all([
       Promise.map(authenticationInfo.roles, role => {

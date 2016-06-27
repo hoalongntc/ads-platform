@@ -27,11 +27,6 @@
       "through": "RoleProfileMapping",
       "keyThrough": "roleId"
     },
-    "users": {
-      "type": "hasMany",
-      "model": "user",
-      "foreignKey": "profileId"
-    },
     "menu": {
       "type": "belongsTo",
       "model": "MenuTree",

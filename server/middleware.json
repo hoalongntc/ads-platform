@@ -33,6 +33,10 @@
   "session": {},
   "auth": {},
   "parse": {},
+  "parse:after": {
+    "loopback#context": {},
+    "./middleware/currentUser": {}
+  },
   "routes": {
     "loopback#rest": {
       "paths": [

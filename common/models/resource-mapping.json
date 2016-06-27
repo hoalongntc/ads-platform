@@ -1,0 +1,27 @@
+{
+  "name": "ResourceMapping",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "resourceType": {
+      "type": "string",
+      "required": true
+    },
+    "groupName": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "group": {
+      "type": "belongsTo",
+      "model": "Group",
+      "foreignKey": "groupId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
