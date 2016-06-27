@@ -1,3 +1,5 @@
+import $ from 'jquery';
+import angular from 'angular';
 import moment from 'moment';
 import '../../../assets/scripts/vendor/bootstrap-datetimepicker';
 
@@ -7,11 +9,11 @@ class DateTimePicker {
 
     this.require = '?ngModel';
     this.restrict = 'AE';
-    this.scope = {options: "=?", onChange: "&?", onClick: "&?"};
+    this.scope = {options: '=?', onChange: '&?', onClick: '&?'};
   }
 
   link (scope, element, attrs, ngModel) {
-    const dp = $(element).datetimepicker(scope.options);
+    $(element).datetimepicker(scope.options);
 
     scope.$watch('options', (newValue) => {
       const dtp = element.data('DateTimePicker');
@@ -29,7 +31,7 @@ class DateTimePicker {
         scope.$apply(() => {
           ngModel.$setViewValue(e.date);
         });
-        if (typeof scope.onChange === "function") {
+        if (typeof scope.onChange === 'function') {
           scope.onChange();
         }
       });
@@ -37,7 +39,7 @@ class DateTimePicker {
 
     element.on('click', () => {
       this.$timeout(() => {
-        if (typeof scope.onClick === "function") {
+        if (typeof scope.onClick === 'function') {
           scope.onClick();
         }
       });
@@ -54,7 +56,7 @@ class DateTimePicker {
   }
 
   static factory($timeout) {
-    "ngInject";
+    'ngInject';
     DateTimePicker.instance = new DateTimePicker($timeout);
     return DateTimePicker.instance;
   }

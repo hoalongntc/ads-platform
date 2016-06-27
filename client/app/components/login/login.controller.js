@@ -1,3 +1,5 @@
+import angular from 'angular';
+
 class LoginCtrl {
   constructor(AuthService, $scope) {
     this.$scope = $scope;

@@ -1,3 +1,5 @@
+import angular from 'angular';
+
 class DashboardCtrl {
   constructor(currentUser, CommonData) {
     this.CommonData = CommonData;

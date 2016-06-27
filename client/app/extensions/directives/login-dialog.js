@@ -1,9 +1,11 @@
+import angular from 'angular';
+
 class LoginDialog {
   constructor(authEvents) {
     this.authEvents = authEvents;
 
     this.restrict = 'A';
-    this.template = `<div ng-if="visible" ng-include="'login/login.form.template.jade'"></div>`
+    this.template = `<div ng-if='visible' ng-include='"login/login.form.template.jade"'>${''}</div>`;
   }
 
   link(scope) {
@@ -14,11 +16,11 @@ class LoginDialog {
 
     scope.visible = false;
     scope.$on(this.authEvents.notAuthenticated, showDialog);
-    scope.$on(this.authEvents.sessionTimeout, showDialog)
+    scope.$on(this.authEvents.sessionTimeout, showDialog);
   }
-  
+
   static factory(AUTH_EVENTS) {
-    "ngInject";
+    'ngInject';
     LoginDialog.instance = new LoginDialog(AUTH_EVENTS);
     return LoginDialog.instance;
   }

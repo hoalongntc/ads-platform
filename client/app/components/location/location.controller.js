@@ -1,5 +1,6 @@
 'use strict';
 
+import angular from 'angular';
 import lodash from 'lodash';
 import Highcharts from 'highcharts';
 
@@ -43,7 +44,7 @@ class LocationCtrl {
       },
       series: [{
         name: 'City',
-        data: [{name: 'Ho Chi Minh', y: 100}, {name: 'Ha Noi', y: 110}, {name: 'Da Nang', y: 30}, { name: 'Vung Tau', y: 20}, {name: 'Nha Trang', y: 30}],
+        data: [{name: 'Ho Chi Minh', y: 100}, {name: 'Ha Noi', y: 110}, {name: 'Da Nang', y: 30}, {name: 'Vung Tau', y: 20}, {name: 'Nha Trang', y: 30}],
         startAngle: 0, innerSize: '45%'
       }]
     });
@@ -75,7 +76,7 @@ class LocationCtrl {
       },
       series: [{
         name: 'Category',
-        data: [{name: 'Coffee Shops', y: 100}, {name: 'Public areas', y: 110}, { name: 'Airports', y: 30}, {name: 'Universities', y: 20}, {name: 'Shopping Malls', y: 30}],
+        data: [{name: 'Coffee Shops', y: 100}, {name: 'Public areas', y: 110}, {name: 'Airports', y: 30}, {name: 'Universities', y: 20}, {name: 'Shopping Malls', y: 30}],
         startAngle: 0, innerSize: '45%'
       }]
     });
@@ -107,7 +108,7 @@ class LocationCtrl {
       },
       series: [{
         name: 'Category',
-        data: [{name: 'Coffee Shops', y: 100}, {name: 'Public areas', y: 110}, { name: 'Airports', y: 30}, {name: 'Universities', y: 20}, {name: 'Shopping Malls', y: 30}],
+        data: [{name: 'Coffee Shops', y: 100}, {name: 'Public areas', y: 110}, {name: 'Airports', y: 30}, {name: 'Universities', y: 20}, {name: 'Shopping Malls', y: 30}],
         startAngle: 0, innerSize: '45%'
       }]
     });
@@ -171,7 +172,7 @@ class LocationCtrl {
       },
       series: [{
         name: 'Age',
-        data: [{name: '18-24', y: 100}, {name: '25-34', y: 110}, {name: '35-44', y: 110}, { name: '45-54', y: 110}, {name: '55+', y: 110}],
+        data: [{name: '18-24', y: 100}, {name: '25-34', y: 110}, {name: '35-44', y: 110}, {name: '45-54', y: 110}, {name: '55+', y: 110}],
         startAngle: 0, innerSize: '50%'
       }]
     });
@@ -237,7 +238,7 @@ class LocationCtrl {
       },
       series: [{
         name: 'Device',
-        data: [{name: 'Mobile', y: 100},{name: 'Laptop', y: 110},{name: 'Tablet', y: 110}],
+        data: [{name: 'Mobile', y: 100}, {name: 'Laptop', y: 110}, {name: 'Tablet', y: 110}],
         startAngle: 0, innerSize: '50%'
       }]
     });

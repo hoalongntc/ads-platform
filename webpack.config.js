@@ -41,7 +41,7 @@ module.exports = function makeWebpackConfig () {
    * Karma will set this when it's a test build
    */
   config.entry = isTest ? {} : {
-    app: `${clientApp}/app/app.js`,
+    app: [`${clientApp}/app/app.js`],
   }
 
   /**
@@ -251,9 +251,12 @@ module.exports = function makeWebpackConfig () {
    * Reference: http://webpack.github.io/docs/webpack-dev-server.html
    */
   config.devServer = {
+    publicPath: '/',
     contentBase: `${clientApp}/dist`,
     inline: true,
+    hot: true,
     open: true,
+    historyApiFallback: true,
     port: clientAppPort,
     stats: {
       colors: true,

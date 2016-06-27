@@ -17,6 +17,7 @@
     "space-before-function-paren": 0,
     "semi": ["error", "always"],
     "eqeqeq": 0,
-    "no-extend-native": 0
+    "no-extend-native": 0,
+    "spaced-comment": ["error", "always", { "markers": ["@require"] }]
   }
 }

@@ -3,6 +3,7 @@ import nodemon from 'gulp-nodemon'
 import eslint from 'gulp-eslint'
 import rename from 'gulp-rename'
 import clean from 'gulp-clean'
+import watch from 'gulp-watch'
 import loopbackAngular from 'gulp-loopback-sdk-angular'
 import runSequence from 'run-sequence'
 import webpack from 'webpack'
@@ -23,9 +24,17 @@ const exec = debugEnabled ? `${babelNode} --debug` : `${babelNode}`
 // ESLint configuration
 gulp.task('lint', () => gulp
   .src([
-    // 'client/**/*.js',
     'common/**/*.js',
     'server/**/*.js',
+  ])
+  .pipe(eslint())
+  .pipe(eslint.format())
+  .pipe(eslint.failAfterError())
+)
+
+gulp.task('lint:client', () => gulp
+  .src([
+    'client/app/**/*.js'
   ])
   .pipe(eslint())
   .pipe(eslint.format())
@@ -65,8 +74,25 @@ gulp.task('serve', () => nodemon({
   script: 'server/server.js',
   watch: [ 'server/', 'common/' ],
   ext: 'js json',
-  tasks: [ 'lint' ]
+  tasks: [ 'lint:server' ]
 }))
+
+gulp.task('watch:lint:server', ['lint'], () => watch([
+    'common/**/*.js',
+    'server/**/*.js'
+  ], { ignoreInitial: true }, () => {
+    runSequence('lint')
+  })
+);
+
+gulp.task('watch:lint:client', ['lint:client'], () => watch(
+  'client/app/**/*.js',
+  { ignoreInitial: true }, () => {
+    runSequence('lint:client')
+  })
+);
+
+gulp.task('watch:lint', ['watch:lint:server', 'watch:lint:client']);
 
 // Clean webpack
 gulp.task('webpack:clean', () => gulp
@@ -85,18 +111,17 @@ gulp.task('webpack:build', ['webpack:clean'], (callback) => webpack(
 gulp.task("webpack:dev-server", function(callback) {
   // modify some webpack config options
   var myConfig = Object.create(webpackConfig);
+  myConfig.entry.app.unshift(`webpack-dev-server/client?http://localhost:${myConfig.port}/`);
   myConfig.devtool = "eval";
   myConfig.debug = true;
 
   // Start a webpack-dev-server
-  new WebpackDevServer(webpack(myConfig), {
-    publicPath: '/',
-    stats: {
-      colors: true
-    }
-  }).listen(myConfig.port, "localhost", function(err) {
+  const wds = new WebpackDevServer(webpack(myConfig), myConfig.devServer);
+  wds.listen(myConfig.port, "localhost", function(err) {
     if (err) throw err;
+    callback();
   });
+
 });
 
 // The default tasks

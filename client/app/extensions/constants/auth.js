@@ -1,3 +1,5 @@
+import angular from 'angular';
+
 export default angular
   .module('app.constant.auth', [])
   .constant('AUTH_EVENTS', {

@@ -1,18 +1,10 @@
 import fs from 'fs';
 import path from 'path';
 import Promise from 'bluebird';
-import moment from 'moment';
 import {standardizeMacAddress, standardizeGender, standardizeAgeAndIncome, standardizeOs, standardizeDevice} from '../../common/utils';
 
-module.exports = (app, cb) => {
+export default function(app) {
   'use strict';
-
-  const findOrCreate = Promise.promisify(app.models.SelectOption.findOrCreate, {context: app.models.SelectOption});
-  const selectOptions = require('./select_options.json');
-
-  selectOptions.map((item) => {
-    return findOrCreate({where: { type: item.type, value: item.value }}, item);
-  });
 
   const insertRow = (row) => {
     const args = {};
@@ -61,12 +53,10 @@ module.exports = (app, cb) => {
       });
   };
 
-  Promise
-    .all(selectOptions)
-    .then(() => Promise.each([1, 2, 3], num => importTracking(path.join(__dirname, `./tracking${num}.json`))))
+  return Promise.each([1, 2, 3], num => importTracking(path.join(__dirname, `./tracking${num}.json`)))
     .then(() => cb())
     .catch(err => {
       console.log(err);
       cb();
     });
-};
+}

@@ -1,3 +1,5 @@
+import angular from 'angular';
+
 class CommonData {
   constructor(Promise, SelectOption) {
     this.Promise = Promise;
@@ -50,7 +52,7 @@ class CommonData {
   }
 
   static factory($q, SelectOption) {
-    "ngInject";
+    'ngInject';
     CommonData.instance = new CommonData($q, SelectOption);
     return CommonData.instance;
   }

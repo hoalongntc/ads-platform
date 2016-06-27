@@ -5,13 +5,12 @@
   "scripts": {
     "start": "./node_modules/.bin/gulp build && ./node_modules/.bin/babel-node server/server",
     "dev-server": "./node_modules/.bin/gulp",
-    "dev-client": "webpack-dev-server --history-api-fallback --progress",
+    "dev-client": "./node_modules/.bin/gulp webpack:dev-server",
     "build": "./node_modules/.bin/gulp build"
   },
   "dependencies": {
     "ag-grid": "4.2.5",
     "agenda": "0.8.1",
-    "angucomplete-alt": "2.4.1",
     "angular": "1.5.7",
     "angular-animate": "1.5.7",
     "angular-bluebird-promises": "1.0.1",
@@ -41,7 +40,7 @@
     "loopback-boot": "^2.6.5",
     "loopback-component-explorer": "^2.4.0",
     "loopback-connector-mongodb": "1.15.2",
-    "loopback-datasource-juggler": "^2.39.0",
+    "loopback-datasource-juggler": "2.46.1",
     "loopback-ds-timestamp-mixin": "3.2.4",
     "loopback-filters": "0.1.2",
     "moment": "2.13.0",
@@ -76,6 +75,7 @@
     "gulp-loopback-sdk-angular": "0.1.4",
     "gulp-nodemon": "2.0.6",
     "gulp-rename": "1.2.2",
+    "gulp-watch": "4.3.8",
     "html-loader": "0.4.3",
     "html-webpack-plugin": "2.16.1",
     "imports-loader": "0.6.5",

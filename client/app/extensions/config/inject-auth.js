@@ -1,4 +1,4 @@
 export default function ($httpProvider) {
-  "ngInject";
+  'ngInject';
   $httpProvider.interceptors.push('AuthInterceptor');
 }

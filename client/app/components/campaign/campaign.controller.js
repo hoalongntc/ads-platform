@@ -1,6 +1,5 @@
 import $ from 'jquery'
 import moment from 'moment'
-require('angucomplete-alt')
 import '../../../assets/styles/components/campaign.less'
 
 export default class CampaignCtrl {
@@ -238,7 +237,13 @@ export default class CampaignCtrl {
     this.Banner.find()
       .$promise.then((data) => {
       this.bannerMobiles = data.filter((banner) => banner.target != 'desktop')
+      if(this.bannerMobiles.length > 0) {
+        this.selected.bannerMobile = this.bannerMobiles[0]
+      }
       this.bannerDesktops = data.filter((banner) => banner.target != 'mobile')
+      if(this.bannerDesktops.length > 0) {
+        this.selected.bannerDesktop = this.bannerDesktops[0]
+      }
     })
       .catch((err) => {
         console.error(err)
@@ -255,9 +260,6 @@ export default class CampaignCtrl {
     this.selected.scheduleTo = moment.utc()
     this.selected.timeFrom = this.times[11]
     this.selected.timeTo = this.times[11]
-    this.selected.bannerMobile ={}
-    this.selected.bannerDesktop ={}
-    this.locationInvalid = 'locationInvalid'
   }
 
   next1_1() {
@@ -308,7 +310,7 @@ export default class CampaignCtrl {
       })
   }
 
-  next2(form) {
+  next2() {
     this.getSelectedLocations()
 
     if(this.selected.locations.length <= 0) {
@@ -367,7 +369,7 @@ export default class CampaignCtrl {
   }
 
   placebook() {
-    if(!this.selected.bannerDesktop.originalObject || !this.selected.bannerMobile.originalObject) {
+    if(!this.selected.bannerDesktop || !this.selected.bannerMobile) {
       return
     }
 
@@ -381,6 +383,7 @@ export default class CampaignCtrl {
 
   setLocationSelected(location, isSelected) {
     location.selected = isSelected
+    location.kpi = isSelected ? 1 : 0
   }
 
   saveCampain() {
@@ -407,10 +410,10 @@ export default class CampaignCtrl {
       this.campaignObj.kpi = this.selected.kpi
       this.campaignObj.name =  this.selected.adSet
       this.campaignObj.landingPageUrl = this.selected.landingPage
-      this.campaignObj.bannerDesktopId = this.selected.bannerDesktop.originalObject.id
-      this.campaignObj.bannerDesktopName = this.selected.bannerDesktop.originalObject.name
-      this.campaignObj.bannerMobileId = this.selected.bannerMobile.originalObject.id
-      this.campaignObj.bannerMobileName = this.selected.bannerMobile.originalObject.name
+      this.campaignObj.bannerDesktopId = this.selected.bannerDesktop.id
+      this.campaignObj.bannerDesktopName = this.selected.bannerDesktop.name
+      this.campaignObj.bannerMobileId = this.selected.bannerMobile.id
+      this.campaignObj.bannerMobileName = this.selected.bannerMobile.name
       this.campaignObj.locations = this.selected.locations
 
       this.campaignObj.$save((campaign) => {
@@ -437,10 +440,10 @@ export default class CampaignCtrl {
         kpi: this.selected.kpi,
         name: this.selected.adSet,
         landingPageUrl: this.selected.landingPage,
-        bannerDesktopId: this.selected.bannerDesktop.originalObject.id,
-        bannerDesktopName: this.selected.bannerDesktop.originalObject.name,
-        bannerMobileId: this.selected.bannerMobile.originalObject.id,
-        bannerMobileName: this.selected.bannerMobile.originalObject.name,
+        bannerDesktopId: this.selected.bannerDesktop.id,
+        bannerDesktopName: this.selected.bannerDesktop.name,
+        bannerMobileId: this.selected.bannerMobile.id,
+        bannerMobileName: this.selected.bannerMobile.name,
         locations: this.selected.locations
       }
 
@@ -487,5 +490,5 @@ export default class CampaignCtrl {
 }
 
 export default angular
-  .module('campaign.controller', ['angucomplete-alt'])
+  .module('campaign.controller', [])
   .controller('CampaignCtrl', CampaignCtrl)

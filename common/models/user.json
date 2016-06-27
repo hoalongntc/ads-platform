@@ -2,7 +2,10 @@
   "name": "user",
   "plural": "users",
   "base": "User",
-  "properties": {},
+  "properties": {
+    "name": "string",
+    "profileName": "string"
+  },
   "validations": [],
   "relations": {
     "accessTokens": {
@@ -10,11 +13,10 @@
       "model": "accessToken",
       "foreignKey": "userId"
     },
-    "roles": {
-      "type": "hasMany",
-      "model": "Role",
-      "foreignKey": "principalId",
-      "through": "RoleMapping"
+    "profile": {
+      "type": "belongsTo",
+      "model": "Profile",
+      "foreignKey": "profileId"
     }
   },
   "acls": [

@@ -23,7 +23,7 @@ boot(app, __dirname, (err) => {
     throw err;
   }
   // start the server if `$ node server.js`
-  if (require.main === module || path.basename(require.main.filename) === 'server.babel.js') {
+  if (require.main === module || (path.basename(require.main.filename) === 'boot.babel.js' && process.env.BOOT == 'true')) {
     app.start();
   }
 });

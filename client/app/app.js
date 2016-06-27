@@ -13,7 +13,7 @@ export default angular
   .module('app', [
     require('angular-bluebird-promises'),
     require('angular-ui-router'),
-    (() => { require('oclazyload'); return 'oc.lazyLoad' })(),
+    (() => { require('oclazyload'); return 'oc.lazyLoad'; })(),
 
     // global
     require('./extensions/extensions').name,
@@ -22,7 +22,7 @@ export default angular
     require('./components/application/application.controller').name,
     require('../lib/lb-services')
   ])
-  // .config(require('./extensions/config/inject-auth'))s
-  // .run(require('./extensions/init/get-current-user'))
-  // .run(require('./extensions/init/access-control'))
-  // .run(require('./extensions/init/access-control-handle'));
+  .config(require('./extensions/config/inject-auth'))
+  .run(require('./extensions/init/get-current-user'))
+  .run(require('./extensions/init/access-control'))
+  .run(require('./extensions/init/access-control-handle'));
