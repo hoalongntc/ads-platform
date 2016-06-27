@@ -34,6 +34,10 @@
     "dataSource": "mongo",
     "public": true
   },
+  "Group": {
+    "dataSource": "mongo",
+    "public": false
+  },
   "Profile": {
     "dataSource": "mongo",
     "public": false
@@ -51,6 +55,10 @@
     "public": false
   },
   "RoleMenuMapping": {
+    "dataSource": "mongo",
+    "public": false
+  },
+  "ResourceMapping": {
     "dataSource": "mongo",
     "public": false
   },

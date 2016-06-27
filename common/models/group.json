@@ -1,15 +1,19 @@
 {
-  "name": "RoleProfileMapping",
+  "name": "Group",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
     "validateUpsert": true
   },
   "properties": {
-    "profileName": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
       "type": "string"
     },
-    "roleName": {
+    "profileName": {
       "type": "string"
     }
   },
@@ -20,10 +24,10 @@
       "model": "Profile",
       "foreignKey": "profileId"
     },
-    "role": {
-      "type": "belongsTo",
-      "model": "role",
-      "foreignKey": "roleId"
+    "users": {
+      "type": "hasMany",
+      "model": "user",
+      "foreignKey": "groupId"
     }
   },
   "acls": [],

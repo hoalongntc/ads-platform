@@ -44,6 +44,7 @@
     "loopback-ds-timestamp-mixin": "3.2.4",
     "loopback-filters": "0.1.2",
     "moment": "2.13.0",
+    "mongodb": "2.1.18",
     "oclazyload": "1.0.9",
     "perfect-scrollbar": "0.6.11",
     "redis": "2.6.2",

@@ -3,8 +3,12 @@
   "plural": "users",
   "base": "User",
   "properties": {
-    "name": "string",
-    "profileName": "string"
+    "name": {
+      "type": "string"
+    },
+    "groupName": {
+      "type": "string"
+    }
   },
   "validations": [],
   "relations": {
@@ -13,10 +17,10 @@
       "model": "accessToken",
       "foreignKey": "userId"
     },
-    "profile": {
+    "group": {
       "type": "belongsTo",
-      "model": "Profile",
-      "foreignKey": "profileId"
+      "model": "Group",
+      "foreignKey": "groupId"
     }
   },
   "acls": [

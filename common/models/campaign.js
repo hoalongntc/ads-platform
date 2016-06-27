@@ -1,3 +1,4 @@
+import { accessifyResource } from '../access-utils';
 import RedisService from '../RedisService';
 import config from '../../server/config.json';
 
@@ -13,4 +14,6 @@ module.exports = function (Campaign) {
     }
     next();
   });
+
+  accessifyResource(Campaign, 'CAMPAIGN');
 };

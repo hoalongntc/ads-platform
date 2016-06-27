@@ -74,7 +74,7 @@ gulp.task('serve', () => nodemon({
   script: 'server/server.js',
   watch: [ 'server/', 'common/' ],
   ext: 'js json',
-  tasks: [ 'lint:server' ]
+  tasks: [ 'lint' ]
 }))
 
 gulp.task('watch:lint:server', ['lint'], () => watch([

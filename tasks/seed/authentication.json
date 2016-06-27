@@ -17,22 +17,22 @@
       "description": "Client Profile"
     }
   ],
-  "users": [
+  "groups": [
     {
-      "email": "admin@ads.com",
-      "password": "123456"
+      "name": "admin",
+      "description": "Admin Group"
     },
     {
-      "email": "advertiser@ads.com",
-      "password": "123456"
+      "name": "advertiser",
+      "description": "Advertiser Group"
     },
     {
-      "email": "publisher@ads.com",
-      "password": "123456"
+      "name": "publisher",
+      "description": "Publisher Group"
     },
     {
-      "email": "client@ads.com",
-      "password": "123456"
+      "name": "client",
+      "description": "Client Group"
     }
   ],
   "roles": [
@@ -79,6 +79,24 @@
     {
       "name": "manageAccountCMS",
       "description": "Can manage Account (CMS)"
+    }
+  ],
+  "users": [
+    {
+      "email": "admin@ads.com",
+      "password": "123456"
+    },
+    {
+      "email": "advertiser@ads.com",
+      "password": "123456"
+    },
+    {
+      "email": "publisher@ads.com",
+      "password": "123456"
+    },
+    {
+      "email": "client@ads.com",
+      "password": "123456"
     }
   ],
   "roleProfileMappings": [
