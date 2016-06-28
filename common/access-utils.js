@@ -6,8 +6,7 @@ const accessifyResource = (Resource, resourceType) => {
 
     if (ctx.instance && ctx.isNewInstance) {
       const context = loopback.getCurrentContext();
-      const currentProfile = context.get('currentProfileName');
-      if (currentProfile === Profile.ADMIN) {
+      if (context && context.get('currentProfileName') === Profile.ADMIN) {
         return next();
       }
       const currentResourceGroupId = context.get('currentResourceGroupId');
@@ -42,6 +41,9 @@ const accessifyResource = (Resource, resourceType) => {
   Resource.observe('access', (ctx, next) => {
     const {ResourceMapping, Profile} = Resource.app.models;
     const context = loopback.getCurrentContext();
+    if (!context) {
+      return next();
+    }
     const currentProfile = context.get('currentProfileName');
     if (currentProfile === Profile.ADMIN) {
       return next();

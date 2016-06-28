@@ -1,7 +1,7 @@
 import moment from 'moment';
 
 export default (app) => {
-  const {Campaign} = app.models;
+  const models = app.models;
   const debug = require('debug')('jobs:report.location');
 
   const calculateReport = (campaign, result) => {
@@ -20,13 +20,14 @@ export default (app) => {
     if (!beforeDate) {
       beforeDate = moment();
     }
-
-    return Campaign
+    debug('Current offset', offset);
+    return models.Campaign
       .find({
         where: {createdAt: {lte: beforeDate}}, order: 'createdAt ASC', limit: 50, offset: offset
       })
       .then(campaigns => {
         campaigns.forEach(campaign => calculateReport(campaign, result));
+        debug('Current result', result);
         return campaigns.length;
       })
       .then(length => {
@@ -45,11 +46,11 @@ export default (app) => {
     let result = { locations: {}, cities: {}, categories: {} };
     processTopBefore(moment(), 0, result)
       .then(() => {
-        debug(result);
+        debug('Final result', result);
         cb();
       })
       .catch(err => {
-        debug(err);
+        console.error(err);
         cb(err);
       });
   };

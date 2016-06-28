@@ -1,9 +1,9 @@
 import { accessifyResource } from '../access-utils';
 
 module.exports = function(Location) {
-  Location.allow = (groupName, context) => {
-    const models = Location.app.models;
-    return groupName == models.Group.ADVERTISER;
+  Location.allow = (profileName, context) => {
+    const {Profile} = Location.app.models;
+    return profileName == Profile.ADVERTISER;
   };
 
   accessifyResource(Location, 'LOCATION');
