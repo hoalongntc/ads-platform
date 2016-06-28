@@ -11,26 +11,18 @@ export default function(app) {
       Promise.map(authenticationInfo.profiles, profile => {
         return models.Profile.create(profile);
       }),
-      Promise.map(authenticationInfo.groups, group => {
-        return models.Group.create(group);
-      }),
       Promise.map(authenticationInfo.users, user => {
         return models.user.create(user);
       })
     ])
-    .then(([profiles, groups, users]) => {
+    .then(([profiles, users]) => {
       debug('Profiles', profiles);
-      debug('Groups', groups);
       debug('Users', users);
 
-      return Promise.all([
-        Promise.map(users, (user, index) => {
-          return user.updateAttributes({groupId: groups[index].id, groupName: groups[index].name});
-        }),
-        Promise.map(groups, (group, index) => {
-          return group.updateAttributes({profileId: profiles[index].id, profileName: profiles[index].name});
-        })
-      ]);
+      return Promise
+        .map(users, (user, index) => {
+          return user.updateAttributes({profileId: profiles[index].id, profileName: profiles[index].name});
+        });
     })
     .then(() => Promise.all([
       Promise.map(authenticationInfo.roles, role => {
@@ -51,7 +43,7 @@ export default function(app) {
         .then(([profile, role]) => {
           return models.RoleProfileMapping.create({
             roleId: role.id, roleName: role.name,
-            profileId: profile.id, proileName: profile.name
+            profileId: profile.id, profileName: profile.name
           });
         })
       );

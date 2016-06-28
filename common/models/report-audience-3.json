@@ -17,6 +17,12 @@
   "options": {
     "validateUpsert": true
   },
+  "mixins": {
+    "TimeStamp": {
+      "validateUpsert": true,
+      "required": false
+    }
+  },
   "properties": {
     "advertiserId": {
       "type": "string",

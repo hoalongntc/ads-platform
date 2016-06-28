@@ -6,6 +6,13 @@
   "options": {
     "validateUpsert": true
   },
+  "mixins": {
+    "Creator": {},
+    "TimeStamp": {
+      "validateUpsert": true,
+      "required": false
+    }
+  },
   "properties": {
     "name": {
       "type": "string",
@@ -50,8 +57,9 @@
       "default": 0
     },
     "activeCampaigns": {
-      "type": "object",
-      "default": "{}"
+      "type": [
+        "object"
+      ]
     }
   },
   "validations": [],

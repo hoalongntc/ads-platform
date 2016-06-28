@@ -6,6 +6,13 @@
   "options": {
     "validateUpsert": true
   },
+  "mixins": {
+    "Creator": {},
+    "TimeStamp": {
+      "validateUpsert": true,
+      "required": false
+    }
+  },
   "properties": {
     "name": {
       "type": "string",

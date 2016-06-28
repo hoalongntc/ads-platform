@@ -2,11 +2,14 @@
   "name": "user",
   "plural": "users",
   "base": "User",
+  "mixins": {
+    "Creator": {}
+  },
   "properties": {
     "name": {
       "type": "string"
     },
-    "groupName": {
+    "profileName": {
       "type": "string"
     }
   },
@@ -17,10 +20,15 @@
       "model": "accessToken",
       "foreignKey": "userId"
     },
-    "group": {
+    "profile": {
       "type": "belongsTo",
-      "model": "Group",
-      "foreignKey": "groupId"
+      "model": "Profile",
+      "foreignKey": "profileId"
+    },
+    "resourceGroup": {
+      "type": "belongsTo",
+      "model": "ResourceGroup",
+      "foreignKey": "resourceGroupId"
     }
   },
   "acls": [

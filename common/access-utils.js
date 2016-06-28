@@ -2,20 +2,20 @@ import loopback from 'loopback';
 
 const accessifyResource = (Resource, resourceType) => {
   Resource.observe('after save', (ctx, next) => {
-    const ResourceMapping = Resource.app.models.ResourceMapping;
+    const {ResourceMapping, Profile} = Resource.app.models;
 
     if (ctx.instance && ctx.isNewInstance) {
       const context = loopback.getCurrentContext();
-      const currentGroupName = context.get('currentGroupName');
-      if (currentGroupName === 'admin') {
+      const currentProfile = context.get('currentProfileName');
+      if (currentProfile === Profile.ADMIN) {
         return next();
       }
-      const currentGroupId = context.get('currentGroupId');
-      
+      const currentResourceGroupId = context.get('currentResourceGroupId');
+
       ResourceMapping
         .create({
           resourceType: resourceType,
-          resourceId: ctx.instance.id, groupId: currentGroupId
+          resourceId: ctx.instance.id, resourceGroupId: currentResourceGroupId
         })
         .then(() => next())
         .catch(next);
@@ -26,7 +26,7 @@ const accessifyResource = (Resource, resourceType) => {
 
   Resource.observe('before delete', (ctx, next) => {
     if (ctx.where) {
-      const ResourceMapping = Resource.app.models.ResourceMapping;
+      const {ResourceMapping} = Resource.app.models;
 
       Resource
         .find({where: ctx.where}, {fields: {id: 1}})
@@ -40,16 +40,18 @@ const accessifyResource = (Resource, resourceType) => {
   });
 
   Resource.observe('access', (ctx, next) => {
-    const ResourceMapping = Resource.app.models.ResourceMapping;
+    const {ResourceMapping, Profile} = Resource.app.models;
     const context = loopback.getCurrentContext();
-    const currentGroupName = context.get('currentGroupName');
-    if (currentGroupName === 'admin') {
+    const currentProfile = context.get('currentProfileName');
+    if (currentProfile === Profile.ADMIN) {
       return next();
     }
-    const currentGroupId = context.get('currentGroupId');
+    if (typeof Resource.allow == 'function' && Resource.allow(currentProfile, ctx)) {
+      return next();
+    }
+    const currentResourceGroupId = context.get('currentResourceGroupId');
 
-
-    const resourceWhere = {resourceType: resourceType, groupId: currentGroupId};
+    const resourceWhere = {resourceType: resourceType, resourceGroupId: currentResourceGroupId};
     if (ctx.query && ctx.query.where && ctx.query.where.id) {
       if (typeof ctx.query.where.id == 'string') {
         resourceWhere.resourceId = ctx.query.where.id;
@@ -59,7 +61,7 @@ const accessifyResource = (Resource, resourceType) => {
     }
 
     ResourceMapping
-      .getResources({resourceType: resourceType, groupId: currentGroupId})
+      .getResources(resourceWhere)
       .then(resourceIds => {
         if (!ctx.query.where) {
           ctx.query.where = {};
@@ -73,4 +75,4 @@ const accessifyResource = (Resource, resourceType) => {
 
 export {
   accessifyResource
-}
+};

@@ -253,11 +253,19 @@ module.exports = function (TrackingClick) {
   TrackingClick.remoteMethod('newPost', lodash.extend({http: {path: '/'}}, clickMethodOptions));
   TrackingClick.observe('before save', (ctx, next) => {
     if (ctx.instance) {
-      ctx.instance.mac = standardizeMacAddress(ctx.instance.mac);
-      ctx.instance.gender = standardizeGender(ctx.instance.gender);
+      if (ctx.instance.mac) {
+        ctx.instance.mac = standardizeMacAddress(ctx.instance.mac);
+      }
+      if (ctx.instance.gender) {
+        ctx.instance.gender = standardizeGender(ctx.instance.gender);
+      }
     } else {
-      ctx.data.mac = standardizeMacAddress(ctx.data.mac);
-      ctx.data.gender = standardizeGender(ctx.data.gender);
+      if (ctx.data.mac) {
+        ctx.data.mac = standardizeMacAddress(ctx.data.mac);
+      }
+      if (ctx.data.gender) {
+        ctx.data.gender = standardizeGender(ctx.data.gender);
+      }
     }
 
     next();

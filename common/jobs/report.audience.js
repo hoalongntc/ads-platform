@@ -23,14 +23,14 @@ export default (app) => {
         }
       }], (err, data) => {
         if (err) {
+          console.error(err);
           reject(err);
         } else {
-          console.log(data);
+          debug('Key', data);
           resolve(data);
         }
       });
-    }).then(keys => keys.map(key => lodash(key.toJSON()).omitBy(lodash.isUndefined).value()));
-
+    }).then(keys => keys.map(key => key._id));
   };
   const calculateReport = (dataModel, reportDate, key) => {
     const collection = dataModel.getDataSource().connector.collection(dataModel.modelName);
@@ -61,7 +61,13 @@ export default (app) => {
         }).then(report => {
           const reportKey = `report${type[0].toUpperCase() + type.slice(1)}`;
           reports[reportKey] = {};
-          report.forEach(row => { reports[reportKey][row._id] = row.count; });
+          report.forEach(row => {
+            if (row._id == null || row._id == 'null' || row._id == 'other') {
+              reports[reportKey]['other'] = (reports[reportKey]['other'] || 0) + row.count;
+            } else {
+              reports[reportKey][row._id] = row.count;
+            }
+          });
         });
       })
       .then(() => reports);
@@ -89,13 +95,14 @@ export default (app) => {
     if (job.attrs.data && job.attrs.data.reportDate) {
       reportDate = moment(job.attrs.data.reportDate).startOf('day');
     } else {
-      reportDate = moment('2015-06-08').startOf('day');
+      reportDate = moment().startOf('day');
     }
     debug('Started at', moment().toISOString(), 'for', reportDate.toISOString());
 
     Promise
       .each([
         [null, models.TrackingClick1, models.ReportAudience1],
+        [{locationId: '$locationId'}, models.TrackingClick7, models.ReportAudience2],
         [{advertiserId: '$advertiserId'}, models.TrackingClick2, models.ReportAudience3],
         [{advertiserId: '$advertiserId', campaignId: '$campaignId'}, models.TrackingClick3, models.ReportAudience4],
         [{advertiserId: '$advertiserId', campaignId: '$campaignId', locationId: '$locationId', bannerId: '$bannerId'}, models.TrackingClick6, models.ReportAudience]

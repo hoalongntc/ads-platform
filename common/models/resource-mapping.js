@@ -1,5 +1,5 @@
 module.exports = function(ResourceMapping) {
-  ResourceMapping.defineProperty('resourceId', {type: id => require('mongodb').ObjectId('' + id)});
+  ResourceMapping.defineProperty('resourceId', {type: id => require('mongodb').ObjectId(id.toString())});
 
   // Static fields
   const resourceTypes = ['CAMPAIGN', 'LOCATION', 'BANNER', 'BRAND'];

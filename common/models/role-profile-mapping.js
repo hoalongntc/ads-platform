@@ -6,12 +6,8 @@ module.exports = function(RoleProfileMapping) {
     if (ctx.instance && ctx.isNewInstance) {
       const models = RoleProfileMapping.app.models;
 
-      models.Group
+      models.user
         .find({where: {profileId: ctx.instance.profileId}, fields: {id: 1}})
-        .then(groups => {
-          const groupIds = groups.map(group => group.id);
-          return models.user.find({where: {groupId: {inq: groupIds}}, fields: {id: 1}});
-        })
         .then(users => {
           return Promise.map(users, user => {
             return models.roleMapping.create({principalType: models.roleMapping.USER, principalId: user.id, roleId: ctx.instance.roleId});
@@ -32,12 +28,8 @@ module.exports = function(RoleProfileMapping) {
     if (ctx.instance) {
       const models = RoleProfileMapping.app.models;
 
-      models.Group
+      models.user
         .find({where: {profileId: ctx.instance.profileId}, fields: {id: 1}})
-        .then(groups => {
-          const groupIds = groups.map(group => group.id);
-          return models.user.find({where: {groupId: {inq: groupIds}}, fields: {id: 1}});
-        })
         .then(users => {
           const userIds = users.map(user => user.id);
           return models.roleMapping.destroyAll({principalType: models.roleMapping.USER, principalId: {inq: userIds}, roleId: ctx.instance.roleId});

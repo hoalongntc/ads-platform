@@ -15,7 +15,7 @@ export function getMethodArguments(model, methodName, methodIsStatic = true, arg
 export function standardizeMacAddress(mac) {
   if (!mac) return null;
   mac = mac.replace(/-/g, ':').toUpperCase();
-  if (!(~mac.indexOf(':'))) {
+  if (mac.indexOf(':') == -1) {
     mac = mac.match(/[\s\S]{1,3}/g).join(':');
   }
   mac = mac.substr(0, 17);

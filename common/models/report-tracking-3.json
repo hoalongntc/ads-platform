@@ -16,6 +16,12 @@
       }
     }
   },
+  "mixins": {
+    "TimeStamp": {
+      "validateUpsert": true,
+      "required": false
+    }
+  },
   "options": {
     "validateUpsert": true
   },

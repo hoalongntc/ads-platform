@@ -17,24 +17,6 @@
       "description": "Client Profile"
     }
   ],
-  "groups": [
-    {
-      "name": "admin",
-      "description": "Admin Group"
-    },
-    {
-      "name": "advertiser",
-      "description": "Advertiser Group"
-    },
-    {
-      "name": "publisher",
-      "description": "Publisher Group"
-    },
-    {
-      "name": "client",
-      "description": "Client Group"
-    }
-  ],
   "roles": [
     {
       "name": "admin",
@@ -55,6 +37,10 @@
     {
       "name": "approveCampaign",
       "description": "Can approve Campaign"
+    },
+    {
+      "name": "viewAllLocation",
+      "description": "Can view all Locations"
     },
     {
       "name": "viewLocationReport",
@@ -115,6 +101,10 @@
     {
       "profileName": "advertiser",
       "roleName": "createCampaign"
+    },
+    {
+      "profileName": "advertiser",
+      "roleName": "viewAllLocation"
     },
     {
       "profileName": "advertiser",

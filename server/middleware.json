@@ -32,7 +32,6 @@
   },
   "session": {},
   "auth": {},
-  "parse": {},
   "parse:after": {
     "loopback#context": {},
     "./middleware/currentUser": {}

@@ -1,5 +1,5 @@
 {
-  "name": "ReportTracking4",
+  "name": "ReportTopLocation2",
   "base": "PersistedModel",
   "strict": true,
   "idInjection": true,
@@ -7,9 +7,7 @@
     "key_index": {
       "keys": {
         "advertiserId": 1,
-        "campaignId": 1,
         "locationId": 1,
-        "bannerId": 1,
         "reportDate": -1
       },
       "options": {
@@ -17,6 +15,7 @@
       }
     }
   },
+
   "options": {
     "validateUpsert": true
   },
@@ -34,32 +33,13 @@
     "advertiserName": {
       "type": "string"
     },
-    "campaignId": {
-      "type": "string",
-      "required": true
-    },
-    "campaignName": {
-      "type": "string"
-    },
     "locationId": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "locationName": {
       "type": "string"
     },
-    "bannerId": {
-      "type": "string",
-      "required": true
-    },
-    "bannerName": {
-      "type": "string"
-    },
-    "clickCount": {
-      "type": "number",
-      "default": 0
-    },
-    "impressionCount": {
+    "clickBooked": {
       "type": "number",
       "default": 0
     },

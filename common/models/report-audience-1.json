@@ -16,6 +16,12 @@
   "options": {
     "validateUpsert": true
   },
+  "mixins": {
+    "TimeStamp": {
+      "validateUpsert": true,
+      "required": false
+    }
+  },
   "properties": {
     "reportDate": {
       "type": "date"

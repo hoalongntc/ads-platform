@@ -175,12 +175,12 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.User#prototype$__get__group
+         * @name lbServices.User#prototype$__get__profile
          * @methodOf lbServices.User
          *
          * @description
          *
-         * Fetches belongsTo relation group.
+         * Fetches belongsTo relation profile.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -203,8 +203,43 @@ module.factory(
          * This usually means the response is a `User` object.)
          * </em>
          */
-        "prototype$__get__group": {
-          url: urlBase + "/users/:id/group",
+        "prototype$__get__profile": {
+          url: urlBase + "/users/:id/profile",
+          method: "GET"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.User#prototype$__get__resourceGroup
+         * @methodOf lbServices.User
+         *
+         * @description
+         *
+         * Fetches belongsTo relation resourceGroup.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - User id
+         *
+         *  - `refresh` – `{boolean=}` - 
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `User` object.)
+         * </em>
+         */
+        "prototype$__get__resourceGroup": {
+          url: urlBase + "/users/:id/resourceGroup",
           method: "GET"
         },
 

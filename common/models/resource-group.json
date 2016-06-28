@@ -1,21 +1,16 @@
 {
-  "name": "ResourceMapping",
+  "name": "ResourceGroup",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
     "validateUpsert": true
   },
-  "properties": {
-    "resourceType": {
-      "type": "string",
-      "required": true
-    }
-  },
+  "properties": {},
   "validations": [],
   "relations": {
-    "resourceGroup": {
-      "type": "belongsTo",
-      "model": "ResourceGroup",
+    "users": {
+      "type": "hasMany",
+      "model": "user",
       "foreignKey": "resourceGroupId"
     }
   },

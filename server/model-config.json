@@ -34,10 +34,6 @@
     "dataSource": "mongo",
     "public": true
   },
-  "Group": {
-    "dataSource": "mongo",
-    "public": false
-  },
   "Profile": {
     "dataSource": "mongo",
     "public": false
@@ -55,6 +51,10 @@
     "public": false
   },
   "RoleMenuMapping": {
+    "dataSource": "mongo",
+    "public": false
+  },
+  "ResourceGroup": {
     "dataSource": "mongo",
     "public": false
   },
@@ -160,6 +160,14 @@
   },
   "ReportAudience4": {
     "dataSource": "mongo",
+    "public": false
+  },
+  "ReportTopLocation1": {
+    "dataSource": "mongo",
+    "public": false
+  },
+  "ReportTopLocation2": {
+    "dataSource": "db",
     "public": false
   }
 }
