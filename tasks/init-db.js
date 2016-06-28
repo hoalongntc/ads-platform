@@ -11,6 +11,7 @@ app.dataSources.mongo.automigrate(err => {
 
   selectOptions(app)
     .then(() => authentication(app))
+    .then(() => trackingData(app))
     .then(() => {
       console.log('Done');
       process.exit(0);

@@ -54,9 +54,7 @@ export default function(app) {
   };
 
   return Promise.each([1, 2, 3], num => importTracking(path.join(__dirname, `./tracking${num}.json`)))
-    .then(() => cb())
     .catch(err => {
       console.log(err);
-      cb();
     });
 }

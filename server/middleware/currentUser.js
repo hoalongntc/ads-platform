@@ -12,7 +12,7 @@ export default () => {
           .then(user => {
             ctx.set('currentUserId', accessToken.userId);
             ctx.set('currentGroupId', user.groupId);
-            ctx.set('currentGroupId', user.groupName);
+            ctx.set('currentGroupName', user.groupName);
             next();
           })
           .catch(next);

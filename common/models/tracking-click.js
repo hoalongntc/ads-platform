@@ -116,6 +116,16 @@ module.exports = function (TrackingClick) {
         opts));
     }
 
+    // Insert to Tracking7
+    if (opts.mac && opts.locationId) {
+      trackingClicks.push(upsertTracking(models.TrackingClick7,
+        {
+          mac: opts.mac,
+          locationId: opts.locationId
+        },
+        opts));
+    }
+
     // Update ReportTracking1
     if (opts.advertiserId && opts.campaignId) {
       trackingClicks.push(upsertTracking(models.ReportTracking1,

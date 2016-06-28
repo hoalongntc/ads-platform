@@ -5,6 +5,7 @@
   "options": {
     "validateUpsert": true
   },
+  "scope": {},
   "properties": {
     "name": {
       "type": "string"
@@ -33,6 +34,5 @@
   "validations": [],
   "relations": {},
   "acls": [],
-  "methods": {},
-  "scope": {}
+  "methods": {}
 }

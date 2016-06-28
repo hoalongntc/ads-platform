@@ -102,6 +102,10 @@
     "dataSource": "mongo",
     "public": false
   },
+  "TrackingClick7": {
+    "dataSource": "mongo",
+    "public": true
+  },
   "TrackingImpression": {
     "dataSource": "mongo",
     "public": true

@@ -1,0 +1,95 @@
+{
+  "name": "TrackingClick7",
+  "base": "PersistedModel",
+  "strict": true,
+  "idInjection": true,
+  "indexes": {
+    "key_index": {
+      "keys": {
+        "mac": 1,
+        "locationId": 1
+      },
+      "options": {
+        "unique": true
+      }
+    }
+  },
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "TimeStamp": {
+      "validateUpsert": true,
+      "required": false
+    }
+  },
+  "properties": {
+    "mac": {
+      "type": "string",
+      "required": true
+    },
+    "locationId": {
+      "type": "string",
+      "required": true
+    },
+    "locationName": {
+      "type": "string"
+    },
+    "count": {
+      "type": "number",
+      "default": 1
+    },
+    "os": {
+      "type": "string"
+    },
+    "device": {
+      "type": "string"
+    },
+    "device_type": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "gender": {
+      "type": "string"
+    },
+    "age": {
+      "type": "string"
+    },
+    "income": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "favorite": {
+      "type": "string"
+    },
+    "userType": {
+      "type": "string"
+    },
+    "startTime": {
+      "type": "date"
+    },
+    "stopTime": {
+      "type": "date"
+    },
+    "sessionTime": {
+      "type": "number"
+    },
+    "dataUsage": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

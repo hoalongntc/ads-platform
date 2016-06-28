@@ -1,4 +1,3 @@
-import lodash from 'lodash';
 import Promise from 'bluebird';
 
 const debug = require('debug')('seed:authentication');
