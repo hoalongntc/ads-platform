@@ -23,6 +23,8 @@ providers.json
 .npm
 .env
 client/dist
+server/*.development.json
+server/*.development.js
 server/*.production.json
 server/*.production.js
 !server/middleware.production.json

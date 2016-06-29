@@ -39,7 +39,7 @@ module.exports = function (shipit) {
 
   shipit.blTask('build', function () {
     return shipit
-      .remote(`cd "${APP_DEPLOY_TO}/current" && npm run build`)
+      .remote(`cd "${APP_DEPLOY_TO}/current" && NODE_ENV=production npm run build`)
       .then(function () {
         shipit.emit('built');
       });

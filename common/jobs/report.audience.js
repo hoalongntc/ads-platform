@@ -76,7 +76,6 @@ export default (app) => {
       });
   };
   const insertReport = (reportModel, key, report) => {
-    debug('destroy', key);
     return reportModel
       .destroyAll(key)
       .then(() => reportModel.create(lodash.extend({}, key, report)));

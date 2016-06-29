@@ -1,4 +1,6 @@
 {
+  "host": "localhost",
+  "port": 3000,
   "restApiRoot": "/api",
   "remoting": {
     "context": {
@@ -21,5 +23,17 @@
       "disableStackTrace": false
     }
   },
-  "legacyExplorer": false
+  "legacyExplorer": false,
+
+  "restApiHost": "localhost",
+  "restApiPort": "3000",
+
+  "fileServer": "http://localhost:3000/testFileSystem.html",
+  "fileSecret": "token123456",
+  "redis": {
+    "host": "localhost",
+    "port": 6379,
+    "pass": "123456"
+  },
+  "campaign_list_redis_key": "campaign_list"
 }

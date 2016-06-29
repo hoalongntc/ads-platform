@@ -19,8 +19,9 @@ const isProd = ENV === 'build' || process.env.NODE_ENV == 'production'
  * Path to the client application
  * @type {string}
  */
-const clientApp = `${__dirname}/client`
-const clientAppPort = 9000 || process.env.PORT
+const client = `${__dirname}/client`
+const clientPort = 9000 || process.env.PORT
+const appName = process.env.APP || 'ads-platform'
 
 module.exports = function makeWebpackConfig () {
   /**
@@ -32,7 +33,7 @@ module.exports = function makeWebpackConfig () {
 
   /**
    * Set client port */
-  config.port = clientAppPort;
+  config.port = clientPort;
 
   /**
    * Entry
@@ -41,7 +42,7 @@ module.exports = function makeWebpackConfig () {
    * Karma will set this when it's a test build
    */
   config.entry = isTest ? {} : {
-    app: [`${clientApp}/app/app.js`],
+    app: [`${client}/app/app.${appName}.js`],
   }
 
   /**
@@ -52,11 +53,11 @@ module.exports = function makeWebpackConfig () {
    */
   config.output = isTest ? {} : {
     // Absolute output directory
-    path: `${clientApp}/dist`,
+    path: `${client}/dist`,
 
     // Output path from the view of the page
     // Uses webpack-dev-server in development
-    publicPath: isProd ? '/' : `http://localhost:${clientAppPort}/`,
+    publicPath: isProd ? '/' : `http://localhost:${clientPort}/`,
 
     // Filename for entry points
     // Only adds hash in build mode
@@ -145,9 +146,6 @@ module.exports = function makeWebpackConfig () {
       // Reference: https://github.com/webpack/raw-loader
       // Allow loading html through js
       test: /\.html$/,
-      exclude: [
-        /\.template\.html/,
-      ],
       loader: 'html',
     }, {
       // JADE LOADER
@@ -212,12 +210,12 @@ module.exports = function makeWebpackConfig () {
     // Render index.template.html
     config.plugins.push(
       new HtmlWebpackPlugin({
-        template: `${clientApp}/index.template.html`,
+        template: `${client}/index.${appName}.html`,
         inject: 'body',
       }),
       new HtmlWebpackPlugin({
         filename: 'testFileSystem.html',
-        template: `${clientApp}/testFileSystem.html`,
+        template: `${client}/testFileSystem.html`,
         inject: 'body',
       }),
 
@@ -252,12 +250,12 @@ module.exports = function makeWebpackConfig () {
    */
   config.devServer = {
     publicPath: '/',
-    contentBase: `${clientApp}/dist`,
+    contentBase: `${client}/dist`,
     inline: true,
     hot: true,
     open: true,
     historyApiFallback: true,
-    port: clientAppPort,
+    port: clientPort,
     stats: {
       colors: true,
     },
