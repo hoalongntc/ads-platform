@@ -6,7 +6,10 @@ const accessifyResource = (Resource, resourceType) => {
 
     if (ctx.instance && ctx.isNewInstance) {
       const context = loopback.getCurrentContext();
-      if (context && context.get('currentProfileName') === Profile.ADMIN) {
+      if (!context) {
+        return next();
+      }
+      if (context.get('currentProfileName') === Profile.ADMIN) {
         return next();
       }
       const currentResourceGroupId = context.get('currentResourceGroupId');

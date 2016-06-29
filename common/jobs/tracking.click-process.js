@@ -1,4 +1,5 @@
 import moment from 'moment';
+import Promise from 'bluebird';
 
 const app = require('../../server/server');
 const models = app.models;
@@ -10,17 +11,19 @@ let loop;
 const process = () => {
   clearTimeout(loop);
   models.TrackingClick
-    .findOne({
-      where: {processed: 'not_yet'}, order: 'createdAt ASC'
+    .find({
+      where: {processed: 'not_yet'}, order: 'createdAt ASC', limit: 5
     })
-    .then(click => {
-      if (!click) return;
-      return click.updateAttribute('processed', 'processing');
+    .then(clicks => {
+      if (!clicks || !clicks.length) return;
+      return Promise.each(clicks, click => click.updateAttribute('processed', 'processing'));
     })
-    .then(click => {
-      if (!click) return;
-      debug('Process click ID', click.id);
-      return click.process();
+    .then(clicks => {
+      if (!clicks || !clicks.length) return;
+      return Promise.reduce(clicks, (_, click) => {
+        debug('Process click ID', click.id);
+        return click.process();
+      }, 0);
     })
     .then(() => {
       loop = setTimeout(process, 100);

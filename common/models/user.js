@@ -2,10 +2,9 @@ module.exports = function (User) {
 
   User.prototype.updateRoleMapping = function(forceDelete = false) {
     const models = User.app.models;
-    if (this.groupId && !forceDelete) {
+    if (this.profileId && !forceDelete) {
       return models.roleMapping
         .destroyAll({principalType: models.roleMapping.USER, principalId: this.id})
-        // .then(() => models.Group.findById(this.groupId, {fields: {profileId: 1}}))
         .then(() => models.RoleProfileMapping.find({where: {profileId: this.profileId}}))
         .then(mappings => models.roleMapping.create(mappings.map(map => {
           return {principalType: models.roleMapping.USER, principalId: this.id, roleId: map.roleId};
@@ -13,7 +12,8 @@ module.exports = function (User) {
         .catch(console.error);
     } else {
       return models.roleMapping
-        .destroyAll({principalType: models.roleMapping.USER, principalId: this.id});
+        .destroyAll({principalType: models.roleMapping.USER, principalId: this.id})
+        .catch(console.error);
     }
   };
 
@@ -41,7 +41,6 @@ module.exports = function (User) {
         ctx.instance.username = ctx.instance.email;
       }
       ctx.instance.status = 'created';
-      ctx.instance.created = Date.now();
     }
     next();
   });
@@ -51,7 +50,11 @@ module.exports = function (User) {
     if (ctx.instance) {
       ctx.instance
         .updateRoleMapping()
-        .then(() => next());
+        .then(() => next())
+        .catch(err => {
+          console.error(err);
+          next();
+        });
     } else {
       next();
     }
@@ -62,7 +65,11 @@ module.exports = function (User) {
     if (ctx.instance) {
       ctx.instance
         .updateRoleMapping(true)
-        .then(() => next());
+        .then(() => next())
+        .catch(err => {
+          console.error(err);
+          next();
+        });
     } else {
       next();
     }

@@ -13,8 +13,7 @@ module.exports = function(RoleProfileMapping) {
             return models.roleMapping.create({principalType: models.roleMapping.USER, principalId: user.id, roleId: ctx.instance.roleId});
           });
         })
-        // .then(console.log)
-        .then(next)
+        .then(() => next())
         .catch(err => {
           console.error(err);
           next();
@@ -34,8 +33,7 @@ module.exports = function(RoleProfileMapping) {
           const userIds = users.map(user => user.id);
           return models.roleMapping.destroyAll({principalType: models.roleMapping.USER, principalId: {inq: userIds}, roleId: ctx.instance.roleId});
         })
-        // .then(console.log)
-        .then(next)
+        .then(() => next())
         .catch(err => {
           console.error(err);
           next();

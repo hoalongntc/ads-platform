@@ -1,14 +1,19 @@
 import loopback from 'loopback';
+import mongo from 'mongodb';
 
 const creator = (Model, options) => {
-  Model.defineProperty('createdBy', {type: id => require('mongodb').ObjectId(id.toString())});
+  Model.defineProperty('createdBy', {type: id => mongo.ObjectId(id.toString())});
   Model.defineProperty('createdByUsername', {type: String});
-  Model.defineProperty('updatedBy', {type: id => require('mongodb').ObjectId(id.toString())});
+  Model.defineProperty('updatedBy', {type: id => mongo.ObjectId(id.toString())});
   Model.defineProperty('updatedByUsername', {type: String});
 
   Model.observe('before save', function event(ctx, next) {
     const context = loopback.getCurrentContext();
-    if (ctx.instance && ctx.isNewInstance && !ctx.instance.createdById) {
+    if (!context) {
+      return next();
+    }
+
+    if (ctx.instance && ctx.isNewInstance && !ctx.instance.createdBy) {
       ctx.instance.createdBy = context.get('currentUserId');
       ctx.instance.createdByUsername = context.get('currentUsername');
     }

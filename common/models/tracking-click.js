@@ -49,8 +49,6 @@ module.exports = function (TrackingClick) {
     const opts = lodash(this.toJSON()).omitBy(lodash.isUndefined).value();
     const reportDate = moment(opts.createdAt).startOf('day');
     delete opts.id;
-    delete opts.createdAt;
-    delete opts.updatedAt;
     delete opts.count;
 
     opts.reportDate = reportDate;

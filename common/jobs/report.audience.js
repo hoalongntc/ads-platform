@@ -77,12 +77,43 @@ export default (app) => {
       .destroyAll(key)
       .then(() => reportModel.create(lodash.extend({}, key, report)));
   };
+  const calculateSumReport = (reportModel, key) => {
+    const collection = reportModel.getDataSource().connector.collection(reportModel.modelName);
+    const reportTypes = ['os', 'device', 'gender', 'age', 'income'];
 
-  const createReport = (keyModel, keyFields, dataModel, reportMode, reportDate) => {
+    return Promise
+      .map(reportTypes, type => {
+        const reportKey = `report${type[0].toUpperCase() + type.slice(1)}`;
+        const valueKeys = app.get(`SelectOption:${type}_category`);
+        let groupOptions = {_id: null};
+        valueKeys.forEach(key => {
+          groupOptions[key.value] = {$sum: `$${reportKey}.${key.value}`}
+        });
+        debug('Key:', key);
+        debug('Group options:', groupOptions);
+        return new Promise((resolve, reject) => {
+          collection.aggregate([{
+            $match: key
+          }, {
+            $group: groupOptions
+          }], (err, data) => {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(data);
+            }
+          });
+        });
+      });
+  };
+
+  const createReport = (keyModel, keyFields, dataModel, reportModel, reportDate) => {
     return getKeysByDate(keyModel, keyFields, reportDate)
       .then(keys => Promise.each(keys, key => {
         return calculateReport(dataModel, reportDate, key)
-          .then(reports => insertReport(reportMode, lodash.extend({}, key, {reportDate: reportDate}), reports))
+          .then(reports => insertReport(reportModel, lodash.extend({}, key, {reportDate: reportDate}), reports))
+          .then(debug)
+          .then(() => calculateSumReport(reportModel, key))
           .then(debug);
       }))
       .catch(err => {
@@ -92,14 +123,14 @@ export default (app) => {
 
   return (job, cb) => {
     let reportDate;
-    if (job.attrs.data && job.attrs.data.reportDate) {
+    if (job && job.attrs.data && job.attrs.data.reportDate) {
       reportDate = moment(job.attrs.data.reportDate).startOf('day');
     } else {
       reportDate = moment().startOf('day');
     }
     debug('Started at', moment().toISOString(), 'for', reportDate.toISOString());
 
-    Promise
+    return Promise
       .each([
         [null, models.TrackingClick1, models.ReportAudience1],
         [{locationId: '$locationId'}, models.TrackingClick7, models.ReportAudience2],
