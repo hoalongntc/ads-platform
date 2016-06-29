@@ -70,9 +70,13 @@ export default (app) => {
           });
         });
       })
-      .then(() => reports);
+      .then(() => reports)
+      .catch(err => {
+        console.error('individual', err);
+      });
   };
   const insertReport = (reportModel, key, report) => {
+    debug('destroy', key);
     return reportModel
       .destroyAll(key)
       .then(() => reportModel.create(lodash.extend({}, key, report)));
@@ -80,20 +84,21 @@ export default (app) => {
   const calculateSumReport = (reportModel, key) => {
     const collection = reportModel.getDataSource().connector.collection(reportModel.modelName);
     const reportTypes = ['os', 'device', 'gender', 'age', 'income'];
+    const matchOptions = lodash.cloneDeep(key);
+    matchOptions.reportDate = {'$ne': null};
 
+    let reports = {};
     return Promise
       .map(reportTypes, type => {
         const reportKey = `report${type[0].toUpperCase() + type.slice(1)}`;
         const valueKeys = app.get(`SelectOption:${type}_category`);
         let groupOptions = {_id: null};
         valueKeys.forEach(key => {
-          groupOptions[key.value] = {$sum: `$${reportKey}.${key.value}`}
+          groupOptions[key.value] = {$sum: `$${reportKey}.${key.value}`};
         });
-        debug('Key:', key);
-        debug('Group options:', groupOptions);
         return new Promise((resolve, reject) => {
           collection.aggregate([{
-            $match: key
+            $match: matchOptions
           }, {
             $group: groupOptions
           }], (err, data) => {
@@ -103,7 +108,16 @@ export default (app) => {
               resolve(data);
             }
           });
+        }).then(report => {
+          report = report[0];
+          delete report._id;
+          reports[reportKey] = report;
+          return report;
         });
+      })
+      .then(() => reports)
+      .catch(err => {
+        console.error('sum', err);
       });
   };
 
@@ -112,9 +126,10 @@ export default (app) => {
       .then(keys => Promise.each(keys, key => {
         return calculateReport(dataModel, reportDate, key)
           .then(reports => insertReport(reportModel, lodash.extend({}, key, {reportDate: reportDate}), reports))
-          .then(debug)
+          .then('Report', debug)
           .then(() => calculateSumReport(reportModel, key))
-          .then(debug);
+          .then(reports => insertReport(reportModel, lodash.extend({}, key, {reportDate: null}), reports))
+          .then('Sum report', debug);
       }))
       .catch(err => {
         console.error(err);

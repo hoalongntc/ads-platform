@@ -1,11 +1,10 @@
 import loopback from 'loopback';
 import Promise from 'bluebird';
-import lodash from 'lodash';
 
 module.exports = function(ReportAudience) {
 
   const getReportData = (context, reportType) => {
-    const {Location, Campaign, ReportAudience1, ReportAudience2, ReportAudience3, ReportAudience4} = ReportAudience.app.models;
+    const {Profile, Location, Campaign, ReportAudience1} = ReportAudience.app.models;
     const currentProfile = context.get('currentProfileId');
     let fieldOption = {};
     fieldOption[reportType] = 1;
@@ -35,12 +34,12 @@ module.exports = function(ReportAudience) {
   };
 
   ReportAudience.getReport = (reportType) => {
-    const {Profile} = ReportAudience.app.models;
+    // const {Profile} = ReportAudience.app.models;
     const context = loopback.getCurrentContext();
 
     getReportData(context)
       .then(report => {
-        
+
       });
   };
 };

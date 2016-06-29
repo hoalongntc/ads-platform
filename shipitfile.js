@@ -47,7 +47,7 @@ module.exports = function (shipit) {
 
   shipit.blTask('start_server', function () {
     return shipit
-      .remote(`cd "${APP_DEPLOY_TO}/current" && pm2 startOrRestart pm2.json --env production`)
+      .remote(`cd "${APP_DEPLOY_TO}/current" && pm2 delete pm2.json && pm2 startOrRestart pm2.json --env production && pm2 save`)
   });
 
   shipit.on('published', function () {
